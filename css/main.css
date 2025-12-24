@@ -301,3 +301,64 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* Hamburger menu */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+    nav {
+        position: absolute;
+        top: 0;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    nav a {
+        margin: 15px 0;
+        font-size: 1.1rem;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header-row {
+        position: relative;
+    }
+}
+
+/* Hamburger animacija */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
