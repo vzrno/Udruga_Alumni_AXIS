@@ -88,3 +88,33 @@ function initContractForm() {
     form.reset();
   });
 }
+
+/**
+ * Email validacija
+ */
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+/**
+ * 4. Poruka uspješne predaje
+ */
+function showSuccessMessage(form) {
+  const msg = document.createElement("div");
+
+  msg.textContent = "Poruka je uspješno poslana. Hvala vam!";
+  msg.style.marginTop = "20px";
+  msg.style.padding = "15px";
+  msg.style.backgroundColor = "#e9f7ef";
+  msg.style.border = "1px solid #2ecc71";
+  msg.style.borderRadius = "8px";
+  msg.style.color = "#2c662d";
+  msg.style.fontWeight = "600";
+
+  form.appendChild(msg);
+
+  setTimeout(() => {
+    msg.remove();
+  }, 5000);
+}
