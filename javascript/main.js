@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigator();
   initSmoothScroll();
   initContractForm();
-  initUIEffiect();
+  initUIEffects();
 });
 
 /** * 1. Aktivna Navigacija
@@ -117,4 +117,21 @@ function showSuccessMessage(form) {
   setTimeout(() => {
     msg.remove();
   }, 5000);
+}
+
+/**
+ * 5. UI Efekti (hover animacije preko JS-a)
+ */
+function initUIEffects() {
+  const cards = document.querySelectorAll(".card, .bullets");
+
+  cards.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      el.style.transform = "scale(1.05)";
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "scale(1)";
+    });
+  });
 }
