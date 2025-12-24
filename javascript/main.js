@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
   initContractForm();
   initUIEffects();
+  initHamburgerMenu();
 });
 
 /** * 1. Aktivna Navigacija
@@ -132,6 +133,29 @@ function initUIEffects() {
 
     el.addEventListener("mouseleave", () => {
       el.style.transform = "scale(1)";
+    });
+  });
+}
+
+/**
+ * 6. Funkcija Habmurger menija
+ */
+function initHamburgerMenu() {
+  const habmurger = document.getElementById("hamburger");
+  const nav = document.querySelector("nav");
+
+  if (!hamburger || !nav) return;
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  // Zatvori meni kad se klikne link
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      nav.classList.remove("active");
     });
   });
 }
