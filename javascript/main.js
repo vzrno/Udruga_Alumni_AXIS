@@ -50,3 +50,41 @@ function initSmoothScroll() {
     });
   });
 }
+
+/**
+ * 3. Validacija kontakt forme
+ */
+function initContractForm() {
+  const form = document.querySelector("form");
+
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const ime = document.getElementById("ime");
+    const email = document.getElementById("email");
+    const poruka = document.getElementById("poruka");
+
+    if (!ime.value.trim()) {
+      alert("Molimo unesite ime i prezime.");
+      ime.focus();
+      return;
+    }
+
+    if (!validateEmail(email.value)) {
+      alert("Molimo unesite ispravnu email adresu.");
+      email.focus();
+      return;
+    }
+
+    if (poruka.value.trim().length < 10) {
+      alert("Poruka mora imati barem 10 znakova.");
+      poruka.focus();
+      return;
+    }
+
+    showSuccessMessage(form);
+    form.reset();
+  });
+}
