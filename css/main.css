@@ -147,7 +147,7 @@ nav a:hover::after {
     background: var(--white);
     padding: 35px;
     margin: 30px auto;
-    max-width: fit-content;
+    max-width: 1000px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
