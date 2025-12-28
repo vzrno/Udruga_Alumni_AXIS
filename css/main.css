@@ -41,6 +41,18 @@ a:hover {
 }
 
 /* =========================
+   UTILITY KLASE    
+========================= */
+.grid {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* =========================
    LAYOUT
 ========================= */
 .container {
