@@ -5,10 +5,13 @@
  */
 document.addEventListener("DOMContentLoaded", () => {
   initNavigator();
-  initSmoothScroll();
-  initContractForm();
-  initUIEffects();
   initHamburgerMenu();
+  initSmoothScroll();
+  loadNovosti();
+  initUIEffects();
+  initScrollAnimations();
+  initBackToTop();
+  initContractForm();
 });
 
 /** * 1. Aktivna Navigacija
@@ -32,7 +35,30 @@ function initNavigator() {
 }
 
 /**
- * 2. Glatko scrolanje za linkove
+ * 2. Funkcija Habmurger menija
+ */
+function initHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.querySelector("nav");
+
+  if (!hamburger || !nav) return;
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  // Zatvori meni kad se klikne link
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  });
+}
+
+/**
+ * 3. Glatko scrolanje za linkove
  */
 function initSmoothScroll() {
   const anchors = document.querySelectorAll('a[href^="#"]');
@@ -53,7 +79,93 @@ function initSmoothScroll() {
 }
 
 /**
- * 3. Validacija kontakt forme
+ * 4. Dinamičke novosti
+ */
+async function loadNovosti() {
+  const container = document.querySelector("#novosti-container");
+  if (!container) return;
+
+  try {
+    const res = await fetch("data/novosti.json");
+    const novosti = await res.json;
+
+    container.innerHTML = "";
+
+    novosti.forEach((item) => {
+      const article = document.createElement("article");
+
+      article.innerHTML = `
+        <h3>${item.title}</h3>
+        <img src="${item.image}" alt="${item.title}" class="novosti-img">
+        <p>${item.text}</p>
+        <small>Datum objave: ${item.date}</small>
+      `;
+
+      container.appendChild(article);
+    });
+  } catch (error) {
+    container.innerHTML = "<p>Greška pri učitavanju novosti.</p>";
+    console.error(error);
+  }
+}
+
+/**
+ * 5. UI Efekti (hover animacije preko JS-a)
+ */
+function initUIEffects() {
+  const cards = document.querySelectorAll(".card, .bullets");
+
+  cards.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      el.style.transform = "scale(1.05)";
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "scale(1)";
+    });
+  });
+}
+
+/**
+ * 6. Scroll animacije
+ */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll(".content-section, article");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
+/**
+ * 7. Back to top
+ */
+function initBackToTop() {
+  const btn = document.createElement("button");
+  btn.innerText = "↑";
+  btn.className = "back-to-top";
+  document.body.appendChild(btn);
+
+  window.addEventListener("scroll", () => {
+    btn.style.display = window.scrollY > 400 ? "block" : "none";
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+/**
+ * 8. Validacija kontakt forme
  */
 function initContractForm() {
   const form = document.querySelector("form");
@@ -91,7 +203,7 @@ function initContractForm() {
 }
 
 /**
- * Email validacija
+ * 8.1. Email validacija
  */
 function validateEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -99,12 +211,12 @@ function validateEmail(email) {
 }
 
 /**
- * 4. Poruka uspješne predaje
+ * 8.2. Poruka uspješne predaje
  */
 function showSuccessMessage(form) {
   const msg = document.createElement("div");
 
-  msg.textContent = "Poruka je uspješno poslana. Hvala vam!";
+  msg.textContent = "Poruka uspješno poslana ✔️. Hvala vam!";
   msg.style.marginTop = "20px";
   msg.style.padding = "15px";
   msg.style.backgroundColor = "#e9f7ef";
@@ -118,44 +230,4 @@ function showSuccessMessage(form) {
   setTimeout(() => {
     msg.remove();
   }, 5000);
-}
-
-/**
- * 5. UI Efekti (hover animacije preko JS-a)
- */
-function initUIEffects() {
-  const cards = document.querySelectorAll(".card, .bullets");
-
-  cards.forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      el.style.transform = "scale(1.05)";
-    });
-
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "scale(1)";
-    });
-  });
-}
-
-/**
- * 6. Funkcija Habmurger menija
- */
-function initHamburgerMenu() {
-  const habmurger = document.getElementById("hamburger");
-  const nav = document.querySelector("nav");
-
-  if (!hamburger || !nav) return;
-
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    nav.classList.toggle("active");
-  });
-
-  // Zatvori meni kad se klikne link
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("active");
-      nav.classList.remove("active");
-    });
-  });
 }
