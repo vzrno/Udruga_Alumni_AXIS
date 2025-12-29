@@ -135,6 +135,13 @@ nav a.active::after {
 }
 
 
+/* Mala UX nadogradnja */
+
+nav a.active {
+    color: var(--accent);
+}
+
+
 /* =========================
    HERO
 ========================= */
