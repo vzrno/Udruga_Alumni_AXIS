@@ -1,6 +1,7 @@
 /* =========================
    RESET & OSNOVE
 ========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -40,9 +41,11 @@ a:hover {
     color: var(--primary);
 }
 
+
 /* =========================
    UTILITY KLASE    
 ========================= */
+
 .grid {
     display: grid;
     gap: 30px;
@@ -52,9 +55,11 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+
 /* =========================
    LAYOUT
 ========================= */
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -65,9 +70,11 @@ a:hover {
     padding: 60px 0;
 }
 
+
 /* =========================
    HEADER & NAV
 ========================= */
+
 header {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--white);
@@ -123,13 +130,17 @@ nav a:hover::after {
     width: 100%;
 }
 
+nav a.active::after {
+    width: 100%;
+}
+
+
 /* =========================
    HERO
 ========================= */
+
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4),
-            rgba(0, 0, 0, 0.4)),
-        url("../img/hero.jpg") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/hero.jpg") center/cover no-repeat;
     color: var(--white);
     text-align: center;
     padding: 60px 20px;
@@ -142,9 +153,11 @@ nav a:hover::after {
     font-weight: 600;
 }
 
+
 /* =========================
    NASLOVI
 ========================= */
+
 .page-title {
     text-align: center;
     font-size: 2.2rem;
@@ -152,10 +165,13 @@ nav a:hover::after {
     color: var(--primary);
 }
 
+
 /* =========================
    SEKCIJE
 ========================= */
-.content-section, article {
+
+.content-section,
+article {
     background: var(--white);
     padding: 35px;
     margin: 30px auto;
@@ -201,9 +217,11 @@ ul {
     font-size: 18px;
 }
 
+
 /* =========================
    KARTICE (Članstvo)
 ========================= */
+
 .card {
     display: inline-block;
     background: linear-gradient(135deg, #e9eef3, #ffffff);
@@ -219,9 +237,11 @@ ul {
     transform: translateY(-5px);
 }
 
+
 /* =========================
    BULLETS (O nama)
 ========================= */
+
 .bullets {
     display: inline-block;
     background: linear-gradient(135deg, #e9eef3, #ffffff);
@@ -237,9 +257,11 @@ ul {
     transform: translateY(-5px);
 }
 
+
 /* =========================
    AKTIVNOSTI
 ========================= */
+
 article {
     background: #fafafa;
     padding: 25px;
@@ -258,9 +280,11 @@ article img {
     margin: 15px 0;
 }
 
+
 /* =========================
    FORME
 ========================= */
+
 form label {
     font-weight: 600;
 }
@@ -296,18 +320,22 @@ button:hover {
     background: var(--secondary);
 }
 
+
 /* =========================
    MAPA
 ========================= */
+
 iframe {
     width: 100%;
     border-radius: var(--radius);
     border: none;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
+
 footer {
     background: var(--primary);
     color: var(--white);
@@ -317,24 +345,25 @@ footer {
     font-size: 0.9rem;
 }
 
+
 /* =========================
    RESPONSIVE
 ========================= */
+
 @media (max-width: 768px) {
     .header-row {
         flex-direction: column;
         text-align: center;
     }
-
     nav a {
         margin: 10px;
         display: inline-block;
     }
-
     .hero h1 {
         font-size: 1.5rem;
     }
 }
+
 
 /* Hamburger menu */
 
@@ -353,7 +382,9 @@ footer {
     transition: 0.3s ease;
 }
 
+
 /* Mobile nav */
+
 @media (max-width: 768px) {
     nav {
         position: absolute;
@@ -365,26 +396,24 @@ footer {
         text-align: center;
         padding: 20px 0;
     }
-
     nav a {
         margin: 15px 0;
         font-size: 1.1rem;
     }
-
     nav.active {
         display: flex;
     }
-
     .hamburger {
         display: flex;
     }
-
     .header-row {
         position: relative;
     }
 }
 
+
 /* Hamburger animacija */
+
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
 }
