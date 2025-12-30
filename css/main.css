@@ -185,8 +185,8 @@ article {
     max-width: 1000px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    /*opacity: 0;
-    transform: translateY(30px);*/
+    opacity: 0;
+    transform: translateY(30px);
     transition: all 0.6s ease;
 }
 
