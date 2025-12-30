@@ -1,8 +1,7 @@
 // dohvat novosti (JSON / API)
 
 const NewsService = (() => {
-    const DATA_URL = "data/novosti.json"; // Promijeniti samo DATA_URL za CMS / API migraciju
-    
+    const DATA_URL = "data/nas.rad.json"; // Promijeniti samo DATA_URL za CMS / API migraciju
 
     async function getAll() {
         const res = await fetch(DATA_URL);
