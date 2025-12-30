@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async() => {
         container.innerHTML = news.map(item => `
             <article class="card">
             <img src="${item.image}" alt="${item.title}">
-            h3>${item.title}</h3>
+            <h3>${item.title}</h3>
             <p>${item.description}</p>
             <small>Datum objave: ${item.date}</small><br>
             <a href="novost.html?id=${item.id}">Pročitaj više →</a>

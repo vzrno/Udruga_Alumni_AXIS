@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    if (id) {
+    if (!id) {
         container.innerHTML = "<p>Novost nije pronađena.</p>";
         return;
     }
