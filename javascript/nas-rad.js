@@ -1,7 +1,7 @@
 // lista novosti (nas-rad.html)
 
 document.addEventListener("DOMContentLoaded", async() => {
-    const container = document.getElementById("nas.rad-container");
+    const container = document.getElementById("nas-rad-container");
     if (!container) return;
 
     try {

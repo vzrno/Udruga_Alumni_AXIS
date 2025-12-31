@@ -10,7 +10,7 @@ const NewsService = (() => {
         return await res.json();
     }
 
-    async function getById(id) {
+        async function getById(id) {
         const news = await getAll();
         return news.find(item => item.id === Number(id));
     }
