@@ -6,10 +6,22 @@
     <title>Alumni AXIS Split</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
-    <meta name="description" content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata." />
-    <meta name="robots" content="index, follow">
+    <meta
+      name="description"
+      content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
+    />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.alumniaxis.hr/" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
     <script src="javascript/main.js" defer></script>
+    <script src="javascript/events.js" defer></script>
   </head>
 
   <body>
@@ -25,12 +37,18 @@
         <div>
           <h1>Alumni AXIS Split</h1>
         </div>
-        <div class="hamburger" id="hamburger" aria-label="Izbronik" role="button"></div>
+        <div
+          class="hamburger"
+          id="hamburger"
+          aria-label="Izbronik"
+          role="button"
+        ></div>
         <nav aria-label="Glavna navigacija">
           <a href="index.html">Početna</a>
           <a href="o-nama.html">O nama</a>
           <a href="novosti.html">Novosti</a>
           <a href="nas-rad.html">Naš rad</a>
+          <a href="past-events.html">Prošla događanja</a>
           <a href="clanstvo.html">Članstvo</a>
           <a href="kontakt.html">Kontakt</a>
         </nav>
@@ -46,23 +64,29 @@
       </section>
 
       <article>
-        <section class="content-section">
-          <h2>Izgradnja online zajednice za alumni.</h2>
-          <p>Dobrodošli na web stranicu udruge Alumni AXIS Split!</p>
-          <img
-            src="slika/O nama.png"
-            class="novosti-img"
-            alt="Alumni zajednica"
-          />
-        </section>
+        <div class="slider-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="slika/O nama.png" alt="O nama" />
+              </div>
+              <div class="swiper-slide">
+                <img src="slika/Fakultet.jpg" alt="Fakultet" />
+              </div>
+            </div>
+
+            <!-- Optional controls -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
       </article>
 
       <article>
-        <section id="single-news" class="content-section">
+        <section id="events" class="content-section">
           <h2>Nadolazeća događanja</h2>
-
-          <script src="javascript/news.service.js" defer></script>
-          <script src="javascript/news.single.js" defer></script>
+          <div id="events-list" class="events-list"></div>
         </section>
       </article>
     </main>

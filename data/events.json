@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Alumni Networking Night",
+    "date": "2026-02-15",
+    "time": "18:00",
+    "location": "Split, Campus",
+    "image": "images/events/Alumni Networking Night.png",
+    "description": "Druženje bivših i sadašnjih studenata uz goste predavače."
+  },
+  {
+    "title": "Predavanje: Karijera nakon studija",
+    "date": "2025-11-10",
+    "time": "17:30",
+    "location": "Online (Zoom)",
+    "image": "images/events/Career After Studies.png",
+    "description": "Savjeti za zapošljavanje i razvoj karijere."
+  }
+]
