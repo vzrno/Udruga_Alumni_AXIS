@@ -1,13 +1,6 @@
 /* =========================
-   RESET & OSNOVE
+   CSS RESET & VARIABLES (THEME)
 ========================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --primary: #002b5c;
     --secondary: #0056b3;
@@ -15,15 +8,34 @@
     --light: #f4f6f8;
     --dark: #333;
     --white: #ffffff;
-    --radius: 10px;
-    --shadow: 0 8px 24px rgba(0, 0, 0, .08);
+
+    --radius: 12px;
+    --shadow: 0 8px 24px rgba(26, 11, 165, 0.616);
+
+    --transition: 0.3s ease;
+    --max-width: 1200px;
+}
+
+/* =========================
+   RESET AND BASE STYLES
+========================= */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--light);
     color: var(--dark);
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 img {
@@ -41,7 +53,6 @@ a:hover {
     color: var(--primary);
 }
 
-
 /* =========================
    UTILITY KLASE    
 ========================= */
@@ -55,13 +66,12 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-
 /* =========================
    LAYOUT
 ========================= */
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: auto;
 }
@@ -70,15 +80,16 @@ a:hover {
     padding: 60px 0;
 }
 
-
 /* =========================
-   HEADER & NAV
+   HEADER & NAVIGACIJA
 ========================= */
 
-header {
+.site-header {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--white);
     box-shadow: var(--shadow);
+    top: 0;
+    z-index: 1000;
 }
 
 .header-row {
@@ -92,33 +103,34 @@ header {
 .brand {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .logo-img {
-    height: 60px;
+    width: 48px;
+    height: auto;
 }
 
-.novosti-img {
-    height: 25px 25px;
+.main-nav {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-header h1 {
-    font-size: 1.6rem;
-    font-weight: 600;
-}
-
-nav a {
+.main-nav a {
     color: var(--white);
+    text-decoration: none;
     font-weight: 500;
     margin-left: 20px;
     position: relative;
+    transition: var(--transition);
 }
 
-nav a::after {
+.main-nav a::after {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -6px;
     left: 0;
     width: 0;
     height: 2px;
@@ -126,25 +138,88 @@ nav a::after {
     transition: width 0.3s;
 }
 
-nav a:hover::after {
+.main-nav a:hover::after {
     width: 100%;
 }
 
-nav a.active::after {
+.main-nav a.active::after {
     width: 100%;
 }
 
-
-/* Mala UX nadogradnja */
-
-nav a.active {
+.main-nav a.active {
     color: var(--accent);
 }
 
+/* =========================
+   HAMBURGER MENU
+========================= */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+/* Mobile nav */
+
+@media (max-width: 768px) {
+    main-nav {
+        position: absolute;
+        top: 0;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    main-nav a {
+        margin: 15px 0;
+        font-size: 1.1rem;
+    }
+
+    main-nav.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header-row {
+        position: relative;
+    }
+}
+
+/* Hamburger animacija */
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
 
 /* =========================
    HERO
 ========================= */
+.main-content {
+    padding: 3rem 0;
+}
 
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/hero.jpg") center/cover no-repeat;
@@ -158,18 +233,6 @@ nav a.active {
     margin: auto;
     font-size: 2rem;
     font-weight: 600;
-}
-
-
-/* =========================
-   NASLOVI
-========================= */
-
-.page-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-    color: var(--primary);
 }
 
 /* =========================
@@ -193,9 +256,58 @@ nav a.active {
 }
 
 /* =========================
+   EVENTS SECTION (INDEX.HTML)
+========================= */
+.event-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.event-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fade-in {
+    animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Archive styling */
+.event-card.archive {
+    opacity: 0.85;
+}
+
+/* =========================
+   NASLOVI
+========================= */
+.page-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--primary);
+}
+
+/* =========================
    SEKCIJE
 ========================= */
-
 .content-section {
     background: var(--white);
     padding: 35px;
@@ -240,26 +352,107 @@ ul {
     font-size: 18px;
 }
 
+/* ===========================
+   MAIN CONTENT
+=========================== */
+.info-list,
+.activity-list,
+.board-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li,
+.activity-list li,
+.board-list li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.activity-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* Image section */
+.image-section img {
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+/* =====================
+   NEWS GRID
+===================== */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 0.6s ease both;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.news-card h3 {
+  margin-top: 0;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
 
 /* =========================
    KARTICE (Članstvo)
 ========================= */
 
-.card {
-    display: inline-block;
-    background: linear-gradient(135deg, #e9eef3, #ffffff);
-    padding: 20px 20px;
-    margin: 30px;
-    border-radius: var(--radius);
-    font-weight: 600;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+.membership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.membership-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+    animation: fadeUp 0.6s ease both;
 }
 
+.membership-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.membership-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+}
+
+/* Signature */
+
+.signature {
+    margin-top: 3rem;
+    font-style: italic;
+}
 
 /* =========================
    BULLETS (O nama)
@@ -306,7 +499,6 @@ article img {
 /* =========================
    FORME
 ========================= */
-
 form label {
     font-weight: 600;
 }
@@ -342,145 +534,120 @@ button:hover {
     background: var(--secondary);
 }
 
+/* =========================
+   CONTACT DETAILS
+========================= */
+.contact-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.contact-details li {
+  background: var(--color-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+/* =========================
+   FORM
+========================= */
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+textarea {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
 
 /* =========================
    MAPA
 ========================= */
-
-iframe {
+.map-wrapper {
     width: 100%;
+    height: 450px;
     border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
     border: none;
 }
 
-
-/* =========================
+/* =====================
    FOOTER
-========================= */
+   ===================== */
 
-footer {
-    background: var(--primary);
+.site-footer {
+    background-color: var(--primary);
     color: var(--white);
     text-align: center;
-    padding: 20px;
-    margin-top: 60px;
-    font-size: 0.9rem;
+    padding-block: 2.5rem;
+    margin-top: 4rem;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-    .header-row {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav a {
-        margin: 10px;
-        display: inline-block;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
-    }
+.site-footer p {
+    font-size: 0.95rem;
 }
 
-
-/* Hamburger menu */
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 6px;
+.footer-note {
+    margin-top: 0.75rem;
+    opacity: 0.85;
 }
 
-.hamburger span {
-    width: 28px;
-    height: 3px;
-    background: var(--white);
-    border-radius: 3px;
-    transition: 0.3s ease;
-}
-
-
-/* Mobile nav */
-
-@media (max-width: 768px) {
-    nav {
-        position: absolute;
-        top: 0;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        text-align: center;
-        padding: 20px 0;
-    }
-
-    nav a {
-        margin: 15px 0;
-        font-size: 1.1rem;
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .header-row {
-        position: relative;
-    }
-}
-
-
-/* Hamburger animacija */
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* =========================
-   EVENTS SECTION (INDEX.HTML)
-========================= */
-.event-card {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 1rem;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.event-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.fade-in {
-    animation: fadeUp 0.6s ease both;
-}
+/* =====================
+   ANIMATIONS
+   ===================== */
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
 
     to {
@@ -489,7 +656,62 @@ footer {
     }
 }
 
-/* Archive styling */
-.event-card.archive {
-    opacity: 0.85;
+/* =====================
+   RESPONSIVE (MOBILE)
+   ===================== */
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 72px;
+        right: 0;
+        background-color: var(--color-white);
+        width: 100%;
+        display: none;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .main-nav.open {
+        display: block;
+    }
+
+    .page-header,
+    .content-section {
+        padding-inline: 0.5rem;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .main-nav {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: var(--color-white);
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    display: none;
+    box-shadow: var(--shadow);
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }

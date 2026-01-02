@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="hr">
   <head>
+    <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Alumni AXIS Split</title>
+    <title>O nama | Alumni AXIS Split</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <meta
       name="description"
       content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
     />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.alumniaxis.hr/" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <!-- Main JS (ES Modules) -->
     <script src="javascript/main.js" defer></script>
+    <script src="javascript/events.js" defer></script>
   </head>
 
   <body>
-    <header>
+    <header class="site-header">
       <div class="container header-row">
         <div class="brand">
           <img
-            src="slika/Logo Alumni AXIS Split.png"
-            class="logo-img"
+            src="images/udruga/Logo Alumni AXIS Split.png"
             alt="AXIS Alumni logo"
+            class="logo-img"
           />
-        </div>
-        <div>
           <h1>Alumni AXIS Split</h1>
         </div>
-        <div
-          class="hamburger"
-          id="hamburger"
-          aria-label="Izbronik"
-          role="button"
-        ></div>
-        <nav aria-label="Glavna navigacija">
+
+        <button class="hamburger" id="hamburger" aria-label="Izbornik"></button>
+
+        <nav class="main-nav" id="mainNav">
           <a href="index.html">Početna</a>
-          <a href="o-nama.html" aria-current="page">O nama</a>
+          <a href="o-nama.html">O nama</a>
           <a href="novosti.html">Novosti</a>
           <a href="nas-rad.html">Naš rad</a>
           <a href="past-events.html">Prošla događanja</a>
@@ -154,7 +160,7 @@
         <p>
           <img
             src="images/udruga/Alumni Axis Split at UB campus.png"
-            class="novosti-img"
+            class="image-section img"
             alt="AXIS Alumni logo"
           />
         </p>

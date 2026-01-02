@@ -3,41 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Alumni AXIS Split</title>
+    <title>Članstvo | Alumni AXIS Split</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <meta
       name="description"
-      content="Informacije o članstvu u udruzi Alumni AXIS Split – kategorije članstva i uvjeti učlanjenja."
+      content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
     />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://www.alumniaxis.hr/" />
-    <!-- Styles -->
     <link rel="stylesheet" href="css/main.css" />
-    <!-- Scripts -->
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <!-- Main JS (ES Modules) -->
     <script src="javascript/main.js" defer></script>
+    <script src="javascript/events.js" defer></script>
   </head>
 
   <body>
-    <header>
+    <header class="site-header">
       <div class="container header-row">
         <div class="brand">
           <img
-            src="slika/Logo Alumni AXIS Split.png"
-            class="logo-img"
+            src="images/udruga/Logo Alumni AXIS Split.png"
             alt="AXIS Alumni logo"
+            class="logo-img"
           />
-        </div>
-        <div>
           <h1>Alumni AXIS Split</h1>
         </div>
-        <div
-          class="hamburger"
-          id="hamburger"
-          aria-label="Izbronik"
-          role="button"
-        ></div>
-        <nav aria-label="Glavna navigacija">
+
+        <button class="hamburger" id="hamburger" aria-label="Izbornik"></button>
+
+        <nav class="main-nav" id="mainNav">
           <a href="index.html">Početna</a>
           <a href="o-nama.html">O nama</a>
           <a href="novosti.html">Novosti</a>
@@ -50,100 +52,105 @@
     </header>
 
     <!-- ================= MAIN ================= -->
-  <main class="site-main">
-    <header class="page-header">
-      <h1>Članstvo</h1>
-      <p class="page-intro">
-        Informacije o uvjetima učlanjenja i kategorijama članstva u udruzi Alumni AXIS Split.
+    <main class="main-content">
+      <h1 class="page-title">Članstvo</h1>
+
+      <p class="content-section">
+        Informacije o uvjetima učlanjenja i kategorijama članstva u udruzi
+        Alumni AXIS Split.
       </p>
-    </header>
 
-    <!-- Intro -->
-    <section class="content-section">
-      <p>
-        Svaki diplomirani student stručnog prijediplomskog ili diplomskog studija
-        Sveučilišnog odjela za stručne studije, kao i sadašnji studenti, mogu postati
-        članovi Udruge Alumni AXIS Split. Članstvo je dobrovoljno, a ispunjavanjem
-        pristupnice prihvaćaju se ciljevi Udruge, prava i obveze propisani Statutom.
-      </p>
-    </section>
+      <!-- Intro -->
+      <section class="content-section">
+        <p>
+          Svaki diplomirani student stručnog prijediplomskog ili diplomskog
+          studija Sveučilišnog odjela za stručne studije, kao i sadašnji
+          studenti, mogu postati članovi Udruge Alumni AXIS Split. Članstvo je
+          dobrovoljno, a ispunjavanjem pristupnice prihvaćaju se ciljevi Udruge,
+          prava i obveze propisani Statutom.
+        </p>
+      </section>
 
-    <!-- Membership process -->
-    <section class="content-section">
-      <p>
-        Članstvo se ostvaruje ispunjavanjem
-        <a href="Dokumenti/Pristupnica_Alumni_AXIS_Split.pdf" target="_blank" rel="noopener">
-          pristupnice
-        </a>.
-        Nakon predaje pristupnice stječe se članstvo, a
-        <a
-          href="Dokumenti/Udruga Alumni AXIS_Registar članova.xlsx"
-          target="_blank"
-          rel="noopener"
-        >
-          registar članova
-        </a>
-        dostupan je svim članovima putem mrežnih stranica Udruge.
-      </p>
-    </section>
+      <!-- Membership process -->
+      <section class="content-section">
+        <p>
+          Članstvo se ostvaruje ispunjavanjem
+          <a
+            href="Dokumenti/Pristupnica_Alumni_AXIS_Split.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            pristupnice. </a
+          >Nakon predaje pristupnice stječe se članstvo, a
+          <a
+            href="Dokumenti/Udruga Alumni AXIS_Registar članova.xlsx"
+            target="_blank"
+            rel="noopener"
+          >
+            registar članova
+          </a>
+          dostupan je svim članovima putem mrežnih stranica Udruge.
+        </p>
+      </section>
 
-    <!-- Membership categories -->
-    <section class="content-section">
-      <h2>Kategorije članstva</h2>
+      <!-- Membership categories -->
+      <section class="content-section">
+        <h2>Kategorije članstva</h2>
 
-      <div class="membership-grid">
-        <article class="membership-card">
-          <h3>Aktivni član</h3>
-          <p>
-            Aktivnim članom može postati osoba koja je diplomirala na Sveučilišnom
-            odjelu za stručne studije Sveučilišta u Splitu ili osoba čije znanje i
-            iskustvo pridonose radu Udruge.
-          </p>
-        </article>
+        <div class="membership-grid">
+          <article class="membership-card">
+            <h3>Aktivni član</h3>
+            <p>
+              Aktivnim članom može postati osoba koja je diplomirala na
+              Sveučilišnom odjelu za stručne studije Sveučilišta u Splitu ili
+              osoba čije znanje i iskustvo pridonose radu Udruge.
+            </p>
+          </article>
 
-        <article class="membership-card">
-          <h3>Redovni član</h3>
-          <p>
-            Redovitim članom može postati svaka osoba koja je stekla bilo koji stupanj
-            obrazovanja na Sveučilišnom odjelu za stručne studije.
-          </p>
-        </article>
+          <article class="membership-card">
+            <h3>Redovni član</h3>
+            <p>
+              Redovitim članom može postati svaka osoba koja je stekla bilo koji
+              stupanj obrazovanja na Sveučilišnom odjelu za stručne studije.
+            </p>
+          </article>
 
-        <article class="membership-card">
-          <h3>Počasni član</h3>
-          <p>
-            Počasnim članom može postati fizička ili pravna osoba koja je svojim radom
-            dala poseban doprinos razvoju i ugledu Udruge.
-          </p>
-        </article>
+          <article class="membership-card">
+            <h3>Počasni član</h3>
+            <p>
+              Počasnim članom može postati fizička ili pravna osoba koja je
+              svojim radom dala poseban doprinos razvoju i ugledu Udruge.
+            </p>
+          </article>
 
-        <article class="membership-card">
-          <h3>Potpomagajući član</h3>
-          <p>
-            Potpomagajući članovi su fizičke ili pravne osobe koje materijalno ili
-            organizacijski podupiru rad Udruge.
-          </p>
-        </article>
-      </div>
+          <article class="membership-card">
+            <h3>Potpomagajući član</h3>
+            <p>
+              Potpomagajući članovi su fizičke ili pravne osobe koje materijalno
+              ili organizacijski podupiru rad Udruge.
+            </p>
+          </article>
+        </div>
 
-      <footer class="signature">
-        <p>Vaš predsjednik,</p>
-        <strong>Vjekoslav Zrno</strong>
-      </footer>
-    </section>
-  </main>
+        <footer class="signature">
+          <p>Vaš predsjednik,</p>
+          <strong>Vjekoslav Zrno</strong>
+        </footer>
+      </section>
+    </main>
 
     <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u Splitu<br />
-        OIB: 80913220993 | IBAN: HR3224070001100770512
-      </p>
-      <p class="footer-note">
-        Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
-      </p>
-    </div>
-  </footer>
-</body>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
+          Splitu<br />
+          OIB: 80913220993 | IBAN: HR3224070001100770512
+        </p>
+        <p class="footer-note">
+          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
