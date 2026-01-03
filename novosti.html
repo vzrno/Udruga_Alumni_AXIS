@@ -23,7 +23,9 @@
     ></script>
 
     <!-- Main JS (ES Modules) -->
-    <script type="module" src="javascript/main.js"></script>
+    <script type="module" src="javascript/main.js" defer></script>
+    <script type="module" src="javascript/news.service.js" defer></script>
+    <script type="module" src= "javascript/news.list.js" defer></script>
   </head>
 
   <body>
@@ -63,11 +65,8 @@
       </section>
 
       <section id="novosti-container" class="news-grid" aria-live="polite">
-    <!-- News rendered by JS -->
-  </section>
-
-     <!-- <script src="javascript/news.service.js" defer></script>
-      <script src="javascript/news.list.js" defer></script> -->
+        <!-- News rendered by JS -->
+      </section>
     </main>
 
     <!-- ================= FOOTER ================= -->

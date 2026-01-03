@@ -1,6 +1,14 @@
 [
   {
     "title": "Alumni Networking Night",
+    "date": "2026-03-15",
+    "time": "18:00",
+    "location": "Split, Kopilica 5",
+    "image": "images/events/Alumni Networking Night.png",
+    "description": "Druženje bivših i sadašnjih studenata uz goste predavače."
+  },
+  {
+    "title": "Alumni Networking Night",
     "date": "2026-02-15",
     "time": "18:00",
     "location": "Split, Campus",

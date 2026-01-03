@@ -21,8 +21,8 @@
       defer
     ></script>
     <!-- Main JS (ES Modules) -->
-    <script src="javascript/main.js" defer></script>
-    <script src="javascript/events.js" defer></script>
+    <script type="module" src="javascript/nas.rad.js"></script>
+    
   </head>
 
 <body>
@@ -55,39 +55,61 @@
     <main class="main-content">
 
         <h1 class="page-title">Naš rad</h1>
+        <section class="content-section">
+        <p>
+        Projekti i inicijative usmjerene na razvoj karijera i povezivanje
+        studenata s tržištem rada.
+      </p>
+    </section>
 
         <section class="content-section">
-            <p>
-                Rad Udruge Alumni AXIS Split usmjeren je na povezivanje bivših i sadašnjih studenata, unapređenje kvalitete studiranja te razvoj suradnje s akademskom zajednicom, gospodarstvom i širom društvenom zajednicom.
-            </p>
-            <p>
-                Projekt "Zaposli me" Udruge Alumni AXIS Split namijenjen je podršci završenim i trenutnim studentima Sveučilišnog odjela za stručne studije Sveučilišta u Splitu u njihovom zapošljavanju.
-            </p>
-            <p>
-                Svrha obrade:
-                <ul>
-                    <li>Pomoć u pronalaženju posla</li>
-                    <li>Preporuke za dodatna obrazovanja</li>
-                    <li>Komunikacija s potencijalnim poslodavcima</li>
-                    <li>Praćenje tijeka vaše karijere tijekom i nakon zaposlenja</li>
-                </ul>
-            </p>
-        </section>
+      <p>
+        Rad Udruge Alumni AXIS Split usmjeren je na povezivanje bivših i sadašnjih
+        studenata te razvoj suradnje s akademskom i poslovnom zajednicom.
+      </p>
 
-        <section class="content-section">
-            <h2>Poslovi i edukacije</h2>
+      <p>
+        Projekt <strong>„Zaposli me”</strong> pruža podršku studentima i alumnima
+        pri zapošljavanju kroz edukacije, preporuke i izravnu komunikaciju s
+        poslodavcima.
+      </p>
 
-        <section id="nas-rad-container"></section>
+      <ul class="feature-list">
+        <li>Pomoć u pronalaženju posla</li>
+        <li>Preporuke za dodatna obrazovanja</li>
+        <li>Suradnja s poslodavcima</li>
+        <li>Praćenje profesionalnog razvoja</li>
+      </ul>
+    </section>
 
-      <script src="javascript/news.nas.rad.js" defer></script>
-      <script src="javascript/nas.rad.js" defer></script>  
-        </section>
+    <section class="content-section">
+  <h2>Poslovi i edukacije</h2>
+
+  <div
+    id="nas-rad-container"
+    class="card-grid"
+    aria-live="polite"
+  >
+    <p class="loading">Učitavanje sadržaja…</p>
+  </div>
+</section>
+  </main>
+
 
     </main>
 
-    <footer>
-        &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u Splitu | OIB: 80913220993 | IBAN: HR3224070001100770512
-        <br> Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
+          Splitu<br />
+          OIB: 80913220993 | IBAN: HR3224070001100770512
+        </p>
+        <p class="footer-note">
+          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
+        </p>
+      </div>
     </footer>
 
 </body>
