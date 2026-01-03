@@ -171,7 +171,7 @@ a:hover {
 /* Mobile nav */
 
 @media (max-width: 768px) {
-    main-nav {
+    .main-nav {
         position: absolute;
         top: 0;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -182,12 +182,12 @@ a:hover {
         padding: 20px 0;
     }
 
-    main-nav a {
+    .main-nav a {
         margin: 15px 0;
         font-size: 1.1rem;
     }
 
-    main-nav.active {
+    .main-nav.active {
         display: flex;
     }
 
