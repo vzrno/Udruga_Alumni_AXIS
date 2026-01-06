@@ -1,4 +1,4 @@
-/* ================= O NAMA BOOTSTRAP THEME ================= */
+/* AXIS Color System */
 :root {
   --bs-primary: #0d3b66;
   --bs-primary-rgb: 11, 44, 77;
@@ -33,34 +33,25 @@
   color: #000;
 }
 
-/* Headings */
-h1, h2, h3 {
-  color: black;
+/* Cards */
+.axis-card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Accordion */
-.accordion-button {
-  font-weight: 600;
+.axis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.accordion-button:not(.collapsed) {
+/* Meta text */
+.axis-meta {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* Pagination */
+.page-item.active .page-link {
   background-color: var(--bs-primary);
-  color: #fff;
-}
-
-.accordion-button:not(.collapsed)::after {
-  filter: brightness(0) invert(1);
-}
-
-.accordion-item {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Links */
-a {
-  color: var(--bs-primary);
-}
-
-a:hover {
-  color: #082a4d;
+  border-color: var(--bs-primary);
 }

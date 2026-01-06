@@ -1,14 +1,23 @@
 // dohvat novosti (JSON / API)
 
-const NEWS_URL = "/data/news.json";
+const NEWS_URL = "data/news.json";
 
 export async function fetchNews() {
-  const response = await fetch(NEWS_URL);
+  try {
+    const response = await fetch(NEWS_URL);
 
-  if (!response.ok) {
-    throw new Error("Neuspješno učitavanje novosti");
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Sort by date (newest first)
+    return data.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+  } catch (error) {
+    console.error("Greška pri učitavanju novosti:", error);
+    return [];
   }
-
-  return await response.json();
 }
-

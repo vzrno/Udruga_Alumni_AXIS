@@ -3,9 +3,10 @@
     "id": 1,
     "title": "Održana 1. redovna godišnja skupština Udruge AXIS Split",
     "date": "2025-12-23",
+    "time": "12:30",
+    "location": "Split, Kopilica 5",
     "image": "images/udruga/Logo Alumni AXIS Split.png",
-    "excerpt": "Alumni AXIS Split Sveučilišnog odjela za stručne studije održat će prvu redovnu skupštinu 23.12.2025. godine u 12:30 sati u vijećnici Sveučilišnog odjela za stručne studije.",
-    "content": "Na redovnoj godišnjoj skupštini članovi su raspravljali o dosadašnjim rezultatima te definirali ciljeve za naredno razdoblje.",
+    "description": "Na redovnoj godišnjoj skupštini članovi su raspravljali o dosadašnjim rezultatima te definirali ciljeve za naredno razdoblje.",
     "agenda": [
       "Donošenje odluke o udruživanju u ASUS udruge",
       "Izbor zastupnika u skupštini ASUS-a",
@@ -18,18 +19,20 @@
     "id": 2,
     "title": "Stručna ekskurzija",
     "date": "2025-12-23",
+    "time": "08:00",
+    "location": "Zagreb i Varaždin",
     "image": "images/events/Strucna posjeta Robotika.jpg",
-    "excerpt": "Studenti su sudjelovali u trodnevnoj stručnoj ekskurziji u sklopu kolegija.",
-    "content": "",
+    "description": "Studenti su sudjelovali u trodnevnoj stručnoj ekskurziji u sklopu kolegija.",
     "agenda": []
   },
   {
     "id": 3,
     "title": "Najava: Osnivačka skupština Udruge AXIS Split",
     "date": "2025-10-20",
+    "time": "14:0",
+    "location": "Split, Kopilica 5",
     "image": "images/udruga/Logo Alumni AXIS Split.png",
-    "dexcerpt": "Na osnivačkoj skupštini izabrano je vodstvo udruge Alumni AXIS Split s mandatom od 20.10.2025. do 20.10.2029.",
-    "content": "",
+    "description": "Na osnivačkoj skupštini izabrano je vodstvo udruge Alumni AXIS Split s mandatom od 20.10.2025. do 20.10.2029.",
     "board": [
       { "role": "Predsjednik", "name": "Vjekoslav Zrno" },
       { "role": "Potpredsjednica", "name": "Marija Jelović" },
@@ -42,16 +45,18 @@
     "id": 4,
     "title": "Potpisana nova partnerska suradnja",
     "date": "2024-12-18",
+    "time": "12:30",
+    "location": "Split, Kopilica 5",
     "image": "images/events/Career after studies.png",
-    "excerpt": "Alumni AXIS Split širi mrežu suradnika.",
-    "content": "Nova suradnja omogućit će članovima dodatne edukacije, radionice i stručne projekte."
+    "description": "Alumni AXIS Split širi mrežu suradnika. Nova suradnja omogućit će članovima dodatne edukacije, radionice i stručne projekte."
   },
   {
     "id": 5,
     "title": "CIET 2026 - Poziv na radove",
     "date": "2024-11-05",
+    "time": "12:30",
+    "location": "Split, Kopilica 5",
     "image": "images/events/CIET 2026.jpg",
-    "excerpt": "",
-    "content": ""
+    "description": ""
   }
 ]

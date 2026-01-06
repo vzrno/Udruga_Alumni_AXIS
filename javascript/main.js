@@ -68,17 +68,3 @@ function enableSmoothScroll() {
     });
 }
 
-import { renderNews } from "./news.list.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderNews();
-
-  const hamburger = document.getElementById("hamburger");
-  const nav = document.getElementById("mainNav");
-
-  hamburger?.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
-});
-
-
