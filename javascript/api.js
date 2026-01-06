@@ -12,7 +12,7 @@ export async function fetchJSON(url) {
       throw new Error(`HTTP error ${response.status}`);
     }
 
-    return await response.json();
+    return response.json();
   } catch (error) {
     console.error("Fetch error:", error);
     return null;

@@ -1,0 +1,70 @@
+:root {
+  --bs-primary: #0b2c4d;
+  --bs-primary-rgb: 11, 44, 77;
+
+  --axis-gold: #c9a24d;
+  --axis-light: #f5f7fa;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bs-primary);
+}
+
+.navbar .nav-link,
+.navbar-brand {
+  color: #002b5c !important;
+}
+
+.navbar .nav-link:hover {
+  color: var(--axis-gold) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--axis-gold);
+  border-color: var(--axis-gold);
+  color: #000;
+}
+
+/* Event cards */
+.event-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-card .card-title {
+  color: var(--bs-primary);
+}
+
+.event-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Calendar Styling */
+.calendar-item {
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--bs-primary);
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--bs-primary);
+}
+
+footer p {
+  margin-bottom: 0.3rem;
+}

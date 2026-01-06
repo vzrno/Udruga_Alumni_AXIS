@@ -2,8 +2,6 @@
 
 import { fetchNews } from "./news.service.js";
 
-const container = document.getElementById("novosti-container");
-
 function renderNewsItem(news) {
   return `
     <article class="news-card">
@@ -29,7 +27,9 @@ function renderNewsItem(news) {
   `;
 }
 
-export async function renderNews() {
+  export async function renderNews() {  
+    const container = document.getElementById("novosti-container");
+  if (!container) return;
   try {
     const newsList = await fetchNews();
     container.innerHTML = newsList.map(renderNewsItem).join("");
