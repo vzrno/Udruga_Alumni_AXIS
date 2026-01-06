@@ -1,0 +1,68 @@
+/* ================= NAŠ RAD BOOTSTRAP THEME ================= */
+:root {
+    --bs-primary: #0d3b66;
+    --bs-primary-rgb: 11, 44, 77;
+
+    --axis-gold: #c9a24d;
+    --axis-light: #f5f7fa;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bs-primary);
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: #002b5c !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--axis-gold) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--axis-gold);
+    border-color: var(--axis-gold);
+    color: #000;
+}
+
+/* ================= BADGES ================= */
+.bg-axis-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.bg-axis-secondary {
+    background-color: var(--axis-gold) !important;
+    color: #000;
+}
+
+/* ================= HEADINGS ================= */
+h1, h2, h3 {
+    color: var(--bs-primary);
+}
+
+/* ================= CARDS ================= */
+.card {
+    border-radius: 0.75rem;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+}
+
+/* ================= PAGINATION ================= */
+.page-link {
+    color: var(--bs-primary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}

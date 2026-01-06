@@ -27,7 +27,7 @@ function renderCards() {
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const items = filteredNews.slice(start, start + ITEMS_PER_PAGE);
 
-  items.forEach(item => {
+  items.forEach((item) => {
     container.insertAdjacentHTML("beforeend", createCard(item));
   });
 }
@@ -49,7 +49,7 @@ function createCard(item) {
             ${item.description.slice(0, 100)}...
           </p>
 
-          <button
+                    <button
             class="btn btn-axis mt-auto"
             data-bs-toggle="modal"
             data-bs-target="#newsModal"
@@ -86,20 +86,21 @@ function renderPagination() {
   container.insertAdjacentHTML("afterend", html);
 }
 
-window.setPage = page => {
+window.setPage = (page) => {
   currentPage = page;
   render();
 };
 
 /* ================= FILTER ================= */
 
-window.filterNews = value => {
+window.filterNews = (value) => {
   const q = value.toLowerCase();
 
-  filteredNews = news.filter(item =>
-    item.title.toLowerCase().includes(q) ||
-    item.location.toLowerCase().includes(q) ||
-    item.tags?.some(tag => tag.includes(q))
+  filteredNews = news.filter(
+    (item) =>
+      item.title.toLowerCase().includes(q) ||
+      item.location.toLowerCase().includes(q) ||
+      item.tags?.some((tag) => tag.includes(q))
   );
 
   currentPage = 1;
@@ -108,27 +109,25 @@ window.filterNews = value => {
 
 /* ================= MODAL ================= */
 
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   if (!e.target.matches("[data-id]")) return;
 
-  const item = news.find(n => n.id == e.target.dataset.id);
+  const item = news.find((n) => n.id == e.target.dataset.id);
   fillModal(item);
 });
 
 function fillModal(item) {
   document.getElementById("modalTitle").textContent = item.title;
   document.getElementById("modalImage").src = item.image;
-  document.getElementById("modalMeta").textContent =
-    `${item.date} • ${item.time} • ${item.location}`;
+  document.getElementById(
+    "modalMeta"
+  ).textContent = `${item.date} • ${item.time} • ${item.location}`;
 
-  document.getElementById("modalDescription").textContent =
-    item.description;
+  document.getElementById("modalDescription").textContent = item.description;
 
-  document.getElementById("modalAgenda").innerHTML =
-    renderAgenda(item.agenda);
+  document.getElementById("modalAgenda").innerHTML = renderAgenda(item.agenda);
 
-  document.getElementById("modalBoard").innerHTML =
-    renderBoard(item.board);
+  document.getElementById("modalBoard").innerHTML = renderBoard(item.board);
 }
 
 /* ================= HELPERS ================= */
@@ -140,7 +139,7 @@ function renderAgenda(agenda = []) {
     <ul class="list-group list-group-flush">
       ${agenda
         .map(
-          a => `
+          (a) => `
             <li class="list-group-item">
               <strong>${a.time}</strong> – ${a.topic}
             </li>`
@@ -157,7 +156,7 @@ function renderBoard(board = []) {
     <ul class="list-unstyled">
       ${board
         .map(
-          b => `
+          (b) => `
             <li>
               👤 <strong>${b.name}</strong> – ${b.role}
             </li>`

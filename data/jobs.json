@@ -1,36 +1,34 @@
-{
-  "items": [
+[
     {
       "id": 1,
       "title": "Poslodavac: TROMONT d.o.o. za građevinarstvo, promet i usluge",
       "description": "Inženjer / inženjerka elektrotehnike",
       "type": "Mjesto rada: Split<br>Traženo radnika: 1<br>Rok za prijavu: 23.12.2025.",
-      "url": null,
+      "url": "https://example.com/posao-2",
       "publishedAt": "2025-10-20"
     },
     {
       "id": 2,
-      "title": "Poslodavac: AD Plastik d.d.",
-      "description": "Stručna / Specijalistička praksa",
+      "title": "Edukacija: Osnove Reacta",
+      "description": "SBesplatna radionica za studente i alumne.",
       "type": "education",
-      "url": null,
-      "publishedAt": "2025-12-23"
+      "url": "https://example.com/edukacija-1",
+      "publishedAt": "2026-12-23"
     },
     {
       "id": 3,
-      "title": "Poslodavac: Deltron d.o.o.",
-      "description": "Stručna / Specijalistička praksa",
-      "type": "education",
-      "url": null,
-      "publishedAt": "2025-12-23"
+      "title": "Backend Developer (Internship)",
+      "description": "Plaćena praksa uz mentorstvo.",
+      "type": "job",
+      "url": "https://example.com/posao-2",
+      "publishedAt": "2026-12-23"
     },
     {
       "id": 4,
       "title": "Poslodavac: Ericsson Nikola Tesla d.d.",
       "description": "Stručna / Specijalistička praksa",
       "type": "education",
-      "url": null,
+      "url": "https://example.com/posao-2",
       "publishedAt": "2025-12-23"
     }
   ]
-}

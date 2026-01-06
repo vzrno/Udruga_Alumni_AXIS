@@ -33,6 +33,11 @@
   color: #000;
 }
 
+/* ================= HEADINGS ================= */
+h1, h2, h3 {
+    color: var(--bs-primary);
+}
+
 /* Event cards */
 .event-card img {
   height: 200px;

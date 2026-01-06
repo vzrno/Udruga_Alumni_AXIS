@@ -33,9 +33,9 @@
   color: #000;
 }
 
-/* Headings */
+/* ================= HEADINGS ================= */
 h1, h2, h3 {
-  color: black;
+    color: var(--bs-primary);
 }
 
 /* Accordion */
