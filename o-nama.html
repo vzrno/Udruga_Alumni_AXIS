@@ -2,179 +2,285 @@
 <html lang="hr">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>O nama | Alumni AXIS Split</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
       content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
     />
-    <link rel="stylesheet" href="css/main.css" />
 
-    <!-- Swiper -->
+    <!-- Bootstrap 5 CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/o-nama-theme.css" />
+
+    <!-- Bootstrap JS -->
     <script
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
-    <!-- Main JS (ES Modules) -->
-    <script src="javascript/main.js" defer></script>
-    <script src="javascript/events.js" defer></script>
   </head>
 
   <body>
-    <header class="site-header">
-      <div class="container header-row">
-        <div class="brand">
+    <!-- ================= NAVBAR ================= -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img
             src="images/udruga/Logo Alumni AXIS Split.png"
             alt="AXIS Alumni logo"
-            class="logo-img"
+            width="50"
+            class="me-2"
           />
-          <h1>Alumni AXIS Split</h1>
+          <span class="fw-bold">Alumni AXIS Split</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Izbornik"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Početna</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="o-nama.html">O nama</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="novosti.html">Novosti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nas-rad.html">Naš rad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="clanstvo.html">Članstvo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kontakt.html">Kontakt</a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <button class="hamburger" id="hamburger" aria-label="Izbornik"></button>
-
-        <nav class="main-nav" id="mainNav">
-          <a href="index.html">Početna</a>
-          <a href="o-nama.html">O nama</a>
-          <a href="novosti.html">Novosti</a>
-          <a href="nas-rad.html">Naš rad</a>
-          <a href="past-events.html">Prošla događanja</a>
-          <a href="clanstvo.html">Članstvo</a>
-          <a href="kontakt.html">Kontakt</a>
-        </nav>
+    <!-- ================= PAGE HEADER ================= -->
+    <header class="bg-light py-5">
+      <div class="container text-center">
+        <h1 class="display-6 fw-semibold">O nama</h1>
+        <p class="lead opacity-75">
+          Alumni udruga Sveučilišnog odjela za stručne studije Sveučilišta u
+          Splitu
+        </p>
       </div>
     </header>
 
-    <main class="main-content">
-      <h1 class="page-title">O nama</h1>
-
-      <section class="content-section">
-        <h2>Tko smo mi</h2>
-        <p>
-          Alumni AXIS Split je udruga registrirana pri nadležnom upravnom tijelu
-          u Splitsko-dalmatinskoj županiji. Djeluje u Republici Hrvatskoj i
-          inozemstvu, okupljajući bivše i sadašnje studente Sveučilišnog odjela
-          za stručne studije Sveučilišta u Splitu.
-        </p>
-        <p>
-          Statut Udruge dostupan je
-          <a
-            href="Dokumenti/Statut_ALUMNI AXIS SPLIT 2025 15.11.2025 [novi].pdf"
-            target="_blank"
-            rel="noopener"
-          >
-            ovdje.
-          </a>
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Osnovne informacije</h2>
-        <p>
-          <strong>Puni naziv:</strong> Udruga diplomiranih studenata
-          Sveučilišnog odjela za stručne studije Sveučilišta u Splitu - Alumni
-          AXIS Split
-        </p>
-        <p><strong>Skraćeni naziv:</strong> Alumni AXIS Split</p>
-        <p>
-          <strong>Naziv na engleskom jeziku:</strong> Association of graduate
-          students of the University department of professional studies
-          University of Split - Alumni AXIS Split
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Ciljevi udruge</h2>
-        <p>
-          Cilj Udruge je unapređenje kvalitete života i studiranja bivših i
-          sadašnjih studenata Sveučilišnog odjela za stručne studije Sveučilišta
-          u Splitu te promicanje suradnje između studenata, alumni zajednice i
-          Odjela i drugih zainteresiranih institucija u svrhu dobrobit lokalne i
-          društvene zajednice
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Područje djelovanja</h2>
-        <p>
-          Udruga djeluje u području obrazovanja, znanosti i istraživanja, u
-          Republici Hrvotskoj i inozemstvu, povezujući studente i alumni članove
-          koji žive i rade diljem svijeta.
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Djelatnost</h2>
-
-        <div class="bullets">
-          Organizacija stručnih, znanstvenih i društvenih događanja
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="container mb-5">
+      <div class="accordion shadow-sm" id="aboutAccordion">
+        <!-- Tko smo mi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#whoWeAre"
+              aria-expanded="true"
+            >
+              Tko smo mi
+            </button>
+          </h2>
+          <div id="whoWeAre" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <p>
+                Alumni AXIS Split je udruga registrirana pri nadležnom upravnom
+                tijelu u Splitsko-dalmatinskoj županiji. Djeluje u Republici
+                Hrvatskoj i inozemstvu, okupljajući bivše i sadašnje studente
+                Sveučilišnog odjela za stručne studije Sveučilišta u Splitu.
+              </p>
+              <p>
+                Statut Udruge dostupan je
+                <a
+                  href="Dokumenti/Statut_ALUMNI AXIS SPLIT 2025 15.11.2025 [novi].pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  ovdje</a
+                >.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="bullets">
-          Suradnja sa Sveučilištem, studentskim i alumni organizacijama
-        </div>
-        <div class="bullets">
-          Povezivanje članova s poslodavcima i tržištem rada
-        </div>
-        <div class="bullets">Mentorstvo i podrška studentima</div>
-        <div class="bullets">
-          Promicanje ugleda Sveučilišnog odjela za stručne studije u Hrvatskoj i
-          inozemstvu
-        </div>
-        <div class="bullets">
-          Informiranje članova o radu Udruge i mogućnostima profesionalnog
-          razvoja
-        </div>
-      </section>
 
-      <section class="content-section">
-        <h2>Javnost rada</h2>
-        <p>
-          Rad Udruge je javan. Članovi i javnost redovito se informiraju o
-          aktivnostima i radu Udruge putem sjednica, izvješća, internetskim
-          stranicama i drugih komunikacijskih kanala.
-        </p>
-      </section>
+        <!-- Osnovne informacije -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#basicInfo"
+            >
+              Osnovne informacije
+            </button>
+          </h2>
+          <div id="basicInfo" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <strong>Puni naziv:</strong> Udruga diplomiranih studenata
+                  Sveučilišnog odjela za stručne studije Sveučilišta u Splitu –
+                  Alumni AXIS Split
+                </li>
+                <li class="list-group-item">
+                  <strong>Skraćeni naziv:</strong> Alumni AXIS Split
+                </li>
+                <li class="list-group-item">
+                  <strong>Naziv na engleskom:</strong> Association of graduate
+                  students of the University department of professional studies
+                  University of Split – Alumni AXIS Split
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-      <section class="content-section">
-        <h2>Upravni odbor</h2>
-        <ul class="board-list">
-          <li><strong>Predsjednik:</strong> Vjekoslav Zrno</li>
-          <li><strong>Potpredsjednica:</strong> Marija Jelović</li>
-          <li><strong>Tajnica:</strong> Petra Orlić</li>
-          <li>
-            <strong>Članovi Upravnog odbora:</strong> Laura Lara Gizdić, Ivica
-            Lovrić
-          </li>
-        </ul>
-      </section>
+        <!-- Ciljevi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#goals"
+            >
+              Ciljevi udruge
+            </button>
+          </h2>
+          <div id="goals" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <p>
+                Cilj Udruge je unapređenje kvalitete života i studiranja bivših
+                i sadašnjih studenata te promicanje suradnje između studenata,
+                alumni zajednice i Sveučilišta.
+              </p>
+            </div>
+          </div>
+        </div>
 
-      <section class="content-section">
-        <h2>Slika Udruge</h2>
-        <p>
-          <img
-            src="images/udruga/Alumni Axis Split at UB campus.png"
-            class="image-section img"
-            alt="AXIS Alumni logo"
-          />
-        </p>
-      </section>
+        <!-- Djelatnost -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#activities"
+            >
+              Djelatnost
+            </button>
+          </h2>
+          <div id="activities" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  Organizacija stručnih, znanstvenih i društvenih događanja
+                </li>
+                <li class="list-group-item">
+                  Suradnja sa Sveučilištem i alumni organizacijama
+                </li>
+                <li class="list-group-item">
+                  Povezivanje članova s poslodavcima
+                </li>
+                <li class="list-group-item">Mentorstvo i podrška studentima</li>
+                <li class="list-group-item">
+                  Promicanje ugleda Odjela u RH i inozemstvu
+                </li>
+                <li class="list-group-item">
+                  Informiranje članova o radu Udruge
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upravni odbor -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#board"
+            >
+              Upravni odbor
+            </button>
+          </h2>
+          <div id="board" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <ul class="list-unstyled">
+                <li><strong>Predsjednik:</strong> Vjekoslav Zrno</li>
+                <li><strong>Potpredsjednica:</strong> Marija Jelović</li>
+                <li><strong>Tajnica:</strong> Petra Orlić</li>
+                <li>
+                  <strong>Članovi Upravnog odbora:</strong> Laura Lara Gizdić,
+                  Ivica Lovrić
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slika -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#image"
+            >
+              Slika Udruge
+            </button>
+          </h2>
+          <div id="image" class="accordion-collapse collapse">
+            <div class="accordion-body text-center">
+              <img
+                src="images/udruga/Alumni Axis Split at UB campus.png"
+                class="img-fluid rounded shadow-sm"
+                alt="Alumni AXIS Split"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="site-footer">
-      <div class="container">
-        <p>
+    <footer class="bg-dark text-light py-4 mt-5">
+      <div class="container text-center small">
+        <p class="mb-1">
           &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
-          Splitu<br />
-          OIB: 80913220993 | IBAN: HR3224070001100770512
+          Splitu
         </p>
-        <p class="footer-note">
+        <p class="mb-1">OIB: 80913220993 | IBAN: HR3224070001100770512</p>
+        <p class="opacity-75 mb-0">
           Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
         </p>
       </div>

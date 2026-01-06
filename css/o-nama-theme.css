@@ -1,0 +1,52 @@
+/* ================= O NAMA BOOTSTRAP THEME ================= */
+:root {
+  --axis-primary: #0d3b66;   /* dark academic blue */
+  --axis-secondary: #6c757d; /* muted gray */
+  --axis-accent: #198754;   /* success green */
+  --axis-light: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bs-primary);
+}
+
+.navbar .nav-link,
+.navbar-brand {
+  color: #002b5c !important;
+}
+
+.navbar .nav-link:hover {
+  color: var(--axis-gold) !important;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: black;
+}
+
+/* Accordion */
+.accordion-button {
+  font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--axis-primary);
+  color: #fff;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0) invert(1);
+}
+
+.accordion-item {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Links */
+a {
+  color: var(--axis-primary);
+}
+a:hover {
+  color: #082a4d;
+}
