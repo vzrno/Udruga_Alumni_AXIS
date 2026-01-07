@@ -11,6 +11,7 @@
 /* Navbar */
 .navbar {
     background-color: var(--bs-primary);
+    border-bottom: 2px solid var(--axis-gold);
 }
 
 .navbar .nav-link,

@@ -2,138 +2,235 @@
 <html lang="hr">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Kontakt | Alumni AXIS Split</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
+      content="Kontaktirajte Alumni AXIS Split – pitanja, suradnje i informacije."
     />
-    <link rel="stylesheet" href="css/main.css" />
 
-    <!-- Swiper -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/kontakt-theme.css" />
+
+    <!-- Bootstrap 5 CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-      defer
-    ></script>
-    <!-- Main JS (ES Modules) -->
-    <script src="javascript/main.js" defer></script>
-    <script src="javascript/events.js" defer></script>
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body>
-    <header class="site-header">
-      <div class="container header-row">
-        <div class="brand">
+    <!-- ================= NAVBAR ================= -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img
             src="images/udruga/Logo Alumni AXIS Split.png"
             alt="AXIS Alumni logo"
-            class="logo-img"
+            width="50"
+            class="me-2"
           />
-          <h1>Alumni AXIS Split</h1>
+          <span class="fw-bold">Alumni AXIS Split</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Početna</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="o-nama.html">O nama</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="novosti.html">Novosti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nas-rad.html">Naš rad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="clanstvo.html">Članstvo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fw-semibold" href="kontakt.html"
+                >Kontakt</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <button class="hamburger" id="hamburger" aria-label="Izbornik"></button>
-
-        <nav class="main-nav" id="mainNav">
-          <a href="index.html">Početna</a>
-          <a href="o-nama.html">O nama</a>
-          <a href="novosti.html">Novosti</a>
-          <a href="nas-rad.html">Naš rad</a>
-          <a href="past-events.html">Prošla događanja</a>
-          <a href="clanstvo.html">Članstvo</a>
-          <a href="kontakt.html">Kontakt</a>
-        </nav>
+    <!-- ================= HEADER ================= -->
+    <header class="bg-light py-5 border-bottom">
+      <div class="container text-center">
+        <h1 class="fw-bold">Kontakt</h1>
+        <p class="lead text-muted">
+          Javite nam se za pitanja, informacije ili suradnju
+        </p>
       </div>
     </header>
 
-    <main class="main-content">
-      <h1 class="page-title">Kontakt</h1>
-
-      <section class="content-section">
-        <p>
-          Za sva pitanja, informacije ili suradnju, možete nas kontaktirati
-          putem sljedećih kanala:
-        </p>
-      </section>
-
-      <section class="content-section">
-        <h2>Podaci o udruzi</h2>
-        <ul class="contact-details">
-          <li><strong>Naziv:</strong> Alumni AXIS Split</li>
-          <li><strong>Adresa:</strong> Kopilica 5, 21000 Split, Hrvatska</li>
-          <li><strong>OIB:</strong> 80913220993</li>
-          <li>
-            <strong>Email:</strong>
-            <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>
-          </li>
-          <li>
-            <strong>Facebook:</strong>
-            <a
-              href="https://www.facebook.com/profile.php?id=61584468421064"
-              target="_blank"
-              rel="noopener"
-            >
-              Alumni AXIS Split
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="content-section">
-        <h2>Kontakt obrazac</h2>
-
-        <form class="contact-form" method="post">
-          <div class="form-group">
-            <label for="ime">Ime i prezime</label>
-            <input type="text" id="ime" name="ime" required />
+    <!-- ================= MAIN ================= -->
+    <main class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Contact Info -->
+          <div class="col-lg-4" data-aos="fade-up">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Podaci o udruzi</h5>
+                <ul class="list-group list-group-flush small">
+                  <li class="list-group-item">
+                    <strong>Naziv:</strong> Alumni AXIS Split
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Adresa:</strong> Kopilica 5, Split
+                  </li>
+                  <li class="list-group-item">
+                    <strong>OIB:</strong> 80913220993
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-envelope me-1"></i>
+                    <a href="mailto:alumniaxis.st@gmail.com">
+                      alumniaxis.st@gmail.com
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-facebook me-1"></i>
+                    <a
+                      href="https://www.facebook.com/profile.php?id=61584468421064"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Alumni AXIS Split
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="email">Email adresa</label>
-            <input type="email" id="email" name="email" required />
+          <!-- Contact Form -->
+          <div class="col-lg-8" data-aos="fade-left">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Kontakt obrazac</h5>
+
+                <form class="needs-validation" novalidate>
+                  <div class="mb-3">
+                    <label for="ime" class="form-label">Ime i prezime</label>
+                    <input type="text" class="form-control" id="ime" required />
+                    <div class="invalid-feedback">Unesite ime i prezime.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email adresa</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Unesite ispravnu email adresu.
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="poruka" class="form-label">Poruka</label>
+                    <textarea
+                      class="form-control"
+                      id="poruka"
+                      rows="5"
+                      required
+                    ></textarea>
+                    <div class="invalid-feedback">Poruka je obavezna.</div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send me-1"></i> Pošalji poruku
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="poruka">Poruka</label>
-            <textarea id="poruka" name="poruka" rows="5" required></textarea>
+          <!-- Map -->
+          <div class="col-12" data-aos="zoom-in">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Lokacija</h5>
+                <div class="ratio ratio-16x9">
+                  <iframe
+                    src="https://www.google.com/maps/place/Sveu%C4%8Dili%C5%A1ni+odjel+za+stru%C4%8Dne+studije+(SOSS)/"
+                    loading="lazy"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <button type="submit" class="btn-primary">Pošalji poruku</button>
-        </form>
-      </section>
-
-      <section class="content-section">
-        <h2>Lokacija</h2>
-
-        <div class="map-wrapper">
-          <iframe
-            src="https://www.google.com/maps/place/Sveu%C4%8Dili%C5%A1ni+odjel+za+stru%C4%8Dne+studije+(SOSS)/@43.5231692,16.4502802,21z"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          >
-          </iframe>
         </div>
-      </section>
+      </div>
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="site-footer">
-      <div class="container">
-        <p>
+    <footer class="bg-dark text-light py-4 mt-5">
+      <div class="container text-center small">
+        <p class="mb-1">
           &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
-          Splitu<br />
-          OIB: 80913220993 | IBAN: HR3224070001100770512
+          Splitu
         </p>
-        <p class="footer-note">
+        <p class="mb-1">OIB: 80913220993 | IBAN: HR3224070001100770512</p>
+        <p class="opacity-75 mb-0">
           Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
         </p>
       </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+
+    <!-- Bootstrap Validation -->
+    <script>
+      (() => {
+        "use strict";
+        document.querySelectorAll(".needs-validation").forEach((form) => {
+          form.addEventListener("submit", (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

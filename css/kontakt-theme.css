@@ -1,4 +1,7 @@
-/* ================= NAŠ RAD BOOTSTRAP THEME ================= */
+/* ===============================
+   AXIS Alumni – Bootstrap Theme
+   =============================== */
+
 :root {
     --bs-primary: #0d3b66;
     --bs-primary-rgb: 11, 44, 77;
@@ -34,36 +37,41 @@
     color: #000;
 }
 
-/* ================= BADGES ================= */
-.bg-axis-primary {
-    background-color: var(--bs-primary) !important;
-}
-
-.bg-axis-secondary {
-    background-color: var(--axis-gold) !important;
-    color: #000;
-}
-
-/* ================= HEADINGS ================= */
-h1, h2, h3 {
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
     color: var(--bs-primary);
 }
 
-/* ================= CARDS ================= */
+/* Cards */
 .card {
-    border-radius: 0.75rem;
+    border: none;
+    border-radius: 1rem;
 }
 
-.card-footer {
-    background-color: #f8f9fa;
+.card-title {
+    font-weight: 600;
 }
 
-/* ================= PAGINATION ================= */
-.page-link {
+/* List group icons */
+.list-group-item i {
     color: var(--bs-primary);
 }
 
-.page-item.active .page-link {
+/* Footer */
+footer {
     background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
+}
+
+footer p {
+    margin-bottom: 0.3rem;
+}
+
+/* Form focus */
+.form-control:focus {
+    border-color: var(--axis-light);
+    box-shadow: 0 0 0 0.2rem rgba(244, 196, 48, 0.25);
 }
