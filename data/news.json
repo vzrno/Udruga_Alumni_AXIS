@@ -10,12 +10,12 @@
   },
   {
     "id": 2,
-    "title": "Stručna ekskurzija",
+    "title": "Stručna ekskurzija studenata Elektronike i Elektroenergetike",
     "date": "2025-12-23",
     "time": "08:00",
     "location": "Zagreb i Varaždin",
     "image": "images/events/Strucna posjeta Robotika.jpg",
-    "description": "Studenti su sudjelovali u trodnevnoj stručnoj ekskurziji u sklopu kolegija."
+    "description": "Naši studenti elektronike i energetike, u pratnji prof. Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja stečenih teorijskih znanja i njihove primjene u praksi.\n\nPrvoga dana posjećen je Tehnički muzej „Nikola Tesla“ u Zagrebu, gdje su studenti imali priliku vidjeti brojne Tesline izume te se upoznati s njegovim životnim i znanstvenim putem. U sklopu muzeja obišli su i rudnik, kao i prometni dio u kojem su prikazani počeci tramvajskog prometa i razvoja lokomotiva.\n\nDrugoga dana studenti su posjetili tvrtku Atinel u Varaždinu, vodeću hrvatsku tvrtku u području automatike i robotike, koja razvija rješenja za svjetsku automobilsku industriju.\n\nTrećega dana ekskurzija je završena posjetom Memorijalnom centru Nikola Tesla i rodnoj kući Nikole Tesle u Smiljanu.\n\nOva stručna ekskurzija studentima je omogućila povezivanje nastavnog gradiva s praktičnim primjerima."
   },
   {
     "id": 3,
@@ -34,21 +34,12 @@
     ]
   },
   {
-    "id": 4,
-    "title": "Potpisana nova partnerska suradnja",
-    "date": "2024-12-18",
-    "time": "12:30",
-    "location": "Split, Kopilica 5",
-    "image": "images/events/Career after studies.png",
-    "description": "Alumni AXIS Split širi mrežu suradnika. Nova suradnja omogućit će članovima dodatne edukacije, radionice i stručne projekte."
-  },
-  {
     "id": 5,
     "title": "CIET 2026 - Poziv na radove",
-    "date": "2024-11-05",
-    "time": "12:30",
+    "date": "2026-11-06 - 2026-12-06",
+    "time": "All day",
     "location": "Split, Kopilica 5",
     "image": "images/events/CIET 2026.jpg",
-    "description": ""
+    "description": "https://www.oss.unist.hr/novosti/clanak/ciet-2026"
   }
 ]

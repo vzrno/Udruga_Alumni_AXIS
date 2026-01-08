@@ -39,11 +39,11 @@
 
 /* Headings */
 h1, h2, h3 {
-    color: var(--bs-primary);
+    color: #212529;
 }
 
 h5 {
-    color: var(--bs-primary);
+    color: #212529;
 }
 
 /* Cards */
