@@ -1,4 +1,4 @@
-const container = document.getElementById("nas-rad-container");
+const container = document.getElementById("poslovi-container");
 const paginationEl = document.getElementById("pagination");
 const filterEl = document.getElementById("typeFilter");
 

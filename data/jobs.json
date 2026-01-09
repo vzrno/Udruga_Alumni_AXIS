@@ -3,14 +3,14 @@
       "id": 1,
       "title": "Poslodavac: TROMONT d.o.o. za građevinarstvo, promet i usluge",
       "description": "Inženjer / inženjerka elektrotehnike",
-      "type": "Mjesto rada: Split<br>Traženo radnika: 1<br>Rok za prijavu: 23.12.2025.",
+      "type": "job",
       "url": "https://example.com/posao-2",
       "publishedAt": "2025-10-20"
     },
     {
       "id": 2,
       "title": "Edukacija: Osnove Reacta",
-      "description": "SBesplatna radionica za studente i alumne.",
+      "description": "Besplatna radionica za studente i alumne.",
       "type": "education",
       "url": "https://example.com/edukacija-1",
       "publishedAt": "2026-12-23"
