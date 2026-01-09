@@ -91,15 +91,20 @@
           Najnovije informacije o udruzi, projektima i suradnjama.
         </p>
       </div>
-      </header>
+    </header>
 
     <!-- ================= MAIN CONTENT ================= -->
     <main class="py-5">
       <div class="container">
         <div class="row mb-4">
           <div class="col-md-6">
+            <label for="newsSearch" class="visually-hidden">
+              Pretraži novosti
+            </label>
             <input
               type="search"
+              id="newsSearch"
+              name="newsSearch"
               class="form-control"
               placeholder="Pretraži po nazivu ili lokaciji"
               oninput="filterNews(this.value)"
