@@ -1,6 +1,22 @@
 [
   {
     "id": 1,
+    "title": "Fiskalizacija 2.0 - Digitalni računi postaju standard",
+    "date": "2026-03-05",
+    "time": "16:00",
+    "endTime": "17:30",
+    "location": "Split, Kopilica 5",
+    "image": "images/events/Fiskalizacija 2.0 and digital transformation.png",
+    "description": "Fiskalizacija 2.0 uvodi potpuno digitalno izdavanje i fiskalizaciju računa u Hrvatskoj.",
+    "highlights": [
+      "Obvezni e-računi u poslovanju među poduzetnicima",
+      "Fiskalizacija u realnom vremenu",
+      "Kraj PDF i papirnatih računa u B2B prometu",
+      "Manje administracije i veća transparentnost"
+    ]
+  },
+  {
+    "id": 2,
     "title": "Alumni meetup",
     "date": "2026-03-15",
     "time": "18:00",
@@ -8,25 +24,5 @@
     "location": "Split, Kopilica 5",
     "image": "images/events/Alumni Networking Night.png",
     "description": "Neformalno druženje alumni članova i gostiju."
-  },
-  {
-    "id": 2,
-    "title": "Stručna radionica",
-    "date": "2026-04-02",
-    "time": "17:00",
-    "endTime": "19:00",
-    "location": "Split, Kopilica 5",
-    "image": "images/events/Alumni Networking Night.png",
-    "description": "Radionica s naglaskom na profesionalni razvoj."
-  },
-  {
-    "id": 3,
-    "title": "Predavanje: Karijera nakon studija",
-    "date": "2025-12-15",
-    "time": "17:30",
-    "endTime": "18:00",
-    "location": "Online (Zoom)",
-    "image": "images/events/Career After Studies.png",
-    "description": "Savjeti za zapošljavanje i razvoj karijere."
   }
 ]

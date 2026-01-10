@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return `
       <div class="col-md-6 col-lg-4">
         <div class="card h-100 event-card shadow-sm">
-          <img src="${event.image}" class="card-img-top">
+          <img src="${encodeURI(event.image)}" class="card-img-top" alt="${event.title}">
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between mb-2">
               <h5 class="card-title">${event.title}</h5>
@@ -108,12 +108,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   window.openModal = (event) => {
     modal.show();
+
     document.getElementById("modalTitle").textContent = event.title;
-    document.getElementById("modalImage").src = event.image;
+    document.getElementById("modalImage").src = encodeURI(event.image);
     document.getElementById("modalDescription").textContent = event.description;
     document.getElementById("modalDate").textContent = `📅 ${event.date}`;
     document.getElementById("modalTime").textContent = `⏰ ${event.time} – ${event.endTime}`;
     document.getElementById("modalLocation").textContent = `📍 ${event.location}`;
+
+    const highlightsEl = document.getElementById("modalHighlights");
+    if (highlightsEl && event.highlights?.length) {
+      highlightsEl.innerHTML = event.highlights
+        .map(h => `<li>${h}</li>`)
+        .join("");
+    }
   };
 
   function setActive(active) {
