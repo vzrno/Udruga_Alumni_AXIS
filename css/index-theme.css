@@ -3,14 +3,15 @@
   --bs-primary: #0d3b66;
   --bs-primary-rgb: 11, 44, 77;
 
-  --axis-gold: #c9a24d;
+  /*--axis-gold: #c9a24d;*/
+  --axis-red: #be1818;
   --axis-light: #f5f7fa;
 }
 
 /* Navbar */
 .navbar {
   background-color: var(--bs-primary);
-  border-bottom: 2px solid var(--axis-gold);
+  border-bottom: 2px solid var(--axis-red);
 }
 
 .navbar .nav-link,
@@ -19,7 +20,7 @@
 }
 
 .navbar .nav-link:hover {
-  color: var(--axis-gold) !important;
+  color: var(--axis-red) !important;
 }
 
 /* Buttons */
@@ -29,8 +30,8 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--axis-gold);
-  border-color: var(--axis-gold);
+  background-color: var(--axis-red);
+  border-color: var(--axis-red);
   color: #000;
 }
 
