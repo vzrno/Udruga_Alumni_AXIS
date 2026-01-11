@@ -1,3 +1,19 @@
+function normalizeNewsItem(item) {
+  return {
+    id: item.id,
+    title: item.title ?? "Bez naslova",
+    date: item.date ?? "",
+    dateEnd: item.dateEnd ?? null,
+    time: item.time ?? "",
+    location: item.location ?? "",
+    image: item.image || "images/placeholder.jpg",
+    description: item.description ?? "",
+    tags: Array.isArray(item.tags) ? item.tags : [],
+    agenda: Array.isArray(item.agenda) ? item.agenda : [],
+    board: Array.isArray(item.board) ? item.board : [],
+  };
+}
+
 import { fetchNews } from "./news.service.js";
 
 const container = document.getElementById("novosti-container");
@@ -10,13 +26,14 @@ let currentPage = 1;
 init();
 
 async function init() {
-  news = await fetchNews();
+  const rawNews = await fetchNews();
+  news = rawNews.map(normalizeNewsItem);
   filteredNews = news;
   render();
 }
 
 /* ================= RENDER ================= */
-
+document.querySelectorAll(".pagination").forEach((p) => p.remove());
 function render() {
   container.innerHTML = "";
   renderCards();
@@ -33,23 +50,32 @@ function renderCards() {
 }
 
 function createCard(item) {
+  const shortDesc =
+    item.description.length > 100
+      ? item.description.slice(0, 100) + "..."
+      : item.description;
+
   return `
     <div class="col-md-6 col-lg-4">
       <article class="card axis-card h-100 shadow-sm">
-        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+        <img 
+          src="${item.image}" 
+          class="card-img-top" 
+          alt="${item.title}"
+          onerror="this.src='images/placeholder.jpg'"
+        >
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${item.title}</h5>
 
           <p class="axis-meta">
-            📅 ${item.date} • ⏰ ${item.time}<br>
-            📍 ${item.location}
+            ${item.date ? `📅 ${item.date}` : ""}
+            ${item.time ? ` • ⏰ ${item.time}` : ""}
+            ${item.location ? `<br>📍 ${item.location}` : ""}
           </p>
 
-          <p class="card-text text-muted">
-            ${item.description.slice(0, 100)}...
-          </p>
+          <p class="card-text text-muted">${shortDesc}</p>
 
-                    <button
+          <button
             class="btn btn-axis mt-auto"
             data-bs-toggle="modal"
             data-bs-target="#newsModal"
@@ -118,48 +144,68 @@ document.addEventListener("click", (e) => {
 
 function fillModal(item) {
   document.getElementById("modalTitle").textContent = item.title;
-  document.getElementById("modalImage").src = item.image;
-  document.getElementById(
-    "modalMeta"
-  ).textContent = `${item.date} • ${item.time} • ${item.location}`;
 
-  document.getElementById("modalDescription").textContent = item.description;
+  const modalImage = document.getElementById("modalImage");
+  modalImage.src = item.image;
+  modalImage.onerror = () => (modalImage.src = "images/placeholder.jpg");
 
-  document.getElementById("modalAgenda").innerHTML = renderAgenda(item.agenda);
+  document.getElementById("modalMeta").textContent = [
+    item.date,
+    item.time,
+    item.location,
+  ]
+    .filter(Boolean)
+    .join(" • ");
 
-  document.getElementById("modalBoard").innerHTML = renderBoard(item.board);
+  // If description is a URL → clickable link
+  const descEl = document.getElementById("modalDescription");
+  if (item.description.startsWith("http")) {
+    descEl.innerHTML = `<a href="${item.description}" target="_blank" rel="noopener">Otvori poveznicu</a>`;
+  } else {
+    descEl.textContent = item.description;
+  }
+
+  renderOptionalSection("modalAgenda", renderAgenda(item.agenda));
+  renderOptionalSection("modalBoard", renderBoard(item.board));
 }
 
 /* ================= HELPERS ================= */
+function renderOptionalSection(id, html) {
+  const el = document.getElementById(id);
+  if (!el) return;
 
-function renderAgenda(agenda = []) {
-  if (!agenda.length) return "<p class='text-muted'>Nema agende.</p>";
+  el.innerHTML = html;
+  el.closest("section, div")?.classList.toggle("d-none", !html);
+}
+
+function renderAgenda(agenda) {
+  if (!agenda.length) return "";
 
   return `
     <ul class="list-group list-group-flush">
       ${agenda
         .map(
           (a) => `
-            <li class="list-group-item">
-              <strong>${a.time}</strong> – ${a.topic}
-            </li>`
+        <li class="list-group-item">
+          <strong>${a.time ?? ""}</strong> – ${a.topic ?? ""}
+        </li>`
         )
         .join("")}
     </ul>
   `;
 }
 
-function renderBoard(board = []) {
-  if (!board.length) return "<p class='text-muted'>Nema podataka.</p>";
+function renderBoard(board) {
+  if (!board.length) return "";
 
   return `
     <ul class="list-unstyled">
       ${board
         .map(
           (b) => `
-            <li>
-              👤 <strong>${b.name}</strong> – ${b.role}
-            </li>`
+        <li>
+          👤 <strong>${b.name ?? ""}</strong> – ${b.role ?? ""}
+        </li>`
         )
         .join("")}
     </ul>

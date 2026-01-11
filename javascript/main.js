@@ -6,33 +6,9 @@
  * Glavna ulazna točka
  */
 document.addEventListener("DOMContentLoaded", () => {
-    initHamburger();
     setActiveNavLink();
     enableSmoothScroll();
 });
-
-/**
- * 1. Funkcija Habmurger menija
- */
-function initHamburger() {
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.querySelector("nav");
-
-    if (!hamburger || !nav) return;
-
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        nav.classList.toggle("active");
-    });
-
-    // Zatvori meni kad se klikne link
-    nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            nav.classList.remove("active");
-        });
-    });
-}
 
 /** 
  * 2. Aktivna Navigacija

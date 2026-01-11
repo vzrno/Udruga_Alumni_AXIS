@@ -18,9 +18,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderUpcoming();
 
-  btnUpcoming.onclick = () => { currentView = "upcoming"; renderUpcoming(); };
-  btnPast.onclick = () => { currentView = "past"; renderPast(); };
-  btnAll.onclick = () => { currentView = "all"; renderAll(); };
+  btnUpcoming.onclick = () => {
+    currentView = "upcoming";
+    renderUpcoming();
+  };
+  btnPast.onclick = () => {
+    currentView = "past";
+    renderPast();
+  };
+  btnAll.onclick = () => {
+    currentView = "all";
+    renderAll();
+  };
   sortSelect.onchange = () => rerender();
   toggleCalendar.onclick = toggleCalendarView;
 
@@ -56,11 +65,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   /* ---------- LOGIC ---------- */
 
   function filterUpcoming() {
-    return events.filter(e => getEndDate(e) > new Date());
+    return events.filter((e) => getEndDate(e) > new Date());
   }
 
   function filterPast() {
-    return events.filter(e => getEndDate(e) <= new Date());
+    return events.filter((e) => getEndDate(e) <= new Date());
   }
 
   function sortEvents(list) {
@@ -90,7 +99,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     return `
       <div class="col-md-6 col-lg-4">
         <div class="card h-100 event-card shadow-sm">
-          <img src="${encodeURI(event.image)}" class="card-img-top" alt="${event.title}">
+          <img src="${encodeURI(event.image)}" class="card-img-top" alt="${
+      event.title
+    }">
           <div class="card-body d-flex flex-column">
             <div class="d-flex justify-content-between mb-2">
               <h5 class="card-title">${event.title}</h5>
@@ -113,19 +124,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("modalImage").src = encodeURI(event.image);
     document.getElementById("modalDescription").textContent = event.description;
     document.getElementById("modalDate").textContent = `📅 ${event.date}`;
-    document.getElementById("modalTime").textContent = `⏰ ${event.time} – ${event.endTime}`;
-    document.getElementById("modalLocation").textContent = `📍 ${event.location}`;
+    document.getElementById(
+      "modalTime"
+    ).textContent = `⏰ ${event.time} – ${event.endTime}`;
+    document.getElementById(
+      "modalLocation"
+    ).textContent = `📍 ${event.location}`;
 
     const highlightsEl = document.getElementById("modalHighlights");
-    if (highlightsEl && event.highlights?.length) {
-      highlightsEl.innerHTML = event.highlights
-        .map(h => `<li>${h}</li>`)
-        .join("");
+
+    if (highlightsEl) {
+      if (event.highlights && event.highlights.length) {
+        highlightsEl.innerHTML = event.highlights
+          .map((h) => `<li>✔ ${h}</li>`)
+          .join("");
+        highlightsEl.classList.remove("d-none");
+      } else {
+        highlightsEl.innerHTML = "";
+        highlightsEl.classList.add("d-none");
+      }
     }
   };
 
   function setActive(active) {
-    [btnUpcoming, btnPast, btnAll].forEach(b => {
+    [btnUpcoming, btnPast, btnAll].forEach((b) => {
       b.classList.remove("btn-primary");
       b.classList.add("btn-outline-primary");
     });
@@ -139,7 +161,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     calendarView.classList.toggle("d-none");
     if (!calendarView.classList.contains("d-none")) {
       calendarView.innerHTML = events
-        .map(e => `<div class="calendar-item">${e.date} – ${e.title}</div>`)
+        .map((e) => `<div class="calendar-item">${e.date} – ${e.title}</div>`)
         .join("");
     }
   }

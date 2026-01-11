@@ -23,6 +23,11 @@
     "endTime": "20:00",
     "location": "Split, Kopilica 5",
     "image": "images/events/Alumni Networking Night.png",
-    "description": "Neformalno druženje alumni članova i gostiju."
+    "description": "Neformalno druženje alumni članova i gostiju.",
+    "highlights": [
+      "Upoznavanje novih članov",
+      "Networing",
+      "Neformalno družanje"
+    ]
   }
 ]

@@ -24,15 +24,15 @@
 }
 
 /* Buttons */
-.btn-primary {
+.btn-axis {
   background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
+  color: #fff;
+  border: none;
 }
 
-.btn-primary:hover {
+.btn-axis:hover {
   background-color: var(--axis-red);
-  border-color: var(--axis-red);
-  color: #000;
+  color: #fff;
 }
 
 /* ================= HEADINGS ================= */
