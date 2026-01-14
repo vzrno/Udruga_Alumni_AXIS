@@ -14,7 +14,7 @@ export async function fetchNews() {
 
     // Sort by date (newest first)
     return data.sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
+      (a, b) => new Date(b.date || 0) - new Date(a.date || 0)
     );
   } catch (error) {
     console.error("Greška pri učitavanju novosti:", error);

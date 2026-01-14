@@ -33,8 +33,8 @@ async function init() {
 }
 
 /* ================= RENDER ================= */
-document.querySelectorAll(".pagination").forEach((p) => p.remove());
 function render() {
+  document.querySelectorAll(".pagination").forEach((p) => p.remove());
   container.innerHTML = "";
   renderCards();
   renderPagination();
@@ -136,9 +136,10 @@ window.filterNews = (value) => {
 /* ================= MODAL ================= */
 
 document.addEventListener("click", (e) => {
-  if (!e.target.matches("[data-id]")) return;
+  const button = e.target.closest("[data-id]");
+  if (!button) return;
 
-  const item = news.find((n) => n.id == e.target.dataset.id);
+  const item = news.find((n) => n.id == button.dataset.id);
   fillModal(item);
 });
 
@@ -184,11 +185,12 @@ function renderAgenda(agenda) {
   return `
     <ul class="list-group list-group-flush">
       ${agenda
-        .map(
-          (a) => `
-        <li class="list-group-item">
-          <strong>${a.time ?? ""}</strong> – ${a.topic ?? ""}
-        </li>`
+        .map((a) =>
+          typeof a === "string"
+            ? `<li class="list-group-item">${a}</li>`
+            : `<li class="list-group-item">
+                <strong>${a.time ?? ""}</strong> – ${a.topic ?? ""}
+              </li>`
         )
         .join("")}
     </ul>

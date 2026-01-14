@@ -3,36 +3,41 @@
     "id": 1,
     "title": "Održana 1. redovna godišnja skupština Udruge AXIS Split",
     "date": "2025-12-23",
-    "dateEnd": "",
+    "dateEnd": null,
     "time": "12:30",
     "location": "Split, Kopilica 5",
     "image": "images/udruga/Logo AXIS crvena.png",
     "description": "Na redovnoj godišnjoj skupštini članovi su raspravljali o dosadašnjim rezultatima te definirali ciljeve za naredno razdoblje.",
     "tags": [],
     "agenda": [
-      "Donošenje odluke o udruživanju u ASUS udruge.",
-      "Izbor zastupnika u skupštini ASUS-a."
+      {
+        "topic": "Donošenje odluke o udruživanju u ASUS udruge. Izbor zastupnika u skupštini ASUS-a."
+      }
     ],
     "board": []
   },
   {
     "id": 2,
     "title": "Stručna ekskurzija studenata Elektronike i Elektroenergetike",
-    "date": "2025-12-23",
-    "dateEnd": "",
-    "time": "08:00",
+    "date": "2025-12-10",
+    "dateEnd": "2025-12-12",
+    "time": null,
     "location": "Zagreb i Varaždin",
     "image": "images/events/Strucna posjeta Robotika.jpg",
-    "description": "Naši studenti elektronike i energetike, u pratnji prof. Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja stečenih teorijskih znanja i njihove primjene u praksi.\n\nPrvoga dana posjećen je Tehnički muzej „Nikola Tesla“ u Zagrebu, gdje su studenti imali priliku vidjeti brojne Tesline izume te se upoznati s njegovim životnim i znanstvenim putem. U sklopu muzeja obišli su i rudnik, kao i prometni dio u kojem su prikazani počeci tramvajskog prometa i razvoja lokomotiva.\n\nDrugoga dana studenti su posjetili tvrtku Atinel u Varaždinu, vodeću hrvatsku tvrtku u području automatike i robotike, koja razvija rješenja za svjetsku automobilsku industriju. Trećega dana ekskurzija je završena posjetom Memorijalnom centru Nikola Tesla i rodnoj kući Nikole Tesle u Smiljanu. Ova stručna ekskurzija studentima je omogućila povezivanje nastavnog gradiva s praktičnim primjerima.",
+    "description": "Naši studenti elektronike i energetike, u pratnji prof. Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja stečenih teorijskih znanja i njihove primjene u praksi. Ova stručna ekskurzija studentima je omogućila povezivanje nastavnog gradiva s praktičnim primjerima.",
     "tags": [],
-    "agenda": [],
+    "agenda": [
+      {
+        "topic": "Prvoga dana posjećen je Tehnički muzej „Nikola Tesla“ u Zagrebu, gdje su studenti imali priliku vidjeti brojne Tesline izume te se upoznati s njegovim životnim i znanstvenim putem. U sklopu muzeja obišli su i rudnik, kao i prometni dio u kojem su prikazani počeci tramvajskog prometa i razvoja lokomotiva. Drugoga dana studenti su posjetili tvrtku Atinel u Varaždinu, vodeću hrvatsku tvrtku u području automatike i robotike, koja razvija rješenja za svjetsku automobilsku industriju. Trećega dana ekskurzija je završena posjetom Memorijalnom centru Nikola Tesla i rodnoj kući Nikole Tesle u Smiljanu."
+      }
+    ],
     "board": []
   },
   {
     "id": 3,
     "title": "Najava: Osnivačka skupština Udruge AXIS Split",
     "date": "2025-10-20",
-    "dateEnd": "",
+    "dateEnd": null,
     "time": "14:00",
     "location": "Split, Kopilica 5",
     "image": "images/udruga/Logo AXIS crvena.png",
@@ -52,11 +57,12 @@
     "title": "CIET 2026 - Poziv na radove",
     "date": "2026-11-06",
     "dateEnd": "2026-12-06",
-    "time": "All day",
+    "time": "Cijeli dan",
     "location": "Split, Kopilica 5",
     "image": "images/events/CIET 2026.jpg",
     "description": "https://www.oss.unist.hr/novosti/clanak/ciet-2026",
     "tags": ["CIET", "konferencija"],
+    "slug": "CIET-2026-poziv",
     "agenda": [],
     "board": []
   }

@@ -25,7 +25,7 @@
     ></script>
 
     <!-- Main JS -->
-    <script type="module" src="javascript/main.js" defer></script>
+    <script type="module" src="javascript/main.js"></script>
     <script type="module" src="javascript/news.service.js" defer></script>
     <script type="module" src="javascript/news.list.js" defer></script>
   </head>
@@ -104,10 +104,8 @@
             <input
               type="search"
               id="newsSearch"
-              name="newsSearch"
               class="form-control"
               placeholder="Pretraži po nazivu ili lokaciji"
-              oninput="filterNews(this.value)"
             />
           </div>
         </div>
@@ -150,7 +148,7 @@
             <button class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <img id="modalImage" class="img-fluid rounded mb-3" />
+            <img id="modalImage" class="img-fluid rounded mb-3" alt="modalImage" />
             <p id="modalMeta" class="text-muted"></p>
             <p id="modalDescription"></p>
             <hr />

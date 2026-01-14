@@ -140,8 +140,10 @@
         <section>
           <h2 class="fw-semibold mb-4">Poslovi i edukacije</h2>
 
-          <div class="row mb-4 align-items-center">
+          <!-- FILTER -->
+          <div class="row mb-4">
             <div class="col-md-4">
+              <label for="typeFilter" class="form-label">Vrsta</label>
               <select id="typeFilter" class="form-select">
                 <option value="all">Sve</option>
                 <option value="job">Poslovi</option>
@@ -149,26 +151,26 @@
               </select>
             </div>
           </div>
+
+          <!-- CONTENT -->
           <div
             id="poslovi-container"
             class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
             aria-live="polite"
           >
-            <nav class="mt-4">
-              <ul
-                id="pagination"
-                class="pagination justify-content-center"
-              ></ul>
-            </nav>
-
             <!-- Loading state -->
-            <div class="col text-center w-100">
+            <div id="loading" class="col-12 text-center">
               <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Učitavanje...</span>
               </div>
               <p class="mt-2 text-muted">Učitavanje sadržaja…</p>
             </div>
           </div>
+
+          <!-- PAGINATION -->
+          <nav class="mt-4">
+            <ul id="pagination" class="pagination justify-content-center"></ul>
+          </nav>
         </section>
       </div>
     </main>

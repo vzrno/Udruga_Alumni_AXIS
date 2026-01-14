@@ -8,6 +8,19 @@
     --axis-light: #f5f7fa;
 }
 
+/* Buttons */
+.btn-axis {
+  background-color: var(--axis-red);
+  border-color: var(--axis-red);
+  color: #fff;
+}
+
+.btn-axis:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #fff;
+}
+
 /* Navbar */
 .navbar {
     background-color: var(--bs-primary);
@@ -16,33 +29,18 @@
 
 .navbar .nav-link,
 .navbar-brand {
-    color: black !important;
+  color: black !important;
 }
 
-.navbar .nav-link:hover {
-    color: var(--axis-red) !important;
+.navbar .nav-link.active {
+  color: var(--axis-red) !important;
 }
 
-/* Buttons */
-.btn-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-}
 
-.btn-primary:hover {
-    background-color: var(--axis-red);
-    border-color: var(--axis-red);
-    color: #000;
-}
-
-/* ================= BADGES ================= */
-.bg-axis-primary {
-    background-color: var(--bs-primary) !important;
-}
-
+/* Badge contrast */
 .bg-axis-secondary {
-    background-color: var(--axis-red) !important;
-    color: #000;
+  background-color: var(--axis-red) !important;
+  color: #fff;
 }
 
 /* ================= HEADINGS ================= */

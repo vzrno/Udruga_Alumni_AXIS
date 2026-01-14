@@ -1,34 +1,38 @@
 [
-    {
-      "id": 1,
-      "title": "Poslodavac: TROMONT d.o.o. za građevinarstvo, promet i usluge",
-      "description": "Inženjer / inženjerka elektrotehnike",
-      "type": "job",
-      "url": "https://example.com/posao-2",
-      "publishedAt": "2025-10-20"
-    },
-    {
-      "id": 2,
-      "title": "Edukacija: Osnove Reacta",
-      "description": "Besplatna radionica za studente i alumne.",
-      "type": "education",
-      "url": "https://example.com/edukacija-1",
-      "publishedAt": "2026-12-23"
-    },
-    {
-      "id": 3,
-      "title": "Backend Developer (Internship)",
-      "description": "Plaćena praksa uz mentorstvo.",
-      "type": "job",
-      "url": "https://example.com/posao-2",
-      "publishedAt": "2026-12-23"
-    },
-    {
-      "id": 4,
-      "title": "Poslodavac: Ericsson Nikola Tesla d.d.",
-      "description": "Stručna / Specijalistička praksa",
-      "type": "education",
-      "url": "https://example.com/posao-2",
-      "publishedAt": "2025-12-23"
-    }
-  ]
+  {
+    "id": 1,
+    "company": "TROMONT d.o.o. za građevinarstvo, promet i usluge",
+    "location": "Split",
+    "description": "Inženjer / inženjerka elektrotehnike",
+    "type": "job",
+    "url": "https://www.tromont.hr/proizvodnja/karijere/otvorene-radne-pozicije",
+    "publishedAt": "2026-01-14"
+  },
+  {
+    "id": 2,
+    "company": "Pliva Hrvatska d.o.o.",
+    "location": "Zagreb",
+    "description": "Viši inženjer strojarskog održavanja (m/ž)",
+    "type": "job",
+    "url": "https://www.posao.hr/oglasi/visi-inzenjer-strojarskog-odrzavanja-m-z/1180994/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEesiOZQC10uFv97_CbiKj9IdfOiaVMF5RFSmMfnNfkckgyOScf2fDS08hmNLM_aem_AtACTIO3MpcAyhGP0anKng",
+    "publishedAt": "2026-01-14"
+  },
+  {
+    "id": 3,
+    "company": "Smart Group Recruitment d.o.o. / Step",
+    "location": "Zagreb",
+    "description": "Bankar (m/ž)",
+    "type": "job",
+    "url": "https://www.posao.hr/oglasi/bankar-m-z/1174617/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEeYjzPZ4cfVmWR6Heu0k3uKbUEnZthZV63dznL6SUO23cBAV8cDNY9U3g1dmE_aem_YHsdtGtL5NSlbyknlPVhQw",
+    "publishedAt": "2026-01-14"
+  },
+  {
+    "id": 4,
+    "company": "Kempinski hotel Adriatic (Skiper hoteli d.o.o.)",
+    "location": "Savudrija",
+    "description": "Marketing Coordinator (m/ž)",
+    "type": "job",
+    "url": "https://www.posao.hr/oglasi/marketing-coordinator-m-z/1181679/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEeEnlPJrVicOLZkPAPsII2saSNTN_f0IT5n3JdAwbZXOiozcUkbrOAeWPUt_w_aem_SoBKRpsS5IseB8-ETjslSQ",
+    "publishedAt": "2026-01-14"
+  }
+]
