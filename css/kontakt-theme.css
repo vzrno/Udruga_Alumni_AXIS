@@ -1,51 +1,121 @@
-/* ===============================
-   AXIS Alumni – Bootstrap Theme
-   =============================== */
+/* ================= KONTAKT TEME (scoped) ================= */
 
 :root {
-    --bs-primary: #0d3b66;
-    --bs-primary-rgb: 11, 44, 77;
+    /* Primary = AXIS red */
+    --bs-primary: #be1818;
+    --bs-primary-rgb: 190, 24, 24;
 
-    /*--axis-gold: #c9a24d;*/
     --axis-red: #be1818;
-    --axis-light: #f5f7fa;
+    --axis-light: #f7f7f8;
+
+    --axis-text: #1f2937;
+    --axis-muted: #6b7280;
+
+    --radius-lg: 16px;
+    --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+    /* Optional: subtle dark for footer */
+    --axis-dark: #2a0b0b;
+}
+
+/* Scope everything to this page to avoid side-effects on other pages */
+.kontakt-page {
+    color: var(--axis-text);
+    background: linear-gradient(180deg, var(--axis-light), #ffffff 40%);
+}
+
+.text-axis-primary {
+    color: var(--bs-primary) !important;
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 10px 12px;
+    background: #fff;
+    border: 2px solid rgba(var(--bs-primary-rgb), 0.35);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-160%);
+    transition: transform 0.2s ease;
+    z-index: 2000;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+    outline: none;
 }
 
 /* Navbar */
+.kontakt-page 
 .navbar {
-    background-color: var(--bs-primary);
     border-bottom: 2px solid var(--axis-red);
 }
 
-.navbar .nav-link,
-.navbar-brand {
-    color: black !important;
+.kontakt-page 
+.navbar 
+.nav-link {
+    color: var(--axis-text) !important;
 }
 
-.navbar .nav-link:hover {
+.kontakt-page 
+.navbar 
+.nav-link:hover {
     color: var(--axis-red) !important;
 }
 
-/* Buttons */
-.btn-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
+.kontakt-page 
+.navbar 
+.nav-link.active {
+    color: var(--axis-red) !important;
 }
 
-.btn-primary:hover {
+/* Global focus ring (keyboard-friendly) */
+.kontakt-page a:focus-visible,
+.kontakt-page button:focus-visible {
+    outline: 3px solid rgba(var(--bs-primary-rgb), 0.35);
+    outline-offset: 2px;
+    border-radius: 10px;
+}
+
+/* Hero */
+.kontakt-page .page-hero {
+    padding: 64px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: #fff;
+}
+
+/* Buttons */
+.kontakt-page .btn-primary {
     background-color: var(--axis-red);
     border-color: var(--axis-red);
-    color: #000;
+}
+
+.kontakt-page .btn-primary:hover {
+    filter: brightness(0.92);
+}
+
+.kontakt-page .btn-outline-secondary {
+    border-color: rgba(0, 0, 0, 0.22);
+}
+
+.kontakt-page .btn-outline-secondary:hover {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
 }
 
 /* Headings */
-h1, h2, h3 {
-    color: #212529;
+.kontakt-page h1,
+.kontakt-page h2,
+.kontakt-page h3,
+.kontakt-page h4,
+.kontakt-page h5,
+.kontakt-page h6 {
+    color: #111827;
 }
 
-h5 {
-    color: #212529;
-}
 
 /* Cards */
 .card {
@@ -63,16 +133,20 @@ h5 {
 }
 
 /* Footer */
-footer {
-    background-color: var(--bs-primary);
+.site-footer {
+    background-color: var(--axis-dark);
 }
 
-footer p {
-    margin-bottom: 0.3rem;
-}
 
 /* Form focus */
 .form-control:focus {
     border-color: var(--axis-light);
     box-shadow: 0 0 0 0.2rem rgba(244, 196, 48, 0.25);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .skip-link {
+        transition: none;
+    }
 }

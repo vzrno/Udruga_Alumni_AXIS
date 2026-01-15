@@ -1,4 +1,4 @@
-/* ================= ČLANSTVO THEME (scoped) ================= */
+/* ================= ČLANSTVO TEME (scoped) ================= */
 
 :root {
     /* Primary = AXIS red */
@@ -49,19 +49,26 @@
 }
 
 /* Navbar */
-.clanstvo-page .navbar {
+.clanstvo-page 
+.navbar {
     border-bottom: 2px solid var(--axis-red);
 }
 
-.clanstvo-page .navbar .nav-link {
+.clanstvo-page 
+.navbar 
+.nav-link {
     color: var(--axis-text) !important;
 }
 
-.clanstvo-page .navbar .nav-link:hover {
+.clanstvo-page 
+.navbar 
+.nav-link:hover {
     color: var(--axis-red) !important;
 }
 
-.clanstvo-page .navbar .nav-link.active {
+.clanstvo-page 
+.navbar 
+.nav-link.active {
     color: var(--axis-red) !important;
 }
 

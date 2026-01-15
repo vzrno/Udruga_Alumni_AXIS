@@ -9,7 +9,7 @@
       content="Kontaktirajte Alumni AXIS Split – pitanja, suradnje i informacije."
     />
 
-    <!-- Custom CSS -->
+        <!-- Custom CSS -->
     <link rel="stylesheet" href="css/kontakt-theme.css" />
 
     <!-- Bootstrap 5 CSS -->
@@ -27,6 +27,9 @@
     <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
+
+  <body class="kontakt-page">
+    <a class="skip-link" href="#mainContent">Preskoči na sadržaj</a>
 
   <body>
     <!-- ================= NAVBAR ================= -->
@@ -81,11 +84,11 @@
     </nav>
 
     <!-- ================= HEADER ================= -->
-    <header class="bg-light py-5 border-bottom">
+    <header class="page-hero">
       <div class="container text-center">
-        <h1 class="fw-bold">Kontakt</h1>
-        <p class="lead text-muted">
-          Javite nam se za pitanja, informacije ili suradnju
+        <h1 class="fw-bold mb-2">Kontakt</h1>
+        <p class="lead text-muted mb-0">
+          Pitanja, informacije ili suradnja — odgovorimo čim prije.
         </p>
       </div>
     </header>
@@ -93,7 +96,7 @@
     <!-- ================= MAIN ================= -->
     <main class="py-5">
       <div class="container">
-        <div class="row g-4">
+        <div class="row g-4 align-items-stretch">
           <!-- Contact Info -->
           <div class="col-lg-4" data-aos="fade-up">
             <div class="card shadow-sm h-100">
@@ -167,7 +170,10 @@
                     <div class="invalid-feedback">Poruka je obavezna.</div>
                   </div>
 
-                  <button type="submit" class="btn btn-primary">
+                  <button
+                    type="submit"
+                    class="btn btn-primary px-4 w-100 w-md-auto"
+                  >
                     <i class="bi bi-send me-1"></i> Pošalji poruku
                   </button>
                 </form>
@@ -197,7 +203,7 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="site-footer text-light py-4">
       <div class="container text-center small">
         <p class="mb-1">
           &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
