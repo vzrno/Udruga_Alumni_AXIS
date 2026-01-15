@@ -23,18 +23,26 @@
     <script type="module" src="javascript/events.js" defer></script>
   </head>
 
-  <body>
+  <body class="index-page">
+    <a class="skip-link" href="#mainContent">Preskoči na sadržaj</a>
+
     <!-- ================= NAVBAR ================= -->
     <nav
       class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
     >
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a
+          class="navbar-brand d-flex align-items-center"
+          href="index.html"
+          aria-label="Povratak na početnu"
+        >
           <img
             src="images/udruga/Logo AXIS crvena.png"
             alt="AXIS Alumni logo"
             width="50"
+            height="50"
             class="me-2"
+            loading="lazy"
           />
           <span class="fw-bold">Alumni AXIS Split</span>
         </a>
@@ -46,13 +54,13 @@
           data-bs-target="#mainNav"
           aria-controls="mainNav"
           aria-expanded="false"
-          aria-label="Izbornik"
+          aria-label="Otvori izbornik"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link active fw-semibold" href="index.html"
                 >Početna</a
@@ -79,16 +87,21 @@
     </nav>
 
     <!-- ================= PAGE HEADER ================= -->
-    <header class="bg-light py-5 border-bottom">
+    <header class="page-hero">
       <div class="container text-center">
-        <h1 class="fw-bold mb-3">
+        <h1 class="fw-bold mb-2">
           Udruga diplomiranih studenata Sveučilišnog odjela za stručne studije
           Sveučilišta u Splitu
         </h1>
+        <p class="lead text-muted mb-0">
+          Alumni AXIS Split - službena web stranica udruge diplomiranih
+          studenata.
+        </p>
       </div>
     </header>
 
     <!-- ================= CAROUSEL ================= -->
+    <main id="mainContent" class="container my-5" role="main"></main>
     <section class="container my-5">
       <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -190,7 +203,7 @@
     </div>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="site-footer text-light py-4">
       <div class="container text-center small">
         <p class="mb-1">
           &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u

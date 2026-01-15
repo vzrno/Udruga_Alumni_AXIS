@@ -25,18 +25,26 @@
     ></script>
   </head>
 
-  <body>
+  <body class="o-nama-page">
+    <a class="skip-link" href="#mainContent">Preskoči na sadržaj</a>
+
     <!-- ================= NAVBAR ================= -->
     <nav
       class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
     >
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a
+          class="navbar-brand d-flex align-items-center"
+          href="index.html"
+          aria-label="Povratak na početnu"
+        >
           <img
             src="images/udruga/Logo AXIS crvena.png"
             alt="AXIS Alumni logo"
             width="50"
+            height="50"
             class="me-2"
+            loading="lazy"
           />
           <span class="fw-bold">Alumni AXIS Split</span>
         </a>
@@ -48,13 +56,13 @@
           data-bs-target="#mainNav"
           aria-controls="mainNav"
           aria-expanded="false"
-          aria-label="Izbornik"
+          aria-label="Otvori izbornik"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Početna</a>
             </li>
@@ -81,18 +89,17 @@
     </nav>
 
     <!-- ================= PAGE HEADER ================= -->
-    <header class="bg-light py-5 border-bottom">
+    <header class="page-hero">
       <div class="container text-center">
-        <h1 class="fw-bold mb-3">O nama</h1>
+        <h1 class="fw-bold mb-2">O nama</h1>
         <p class="lead text-muted mb-0">
           Alumni udruga Sveučilišnog odjela za stručne studije Sveučilišta u
           Splitu
         </p>
       </div>
     </header>
-
     <!-- ================= MAIN CONTENT ================= -->
-    <main class="container mb-5">
+    <main id="mainContent" class="container my-5" role="main">
       <div class="accordion shadow-sm" id="aboutAccordion">
         <!-- Tko smo mi -->
         <div class="accordion-item">
@@ -274,7 +281,7 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-dark text-light py-4 mt-5">
+    <footer class="site-footer text-light py-4">
       <div class="container text-center small">
         <p class="mb-1">
           &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
