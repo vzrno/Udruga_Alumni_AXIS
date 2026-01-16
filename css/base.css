@@ -1,0 +1,381 @@
+/* ================= BASE CSS (merged from all *-theme.css) ================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Primary = AXIS red */
+  --bs-primary: #be1818;
+  --bs-primary-rgb: 190, 24, 24;
+
+  --axis-red: #be1818;
+  --axis-light: #f7f7f8;
+
+  --axis-text: #1f2937;
+  --axis-muted: #6b7280;
+
+  --radius-lg: 16px;
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+  /* Optional: subtle dark for footer */
+  --axis-dark: #2a0b0b;
+}
+
+/* All pages (scoped via body class you already use) */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) {
+  color: var(--axis-text);
+  background: linear-gradient(180deg, var(--axis-light), #ffffff 40%);
+}
+
+.text-axis-primary {
+  color: var(--bs-primary) !important;
+}
+
+/* ---------- Accessibility: Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 2px solid rgba(var(--bs-primary-rgb), 0.35);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+  z-index: 2000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: none;
+}
+
+/* ---------- Navbar ---------- */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .navbar {
+  border-bottom: 2px solid var(--axis-red);
+}
+
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .navbar .nav-link {
+  color: var(--axis-text) !important;
+}
+
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .navbar .nav-link:hover,
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .navbar .nav-link.active {
+  color: var(--axis-red) !important;
+}
+
+/* Keyboard-friendly focus ring */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) a:focus-visible,
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) button:focus-visible {
+  outline: 3px solid rgba(var(--bs-primary-rgb), 0.35);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* ---------- Hero (more compact than 64px) ---------- */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.poslovi-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .page-hero {
+  padding: 44px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+/* ---------- Shared content card + icon badge ---------- */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .content-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.clanstvo-page
+) .icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--bs-primary-rgb), 0.10);
+  color: var(--axis-red);
+  flex: 0 0 auto;
+}
+
+/* ---------- Buttons ---------- */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .btn-primary {
+  background-color: var(--axis-red);
+  border-color: var(--axis-red);
+}
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .btn-primary:hover {
+  filter: brightness(0.92);
+}
+
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .btn-outline-secondary {
+  border-color: rgba(0, 0, 0, 0.22);
+}
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) .btn-outline-secondary:hover {
+  border-color: var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+/* AXIS custom filled button used on Novosti/Poslovi */
+.btn-axis {
+  background-color: var(--axis-red);
+  border-color: var(--axis-red);
+  color: #fff;
+}
+.btn-axis:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #fff;
+}
+
+/* Badge contrast */
+.bg-axis-secondary {
+  background-color: var(--axis-red) !important;
+  color: #fff;
+}
+
+/* ---------- Headings ---------- */
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) h1,
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) h2,
+:is(
+  body.index-page,
+  body.o-nama-page,
+  body.novosti-page,
+  body.clanstvo-page,
+  body.kontakt-page
+) h3 {
+  color: #111827;
+}
+
+body.poslovi-page h1,
+body.poslovi-page h2,
+body.poslovi-page h3 {
+  color: #212529;
+}
+
+/* ---------- Accordion (O-nama + Clanstvo) ---------- */
+:is(body.o-nama-page, body.clanstvo-page) .accordion-item {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-item:first-child {
+  border-top: 0;
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-button {
+  font-weight: 650;
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-button i {
+  color: var(--axis-red);
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-button:not(.collapsed) {
+  color: var(--axis-red);
+  background-color: rgba(var(--bs-primary-rgb), 0.08);
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-button:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.05);
+}
+:is(body.o-nama-page, body.clanstvo-page) .accordion-body {
+  padding-left: 0;
+  padding-right: 0;
+  color: var(--axis-text);
+}
+
+/* ---------- Links ---------- */
+a {
+  color: var(--bs-primary);
+}
+a:hover {
+  color: #082a4d;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background-color: var(--axis-dark);
+}
+
+/* ---------- INDEX specific ---------- */
+body.index-page .event-card img {
+  height: 190px;
+  object-fit: cover;
+}
+body.index-page .event-card .card-title {
+  color: var(--bs-primary);
+}
+body.index-page .event-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body.index-page .event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+body.index-page .calendar-item {
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--bs-primary);
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* NOTE: you originally overrode Bootstrap's outline primary into a filled button.
+   Kept to avoid breaking your UI immediately. */
+body.index-page .btn-outline-primary {
+  background-color: var(--axis-red);
+  border-color: var(--axis-red);
+  color: #fff;
+}
+/* FIXED TYPO from your CSS: .btn-outline-primar:hover */
+body.index-page .btn-outline-primary:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #fff;
+}
+
+/* ---------- NOVOSTI specific ---------- */
+body.novosti-page .axis-card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body.novosti-page .axis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+body.novosti-page .axis-meta {
+  font-size: 0.85rem;
+  color: var(--axis-dark);
+}
+body.novosti-page .page-item.active .page-link {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+/* ---------- POSLOVI specific ---------- */
+body.poslovi-page .page-link {
+  color: var(--bs-primary);
+}
+body.poslovi-page .page-item.active .page-link {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+/* ---------- KONTAKT specific ---------- */
+/* FIXED TYPO: was .konkakt-page .content-card */
+body.kontakt-page .list-group-item i {
+  color: var(--bs-primary);
+}
+body.kontakt-page .form-control:focus {
+  border-color: var(--axis-light);
+  box-shadow: 0 0 0 0.2rem rgba(244, 196, 48, 0.25);
+}
+@media (min-width: 768px) {
+  .w-md-auto {
+    width: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}

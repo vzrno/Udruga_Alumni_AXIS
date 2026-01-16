@@ -9,9 +9,6 @@
       content="Kontaktirajte Alumni AXIS Split – pitanja, suradnje i informacije."
     />
 
-        <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/kontakt-theme.css" />
-
     <!-- Bootstrap 5 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -24,11 +21,17 @@
       rel="stylesheet"
     />
 
-    <!-- AOS Animations -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+      <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  
+    <!-- Main JS -->
+    <script type="module" src="javascript/main.js" defer></script>
   </head>
 
-  <body class="kontakt-page">
+ <body class="kontakt-page">
     <a class="skip-link" href="#mainContent">Preskoči na sadržaj</a>
 
   <!-- ================= NAVBAR ================= -->
@@ -101,7 +104,7 @@
     </header>
 
     <!-- ================= MAIN ================= -->
-      <main id="mainContent" class="container my-5" role="main">
+      <main id="mainContent" class="container my-4" role="main">
         <div class="row g-4 align-items-stretch">
           <!-- Contact Info -->
           <div class="col-lg-4" data-aos="fade-up">
@@ -148,7 +151,7 @@
                 <form class="needs-validation" novalidate>
                   <div class="mb-3">
                     <label for="ime" class="form-label">Ime i prezime</label>
-                    <input type="text" class="form-control" id="ime" required />
+                    <input type="text" class="form-control" id="fullName" name="fullName" required autocomplete="name" />
                     <div class="invalid-feedback">Unesite ime i prezime.</div>
                   </div>
 
@@ -158,7 +161,9 @@
                       type="email"
                       class="form-control"
                       id="email"
+                      name="email"
                       required
+                      autocomplete="email"
                     />
                     <div class="invalid-feedback">
                       Unesite ispravnu email adresu.
@@ -169,9 +174,11 @@
                     <label for="poruka" class="form-label">Poruka</label>
                     <textarea
                       class="form-control"
-                      id="poruka"
+                      id="message"
+                      name="message"
                       rows="5"
                       required
+                      autocomplete="off"
                     ></textarea>
                     <div class="invalid-feedback">Poruka je obavezna.</div>
                   </div>
@@ -222,10 +229,7 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- AOS -->
+        <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });

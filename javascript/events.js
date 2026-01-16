@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("events-list");
   const calendarView = document.getElementById("calendar-view");
@@ -8,90 +10,154 @@ document.addEventListener("DOMContentLoaded", async () => {
   const sortSelect = document.getElementById("sort-select");
   const toggleCalendar = document.getElementById("toggle-calendar");
 
+  if (!container) return;
+
   let events = [];
   let currentView = "upcoming";
 
-  const modal = new bootstrap.Modal(document.getElementById("eventModal"));
+  const modalEl = document.getElementById("eventModal");
+  const modal = modalEl ? new bootstrap.Modal(modalEl) : null;
 
-  const response = await fetch("data/events.json");
-  events = await response.json();
+  // Load
+  try {
+    const response = await fetch("data/events.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    events = Array.isArray(data) ? data : [];
+  } catch (e) {
+    container.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-danger mb-0">
+          Greška pri učitavanju događanja.
+        </div>
+      </div>
+    `;
+    return;
+  }
 
-  renderUpcoming();
-
-  btnUpcoming.onclick = () => {
+  // UI handlers
+  btnUpcoming?.addEventListener("click", () => {
     currentView = "upcoming";
-    renderUpcoming();
-  };
-  btnPast.onclick = () => {
-    currentView = "past";
-    renderPast();
-  };
-  btnAll.onclick = () => {
-    currentView = "all";
-    renderAll();
-  };
-  sortSelect.onchange = () => rerender();
-  toggleCalendar.onclick = toggleCalendarView;
-
-  /* ---------- RENDER ---------- */
-
-  function rerender() {
-    if (currentView === "upcoming") renderUpcoming();
-    if (currentView === "past") renderPast();
-    if (currentView === "all") renderAll();
-  }
-
-  function renderUpcoming() {
     setActive(btnUpcoming);
-    renderEvents(filterUpcoming());
-  }
+    render();
+  });
 
-  function renderPast() {
+  btnPast?.addEventListener("click", () => {
+    currentView = "past";
     setActive(btnPast);
-    renderEvents(filterPast());
-  }
+    render();
+  });
 
-  function renderAll() {
+  btnAll?.addEventListener("click", () => {
+    currentView = "all";
     setActive(btnAll);
-    renderEvents(sortEvents(events));
+    render();
+  });
+
+  sortSelect?.addEventListener("change", () => render());
+
+  toggleCalendar?.addEventListener("click", () => {
+    if (!calendarView) return;
+    calendarView.classList.toggle("d-none");
+    const expanded = !calendarView.classList.contains("d-none");
+    toggleCalendar.setAttribute("aria-expanded", String(expanded));
+    if (expanded) {
+      calendarView.innerHTML = getVisibleEvents()
+        .map((e) => `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`)
+        .join("");
+    }
+  });
+
+  // Delegated modal open
+  container.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-event-id]");
+    if (!btn) return;
+
+    const eventId = btn.getAttribute("data-event-id");
+    const ev = events.find((x) => String(x.id) === String(eventId));
+    if (!ev) return;
+
+    fillModal(ev);
+    modal?.show();
+  });
+
+  // Initial
+  setActive(btnUpcoming);
+  render();
+
+  /* ---------- helpers ---------- */
+
+  function setActive(activeBtn) {
+    [btnUpcoming, btnPast, btnAll].forEach((b) => {
+      if (!b) return;
+      b.classList.remove("btn-primary");
+      b.classList.add("btn-outline-primary");
+    });
+
+    if (activeBtn) {
+      activeBtn.classList.add("btn-primary");
+      activeBtn.classList.remove("btn-outline-primary");
+    }
   }
 
-  function renderEvents(list) {
-    container.innerHTML = list.length
-      ? sortEvents(list).map(createCard).join("")
-      : `<p class="text-center text-muted">Nema događanja.</p>`;
+  function parseEventEnd(ev) {
+    const date = ev?.date;
+    const endTime = ev?.endTime || ev?.time || "00:00";
+    const d = new Date(`${date}T${endTime}`);
+    return Number.isNaN(d.getTime()) ? new Date(0) : d;
   }
 
-  /* ---------- LOGIC ---------- */
+  function getVisibleEvents() {
+    const now = new Date();
 
-  function filterUpcoming() {
-    return events.filter((e) => getEndDate(e) > new Date());
+    let list = [...events];
+
+    // filter view
+    if (currentView === "upcoming") {
+      list = list.filter((e) => parseEventEnd(e) > now);
+    } else if (currentView === "past") {
+      list = list.filter((e) => parseEventEnd(e) <= now);
+    }
+
+    // sort
+    const dir = sortSelect?.value === "desc" ? -1 : 1;
+    list.sort((a, b) => {
+      const da = new Date(a.date || 0);
+      const db = new Date(b.date || 0);
+      return (da - db) * dir;
+    });
+
+    return list;
   }
 
-  function filterPast() {
-    return events.filter((e) => getEndDate(e) <= new Date());
+  function render() {
+    const list = getVisibleEvents();
+
+    if (!list.length) {
+      container.innerHTML = `
+        <div class="col-12">
+          <div class="alert alert-warning mb-0">
+            Trenutno nema događanja za prikaz.
+          </div>
+        </div>
+      `;
+      if (calendarView && !calendarView.classList.contains("d-none")) {
+        calendarView.innerHTML = "";
+      }
+      return;
+    }
+
+    container.innerHTML = list.map(createCard).join("");
+
+    if (calendarView && !calendarView.classList.contains("d-none")) {
+      calendarView.innerHTML = list
+        .map((e) => `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`)
+        .join("");
+    }
   }
 
-  function sortEvents(list) {
-    return [...list].sort((a, b) =>
-      sortSelect.value === "asc"
-        ? getStartDate(a) - getStartDate(b)
-        : getStartDate(b) - getStartDate(a)
-    );
-  }
-
-  function getStartDate(e) {
-    return new Date(`${e.date}T${e.time}`);
-  }
-
-  function getEndDate(e) {
-    return new Date(`${e.date}T${e.endTime}`);
-  }
-
-  /* ---------- UI ---------- */
-
-  function createCard(event) {
-    const isPast = getEndDate(event) <= new Date();
+  function createCard(ev) {
+    const isPast = parseEventEnd(ev) <= new Date();
     const badge = isPast
       ? `<span class="badge bg-secondary">Završeno</span>`
       : `<span class="badge bg-success">Uskoro</span>`;
@@ -99,70 +165,79 @@ document.addEventListener("DOMContentLoaded", async () => {
     return `
       <div class="col-md-6 col-lg-4">
         <div class="card h-100 event-card shadow-sm">
-          <img src="${encodeURI(event.image)}" class="card-img-top" alt="${
-      event.title
-    }">
+          <img
+            src="${escapeAttr(ev.image)}"
+            class="card-img-top"
+            alt="${escapeHtml(ev.title)}"
+            onerror="this.src='images/placeholder.jpg'"
+          >
           <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between mb-2">
-              <h5 class="card-title">${event.title}</h5>
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h5 class="card-title mb-0">${escapeHtml(ev.title)}</h5>
               ${badge}
             </div>
-            <p class="card-text">${event.description}</p>
-            <button class="btn btn-outline-primary btn-sm mt-auto"
-              onclick='openModal(${JSON.stringify(event)})'>
+
+            <p class="card-text text-muted">${escapeHtml(ev.description || "")}</p>
+
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm mt-auto"
+              data-event-id="${escapeHtml(String(ev.id))}"
+            >
               Detalji
             </button>
           </div>
         </div>
-      </div>`;
+      </div>
+    `;
   }
 
-  window.openModal = (event) => {
-    modal.show();
+  function fillModal(ev) {
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value ?? "";
+    };
 
-    document.getElementById("modalTitle").textContent = event.title;
-    document.getElementById("modalImage").src = encodeURI(event.image);
-    document.getElementById("modalDescription").textContent = event.description;
-    document.getElementById("modalDate").textContent = `📅 ${event.date}`;
-    document.getElementById(
-      "modalTime"
-    ).textContent = `⏰ ${event.time} – ${event.endTime}`;
-    document.getElementById(
-      "modalLocation"
-    ).textContent = `📍 ${event.location}`;
+    const img = document.getElementById("modalImage");
+    if (img) {
+      img.src = ev.image ? String(ev.image) : "images/placeholder.jpg";
+      img.onerror = () => (img.src = "images/placeholder.jpg");
+    }
+
+    setText("modalTitle", ev.title || "");
+    setText("modalDescription", ev.description || "");
+    setText("modalDate", ev.date ? `📅 ${ev.date}` : "");
+    setText(
+      "modalTime",
+      ev.time
+        ? `⏰ ${ev.time}${ev.endTime ? ` – ${ev.endTime}` : ""}`
+        : ""
+    );
+    setText("modalLocation", ev.location ? `📍 ${ev.location}` : "");
 
     const highlightsEl = document.getElementById("modalHighlights");
-
     if (highlightsEl) {
-      if (event.highlights && event.highlights.length) {
-        highlightsEl.innerHTML = event.highlights
-          .map((h) => `<li>✔ ${h}</li>`)
-          .join("");
+      const list = Array.isArray(ev.highlights) ? ev.highlights : [];
+      if (list.length) {
+        highlightsEl.innerHTML = list.map((h) => `<li>✔ ${escapeHtml(h)}</li>`).join("");
         highlightsEl.classList.remove("d-none");
       } else {
         highlightsEl.innerHTML = "";
         highlightsEl.classList.add("d-none");
       }
     }
-  };
-
-  function setActive(active) {
-    [btnUpcoming, btnPast, btnAll].forEach((b) => {
-      b.classList.remove("btn-primary");
-      b.classList.add("btn-outline-primary");
-    });
-    active.classList.add("btn-primary");
-    active.classList.remove("btn-outline-primary");
   }
 
-  /* ---------- CALENDAR VIEW ---------- */
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
 
-  function toggleCalendarView() {
-    calendarView.classList.toggle("d-none");
-    if (!calendarView.classList.contains("d-none")) {
-      calendarView.innerHTML = events
-        .map((e) => `<div class="calendar-item">${e.date} – ${e.title}</div>`)
-        .join("");
-    }
+  function escapeAttr(str) {
+    return escapeHtml(str).replaceAll("`", "&#096;");
   }
 });

@@ -1,46 +1,48 @@
-// Glogalni UX (nav, scroll, hamburger)
+// Global UX (nav, scroll)
 
 "use strict";
 
-/**
- * Glavna ulazna točka
- */
 document.addEventListener("DOMContentLoaded", () => {
-    setActiveNavLink();
-    enableSmoothScroll();
+  setActiveNavLink();
+  enableSmoothScroll();
 });
 
-/** 
- * 2. Aktivna Navigacija
+/**
+ * Aktivna navigacija (dodaje .active na link trenutne stranice)
  */
 function setActiveNavLink() {
-    const currentPage = window.location.pathname.split("/").pop();
-    const links = document.querySelectorAll("nav a");
-    
-    links.forEach(link => {
-        const linkPage = link.getAttribute("href");
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const links = document.querySelectorAll("nav a[href]");
 
-        if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
-            link.classList.add("active");
-        }
-    });
+  links.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    if (href === currentPage) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
 }
 
 /**
- * 3. Glatko scrolanje (UX))
+ * Glatko scrolanje za anchor linkove (#...)
+ * - ne dira prazne hash linkove (#) niti hash+URL slučajeve
  */
 function enableSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", (e) => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }
-        });
-    });
-}
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
 
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  });
+}
