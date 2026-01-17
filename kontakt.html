@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Kontaktirajte Alumni AXIS Split – pitanja, suradnje i informacije."
+      content="Kontaktirajte Alumni AXIS Split – pitanja, suradnje i informacije"
     />
 
     <!-- Bootstrap 5 CSS -->
@@ -98,7 +98,7 @@
       <div class="container text-center">
         <h1 class="fw-bold mb-2">Kontakt</h1>
         <p class="lead text-muted mb-0">
-          Pitanja, informacije ili suradnja — odgovorimo čim prije.
+          Pitanja, informacije ili suradnja — odgovorimo čim prije
         </p>
       </div>
     </header>
@@ -107,7 +107,7 @@
       <main id="mainContent" class="container my-4" role="main">
         <div class="row g-4 align-items-stretch">
           <!-- Contact Info -->
-          <div class="col-lg-4" data-aos="fade-up">
+          <div class="col-lg-4">
             <div class="card shadow-sm h-100">
               <div class="card-body">
                 <h5 class="card-title mb-3">Podaci o udruzi</h5>
@@ -143,14 +143,14 @@
           </div>
 
           <!-- Contact Form -->
-          <div class="col-lg-8" data-aos="fade-left">
+          <div class="col-lg-8">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h5 class="card-title mb-3">Kontakt obrazac</h5>
 
                 <form class="needs-validation" novalidate>
                   <div class="mb-3">
-                    <label for="ime" class="form-label">Ime i prezime</label>
+                    <label for="fullName" class="form-label">Ime i prezime</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" required autocomplete="name" />
                     <div class="invalid-feedback">Unesite ime i prezime.</div>
                   </div>
@@ -171,7 +171,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="poruka" class="form-label">Poruka</label>
+                    <label for="message" class="form-label">Poruka</label>
                     <textarea
                       class="form-control"
                       id="message"
@@ -195,7 +195,7 @@
           </div>
 
           <!-- Map -->
-          <div class="col-12" data-aos="zoom-in">
+          <div class="col-12">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h5 class="card-title mb-3">Lokacija</h5>
@@ -224,31 +224,9 @@
         </p>
         <p class="mb-1">OIB: 80913220993 | IBAN: HR3224070001100770512</p>
         <p class="opacity-75 mb-0">
-          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
+          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a
         </p>
       </div>
     </footer>
-
-        <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({ duration: 800, once: true });
-    </script>
-
-    <!-- Bootstrap Validation -->
-    <script>
-      (() => {
-        "use strict";
-        document.querySelectorAll(".needs-validation").forEach((form) => {
-          form.addEventListener("submit", (event) => {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-          });
-        });
-      })();
-    </script>
   </body>
 </html>

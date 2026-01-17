@@ -5,6 +5,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   setActiveNavLink();
   enableSmoothScroll();
+  enableBootstrapValidation();
 });
 
 /**
@@ -43,6 +44,22 @@ function enableSmoothScroll() {
         behavior: "smooth",
         block: "start",
       });
+    });
+  });
+}
+
+/**
+ * Bootstrap form validation
+ * - Adds .was-validated on submit
+ */
+function enableBootstrapValidation() {
+  document.querySelectorAll(".needs-validation").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      if (!form.checkValidity ()) {
+        event.preventDefault ();
+        event.stopPropagation();
+      }
+      form.classList.add("was-validated");
     });
   });
 }

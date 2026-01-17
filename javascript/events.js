@@ -63,7 +63,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     toggleCalendar.setAttribute("aria-expanded", String(expanded));
     if (expanded) {
       calendarView.innerHTML = getVisibleEvents()
-        .map((e) => `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`)
+        .map(
+          (e) =>
+            `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`,
+        )
         .join("");
     }
   });
@@ -149,9 +152,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     container.innerHTML = list.map(createCard).join("");
 
+    container.querySelectorAll("img[data-fallback]").forEach((img) => {
+      img.addEventListener(
+        "error",
+        () => {
+          img.src =
+            img.getAttribute("data-fallback") || "images/placeholder.svg";
+        },
+        { once: true },
+      );
+    });
+
     if (calendarView && !calendarView.classList.contains("d-none")) {
       calendarView.innerHTML = list
-        .map((e) => `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`)
+        .map(
+          (e) =>
+            `<div class="calendar-item">${escapeHtml(e.date)} – ${escapeHtml(e.title)}</div>`,
+        )
         .join("");
     }
   }
@@ -200,8 +217,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const img = document.getElementById("modalImage");
     if (img) {
-      img.src = ev.image ? String(ev.image) : "images/placeholder.jpg";
-      img.onerror = () => (img.src = "images/placeholder.jpg");
+      img.src = ev.image ? String(ev.image) : "images/placeholder.svg";
+      img.onerror = () => (img.src = "images/placeholder.svg");
     }
 
     setText("modalTitle", ev.title || "");
@@ -209,9 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setText("modalDate", ev.date ? `📅 ${ev.date}` : "");
     setText(
       "modalTime",
-      ev.time
-        ? `⏰ ${ev.time}${ev.endTime ? ` – ${ev.endTime}` : ""}`
-        : ""
+      ev.time ? `⏰ ${ev.time}${ev.endTime ? ` – ${ev.endTime}` : ""}` : "",
     );
     setText("modalLocation", ev.location ? `📍 ${ev.location}` : "");
 
@@ -219,7 +234,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (highlightsEl) {
       const list = Array.isArray(ev.highlights) ? ev.highlights : [];
       if (list.length) {
-        highlightsEl.innerHTML = list.map((h) => `<li>✔ ${escapeHtml(h)}</li>`).join("");
+        highlightsEl.innerHTML = list
+          .map((h) => `<li>✔ ${escapeHtml(h)}</li>`)
+          .join("");
         highlightsEl.classList.remove("d-none");
       } else {
         highlightsEl.innerHTML = "";

@@ -1,6 +1,6 @@
 import { fetchNews } from "./news.service.js";
 
-"use strict";
+("use strict");
 
 function normalizeNewsItem(item) {
   return {
@@ -10,7 +10,7 @@ function normalizeNewsItem(item) {
     dateEnd: item?.dateEnd ?? null,
     time: item?.time ?? "",
     location: item?.location ?? "",
-    image: item?.image || "images/placeholder.jpg",
+    image: item?.image || "images/placeholder.svg",
     description: item?.description ?? "",
     tags: Array.isArray(item?.tags) ? item.tags : [],
     agenda: Array.isArray(item?.agenda) ? item.agenda : [],
@@ -129,6 +129,17 @@ function renderCards() {
   items.forEach((item) => {
     container.insertAdjacentHTML("beforeend", createCard(item));
   });
+
+  // Image fallback (no inline handlers)
+  container.querySelectorAll("img[data-fallback]").forEach((img) => {
+    img.addEventListener(
+      "error",
+      () => {
+        img.src = img.getAttribute("data-fallback") || "images/placeholder.svg";
+      },
+      { once: true },
+    );
+  });
 }
 
 function createCard(item) {
@@ -142,10 +153,9 @@ function createCard(item) {
       <article class="card axis-card h-100 shadow-sm">
         <img 
           src="${item.image}" 
-          class="card-img-top" 
+          class="card-img-top" data-fallback="images/placeholder.svg"
           alt="${safeTitle}"
-          onerror="this.src='images/placeholder.jpg'"
-        >
+           >
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${safeTitle}</h5>
 
@@ -205,10 +215,12 @@ function fillModal(item) {
   const modalImage = document.getElementById("modalImage");
   if (modalImage) {
     modalImage.src = item.image;
-    modalImage.onerror = () => (modalImage.src = "images/placeholder.jpg");
+    modalImage.onerror = () => (modalImage.src = "images/placeholder.svg");
   }
 
-  const meta = [item.date, item.time, item.location].filter(Boolean).join(" • ");
+  const meta = [item.date, item.time, item.location]
+    .filter(Boolean)
+    .join(" • ");
   const metaEl = document.getElementById("modalMeta");
   if (metaEl) metaEl.textContent = meta;
 
@@ -272,7 +284,7 @@ function renderAgenda(agenda) {
             ? `<li class="list-group-item">${escapeHtml(a)}</li>`
             : `<li class="list-group-item">
                 <strong>${escapeHtml(a?.time ?? "")}</strong> – ${escapeHtml(a?.topic ?? "")}
-              </li>`
+              </li>`,
         )
         .join("")}
     </ul>
@@ -289,7 +301,7 @@ function renderBoard(board) {
           (b) => `
         <li>
           👤 <strong>${escapeHtml(b?.name ?? "")}</strong> – ${escapeHtml(b?.role ?? "")}
-        </li>`
+        </li>`,
         )
         .join("")}
     </ul>

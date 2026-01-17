@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hr">
   <head>
     <meta charset="utf-8" />
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata."
+      content="Alumni AXIS Split - službena web stranica udruge diplomiranih studenata"
     />
 
     <!-- Bootstrap 5 CSS -->
@@ -101,7 +101,7 @@
         </h1>
         <p class="lead text-muted mb-0">
           Alumni AXIS Split - službena web stranica udruge diplomiranih
-          studenata.
+          studenata
         </p>
       </div>
     </header>
@@ -116,16 +116,19 @@
               data-bs-target="#mainCarousel"
               data-bs-slide-to="0"
               class="active"
+              aria-label="Slajd 1"
             ></button>
             <button
               type="button"
               data-bs-target="#mainCarousel"
               data-bs-slide-to="1"
+              aria-label="Slajd 2"
             ></button>
             <button
               type="button"
               data-bs-target="#mainCarousel"
               data-bs-slide-to="2"
+              aria-label="Slajd 3"
             ></button>
           </div>
 
@@ -161,16 +164,20 @@
             type="button"
             data-bs-target="#mainCarousel"
             data-bs-slide="prev"
+            aria-label="Prethodni slajd"
           >
-            <span class="carousel-control-prev-icon"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Prethodno</span>
           </button>
           <button
             class="carousel-control-next"
             type="button"
             data-bs-target="#mainCarousel"
             data-bs-slide="next"
+            aria-label="Sljedeći slajd"
           >
-            <span class="carousel-control-next-icon"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sljedeće</span>
           </button>
         </div>
       </section>
@@ -224,7 +231,7 @@
         </p>
         <p class="mb-1">OIB: 80913220993 | IBAN: HR3224070001100770512</p>
         <p class="opacity-75 mb-0">
-          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a.
+          Svi materijali na ovim stranicama vlasništvo su Alumni AXIS Split-a
         </p>
       </div>
     </footer>
