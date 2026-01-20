@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Uvjeti učlanjenja i kategorije članstva u udruzi Alumni AXIS Split"
+      content="Uvjeti učlanjenja i kategorije članstva u udruzi Alumni AXIS Split."
     />
+
+    <!-- Open Graph (optional but nice for sharing) -->
+    <meta property="og:title" content="Članstvo | Alumni AXIS Split" />
+    <meta
+      property="og:description"
+      content="Uvjeti učlanjenja i kategorije članstva u udruzi Alumni AXIS Split."
+    />
+    <meta property="og:type" content="website" />
 
     <!-- Bootstrap 5 CSS -->
     <link
@@ -38,9 +46,7 @@
     <a class="skip-link" href="#mainContent">Preskoči na sadržaj</a>
 
     <!-- ================= NAVBAR ================= -->
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
-    >
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" aria-label="Glavna navigacija">
       <div class="container">
         <a
           class="navbar-brand d-flex align-items-center"
@@ -48,12 +54,13 @@
           aria-label="Povratak na početnu"
         >
           <img
-            src="images/udruga/Logo AXIS crvena.png"
-            alt="AXIS Alumni logo"
+            src="images/udruga/Logo%20AXIS%20crvena.png"
+            alt="Logo udruge Alumni AXIS Split"
             width="50"
             height="50"
             class="me-2"
             loading="lazy"
+            decoding="async"
           />
           <span class="fw-bold">Alumni AXIS Split</span>
         </a>
@@ -67,43 +74,31 @@
           aria-expanded="false"
           aria-label="Otvori izbornik"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Izbornik</span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html">Početna</a></li>
+            <li class="nav-item"><a class="nav-link" href="o-nama.html">O nama</a></li>
+            <li class="nav-item"><a class="nav-link" href="novosti.html">Novosti</a></li>
+            <li class="nav-item"><a class="nav-link" href="poslovi.html">Poslovi</a></li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Početna</a>
+              <a class="nav-link active fw-semibold" href="clanstvo.html">Članstvo</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="o-nama.html">O nama</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="novosti.html">Novosti</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="poslovi.html">Poslovi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active fw-semibold" href="clanstvo.html"
-                >Članstvo</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="kontakt.html">Kontakt</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- ================= HEADER ================= -->
-    <header class="page-hero">
+    <header class="page-hero py-4">
       <div class="container text-center">
         <h1 class="fw-bold mb-2">Članstvo</h1>
         <p class="lead text-muted mb-0">
-          Informacije o uvjetima učlanjenja i kategorijama članstva u udruzi
-          Alumni AXIS Split
+          Informacije o uvjetima učlanjenja i kategorijama članstva u udruzi Alumni AXIS Split.
         </p>
       </div>
     </header>
@@ -111,30 +106,27 @@
     <!-- ================= MAIN CONTENT ================= -->
     <main id="mainContent" class="container my-4" role="main">
       <!-- Intro -->
-      <section class="content-card mb-4">
+      <section class="content-card mb-4" aria-labelledby="clanstvo-uvod">
+        <h2 id="clanstvo-uvod" class="visually-hidden">Uvjeti članstva</h2>
         <p class="fs-5 mb-0">
-          Svaki diplomirani student stručnog prijediplomskog ili diplomskog
-          studija Sveučilišnog odjela za stručne studije, kao i sadašnji
-          studenti, mogu postati članovi Udruge Alumni AXIS Split. Članstvo
-          Udruge je dobrovoljno, a ispunjavanjem pristupnice prihvaćaju se
-          ciljevi, prava i obveze propisani Statutom.
+          Svaki diplomirani student stručnog prijediplomskog ili diplomskog studija Sveučilišnog odjela
+          za stručne studije, kao i sadašnji studenti, mogu postati članovi Udruge Alumni AXIS Split.
+          Članstvo Udruge je dobrovoljno, a ispunjavanjem pristupnice prihvaćaju se ciljevi, prava i obveze
+          propisani Statutom.
         </p>
       </section>
 
-      <!-- Membership process -->
+      <!-- Membership process: regular -->
       <section class="content-card mb-4" aria-labelledby="kako-postati-clan">
         <div class="d-flex align-items-start gap-3">
           <div class="icon-badge" aria-hidden="true">
             <i class="bi bi-person-plus-fill"></i>
           </div>
           <div class="flex-grow-1">
-            <h2 id="kako-postati-clan" class="h3 fw-bold mb-2">
-              Kako postati član
-            </h2>
+            <h2 id="kako-postati-clan" class="h3 fw-bold mb-2">Kako postati član</h2>
             <p class="mb-3">
-              Članstvo se ostvaruje ispunjavanjem pristupnice. Nakon predaje
-              pristupnice stječe se članstvo, a registar članova dostupan je
-              svim članovima putem mrežnih stranica Udruge.
+              Članstvo se ostvaruje ispunjavanjem pristupnice. Nakon predaje pristupnice stječe se članstvo,
+              a registar članova dostupan je svim članovima putem mrežnih stranica Udruge.
             </p>
 
             <div class="d-flex flex-wrap gap-3">
@@ -158,9 +150,55 @@
                 Registar članova
               </a>
             </div>
+
             <p class="small text-muted mt-3 mb-0">
-              Savjet: ispunjenu pristupnicu možete poslati digitalno ili predati
-              prema uputama Udruge.
+              Savjet: ispunjenu pristupnicu možete poslati digitalno ili predati prema uputama Udruge.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Membership process: honorary/supporting -->
+      <section class="content-card mb-4" aria-labelledby="kako-postati-pocasni">
+        <div class="d-flex align-items-start gap-3">
+          <div class="icon-badge" aria-hidden="true">
+            <i class="bi bi-award-fill"></i>
+          </div>
+          <div class="flex-grow-1">
+            <h2 id="kako-postati-pocasni" class="h3 fw-bold mb-2">
+              Kako postati počasni ili potpomagajući član
+            </h2>
+            <p class="mb-3">
+              Članstvo za počasne i potpomagajuće članove ostvaruje se ispunjavanjem pristupnice.
+              Nakon predaje pristupnice stječe se članstvo, a registar članova dostupan je svim članovima
+              putem mrežnih stranica Udruge.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+              <!-- NOTE: Consider renaming the file to avoid spaces/special chars. Example below uses URL encoding. -->
+              <a
+                href="Dokumenti/Pristupnica za počasne i potpomagajuće_Alumni_AXIS_Split .pdf"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-file-earmark-pdf me-2" aria-hidden="true"></i>
+                Preuzmi pristupnicu (PDF)
+              </a>
+
+              <a
+                href="https://rektoratunist-my.sharepoint.com/:x:/g/personal/vzrno_unist_hr/IQCLOD6Wn8IFRIxOOIIPtKtoAbEM0rxXpTUkK0KI5IorHt8?e=38Fsjw"
+                class="btn btn-outline-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-card-checklist me-2" aria-hidden="true"></i>
+                Registar članova
+              </a>
+            </div>
+
+            <p class="small text-muted mt-3 mb-0">
+              Savjet: ispunjenu pristupnicu možete poslati digitalno ili predati prema uputama Udruge.
             </p>
           </div>
         </div>
@@ -169,15 +207,11 @@
       <!-- Membership categories -->
       <section class="content-card" aria-labelledby="kategorije-clanstva">
         <h2 id="kategorije-clanstva" class="h3 fw-bold mb-3">
-          <i
-            class="bi bi-people-fill text-axis-primary me-2"
-            aria-hidden="true"
-          ></i>
+          <i class="bi bi-people-fill text-axis-primary me-2" aria-hidden="true"></i>
           Kategorije članstva
         </h2>
 
         <div class="accordion accordion-flush" id="membershipAccordion">
-          <!-- Aktivni član -->
           <div class="accordion-item">
             <h3 class="accordion-header" id="headingAktivni">
               <button
@@ -199,14 +233,12 @@
               data-bs-parent="#membershipAccordion"
             >
               <div class="accordion-body">
-                Aktivnim članom može postati osoba koja je diplomirala na
-                Sveučilišnom odjelu za stručne studije Sveučilišta u Splitu ili
-                osoba čije znanje i iskustvo pridonose radu Udruge.
+                Aktivnim članom može postati osoba koja je diplomirala na Sveučilišnom odjelu za stručne studije
+                Sveučilišta u Splitu ili osoba čije znanje i iskustvo pridonose radu Udruge.
               </div>
             </div>
           </div>
 
-          <!-- Redovni član -->
           <div class="accordion-item">
             <h3 class="accordion-header" id="headingRedovni">
               <button
@@ -228,14 +260,12 @@
               data-bs-parent="#membershipAccordion"
             >
               <div class="accordion-body">
-                Redovitim članom može postati svaka osoba koja je stekla bilo
-                koji stupanj obrazovanja na Sveučilišnom odjelu za stručne
-                studije.
+                Redovitim članom može postati svaka osoba koja je stekla bilo koji stupanj obrazovanja
+                na Sveučilišnom odjelu za stručne studije.
               </div>
             </div>
           </div>
 
-          <!-- Počasni član -->
           <div class="accordion-item">
             <h3 class="accordion-header" id="headingPocasni">
               <button
@@ -257,13 +287,12 @@
               data-bs-parent="#membershipAccordion"
             >
               <div class="accordion-body">
-                Počasnim članom može postati fizička ili pravna osoba koja je
-                svojim radom dala poseban doprinos razvoju i ugledu Udruge.
+                Počasnim članom može postati fizička ili pravna osoba koja je svojim radom dala poseban doprinos
+                razvoju i ugledu Udruge.
               </div>
             </div>
           </div>
 
-          <!-- Potpomagajući član -->
           <div class="accordion-item">
             <h3 class="accordion-header" id="headingPotpomagajuci">
               <button
@@ -285,20 +314,18 @@
               data-bs-parent="#membershipAccordion"
             >
               <div class="accordion-body">
-                Potpomagajući članovi su fizičke ili pravne osobe koje
-                materijalno ili organizacijski podupiru rad Udruge.
+                Potpomagajući članovi su fizičke ili pravne osobe koje materijalno ili organizacijski podupiru rad Udruge.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Mini FAQ -->
-        <section class="content-card mt-4" aria-labelledby="faq-clanstvo">
+        <hr class="my-4" />
+
+        <!-- Mini FAQ (kept as sibling content inside the same card) -->
+        <div aria-labelledby="faq-clanstvo">
           <h2 id="faq-clanstvo" class="h3 fw-bold mb-3">
-            <i
-              class="bi bi-question-circle-fill text-axis-primary me-2"
-              aria-hidden="true"
-            ></i>
+            <i class="bi bi-question-circle-fill text-axis-primary me-2" aria-hidden="true"></i>
             Mini FAQ
           </h2>
 
@@ -324,9 +351,8 @@
                 data-bs-parent="#faqAccordion"
               >
                 <div class="accordion-body">
-                  Ovisi o odluci Udruge i važećim aktima. Ako postoji članarina,
-                  visina i način plaćanja objavljuju se uz upute na web stranici
-                  / u pristupnici.
+                  Ovisi o odluci Udruge i važećim aktima. Ako postoji članarina, visina i način plaćanja objavljuju se uz
+                  upute na web stranici ili u pristupnici.
                 </div>
               </div>
             </div>
@@ -352,9 +378,8 @@
                 data-bs-parent="#faqAccordion"
               >
                 <div class="accordion-body">
-                  Sudjelovanje u aktivnostima Udruge, pristup informacijama i
-                  događanjima, mogućnost predlaganja inicijativa te – sukladno
-                  Statutu – sudjelovanje u radu tijela Udruge.
+                  Sudjelovanje u aktivnostima Udruge, pristup informacijama i događanjima, mogućnost predlaganja inicijativa
+                  te – sukladno Statutu – sudjelovanje u radu tijela Udruge.
                 </div>
               </div>
             </div>
@@ -380,8 +405,7 @@
                 data-bs-parent="#faqAccordion"
               >
                 <div class="accordion-body">
-                  Poštivanje Statuta i odluka Udruge, korektno predstavljanje
-                  Udruge, te – ako je propisano – uredno podmirenje članarine.
+                  Poštivanje Statuta i odluka Udruge, korektno predstavljanje Udruge te – ako je propisano – uredno podmirenje članarine.
                 </div>
               </div>
             </div>
@@ -407,14 +431,13 @@
                 data-bs-parent="#faqAccordion"
               >
                 <div class="accordion-body">
-                  Pošaljite upit putem stranice Kontakt ili na službeni kanal
-                  Udruge. Najčešće je dovoljno poslati ispunjenu pristupnicu i
-                  osnovne podatke za evidenciju.
+                  Pošaljite upit putem stranice Kontakt ili na službeni kanal Udruge. Najčešće je dovoljno poslati ispunjenu pristupnicu
+                  i osnovne podatke za evidenciju.
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         <hr class="my-4" />
 
@@ -429,8 +452,7 @@
     <footer class="site-footer text-light py-4">
       <div class="container text-center small">
         <p class="mb-1">
-          &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u
-          Splitu
+          &copy; Alumni Sveučilišnog odjela za stručne studije Sveučilišta u Splitu
         </p>
         <p class="mb-1">OIB: 80913220993 | IBAN: HR3224070001100770512</p>
         <p class="opacity-75 mb-0">
