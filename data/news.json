@@ -65,5 +65,22 @@
     "slug": "CIET-2026-poziv",
     "agenda": [],
     "board": []
+  },
+  {
+    "id": 1,
+    "title": "2. redovna godišnja skupština Udruge AXIS Split",
+    "date": "2026-02-18",
+    "dateEnd": null,
+    "time": "16:00",
+    "location": "Split, Kopilica 5",
+    "image": "images/udruga/Logo AXIS crvena.png",
+    "description": "",
+    "tags": [],
+    "agenda": [
+      {
+        "topic": ""
+      }
+    ],
+    "board": []
   }
 ]
