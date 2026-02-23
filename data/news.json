@@ -68,7 +68,7 @@
   },
   {
     "id": 1,
-    "title": "2. redovna godišnja skupština Udruge AXIS Split",
+    "title": "Održana 2. redovna godišnja skupština Udruge AXIS Split",
     "date": "2026-02-18",
     "dateEnd": null,
     "time": "16:00",
@@ -78,7 +78,10 @@
     "tags": [],
     "agenda": [
       {
-        "topic": ""
+        "topic": "Plan rada i aktivnosti Udruge za naredno razdoblje"
+      },
+      {
+        "topic": "Financijski plan / okvirni proračun Udruge"
       }
     ],
     "board": []

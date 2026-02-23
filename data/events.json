@@ -1,33 +1,18 @@
 [
   {
     "id": 1,
-    "title": "Fiskalizacija 2.0 - Digitalni računi postaju standard",
-    "date": "2026-03-05",
+    "title": "Karijere nakon studiranja",
+    "date": "2026-03-10",
     "time": "16:00",
     "endTime": "17:30",
-    "location": "Split, Kopilica 5",
-    "image": "images/events/Fiskalizacija 2.0 and digital transformation.png",
-    "description": "Fiskalizacija 2.0 uvodi potpuno digitalno izdavanje i fiskalizaciju računa u Hrvatskoj.",
+    "location": "Split, Kopilica 21, amfiteatar 113",
+    "image": "images/events/Panel discussion on career opportunities.png",
+    "description": "Panel rasprava „Karijere nakon studiranja“ osmišljena je s ciljem poticanja konstruktivnog dijaloga o aktualnim izazovima s kojima se studenti i mladi stručnjaci susreću pri ulasku na tržište rada. Kroz razmjenu iskustava stručnjaka iz različitih područja, sudionici imaju priliku dobiti konkretne uvide, primjere dobre prakse i smjernice za daljnji profesionalni razvoj.\n\nTijekom rasprave obrađuju se ključne teme poput:",
     "highlights": [
-      "Obvezni e-računi u poslovanju među poduzetnicima",
-      "Fiskalizacija u realnom vremenu",
-      "Kraj PDF i papirnatih računa u B2B prometu",
-      "Manje administracije i veća transparentnost"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Alumni meetup",
-    "date": "2026-03-15",
-    "time": "18:00",
-    "endTime": "20:00",
-    "location": "Split, Kopilica 5",
-    "image": "images/events/Alumni Networking Night.png",
-    "description": "Neformalno druženje alumni članova i gostiju.",
-    "highlights": [
-      "Upoznavanje novih članova",
-      "Networing",
-      "Neformalno družanje"
+      "izazovima i prilikama na tržištu rada",
+      "važnosti praksi i izvannastavnih aktivnosti",
+      "razvoja karijere u struci i izvan nje",
+      "savjeta studentima završnih godina"
     ]
   }
 ]
