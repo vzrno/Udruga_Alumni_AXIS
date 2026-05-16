@@ -67,7 +67,7 @@
     "board": []
   },
   {
-    "id": 1,
+    "id": 6,
     "title": "Održana 2. redovna godišnja skupština Udruge AXIS Split",
     "date": "2026-02-18",
     "dateEnd": null,
@@ -84,6 +84,19 @@
         "topic": "Financijski plan / okvirni proračun Udruge"
       }
     ],
+    "board": []
+  },
+  {
+    "id": 7,
+    "title": "Terenska nastava studenata Elektrotehnike u vjetroelektrani Ogorje",
+    "date": "2026-05-12",
+    "dateEnd": null,
+    "time": "08:30",
+    "location": "Vjetroelektrana Ogorje",
+    "image": "images/udruga/VE Ogorje.jpg",
+    "description": "U sklopu jačanja suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Vjetroelektrana Ogorje, tijekom koje su studenti imali priliku upoznati se s praktičnim aspektima rada i upravljanja postrojenjima za proizvodnju električne energije iz obnovljivih izvora.\nKroz stručni obilazak i predavanja studenti su stekli vrijedna iskustva te dodatno povezali teorijska znanja s praksom u području energetike i održivog razvoja. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja kontinuirano doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne terenske nastave te se veselimo budućim zajedničkim projektima i aktivnostima.",
+    "tags": [],
+    "agenda": [],
     "board": []
   }
 ]
