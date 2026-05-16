@@ -98,5 +98,18 @@
     "tags": [],
     "agenda": [],
     "board": []
+  },
+  {
+    "id": 8,
+    "title": "Science Comes to Town: Zajednička organizacija UTT-a, Odsjeka za Elektrotehnike i Alumni udruge AXIS Split",
+    "date": "2026-01-23",
+    "dateEnd": null,
+    "time": "10:00 - 14:00",
+    "location": "Dioklecijanova palača, Split",
+    "image": "images/events/Science Comes to Town.jpg",
+    "description": "Alumni udruga AXIS, u suradnji s Uredom za transfer tehnologije i Odsjekom za elektrotehniku, sudjelovala je u organizaciji predstavljanja projekta Science Comes to Town. Tom prilikom dr. sc. Tonko Kovačević, Vjeko Zrno, Marija Jelović i student Pjero Kalajžić prezentirali su sustav za bežičnu komunikaciju temeljen na modulaciji vidljivog svjetla, namijenjen povezivanju i prijenosu digitalnih podataka.",
+    "tags": [],
+    "agenda": [],
+    "board": []
   }
 ]
