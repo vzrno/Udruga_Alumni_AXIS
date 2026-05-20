@@ -94,7 +94,7 @@
     "time": "08:30",
     "location": "Vjetroelektrana Ogorje",
     "image": "images/events/VE Ogorje.jpg",
-    "description": "U sklopu jačanja suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Vjetroelektrana Ogorje, tijekom koje su studenti imali priliku upoznati se s praktičnim aspektima rada i upravljanja postrojenjima za proizvodnju električne energije iz obnovljivih izvora.\nKroz stručni obilazak i predavanja studenti su stekli vrijedna iskustva te dodatno povezali teorijska znanja s praksom u području energetike i održivog razvoja. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja kontinuirano doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne terenske nastave te se veselimo budućim zajedničkim projektima i aktivnostima.",
+    "description": "U sklopu jačanja suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Vjetroelektrana Ogorje, tijekom koje su studenti imali priliku upoznati se s praktičnim aspektima rada i upravljanja postrojenjima za proizvodnju električne energije iz obnovljivih izvora.\n\nKroz stručni obilazak i predavanja studenti su stekli vrijedna iskustva te dodatno povezali teorijska znanja s praksom u području energetike i održivog razvoja. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja kontinuirano doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\n\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne terenske nastave te se veselimo budućim zajedničkim projektima i aktivnostima.",
     "tags": [],
     "agenda": [],
     "board": []
@@ -119,8 +119,21 @@
     "dateEnd": null,
     "time": "11:00 - 12:00",
     "location": "Dispečerski centar Vrboran",
-    "image": "images/events/Dispečerski centar Vrboran.jpg",
-    "description": "U sklopu kontinuirane suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Dispečerski centar Vrboran, tijekom koje su studenti imali priliku upoznati se s radom i organizacijom dispečerskog centra te procesima upravljanja elektroenergetskim sustavom.\nKroz stručni obilazak studenti su stekli vrijedna praktična znanja o nadzoru elektroenergetske mreže, koordinaciji sustava i važnosti sigurnog i pouzdanog upravljanja proizvodnjom i distribucijom električne energije. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja aktivno doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne aktivnosti te se veselimo budućim projektima i nastavku uspješne suradnje.",
+    "image": "images/events/Disprečerski centar Vrboran.jpg",
+    "description": "U sklopu kontinuirane suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Dispečerski centar Vrboran, tijekom koje su studenti imali priliku upoznati se s radom i organizacijom dispečerskog centra te procesima upravljanja elektroenergetskim sustavom.\n\nKroz stručni obilazak studenti su stekli vrijedna praktična znanja o nadzoru elektroenergetske mreže, koordinaciji sustava i važnosti sigurnog i pouzdanog upravljanja proizvodnjom i distribucijom električne energije.\n\nTerensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja aktivno doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\n\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne aktivnosti te se veselimo budućim projektima i nastavku uspješne suradnje.",
+    "tags": [],
+    "agenda": [],
+    "board": []
+  },
+  {
+    "id": 10,
+    "title": "Alumni AXIS Split postao redoviti član Udruge Alumni Sveučilišta u Splitu – ASUS",
+    "date": "2026-05-14",
+    "dateEnd": null,
+    "time": null,
+    "location": "Sveučilište u Splitu",
+    "image": "images/udruga/Logo AXIS crvena.png",
+    "description": "Koordinacijski odbor Udruge Alumni Sveučilišta u Splitu – ASUS donio je odluku o prijemu Udruge diplomiranih studenata Sveučilišnog odjela za stručne studije Sveučilišta u Splitu – Alumni AXIS Split u redovito članstvo.\n\nOvim članstvom otvara se novi prostor za još snažnije povezivanje sadašnjih i bivših studenata, razmjenu znanja i iskustava, razvoj suradnje te zajedničko osmišljavanje budućih aktivnosti i projekata.\n\nČlanstvo u ASUS-u predstavlja važan korak u jačanju alumni zajednice te dodatnu priliku za umrežavanje, profesionalni razvoj i aktivno sudjelovanje u akademskim i društvenim inicijativama.\n\nPozivamo sve sadašnje i bivše studente da nam se pridruže i postanu dio alumni zajednice koja gradi snažnu mrežu znanja, suradnje i prijateljstva.",
     "tags": [],
     "agenda": [],
     "board": []
