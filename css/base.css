@@ -6,18 +6,21 @@
 
 /* --------------------------------------------------------------- 1. Tokens */
 :root {
-  --axis-red: #be1818;
-  --axis-red-deep: #8e1212;
-  --axis-red-wash: #fbeeee;
-  --axis-red-soft: #f2b8b8;
+  /* Brand — sampled from the association's badge (red owl, black ring, cream disc) */
+  --axis-red: #c02020;           /* owl body */
+  --axis-red-deep: #a11c1c;      /* owl shading: hover / active */
+  --axis-red-wash: #faeae6;      /* light tint of the red */
+  --axis-red-soft: #f0b3ab;      /* red on dark backgrounds */
+  --axis-cream: #fcecdc;         /* badge disc: small accents only */
 
-  --axis-ink: #1f1c1b;
-  --axis-body: #423d3b;
-  --axis-muted: #736b68;
-  --axis-rule: #e6e1dd;
-  --axis-mist: #f6f4f2;
+  /* Neutrals warmed towards the badge cream so the red sits naturally */
+  --axis-ink: #151312;           /* badge ring */
+  --axis-body: #423b38;
+  --axis-muted: #756b66;
+  --axis-rule: #e8dfd6;
+  --axis-mist: #faf4ec;          /* large surfaces: a much lighter cream */
   --axis-paper: #ffffff;
-  --axis-dark: #191615;
+  --axis-dark: #121010;
 
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
@@ -30,13 +33,13 @@
   --measure: 66ch;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-  --bs-primary: #be1818;
-  --bs-primary-rgb: 190, 24, 24;
-  --bs-body-color: #423d3b;
+  --bs-primary: #c02020;
+  --bs-primary-rgb: 192, 32, 32;
+  --bs-body-color: #423b38;
   --bs-body-font-family: var(--font-body);
-  --bs-border-color: #e6e1dd;
-  --bs-link-color: #be1818;
-  --bs-link-hover-color: #8e1212;
+  --bs-border-color: #e8dfd6;
+  --bs-link-color: #c02020;
+  --bs-link-hover-color: #a11c1c;
   --bs-border-radius: var(--r-sm);
 }
 
@@ -313,45 +316,20 @@ textarea:focus-visible,
 }
 
 /* --------------------------------------------------------------- 5. Hero */
-.hero-cover {
-  position: relative;
-  isolation: isolate;
-  color: #fff;
-  min-height: clamp(520px, 72vh, 760px);
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  background: var(--axis-dark);
-}
-
-.hero-cover > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-  z-index: -2;
-  transform: scale(1.02);
-}
-
-.hero-cover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+/* Split hero: the picture is shown whole, in its own 3:2 frame, never cropped. */
+.hero-split {
+  padding: clamp(2.5rem, 1.5rem + 3vw, 4.5rem) 0 clamp(2rem, 1rem + 2vw, 3rem);
   background:
-    linear-gradient(180deg, rgba(25, 22, 21, 0.15) 0%, rgba(25, 22, 21, 0.75) 100%),
-    linear-gradient(90deg, rgba(25, 22, 21, 0.72) 0%, rgba(25, 22, 21, 0.35) 55%, rgba(25, 22, 21, 0.1) 100%);
+    radial-gradient(60% 80% at 100% 0%, var(--axis-red-wash) 0%, transparent 60%),
+    var(--axis-paper);
+  border-bottom: 1px solid var(--axis-rule);
 }
 
-.hero-cover .container {
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.hero-content {
-  max-width: 44rem;
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(2rem, 2rem + 2vw, 4rem);
+  align-items: center;
 }
 
 .hero-kicker {
@@ -359,7 +337,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 0.75rem;
   font-size: 0.92rem;
-  color: var(--axis-red-soft);
+  color: var(--axis-red);
   margin-bottom: 1rem;
 }
 
@@ -372,33 +350,52 @@ textarea:focus-visible,
   flex: none;
 }
 
-.hero-cover h1 {
-  color: #fff;
-  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 4.6rem);
+.hero-split h1 {
+  font-size: clamp(2.4rem, 1.5rem + 3.6vw, 4rem);
   margin-bottom: 1.1rem;
 }
 
-.hero-cover .hero-lede {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
-  max-width: 36rem;
+.hero-split .hero-lede {
+  color: var(--axis-muted);
+  font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+  max-width: 34rem;
 }
 
-.hero-cover .btn-outline-light {
-  --bs-btn-border-color: rgba(255, 255, 255, 0.55);
+.hero-figure {
+  position: relative;
+  margin: 0;
 }
 
-.hero-cover .btn-outline-light:hover {
-  color: var(--axis-ink);
-  background: #fff;
-}
-
-.hero-cover .hero-credit {
+/* a quiet red offset frame behind the picture ties it to the brand */
+.hero-figure::before {
+  content: "";
   position: absolute;
-  right: 1rem;
-  bottom: 0.75rem;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.55);
+  inset: 1.1rem -1.1rem -1.1rem 1.1rem;
+  border-radius: var(--r-lg);
+  background: var(--axis-red);
+  opacity: 0.12;
+}
+
+.hero-figure img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-raise);
+  background: var(--axis-mist);
+}
+
+@media (max-width: 991.98px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-figure::before {
+    inset: 0.8rem -0.8rem -0.8rem 0.8rem;
+  }
 }
 
 /* Inner pages */
@@ -525,14 +522,6 @@ textarea:focus-visible,
   display: inline-block;
   margin-top: 0.75rem;
   font-size: 0.92rem;
-}
-
-@media (min-width: 768px) {
-  .value-row {
-    position: relative;
-    z-index: 2;
-    margin-top: -3.25rem;
-  }
 }
 
 @media (max-width: 767.98px) {
@@ -685,7 +674,7 @@ textarea:focus-visible,
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  background: var(--axis-paper);
+  background: var(--axis-cream);
   color: var(--axis-ink);
   border-radius: var(--r-sm);
   padding: 0.35rem 0.6rem 0.4rem;
@@ -734,7 +723,7 @@ textarea:focus-visible,
 .tag-soon {
   background: var(--axis-red-wash);
   color: var(--axis-red-deep);
-  border-color: rgba(190, 24, 24, 0.22);
+  border-color: rgba(192, 32, 32, 0.22);
 }
 
 .tag-done {
@@ -859,6 +848,27 @@ textarea:focus-visible,
   margin: 0;
 }
 
+/* Badge showcase (About page) */
+.badge-showcase {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.badge-showcase img {
+  width: 7.5rem;
+  height: 7.5rem;
+  flex: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow-soft);
+}
+
+.badge-showcase p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--axis-muted);
+}
+
 /* People (board) */
 .person {
   display: flex;
@@ -877,7 +887,7 @@ textarea:focus-visible,
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: var(--axis-red-wash);
+  background: var(--axis-cream);
   color: var(--axis-red-deep);
   font-family: var(--font-display);
   font-weight: 700;
@@ -906,19 +916,25 @@ textarea:focus-visible,
 }
 
 .cta-band::after {
-  content: "AXIS";
+  content: "";
   position: absolute;
-  right: -0.15em;
-  bottom: -0.32em;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(8rem, 24vw, 22rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
+  right: -6%;
+  top: 50%;
+  width: clamp(18rem, 42vw, 34rem);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background: url("../images/brand/logo.webp") center / contain no-repeat;
+  opacity: 0.1;
+  filter: grayscale(1) brightness(1.9);
   pointer-events: none;
-  user-select: none;
+}
+
+@media (max-width: 767.98px) {
+  .cta-band::after {
+    right: -35%;
+    width: 22rem;
+    opacity: 0.08;
+  }
 }
 
 .cta-band .container {
@@ -976,17 +992,17 @@ textarea:focus-visible,
   --bs-btn-hover-border-color: var(--axis-red-deep);
   --bs-btn-active-bg: var(--axis-red-deep);
   --bs-btn-active-border-color: var(--axis-red-deep);
-  box-shadow: 0 6px 18px rgba(190, 24, 24, 0.22);
+  box-shadow: 0 6px 18px rgba(192, 32, 32, 0.22);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(190, 24, 24, 0.28);
+  box-shadow: 0 10px 24px rgba(192, 32, 32, 0.28);
 }
 
 .btn-outline-primary {
   --bs-btn-color: var(--axis-red);
-  --bs-btn-border-color: rgba(190, 24, 24, 0.45);
+  --bs-btn-border-color: rgba(192, 32, 32, 0.45);
   --bs-btn-hover-bg: var(--axis-red);
   --bs-btn-hover-border-color: var(--axis-red);
   --bs-btn-hover-color: #fff;
@@ -1040,7 +1056,7 @@ textarea:focus-visible,
 .form-control:focus,
 .form-select:focus {
   border-color: var(--axis-red);
-  box-shadow: 0 0 0 0.22rem rgba(190, 24, 24, 0.14);
+  box-shadow: 0 0 0 0.22rem rgba(192, 32, 32, 0.14);
 }
 
 .form-check-input:checked {
@@ -1112,10 +1128,10 @@ textarea:focus-visible,
 }
 
 .site-footer .footer-brand img {
-  width: 40px;
+  width: 44px;
   height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
 }
 
 .site-footer h2 {
@@ -1345,22 +1361,8 @@ textarea:focus-visible,
   .site-footer,
   .filter-bar,
   .cta-band,
-  .hero-cover .btn {
+  .hero-split .btn {
     display: none !important;
-  }
-
-  .hero-cover {
-    min-height: 0;
-    color: var(--axis-ink);
-  }
-
-  .hero-cover > img,
-  .hero-cover::before {
-    display: none;
-  }
-
-  .hero-cover h1 {
-    color: var(--axis-ink);
   }
 
   body {

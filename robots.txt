@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alumniaxis.hr/sitemap.xml
+Sitemap: https://alumniaxis-st.hr/sitemap.xml

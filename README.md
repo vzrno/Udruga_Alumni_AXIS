@@ -37,14 +37,21 @@ pa se mogu podijeliti i Google ih indeksira.
 ├── fonts/   woff2 datoteke (Archivo, IBM Plex Sans)
 ├── vendor/  bootstrap.min.css, bootstrap.bundle.min.js
 ├── js/      util.js, main.js, events.js, news.js, careers.js
-├── images/  brand/ events/ udruga/  (uz svaku sliku i -700 varijanta)
-├── dokumenti/  statut i pristupnice (PDF)
+├── images/  brand/ events/ udruga/  (sve 1400×933, uz svaku i -700 varijanta 700×467)
+├── dokumenti/  statut i pristupnice (PDF) — malim slovom, bez razmaka u nazivima
 ├── .github/workflows/build.yml   provjera na svaki push
 └── build.mjs                     generator
 ```
 
 Datoteke u korijenu, u `en/`, `novosti/` i `dogadanja/` **ne uređuju se ručno** —
-generator ih prepisuje. Sadržaj se mijenja u `src/` i `data/`.
+generator ih prepisuje (mape `novosti/`, `dogadanja/`, `en/news/` i `en/events/`
+briše i stvara iznova pri svakom buildu). Sadržaj se mijenja u `src/` i `data/`.
+
+> **Velika i mala slova su važna.** Windows ne razlikuje `Dokumenti` od
+> `dokumenti`, ali GitHub Pages i svaki Linux server razlikuju. Mapa se zove
+> `dokumenti` (malo d), slike i PDF-ovi nemaju razmake ni č ć ž š đ u nazivu.
+> Izvorne datoteke (stari nazivi, PNG/JPG originali) namjerno nisu u projektu —
+> čuvaj ih izvan repozitorija.
 
 ---
 
@@ -101,6 +108,11 @@ stara poveznica prestane raditi.
 - Slug bez č ć ž š đ i bez razmaka. Pravilo: naslov malim slovima, riječi
   spojene crticom, do šest riječi.
 
+Objave o samoj Udruzi (skupštine, članstvo u ASUS-u, odluke) nemaju fotografiju,
+pa koriste brendiranu sliku sa značkom: `images/udruga/znacka-tamna.webp`
+(crna podloga) ili `znacka-krem.webp` (krem podloga). Obje su u standardnoj
+dimenziji i imaju `-700` varijantu.
+
 ### Novo događanje
 
 Isto, u `data/events.json` (`dogadanja/<slug>.html`). Dodatno: `endTime`,
@@ -114,18 +126,21 @@ U `data/jobs.json`; `type` je `"job"` ili `"education"`, `deadline` je neobaveza
 
 ### Nova slika
 
-U `images/events/` ili `images/udruga/`, **bez razmaka i dijakritika**, WebP,
-širina 1400 px. Uz svaku sliku treba i varijanta za mobitele:
+Sve sadržajne slike imaju **istu dimenziju: 1400 × 933 px (omjer 3:2)**, uz
+kopiju od 700 × 467 px za mobitele (`<naziv>-700.webp`). Naziv bez razmaka i
+dijakritika, format WebP.
+
+Najjednostavnije: stavi original (PNG/JPG, bilo koje veličine) u `images/events/`
+ili `images/udruga/` i pokreni
 
 ```bash
-# jedna slika u dvije veličine
-npx --yes @squoosh/cli --webp '{"quality":82}' --resize '{"width":1400}' -d images/events slika.png
-npx --yes @squoosh/cli --webp '{"quality":80}' --resize '{"width":700}'  -d /tmp slika.png
-# datoteku iz /tmp preimenuj u <naziv>-700.webp i stavi uz original
+python3 tools/slika.py images/events/moja-slika.jpg
 ```
 
-Stranice same traže `<naziv>-700.webp` preko `srcset`, pa mobitel skida manju
-datoteku. Ako varijanta ne postoji, `build.mjs` to javi kao pokvaren link.
+Skripta obreže sliku na 3:2 iz sredine, spremi obje veličine u WebP i obriše
+original. Ako je original uži od 900 px (npr. plakat ili screenshot), umjesto
+mutnog povećavanja stavlja ga na zamućenu pozadinu — tako su riješene slike
+CIET-a, Tjedna struke i Science Comes to Town, koje su bile 300–600 px.
 
 ---
 
@@ -152,15 +167,10 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
 
 ## 5. Prije objave — tri obavezne stvari
 
-1. **Adresa stranice.** U `build.mjs`:
-
-   ```js
-   const SITE = "https://alumniaxis.hr";
-   ```
-
-   Na GitHub Pages npr. `https://korisnik.github.io/Udruga_Alumni_AXIS`. Od toga
-   zavise `canonical`, `hreflang`, `sitemap.xml`, RSS, JSON-LD i slika za
-   dijeljenje. Nakon promjene pokreni build.
+1. **Adresa stranice.** U `build.mjs` je postavljena `https://alumniaxis-st.hr`.
+   Ako se domena ikad promijeni, promijeni tu jednu konstantu i pokreni build —
+   od nje zavise `canonical`, `hreflang`, `sitemap.xml`, RSS, JSON-LD i slika za
+   dijeljenje.
 
 2. **Obrasci.** Otvori besplatni račun na [formspree.io](https://formspree.io) i
    zamijeni `YOUR_FORM_ID` na četiri mjesta: `src/pages/hr/contact.html`,
@@ -173,6 +183,23 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    Test* provjeri jednu stranicu događanja — treba prepoznati `Event`.
 
 ---
+
+## 6a. Zamjena postojeće (žive) stranice
+
+1. Napravi kopiju stare mape (ili se osloni na Git povijest).
+2. U repozitoriju obriši **sve osim** `.git/` i, ako postoji, `CNAME`
+   (datoteka s domenom za GitHub Pages — bez nje domena prestaje raditi).
+3. Kopiraj sadržaj zipa u mapu.
+4. `node build.mjs` — mora ispisati `no broken local links`.
+5. `git add -A && git commit -m "Nova verzija stranice" && git push`.
+   Ako stranica ide na hosting preko FTP-a: prenesi cijelu mapu osim `src/`,
+   `tools/`, `.github/` i `package.json` (nisu potrebni na serveru, ali ne smetaju).
+6. U Google Search Console: **Sitemaps → dodaj `sitemap.xml`** i, po želji,
+   *URL Inspection → Request indexing* za naslovnicu.
+
+Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
+`clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
+stara adresa sada preusmjerava na novu (popis `REDIRECTS` u `build.mjs`).
 
 ## 6. Objava na GitHub Pages
 
@@ -217,8 +244,10 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - Bootstrap, fontovi i ikone učitavaju se **s vlastitog servera** (`vendor/`,
   `fonts/`, `css/icons.css`), pa posjet stranici ne šalje podatke Googleu ni
   drugim servisima. Ikone su SVG maske — samo deset korištenih, oko 6 KB.
-- Karta na stranici Kontakt učitava se tek kad je posjetitelj sam otvori
-  klikom, uz napomenu zašto.
+- Karta (Google Maps) na stranici Kontakt učitava se tek kad je posjetitelj sam
+  otvori klikom, uz napomenu zašto. Adresa za ugrađenu kartu mora biti
+  `maps.google.com/maps?…&output=embed`; kratke poveznice `maps.app.goo.gl`
+  ne mogu se prikazati u okviru, pa služe samo za gumb "Otvori u Google Mapsu".
 - Stranica `privatnost.html` / `en/privacy.html` opisuje obradu podataka;
   **provjeri rokove i primatelje prije objave** i po potrebi ju daj na pregled
   osobi za zaštitu podataka na Sveučilištu.
@@ -242,8 +271,12 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - **Header** sa zamućenom pozadinom, sjenom pri skrolanju i crvenim gumbom
   "Postani član"; **footer** s logotipom, uredno poravnatim stupcima i
   poveznicama na RSS i privatnost.
-- Sve boje, radijusi i sjene su tokeni u `:root` na vrhu `css/base.css` —
-  promjena crvene mijenja cijelu stranicu.
+- Boje su uzete iz značke Udruge (crvena sova, crni prsten, krem podloga):
+  crvena `#c02020` za gumbe i poveznice, crna `#151312` za tekst i footer,
+  krem `#faf4ec` za pozadinske trake i `#fcecdc` za sitne akcente (datum na
+  slici, inicijali). Sve su tokeni u `:root` na vrhu `css/base.css`.
+- Značka se pojavljuje u headeru, footeru, na stranici O nama i kao vodeni žig
+  na crvenoj traci naslovnice; favicon i slika za dijeljenje također su iz nje.
 - Hero fotografiju mijenjaš u `src/pages/hr/home.html` i `en/home.html`
   (`images/udruga/kampus.webp`); preporuka je vodoravna fotografija najmanje
   1600 px širine, s "praznim" prostorom lijevo gdje ide tekst.

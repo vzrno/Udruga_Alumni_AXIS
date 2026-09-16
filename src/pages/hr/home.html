@@ -6,25 +6,29 @@
   "icons": true
 }-->
     <main id="main">
-      <section class="hero-cover">
-        <img
-          src="{{root}}images/udruga/kampus.webp"
-          srcset="{{root}}images/udruga/kampus-700.webp 700w, {{root}}images/udruga/kampus.webp 1400w"
-          sizes="100vw"
-          alt="Članovi Alumni AXIS Split na kampusu Sveučilišta u Splitu"
-          width="1600"
-          height="1000"
-          fetchpriority="high"
-        />
+      <section class="hero-split">
         <div class="container">
-          <div class="hero-content">
+          <div class="hero-grid">
+            <div class="hero-content">
             <p class="hero-kicker">Sveučilište u Splitu · Odjel za stručne studije</p>
             <h1>Struka koja ostaje povezana</h1>
             <p class="hero-lede">Alumni AXIS Split okuplja diplomirane i sadašnje studente Odjela: stručna događanja, terenske nastave, poslovi i vrata Odjela otvorena i nakon diplome.</p>
             <div class="d-flex flex-wrap gap-2 mt-4">
               <a class="btn btn-primary btn-lg" href="{{root}}{{p.membership}}">Postani član</a>
-              <a class="btn btn-outline-light btn-lg" href="#dogadanja">Pogledaj događanja</a>
+              <a class="btn btn-outline-primary btn-lg" href="#dogadanja">Pogledaj događanja</a>
             </div>
+          </div>
+            <figure class="hero-figure">
+              <img
+              src="{{root}}images/udruga/globalna-suradnja.webp"
+              srcset="{{root}}images/udruga/globalna-suradnja-700.webp 700w, {{root}}images/udruga/globalna-suradnja.webp 1400w"
+              sizes="(min-width: 992px) 52vw, 94vw"
+              alt="Suradnja u različitim područjima — elektrotehnika, strojarstvo, informatika i ekonomija"
+              width="1400"
+              height="933"
+              fetchpriority="high"
+              />
+            </figure>
           </div>
         </div>
       </section>

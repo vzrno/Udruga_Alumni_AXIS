@@ -12,14 +12,14 @@
    Run:  npm run build
    =========================================================================== */
 
-import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
 /* ------------------------------------------------------------------ config */
 
 /** Public address of the site. Change before going live. */
-const SITE = "https://alumniaxis.hr";
+const SITE = "https://alumniaxis-st.hr";
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const SRC = path.join(ROOT, "src");
@@ -56,6 +56,15 @@ const COLLECTIONS = [
 ];
 
 const ICONS_CSS = '    <link rel="stylesheet" href="{{root}}css/icons.css" />';
+
+/** Old address -> new address. Add a line here whenever a slug changes, so a
+ *  link that Google or someone's bookmark still holds keeps working. */
+const REDIRECTS = [
+  { from: "novosti/ciet-2026-poziv-radove.html", to: "novosti/konferencija-ciet-2026.html" },
+  { from: "dogadanja/ciet-2026-poziv-radove.html", to: "dogadanja/konferencija-ciet-2026.html" },
+  { from: "en/news/ciet-2026-call-papers.html", to: "en/news/ciet-2026-conference.html" },
+  { from: "en/events/ciet-2026-call-papers.html", to: "en/events/ciet-2026-conference.html" },
+];
 
 /* ----------------------------------------------------------------- helpers */
 
@@ -224,7 +233,7 @@ async function renderPage({ outPath, lang, altPaths, meta, content, jsonld = [] 
     canonical: absolute(outPath),
     alternates,
     robots: meta.robots || "index, follow",
-    iconsCss: meta.icons ? ICONS_CSS.replace("{{root}}", root) : "",
+    iconsCss: ICONS_CSS.replace("{{root}}", root),
     bodyClass: `page-${meta.bodyId || meta.activeId || "detail"}`,
     ogType: meta.ogType || "website",
     ogImage: meta.ogImage ? `${SITE}/${meta.ogImage}` : `${SITE}/images/brand/og-cover.jpg`,
@@ -327,6 +336,14 @@ for (const lang of LANGS) {
 }
 
 /* --------------------------------------------------------- detail pages */
+
+// Generated folders are rebuilt from scratch, so a renamed slug cannot leave
+// a stale page behind.
+for (const collection of COLLECTIONS) {
+  for (const lang of LANGS) {
+    await rm(path.join(ROOT, collection.dir[lang]), { recursive: true, force: true });
+  }
+}
 
 for (const collection of COLLECTIONS) {
   const items = collections[collection.key];
@@ -480,6 +497,34 @@ for (const collection of COLLECTIONS) {
   }
 }
 
+/* ------------------------------------------------------------- redirects */
+
+for (const { from, to } of REDIRECTS) {
+  const target = absolute(to);
+  const out = path.join(ROOT, from);
+  await mkdir(path.dirname(out), { recursive: true });
+  await writeFile(
+    out,
+    `<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Preusmjeravanje / Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="${target}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+    <script>location.replace(${JSON.stringify(target)});</script>
+  </head>
+  <body>
+    <p>Stranica je premještena / This page has moved: <a href="${target}">${target}</a></p>
+  </body>
+</html>
+`,
+    "utf8",
+  );
+  outputs.push(from);
+}
+
 /* ------------------------------------------------------------------- 404 */
 
 const notFound = await read(path.join(SRC, "partials/404.html"));
@@ -528,7 +573,14 @@ ${items}
 
 /* --------------------------------------------------------------- sitemap */
 
-const today = new Date().toISOString().slice(0, 10);
+// lastmod comes from the content itself, so two builds of the same sources are
+// byte-identical (the CI check depends on that) and Google sees a real date.
+const allDates = Object.values(collections)
+  .flat()
+  .flatMap((item) => [item.date, item.dateEnd])
+  .filter(Boolean)
+  .sort();
+const today = allDates.at(-1) || new Date().toISOString().slice(0, 10);
 const entries = [];
 
 for (const page of PAGES) {
@@ -551,6 +603,7 @@ for (const collection of COLLECTIONS) {
         alt: LANGS.map((code) => [code, absolute(`${collection.dir[code]}/${item.slug[code]}.html`)]),
         freq: "yearly",
         priority: "0.6",
+        lastmod: item.dateEnd || item.date,
       });
     }
   }
@@ -565,7 +618,7 @@ ${entries
   .map(
     (entry) => `  <url>
     <loc>${entry.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${entry.lastmod || today}</lastmod>
     <changefreq>${entry.freq}</changefreq>
     <priority>${entry.priority}</priority>
 ${entry.alt.map(([code, href]) => `    <xhtml:link rel="alternate" hreflang="${code}" href="${href}"/>`).join("\n")}

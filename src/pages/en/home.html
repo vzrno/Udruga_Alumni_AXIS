@@ -6,25 +6,29 @@
   "icons": true
 }-->
     <main id="main">
-      <section class="hero-cover">
-        <img
-          src="{{root}}images/udruga/kampus.webp"
-          srcset="{{root}}images/udruga/kampus-700.webp 700w, {{root}}images/udruga/kampus.webp 1400w"
-          sizes="100vw"
-          alt="Alumni AXIS Split members on the University of Split campus"
-          width="1600"
-          height="1000"
-          fetchpriority="high"
-        />
+      <section class="hero-split">
         <div class="container">
-          <div class="hero-content">
+          <div class="hero-grid">
+            <div class="hero-content">
             <p class="hero-kicker">University of Split · Department of Professional Studies</p>
             <h1>A profession that stays connected</h1>
             <p class="hero-lede">Alumni AXIS Split brings together graduates and current students of the Department: professional events, site visits, jobs, and a door to the Department that stays open after graduation.</p>
             <div class="d-flex flex-wrap gap-2 mt-4">
               <a class="btn btn-primary btn-lg" href="{{root}}{{p.membership}}">Become a member</a>
-              <a class="btn btn-outline-light btn-lg" href="#events">See the events</a>
+              <a class="btn btn-outline-primary btn-lg" href="#events">See the events</a>
             </div>
+          </div>
+            <figure class="hero-figure">
+              <img
+              src="{{root}}images/udruga/globalna-suradnja.webp"
+              srcset="{{root}}images/udruga/globalna-suradnja-700.webp 700w, {{root}}images/udruga/globalna-suradnja.webp 1400w"
+              sizes="(min-width: 992px) 52vw, 94vw"
+              alt="Collaboration across fields — electrical engineering, mechanical engineering, IT and economics"
+              width="1400"
+              height="933"
+              fetchpriority="high"
+              />
+            </figure>
           </div>
         </div>
       </section>

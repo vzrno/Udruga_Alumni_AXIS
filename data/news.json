@@ -6,7 +6,7 @@
       "en": "alumni-axis-split-becomes-full-member"
     },
     "date": "2026-05-14",
-    "image": "images/udruga/kampus.webp",
+    "image": "images/udruga/znacka-tamna.webp",
     "title": {
       "hr": "Alumni AXIS Split postao redoviti član Udruge Alumni Sveučilišta u Splitu – ASUS",
       "en": "Alumni AXIS Split becomes a full member of ASUS, the University of Split alumni association"
@@ -102,7 +102,7 @@
     },
     "date": "2026-02-18",
     "time": "16:00",
-    "image": "images/udruga/fakultet.webp",
+    "image": "images/udruga/znacka-tamna.webp",
     "title": {
       "hr": "Održana 2. redovna godišnja skupština Udruge",
       "en": "Second annual general assembly held"
@@ -177,19 +177,19 @@
   {
     "id": 5,
     "slug": {
-      "hr": "ciet-2026-poziv-radove",
-      "en": "ciet-2026-call-papers"
+      "hr": "konferencija-ciet-2026",
+      "en": "ciet-2026-conference"
     },
-    "date": "2026-11-06",
-    "dateEnd": "2026-12-06",
+    "date": "2026-06-11",
+    "dateEnd": "2026-06-12",
     "image": "images/events/ciet-2026.webp",
     "title": {
-      "hr": "CIET 2026 — poziv na radove",
-      "en": "CIET 2026 — call for papers"
+      "hr": "Konferencija CIET 2026",
+      "en": "CIET 2026 conference"
     },
     "location": {
       "hr": "Split, Kopilica 5",
-      "en": "Split, Kopilica 5"
+      "en": "Split, Kopilica 5, Croatia"
     },
     "tags": {
       "hr": [
@@ -201,7 +201,11 @@
         "conference"
       ]
     },
-    "description": "https://www.oss.unist.hr/novosti/clanak/ciet-2026"
+    "description": {
+      "hr": "Sedma međunarodna znanstveno-stručna konferencija Contemporary Issues in Economy and Technology (CIET 2026) u organizaciji Sveučilišnog odjela za stručne studije održana je 11. i 12. lipnja 2026. u Splitu, uz tematske radionice za studente i nastavnike. Program, zbornik radova i informacije za sudionike nalaze se na stranicama konferencije.",
+      "en": "The 7th international scientific and professional conference Contemporary Issues in Economy and Technology (CIET 2026), hosted by the University Department of Professional Studies, took place on 11–12 June 2026 in Split, with thematic workshops for students and staff. The programme, proceedings and participant information are on the conference website."
+    },
+    "url": "https://ciet.oss.unist.hr/"
   },
   {
     "id": 1,
@@ -211,7 +215,7 @@
     },
     "date": "2025-12-23",
     "time": "12:30",
-    "image": "images/udruga/fakultet.webp",
+    "image": "images/udruga/znacka-tamna.webp",
     "title": {
       "hr": "Održana 1. redovna godišnja skupština Udruge",
       "en": "First annual general assembly held"
@@ -315,7 +319,7 @@
     },
     "date": "2025-10-20",
     "time": "14:00",
-    "image": "images/udruga/kampus.webp",
+    "image": "images/udruga/znacka-tamna.webp",
     "title": {
       "hr": "Osnivačka skupština Udruge Alumni AXIS Split",
       "en": "Founding assembly of Alumni AXIS Split"
