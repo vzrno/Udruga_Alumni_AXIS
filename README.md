@@ -201,6 +201,25 @@ Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
 `clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
 stara adresa sada preusmjerava na novu (popis `REDIRECTS` u `build.mjs`).
 
+## 6b. Git na Windowsu i velika/mala slova
+
+Windows ne razlikuje `Dokumenti` od `dokumenti`, a Git na Windowsu
+(`core.ignorecase=true`) zato **ne primijeti** kad se mapi promijeni samo
+veličina slova. Posljedica: na GitHubu ostane stara `Dokumenti/`, stranice traže
+`dokumenti/…`, i na Linux serveru (GitHub Pages, CI) svi PDF-ovi su 404.
+
+Preimenovanje treba napraviti kroz Git, u dva koraka:
+
+```bash
+git mv Dokumenti dokumenti-tmp
+git mv dokumenti-tmp dokumenti
+git commit -m "Preimenuj Dokumenti u dokumenti"
+git push
+```
+
+`build.mjs` ovakav slučaj prepoznaje i u ispisu piše da datoteka "postoji kao
+Dokumenti/…" — to je znak za gornje naredbe.
+
 ## 6. Objava na GitHub Pages
 
 Generirane stranice su u korijenu, pa nema builda na serveru:

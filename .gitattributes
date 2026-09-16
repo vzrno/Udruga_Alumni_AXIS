@@ -1,0 +1,7 @@
+# Generated pages must be byte-identical on Windows and on the Linux CI runner.
+* text=auto eol=lf
+*.webp binary
+*.png binary
+*.jpg binary
+*.pdf binary
+*.woff2 binary

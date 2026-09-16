@@ -662,7 +662,13 @@ for (const outPath of outputs) {
     /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml))"/g,
   )) {
     const target = path.posix.normalize(path.posix.join(dir === "." ? "" : dir, match[1]));
-    if (!files.has(target)) problems.push(`${outPath} → ${match[1]}`);
+    if (files.has(target)) continue;
+    const caseTwin = [...files].find((f) => f.toLowerCase() === target.toLowerCase());
+    problems.push(
+      caseTwin
+        ? `${outPath} → ${match[1]}   (postoji kao "${caseTwin}": razlika u velikim/malim slovima — Git na Windowsu to ne vidi; vidi README §6b)`
+        : `${outPath} → ${match[1]}`,
+    );
   }
 }
 
