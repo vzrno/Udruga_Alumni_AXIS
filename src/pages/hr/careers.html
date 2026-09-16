@@ -1,0 +1,81 @@
+<!--{
+  "id": "careers",
+  "title": "Poslovi i edukacije — Alumni AXIS Split",
+  "description": "Otvorene radne pozicije i edukacije za članove Udruge Alumni AXIS Split te projekt „Zaposli me“.",
+  "scripts": ["careers.js"],
+  "icons": true
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Poslovi</h1>
+        <p>Otvorene pozicije, edukacije i podrška pri ulasku na tržište rada</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-4 mb-5">
+          <div class="col-lg-6">
+            <div class="panel h-100">
+              <h2>Naša misija</h2>
+              <p class="mb-0">
+                Povezujemo bivše i sadašnje studente Odjela s poslovnom zajednicom. Oglase
+                objavljujemo kad nam ih poslodavci pošalju ili kad procijenimo da odgovaraju
+                profilu naših članova.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="panel h-100">
+              <h2>
+                Projekt „Zaposli me“
+                <span class="tag tag-soon align-middle ms-1">U pripremi</span>
+              </h2>
+              <p>
+                Projekt će članovima pružiti podršku pri zapošljavanju kroz edukacije, preporuke i
+                izravnu komunikaciju s poslodavcima.
+              </p>
+              <ul class="data-list mb-0">
+                <li>Pomoć u pronalaženju posla</li>
+                <li>Preporuke za dodatna obrazovanja</li>
+                <li>Suradnja s poslodavcima</li>
+                <li>Praćenje profesionalnog razvoja</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>Otvorene objave</h2>
+          <p>Oglase prikupljamo iz javnih izvora i od partnera. Prijava ide izravno poslodavcu.</p>
+        </div>
+
+        <div class="row g-3 align-items-end mb-4">
+          <div class="col-md-4">
+            <label class="form-label" for="jobs-filter">Vrsta objave</label>
+            <select class="form-select" id="jobs-filter">
+              <option value="all">Sve</option>
+              <option value="job">Poslovi</option>
+              <option value="education">Edukacije</option>
+            </select>
+          </div>
+          <div class="col-md-8 text-md-end">
+            <p class="card-meta mb-0">
+              Prikazano objava: <span id="jobs-count" aria-live="polite">0</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4" id="jobs-list" aria-live="polite" aria-busy="true"></div>
+
+        <nav class="mt-4" aria-label="Stranice objava">
+          <ul class="pagination justify-content-center" id="jobs-pager"></ul>
+        </nav>
+
+        <div class="panel-note mt-5">
+          <strong>Poslodavci:</strong> oglas objavljujemo bez naknade. Pošaljite opis pozicije i rok
+          prijave na <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>.
+        </div>
+      </div>
+    </main>

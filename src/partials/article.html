@@ -1,0 +1,66 @@
+    <div class="page-head">
+      <div class="container">
+        <p class="card-meta mb-2">
+          <a href="{{root}}{{indexPath}}">&larr; {{backLabel}}</a>
+        </p>
+        <h1>{{articleTitle}}</h1>
+        <p>{{articleMeta}}</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <article class="col-lg-8">
+            <div class="ratio-media mb-4">
+              <img
+                src="{{root}}{{articleImage}}"
+                srcset="{{root}}{{articleImageSmall}} 700w, {{root}}{{articleImage}} 1400w"
+                sizes="(min-width: 992px) 62vw, 94vw"
+                alt="{{articleImageAlt}}"
+                width="1400"
+                height="875"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="article-body">
+              {{articleBody}}
+              {{articleBlocks}}
+            </div>
+
+            <p class="mt-4">
+              <a class="btn btn-outline-primary" href="{{root}}{{indexPath}}">&larr; {{backLabel}}</a>
+            </p>
+          </article>
+
+          <aside class="col-lg-4">
+            <div class="panel panel-soft">
+              <h2 class="h5">{{detailsLabel}}</h2>
+              <ul class="data-list">
+                {{articleFacts}}
+              </ul>
+              {{articleCta}}
+            </div>
+
+            <div class="panel">
+              <h2 class="h5">{{shareLabel}}</h2>
+              <p class="d-flex flex-wrap gap-2 mb-0">
+                <a class="btn btn-outline-primary btn-sm" href="{{shareFacebook}}" target="_blank" rel="noopener">
+                  <i class="bi bi-facebook me-1" aria-hidden="true"></i>Facebook
+                </a>
+                <a class="btn btn-outline-primary btn-sm" href="{{shareLinkedIn}}" target="_blank" rel="noopener">
+                  <i class="bi bi-linkedin me-1" aria-hidden="true"></i>LinkedIn
+                </a>
+                <a class="btn btn-outline-primary btn-sm" href="{{shareMail}}">
+                  <i class="bi bi-envelope me-1" aria-hidden="true"></i>E-mail
+                </a>
+                <button type="button" class="btn btn-outline-primary btn-sm" data-copy-link>
+                  <i class="bi bi-link-45deg me-1" aria-hidden="true"></i>{{copyLabel}}
+                </button>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>

@@ -1,0 +1,11 @@
+{
+  "name": "alumni-axis-split",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Web stranica Udruge Alumni AXIS Split (HR/EN)",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "npx --yes serve . -l 5173"
+  }
+}

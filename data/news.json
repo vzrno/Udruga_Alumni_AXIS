@@ -1,142 +1,388 @@
 [
   {
-    "id": 1,
-    "title": "Održana 1. redovna godišnja skupština Udruge AXIS Split",
-    "date": "2025-12-23",
-    "dateEnd": null,
-    "time": "12:30",
-    "location": "Split, Kopilica 5",
-    "image": "images/udruga/Logo AXIS crvena.png",
-    "description": "Na redovnoj godišnjoj skupštini članovi su raspravljali o dosadašnjim rezultatima te definirali ciljeve za naredno razdoblje.",
-    "tags": [],
-    "agenda": [
-      {
-        "topic": "Donošenje odluke o udruživanju u ASUS udruge. Izbor zastupnika u skupštini ASUS-a."
-      }
-    ],
-    "board": []
-  },
-  {
-    "id": 2,
-    "title": "Stručna ekskurzija studenata Elektronike i Elektroenergetike",
-    "date": "2025-12-10",
-    "dateEnd": "2025-12-12",
-    "time": null,
-    "location": "Zagreb i Varaždin",
-    "image": "images/events/Strucna posjeta Robotika.jpg",
-    "description": "Naši studenti elektronike i energetike, u pratnji prof. Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja stečenih teorijskih znanja i njihove primjene u praksi. Ova stručna ekskurzija studentima je omogućila povezivanje nastavnog gradiva s praktičnim primjerima.",
-    "tags": [],
-    "agenda": [
-      {
-        "topic": "Prvoga dana posjećen je Tehnički muzej „Nikola Tesla“ u Zagrebu, gdje su studenti imali priliku vidjeti brojne Tesline izume te se upoznati s njegovim životnim i znanstvenim putem. U sklopu muzeja obišli su i rudnik, kao i prometni dio u kojem su prikazani počeci tramvajskog prometa i razvoja lokomotiva. Drugoga dana studenti su posjetili tvrtku Atinel u Varaždinu, vodeću hrvatsku tvrtku u području automatike i robotike, koja razvija rješenja za svjetsku automobilsku industriju. Trećega dana ekskurzija je završena posjetom Memorijalnom centru Nikola Tesla i rodnoj kući Nikole Tesle u Smiljanu."
-      }
-    ],
-    "board": []
-  },
-  {
-    "id": 3,
-    "title": "Najava: Osnivačka skupština Udruge AXIS Split",
-    "date": "2025-10-20",
-    "dateEnd": null,
-    "time": "14:00",
-    "location": "Split, Kopilica 5",
-    "image": "images/udruga/Logo AXIS crvena.png",
-    "description": "Na osnivačkoj skupštini izabrano je vodstvo udruge Alumni AXIS Split s mandatom od 20.10.2025. do 20.10.2029.",
-    "tags": [],
-    "agenda": [],
-    "board": [
-      { "role": "Predsjednik", "name": "Vjekoslav Zrno" },
-      { "role": "Potpredsjednica", "name": "Marija Jelović" },
-      { "role": "Tajnica", "name": "Petra Orlić" },
-      { "role": "Član Upravnog odbora", "name": "Laura Lara Gizdić" },
-      { "role": "Član Upravnog odbora", "name": "Ivica Lovrić" }
-    ]
-  },
-  {
-    "id": 5,
-    "title": "CIET 2026 - Poziv na radove",
-    "date": "2026-11-06",
-    "dateEnd": "2026-12-06",
-    "time": "Cijeli dan",
-    "location": "Split, Kopilica 5",
-    "image": "images/events/CIET 2026.jpg",
-    "description": "https://www.oss.unist.hr/novosti/clanak/ciet-2026",
-    "tags": ["CIET", "konferencija"],
-    "slug": "CIET-2026-poziv",
-    "agenda": [],
-    "board": []
-  },
-  {
-    "id": 6,
-    "title": "Održana 2. redovna godišnja skupština Udruge AXIS Split",
-    "date": "2026-02-18",
-    "dateEnd": null,
-    "time": "16:00",
-    "location": "Split, Kopilica 5",
-    "image": "images/udruga/Logo AXIS crvena.png",
-    "description": "",
-    "tags": [],
-    "agenda": [
-      {
-        "topic": "Plan rada i aktivnosti Udruge za naredno razdoblje"
-      },
-      {
-        "topic": "Financijski plan / okvirni proračun Udruge"
-      }
-    ],
-    "board": []
-  },
-  {
-    "id": 7,
-    "title": "Terenska nastava studenata Elektrotehnike u vjetroelektrani Ogorje",
-    "date": "2026-05-12",
-    "dateEnd": null,
-    "time": "08:30",
-    "location": "Vjetroelektrana Ogorje",
-    "image": "images/events/VE Ogorje.jpg",
-    "description": "U sklopu jačanja suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Vjetroelektrana Ogorje, tijekom koje su studenti imali priliku upoznati se s praktičnim aspektima rada i upravljanja postrojenjima za proizvodnju električne energije iz obnovljivih izvora.\n\nKroz stručni obilazak i predavanja studenti su stekli vrijedna iskustva te dodatno povezali teorijska znanja s praksom u području energetike i održivog razvoja. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja kontinuirano doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\n\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne terenske nastave te se veselimo budućim zajedničkim projektima i aktivnostima.",
-    "tags": [],
-    "agenda": [],
-    "board": []
-  },
-  {
-    "id": 8,
-    "title": "Science Comes to Town: Zajednička organizacija UTT-a, Odsjeka za Elektrotehnike i Alumni udruge AXIS Split",
-    "date": "2026-01-23",
-    "dateEnd": null,
-    "time": "10:00 - 14:00",
-    "location": "Dioklecijanova palača, Split",
-    "image": "images/events/Science Comes to Town.jpg",
-    "description": "Alumni udruga AXIS, u suradnji s Uredom za transfer tehnologije i Odsjekom za elektrotehniku, sudjelovala je u organizaciji predstavljanja projekta Science Comes to Town. Tom prilikom dr. sc. Tonko Kovačević, Vjeko Zrno, Marija Jelović i student Pjero Kalajžić prezentirali su sustav za bežičnu komunikaciju temeljen na modulaciji vidljivog svjetla, namijenjen povezivanju i prijenosu digitalnih podataka.",
-    "tags": [],
-    "agenda": [],
-    "board": []
+    "id": 10,
+    "slug": {
+      "hr": "alumni-axis-split-postao-redoviti-clan",
+      "en": "alumni-axis-split-becomes-full-member"
+    },
+    "date": "2026-05-14",
+    "image": "images/udruga/kampus.webp",
+    "title": {
+      "hr": "Alumni AXIS Split postao redoviti član Udruge Alumni Sveučilišta u Splitu – ASUS",
+      "en": "Alumni AXIS Split becomes a full member of ASUS, the University of Split alumni association"
+    },
+    "location": {
+      "hr": "Sveučilište u Splitu",
+      "en": "University of Split"
+    },
+    "tags": {
+      "hr": [
+        "ASUS",
+        "članstvo"
+      ],
+      "en": [
+        "ASUS",
+        "membership"
+      ]
+    },
+    "description": {
+      "hr": "Koordinacijski odbor Udruge Alumni Sveučilišta u Splitu – ASUS donio je odluku o prijemu Udruge diplomiranih studenata Sveučilišnog odjela za stručne studije Sveučilišta u Splitu – Alumni AXIS Split u redovito članstvo.\n\nOvim članstvom otvara se novi prostor za snažnije povezivanje sadašnjih i bivših studenata, razmjenu znanja i iskustava, razvoj suradnje te zajedničko osmišljavanje budućih aktivnosti i projekata.",
+      "en": "The coordinating board of ASUS, the alumni association of the University of Split, has admitted Alumni AXIS Split — the association of graduates of the University Department of Professional Studies — as a full member.\n\nThe membership opens up closer ties between current and former students, wider exchange of knowledge and experience, and joint planning of future activities and projects."
+    }
   },
   {
     "id": 9,
-    "title": "Terenska nastava studenata Elektrotehnike u Dispečerski centar Vrboran",
+    "slug": {
+      "hr": "terenska-nastava-studenata-elektrotehnike-dispecerskom-centru",
+      "en": "electrical-engineering-students-visit-vrboran-grid"
+    },
     "date": "2026-05-19",
-    "dateEnd": null,
-    "time": "11:00 - 12:00",
-    "location": "Dispečerski centar Vrboran",
-    "image": "images/events/Disprečerski centar Vrboran.jpg",
-    "description": "U sklopu kontinuirane suradnje između Fakulteta i Alumni udruge bivših studenata organizirana je terenska nastava u Dispečerski centar Vrboran, tijekom koje su studenti imali priliku upoznati se s radom i organizacijom dispečerskog centra te procesima upravljanja elektroenergetskim sustavom.\n\nKroz stručni obilazak studenti su stekli vrijedna praktična znanja o nadzoru elektroenergetske mreže, koordinaciji sustava i važnosti sigurnog i pouzdanog upravljanja proizvodnjom i distribucijom električne energije.\n\nTerensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge koja aktivno doprinosi povezivanju bivših i sadašnjih studenata te razvoju stručne suradnje s Fakultetom.\n\nZahvaljujemo svima koji su sudjelovali u organizaciji i realizaciji ove uspješne aktivnosti te se veselimo budućim projektima i nastavku uspješne suradnje.",
-    "tags": [],
-    "agenda": [],
-    "board": []
+    "time": "11:00 – 12:00",
+    "image": "images/events/dispecerski-centar-vrboran.webp",
+    "title": {
+      "hr": "Terenska nastava studenata elektrotehnike u Dispečerskom centru Vrboran",
+      "en": "Electrical engineering students visit the Vrboran grid control centre"
+    },
+    "location": {
+      "hr": "Dispečerski centar Vrboran",
+      "en": "Vrboran grid control centre"
+    },
+    "tags": {
+      "hr": [
+        "terenska nastava",
+        "elektroenergetika"
+      ],
+      "en": [
+        "field visit",
+        "power systems"
+      ]
+    },
+    "description": {
+      "hr": "U sklopu kontinuirane suradnje između Odjela i Alumni udruge organizirana je terenska nastava u Dispečerskom centru Vrboran, tijekom koje su se studenti upoznali s radom i organizacijom dispečerskog centra te procesima upravljanja elektroenergetskim sustavom.\n\nKroz stručni obilazak studenti su stekli praktična znanja o nadzoru elektroenergetske mreže, koordinaciji sustava te važnosti sigurnog i pouzdanog upravljanja proizvodnjom i distribucijom električne energije.\n\nTerensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić, uz podršku Alumni udruge.",
+      "en": "As part of the ongoing cooperation between the Department and the alumni association, students visited the Vrboran grid control centre to see how a control centre is organised and how the power system is managed in practice.\n\nThe guided visit gave students hands-on insight into grid monitoring, system coordination and the importance of safe, reliable electricity generation and distribution.\n\nThe visit was led by lecturers Vjekoslav Zrno and Toni Karabatić, with support from the alumni association."
+    }
   },
   {
-    "id": 10,
-    "title": "Alumni AXIS Split postao redoviti član Udruge Alumni Sveučilišta u Splitu – ASUS",
-    "date": "2026-05-14",
-    "dateEnd": null,
-    "time": null,
-    "location": "Sveučilište u Splitu",
-    "image": "images/udruga/Logo AXIS crvena.png",
-    "description": "Koordinacijski odbor Udruge Alumni Sveučilišta u Splitu – ASUS donio je odluku o prijemu Udruge diplomiranih studenata Sveučilišnog odjela za stručne studije Sveučilišta u Splitu – Alumni AXIS Split u redovito članstvo.\n\nOvim članstvom otvara se novi prostor za još snažnije povezivanje sadašnjih i bivših studenata, razmjenu znanja i iskustava, razvoj suradnje te zajedničko osmišljavanje budućih aktivnosti i projekata.",
-    "tags": [],
-    "slug": [],
-    "agenda": [],
-    "board": []
+    "id": 7,
+    "slug": {
+      "hr": "terenska-nastava-studenata-elektrotehnike-vjetroelektrani-ogorje",
+      "en": "electrical-engineering-students-visit-ogorje-wind"
+    },
+    "date": "2026-05-12",
+    "time": "08:30",
+    "image": "images/events/ve-ogorje.webp",
+    "title": {
+      "hr": "Terenska nastava studenata elektrotehnike u vjetroelektrani Ogorje",
+      "en": "Electrical engineering students visit the Ogorje wind farm"
+    },
+    "location": {
+      "hr": "Vjetroelektrana Ogorje",
+      "en": "Ogorje wind farm"
+    },
+    "tags": {
+      "hr": [
+        "terenska nastava",
+        "obnovljivi izvori"
+      ],
+      "en": [
+        "field visit",
+        "renewables"
+      ]
+    },
+    "description": {
+      "hr": "U sklopu jačanja suradnje između Odjela i Alumni udruge organizirana je terenska nastava u vjetroelektrani Ogorje, tijekom koje su se studenti upoznali s praktičnim aspektima rada i upravljanja postrojenjima za proizvodnju električne energije iz obnovljivih izvora.\n\nKroz stručni obilazak i predavanja studenti su povezali teorijska znanja s praksom u području energetike i održivog razvoja. Terensku nastavu vodili su profesori Vjekoslav Zrno i Toni Karabatić.",
+      "en": "Students visited the Ogorje wind farm to see how renewable generation facilities are operated and managed day to day.\n\nThe guided tour and accompanying lectures connected classroom theory with practice in energy and sustainable development. The visit was led by lecturers Vjekoslav Zrno and Toni Karabatić."
+    }
+  },
+  {
+    "id": 6,
+    "slug": {
+      "hr": "odrzana-2-redovna-godisnja-skupstina-udruge",
+      "en": "second-annual-general-assembly-held"
+    },
+    "date": "2026-02-18",
+    "time": "16:00",
+    "image": "images/udruga/fakultet.webp",
+    "title": {
+      "hr": "Održana 2. redovna godišnja skupština Udruge",
+      "en": "Second annual general assembly held"
+    },
+    "location": {
+      "hr": "Split, Kopilica 5",
+      "en": "Split, Kopilica 5"
+    },
+    "tags": {
+      "hr": [
+        "skupština"
+      ],
+      "en": [
+        "general assembly"
+      ]
+    },
+    "description": {
+      "hr": "Na drugoj redovnoj godišnjoj skupštini članovi su usvojili plan rada za naredno razdoblje i okvirni financijski plan Udruge.",
+      "en": "At its second annual general assembly, the membership adopted the work programme for the coming period and the association's outline budget."
+    },
+    "agenda": {
+      "hr": [
+        {
+          "topic": "Plan rada i aktivnosti Udruge za naredno razdoblje"
+        },
+        {
+          "topic": "Financijski plan i okvirni proračun Udruge"
+        }
+      ],
+      "en": [
+        {
+          "topic": "Work programme and activities for the coming period"
+        },
+        {
+          "topic": "Financial plan and outline budget"
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "slug": {
+      "hr": "science-comes-to-town-zajednicka-organizacija",
+      "en": "science-comes-town-organised-with-technology"
+    },
+    "date": "2026-01-23",
+    "time": "10:00 – 14:00",
+    "image": "images/events/science-comes-to-town.webp",
+    "title": {
+      "hr": "Science Comes to Town — zajednička organizacija UTT-a, Odsjeka za elektrotehniku i Alumni AXIS Split",
+      "en": "Science Comes to Town — organised with the Technology Transfer Office and the Electrical Engineering Section"
+    },
+    "location": {
+      "hr": "Dioklecijanova palača, Split",
+      "en": "Diocletian's Palace, Split"
+    },
+    "tags": {
+      "hr": [
+        "popularizacija znanosti",
+        "suradnja"
+      ],
+      "en": [
+        "science outreach",
+        "cooperation"
+      ]
+    },
+    "description": {
+      "hr": "Alumni udruga AXIS, u suradnji s Uredom za transfer tehnologije i Odsjekom za elektrotehniku, sudjelovala je u organizaciji predstavljanja projekta Science Comes to Town. Dr. sc. Tonko Kovačević, Vjekoslav Zrno, Marija Jelović i student Pjero Kalajžić prezentirali su sustav za bežičnu komunikaciju temeljen na modulaciji vidljivog svjetla, namijenjen povezivanju i prijenosu digitalnih podataka.",
+      "en": "Together with the Technology Transfer Office and the Electrical Engineering Section, the association helped organise the public presentation of the Science Comes to Town project. Tonko Kovačević, PhD, Vjekoslav Zrno, Marija Jelović and student Pjero Kalajžić demonstrated a visible-light communication system for wireless transfer of digital data."
+    }
+  },
+  {
+    "id": 5,
+    "slug": {
+      "hr": "ciet-2026-poziv-radove",
+      "en": "ciet-2026-call-papers"
+    },
+    "date": "2026-11-06",
+    "dateEnd": "2026-12-06",
+    "image": "images/events/ciet-2026.webp",
+    "title": {
+      "hr": "CIET 2026 — poziv na radove",
+      "en": "CIET 2026 — call for papers"
+    },
+    "location": {
+      "hr": "Split, Kopilica 5",
+      "en": "Split, Kopilica 5"
+    },
+    "tags": {
+      "hr": [
+        "CIET",
+        "konferencija"
+      ],
+      "en": [
+        "CIET",
+        "conference"
+      ]
+    },
+    "description": "https://www.oss.unist.hr/novosti/clanak/ciet-2026"
+  },
+  {
+    "id": 1,
+    "slug": {
+      "hr": "odrzana-1-redovna-godisnja-skupstina-udruge",
+      "en": "first-annual-general-assembly-held"
+    },
+    "date": "2025-12-23",
+    "time": "12:30",
+    "image": "images/udruga/fakultet.webp",
+    "title": {
+      "hr": "Održana 1. redovna godišnja skupština Udruge",
+      "en": "First annual general assembly held"
+    },
+    "location": {
+      "hr": "Split, Kopilica 5",
+      "en": "Split, Kopilica 5"
+    },
+    "tags": {
+      "hr": [
+        "skupština"
+      ],
+      "en": [
+        "general assembly"
+      ]
+    },
+    "description": {
+      "hr": "Na prvoj redovnoj godišnjoj skupštini članovi su raspravljali o dosadašnjim rezultatima te definirali ciljeve za naredno razdoblje.",
+      "en": "At its first annual general assembly, the membership reviewed results to date and set goals for the coming period."
+    },
+    "agenda": {
+      "hr": [
+        {
+          "topic": "Odluka o udruživanju u Udrugu Alumni Sveučilišta u Splitu (ASUS) i izbor zastupnika u skupštini ASUS-a"
+        }
+      ],
+      "en": [
+        {
+          "topic": "Decision to join ASUS, the University of Split alumni association, and election of a representative to its assembly"
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "slug": {
+      "hr": "strucna-ekskurzija-studenata-elektronike-elektroenergetike",
+      "en": "study-trip-electronics-power-engineering-students"
+    },
+    "date": "2025-12-10",
+    "dateEnd": "2025-12-12",
+    "image": "images/events/ekskurzija-robotika.webp",
+    "title": {
+      "hr": "Stručna ekskurzija studenata elektronike i elektroenergetike",
+      "en": "Study trip for electronics and power engineering students"
+    },
+    "location": {
+      "hr": "Zagreb i Varaždin",
+      "en": "Zagreb and Varaždin"
+    },
+    "tags": {
+      "hr": [
+        "stručna ekskurzija",
+        "robotika"
+      ],
+      "en": [
+        "study trip",
+        "robotics"
+      ]
+    },
+    "description": {
+      "hr": "Studenti elektronike i energetike, u pratnji profesora Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja teorijskih znanja s primjenom u praksi.",
+      "en": "Electronics and power engineering students, accompanied by lecturers Marija Jelović, Tonko Kovačević and Vjekoslav Zrno, took part in a three-day study trip connecting classroom theory with industrial practice."
+    },
+    "agenda": {
+      "hr": [
+        {
+          "time": "1. dan",
+          "topic": "Tehnički muzej „Nikola Tesla“ u Zagrebu — Tesline izume, rudnik i prikaz razvoja tramvajskog prometa i lokomotiva"
+        },
+        {
+          "time": "2. dan",
+          "topic": "Tvrtka Atinel u Varaždinu, vodeća hrvatska tvrtka u području automatike i robotike za svjetsku automobilsku industriju"
+        },
+        {
+          "time": "3. dan",
+          "topic": "Memorijalni centar Nikola Tesla i rodna kuća Nikole Tesle u Smiljanu"
+        }
+      ],
+      "en": [
+        {
+          "time": "Day 1",
+          "topic": "Nikola Tesla Technical Museum in Zagreb — Tesla's inventions, the mine exhibit and the history of trams and locomotives"
+        },
+        {
+          "time": "Day 2",
+          "topic": "Atinel in Varaždin, a leading Croatian automation and robotics company serving the global automotive industry"
+        },
+        {
+          "time": "Day 3",
+          "topic": "Nikola Tesla Memorial Centre and Tesla's birthplace in Smiljan"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "slug": {
+      "hr": "osnivacka-skupstina-udruge-alumni-axis-split",
+      "en": "founding-assembly-alumni-axis-split"
+    },
+    "date": "2025-10-20",
+    "time": "14:00",
+    "image": "images/udruga/kampus.webp",
+    "title": {
+      "hr": "Osnivačka skupština Udruge Alumni AXIS Split",
+      "en": "Founding assembly of Alumni AXIS Split"
+    },
+    "location": {
+      "hr": "Split, Kopilica 5",
+      "en": "Split, Kopilica 5"
+    },
+    "tags": {
+      "hr": [
+        "osnivanje",
+        "vodstvo"
+      ],
+      "en": [
+        "founding",
+        "board"
+      ]
+    },
+    "description": {
+      "hr": "Na osnivačkoj skupštini izabrano je vodstvo Udruge s mandatom od 20. listopada 2025. do 20. listopada 2029.",
+      "en": "The founding assembly elected the association's board for the term from 20 October 2025 to 20 October 2029."
+    },
+    "board": {
+      "hr": [
+        {
+          "role": "Predsjednik",
+          "name": "Vjekoslav Zrno"
+        },
+        {
+          "role": "Potpredsjednica",
+          "name": "Marija Jelović"
+        },
+        {
+          "role": "Tajnica",
+          "name": "Petra Orlić"
+        },
+        {
+          "role": "Članica Upravnog odbora",
+          "name": "Laura Lara Gizdić"
+        },
+        {
+          "role": "Član Upravnog odbora",
+          "name": "Ivica Lovrić"
+        }
+      ],
+      "en": [
+        {
+          "role": "President",
+          "name": "Vjekoslav Zrno"
+        },
+        {
+          "role": "Vice-president",
+          "name": "Marija Jelović"
+        },
+        {
+          "role": "Secretary",
+          "name": "Petra Orlić"
+        },
+        {
+          "role": "Board member",
+          "name": "Laura Lara Gizdić"
+        },
+        {
+          "role": "Board member",
+          "name": "Ivica Lovrić"
+        }
+      ]
+    }
   }
 ]

@@ -1,0 +1,99 @@
+<!--{
+  "id": "home",
+  "title": "Alumni AXIS Split — udruga diplomiranih studenata Sveučilišnog odjela za stručne studije",
+  "description": "Alumni AXIS Split povezuje diplomirane i sadašnje studente Sveučilišnog odjela za stručne studije Sveučilišta u Splitu — događanja, stručne posjete, poslovi i članstvo.",
+  "scripts": ["events.js", "news.js"],
+  "icons": true
+}-->
+    <main id="main">
+      <section class="hero-cover">
+        <img
+          src="{{root}}images/udruga/kampus.webp"
+          srcset="{{root}}images/udruga/kampus-700.webp 700w, {{root}}images/udruga/kampus.webp 1400w"
+          sizes="100vw"
+          alt="Članovi Alumni AXIS Split na kampusu Sveučilišta u Splitu"
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+        />
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-kicker">Sveučilište u Splitu · Odjel za stručne studije</p>
+            <h1>Struka koja ostaje povezana</h1>
+            <p class="hero-lede">Alumni AXIS Split okuplja diplomirane i sadašnje studente Odjela: stručna događanja, terenske nastave, poslovi i vrata Odjela otvorena i nakon diplome.</p>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <a class="btn btn-primary btn-lg" href="{{root}}{{p.membership}}">Postani član</a>
+              <a class="btn btn-outline-light btn-lg" href="#dogadanja">Pogledaj događanja</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container">
+          <div class="value-row">
+            <a class="value-item reveal" href="{{root}}{{p.events}}">
+              <i class="bi bi-calendar-event" aria-hidden="true"></i>
+              <h3>Događanja i terenske nastave</h3>
+              <p>Panel rasprave, posjete tvrtkama i elektranama, konferencije — mjesta gdje se teorija sreće s praksom.</p>
+              <span class="section-link">Nadolazeća događanja</span>
+            </a>
+            <a class="value-item reveal reveal-delay-1" href="{{root}}{{p.careers}}">
+              <i class="bi bi-briefcase" aria-hidden="true"></i>
+              <h3>Poslovi i karijera</h3>
+              <p>Oglase poslodavaca i edukacije objavljujemo bez naknade; projekt „Zaposli me“ je u pripremi.</p>
+              <span class="section-link">Otvorene pozicije</span>
+            </a>
+            <a class="value-item reveal reveal-delay-2" href="{{root}}{{p.membership}}">
+              <i class="bi bi-mortarboard" aria-hidden="true"></i>
+              <h3>Zajednica alumnija</h3>
+              <p>Članstvo je otvoreno svima koji su diplomirali na Odjelu, kao i sadašnjim studentima. Godišnja članarina 10 EUR.</p>
+              <span class="section-link">Kako se učlaniti</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-mist" id="dogadanja">
+        <div class="container">
+          <div class="section-title d-flex flex-wrap justify-content-between align-items-end gap-3 reveal">
+            <div>
+              <h2>Događanja</h2>
+              <p>Najave i nedavne aktivnosti Udruge.</p>
+            </div>
+            <a class="section-link" href="{{root}}{{p.events}}">Sva događanja</a>
+          </div>
+
+          <div class="row g-4 g-lg-5" id="events-list" data-view="upcoming" data-limit="3"
+               aria-live="polite" aria-busy="true"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-title d-flex flex-wrap justify-content-between align-items-end gap-3 reveal">
+            <div>
+              <h2>Novosti</h2>
+              <p>Što se zadnje dogodilo u Udruzi i na Odjelu.</p>
+            </div>
+            <a class="section-link" href="{{root}}{{p.news}}">Sve novosti</a>
+          </div>
+
+          <div class="row g-4 g-lg-5" id="news-preview" aria-live="polite" aria-busy="true"></div>
+        </div>
+      </section>
+
+      <section class="section cta-band">
+        <div class="container">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-8 reveal">
+              <h2>Diplomirali ste na Odjelu?</h2>
+              <p class="mb-0">Članstvo je dobrovoljno i otvoreno svima koji su stekli bilo koji stupanj obrazovanja na Odjelu, kao i sadašnjim studentima. Godišnja članarina iznosi 10 EUR.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end reveal reveal-delay-1">
+              <a class="btn btn-light btn-lg" href="{{root}}{{p.membership}}">Kako se učlaniti</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>

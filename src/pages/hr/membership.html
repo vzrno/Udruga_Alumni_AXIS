@@ -1,0 +1,317 @@
+<!--{
+  "id": "membership",
+  "title": "Članstvo — Alumni AXIS Split",
+  "description": "Kako se učlaniti u Alumni AXIS Split: pristupnice, kategorije članstva, članarina 10 EUR godišnje i podaci za uplatu.",
+  "icons": true
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Članstvo</h1>
+        <p>Uvjeti učlanjenja, kategorije članstva i podaci za uplatu članarine</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-7">
+            <div class="panel">
+              <h2>Kako se učlaniti</h2>
+              <p>
+                Članom može postati svaki diplomirani student stručnog prijediplomskog ili
+                diplomskog studija Sveučilišnog odjela za stručne studije, kao i sadašnji studenti.
+                Članstvo je dobrovoljno, a ispunjavanjem pristupnice prihvaćaju se ciljevi, prava i
+                obveze propisani Statutom.
+              </p>
+
+              <ol class="mt-4">
+                <li>Preuzmite i ispunite pristupnicu koja odgovara vašoj kategoriji članstva.</li>
+                <li>
+                  Pošaljite je na
+                  <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>
+                  ili predajte u sjedištu Udruge.
+                </li>
+                <li>Uplatite godišnju članarinu prema podacima niže i pošaljite nam potvrdu.</li>
+              </ol>
+
+              <div class="d-flex flex-wrap gap-2 mt-4">
+                <a class="btn btn-primary" href="#online-pristupnica">
+                  <i class="bi bi-person-plus me-1" aria-hidden="true"></i>
+                  Ispuni online pristupnicu
+                </a>
+                <a class="btn btn-outline-primary" href="{{root}}dokumenti/pristupnica-redovni.pdf" target="_blank" rel="noopener">
+                  <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
+                  Pristupnica — redovni član
+                </a>
+                <a class="btn btn-outline-primary" href="{{root}}dokumenti/pristupnica-pocasni-potpomagajuci.pdf" target="_blank" rel="noopener">
+                  <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
+                  Pristupnica — počasni i potpomagajući član
+                </a>
+              </div>
+            </div>
+
+
+            <div class="panel" id="online-pristupnica">
+              <h2>Online pristupnica</h2>
+              <p>
+                Ako vam je lakše, prijavite se izravno ovdje — bez pisača i skeniranja. Podatke
+                unosite jednako kao na PDF obrascu, a mi vam potvrdu i podatke za uplatu šaljemo
+                na e-poštu.
+              </p>
+
+              <form
+                id="joinForm"
+                class="needs-validation mt-4"
+                novalidate
+                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
+                data-mailto="alumniaxis.st@gmail.com"
+                data-subject="Pristupnica — Alumni AXIS Split"
+              >
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="ime">Ime i prezime</label>
+                    <input type="text" class="form-control" id="ime" name="Ime i prezime" required autocomplete="name" />
+                    <div class="invalid-feedback">Unesite ime i prezime.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="epota">E-pošta</label>
+                    <input type="email" class="form-control" id="epota" name="E-pošta" required autocomplete="email" />
+                    <div class="invalid-feedback">Unesite ispravnu adresu e-pošte.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="telefon">Telefon <span class="text-muted fw-normal">(neobavezno)</span></label>
+                    <input type="tel" class="form-control" id="telefon" name="Telefon" autocomplete="tel" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="kategorija">Kategorija članstva</label>
+                    <select class="form-select" id="kategorija" name="Kategorija članstva">
+                      <option>Aktivni član</option>
+                      <option>Redovni član</option>
+                      <option>Potpomagajući član</option>
+                      <option>Student Odjela</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="studij">Studij / odsjek</label>
+                    <input type="text" class="form-control" id="studij" name="Studij" placeholder="npr. Elektrotehnika" required />
+                    <div class="invalid-feedback">Navedite studij ili odsjek.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="godina">Godina diplomiranja</label>
+                    <input type="number" class="form-control" id="godina" name="Godina diplomiranja"
+                           min="1960" max="2035" placeholder="npr. 2021" />
+                    <div class="form-text">Studenti ostavljaju prazno.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="poruka">Napomena <span class="text-muted fw-normal">(neobavezno)</span></label>
+                    <textarea class="form-control" id="poruka" name="Napomena" rows="3"></textarea>
+                  </div>
+
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
+
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="pristanak" name="Pristanak" value="da" required />
+                      <label class="form-check-label" for="pristanak">
+                        Prihvaćam Statut Udruge i pristajem da se moji podaci koriste za vođenje
+                        registra članova, kako je opisano u
+                        <a href="{{root}}{{p.privacy}}">Zaštiti privatnosti</a>.
+                      </label>
+                      <div class="invalid-feedback">Potreban je pristanak za nastavak.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-person-plus me-1" aria-hidden="true"></i> Pošalji pristupnicu
+                    </button>
+                  </div>
+                </div>
+
+                <div data-form-status hidden></div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <h2>Kategorije članstva</h2>
+              <div class="accordion accordion-flush" id="categories">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cat-aktivni" aria-expanded="false" aria-controls="cat-aktivni">
+                      Aktivni član
+                    </button>
+                  </h3>
+                  <div id="cat-aktivni" class="accordion-collapse collapse" data-bs-parent="#categories">
+                    <div class="accordion-body">
+                      Osoba koja je diplomirala na Sveučilišnom odjelu za stručne studije
+                      Sveučilišta u Splitu ili osoba čije znanje i iskustvo pridonose radu Udruge.
+                      Aktivni članovi plaćaju godišnju članarinu.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cat-redovni" aria-expanded="false" aria-controls="cat-redovni">
+                      Redovni član
+                    </button>
+                  </h3>
+                  <div id="cat-redovni" class="accordion-collapse collapse" data-bs-parent="#categories">
+                    <div class="accordion-body">
+                      Svaka osoba koja je stekla bilo koji stupanj obrazovanja na Sveučilišnom
+                      odjelu za stručne studije.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cat-pocasni" aria-expanded="false" aria-controls="cat-pocasni">
+                      Počasni član
+                    </button>
+                  </h3>
+                  <div id="cat-pocasni" class="accordion-collapse collapse" data-bs-parent="#categories">
+                    <div class="accordion-body">
+                      Fizička ili pravna osoba koja je svojim radom dala poseban doprinos razvoju i
+                      ugledu Udruge.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cat-potpomagajuci" aria-expanded="false" aria-controls="cat-potpomagajuci">
+                      Potpomagajući član
+                    </button>
+                  </h3>
+                  <div id="cat-potpomagajuci" class="accordion-collapse collapse" data-bs-parent="#categories">
+                    <div class="accordion-body">
+                      Fizičke ili pravne osobe koje materijalno ili organizacijski podupiru rad
+                      Udruge.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h2>Često postavljena pitanja</h2>
+              <div class="accordion accordion-flush" id="faq">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">
+                      Koliko iznosi članarina?
+                    </button>
+                  </h3>
+                  <div id="faq-1" class="accordion-collapse collapse" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      Godišnja članarina za aktivne članove iznosi 10,00 EUR i plaća se uplatom na
+                      račun Udruge. Detalji su u Odluci o plaćanju članarine.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">
+                      Koja su prava članova?
+                    </button>
+                  </h3>
+                  <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      Sudjelovanje u aktivnostima Udruge, pristup informacijama i događanjima,
+                      mogućnost predlaganja inicijativa te, sukladno Statutu, sudjelovanje u radu
+                      tijela Udruge.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">
+                      Koje su obveze članova?
+                    </button>
+                  </h3>
+                  <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      Poštivanje Statuta i odluka Udruge, korektno predstavljanje Udruge te uredno
+                      podmirenje članarine ako je propisana za vašu kategoriju članstva.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">
+                      Kome se javiti za pomoć oko učlanjenja?
+                    </button>
+                  </h3>
+                  <div id="faq-4" class="accordion-collapse collapse" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      Pošaljite upit putem stranice
+                      <a href="{{root}}{{p.contact}}">Kontakt</a> ili na
+                      <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>.
+                      Najčešće je dovoljno poslati ispunjenu pristupnicu i osnovne podatke za
+                      evidenciju.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------------- sidebar -->
+          <div class="col-lg-5">
+            <div class="panel">
+              <h2>Podaci za uplatu članarine</h2>
+              <ul class="data-list">
+                <li><span class="k">Primatelj</span> <span>Alumni AXIS, Kopilica 5, Split</span></li>
+                <li><span class="k">IBAN</span> <span>HR3224070001100770512</span></li>
+                <li><span class="k">Model</span> <span>00</span></li>
+                <li><span class="k">Poziv na broj</span> <span>datum uplate bez točaka, npr. 27012026</span></li>
+                <li><span class="k">Iznos</span> <span>10,00 EUR (godišnje)</span></li>
+                <li><span class="k">Opis plaćanja</span> <span>Članarina — aktivni član (OIB)</span></li>
+                <li><span class="k">Platitelj</span> <span>ime i prezime, adresa</span></li>
+              </ul>
+              <div class="panel-note mt-3">
+                Potvrdu o uplati pošaljite na e-poštu Udruge radi brže evidencije.
+              </div>
+            </div>
+
+            <div class="panel">
+              <h2>Dokumenti i registar</h2>
+              <a class="doc-link" href="{{root}}dokumenti/pristupnica-redovni.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+                <span>Pristupnica — redovni član <small>PDF</small></span>
+              </a>
+              <a class="doc-link" href="{{root}}dokumenti/pristupnica-pocasni-potpomagajuci.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+                <span>Pristupnica — počasni i potpomagajući član <small>PDF</small></span>
+              </a>
+              <a class="doc-link" href="{{root}}dokumenti/odluka-clanarina.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+                <span>Odluka o plaćanju članarine <small>PDF</small></span>
+              </a>
+              <a class="doc-link" href="{{root}}dokumenti/statut.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+                <span>Statut Udruge <small>PDF</small></span>
+              </a>
+              <a class="doc-link" href="https://rektoratunist-my.sharepoint.com/:x:/g/personal/vzrno_unist_hr/IQDfR_gyrIPFRZIODBv6UFGKAa0qImT88VOLY5_OwSyxwOQ?e=lE7zRA" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <span>Registar redovnih članova <small>vanjska poveznica · SharePoint</small></span>
+              </a>
+              <a class="doc-link" href="https://rektoratunist-my.sharepoint.com/:x:/g/personal/vzrno_unist_hr/IQCLOD6Wn8IFRIxOOIIPtKtoAbEM0rxXpTUkK0KI5IorHt8?e=38Fsjw" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-people" aria-hidden="true"></i>
+                <span>Registar počasnih i potpomagajućih članova <small>vanjska poveznica · SharePoint</small></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>

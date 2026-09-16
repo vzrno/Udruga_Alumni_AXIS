@@ -1,0 +1,50 @@
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <a class="footer-brand" href="{{root}}{{home}}">
+              <img src="{{root}}images/brand/logo.webp" alt="" width="40" height="40" loading="lazy" />
+              <span>{{brand.name}}</span>
+            </a>
+            <p style="max-width: 44ch">{{footer.aboutText}}</p>
+            <p class="mb-0">
+              <a href="{{root}}dokumenti/statut.pdf" target="_blank" rel="noopener">{{footer.statute}}</a>
+              &nbsp;·&nbsp;
+              <a href="{{root}}{{feedPath}}"><i class="bi bi-rss me-1" aria-hidden="true"></i>RSS</a>
+            </p>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <h2>{{footer.linksTitle}}</h2>
+            <ul>
+              <li><a href="{{root}}{{p.about}}">{{nav.about}}</a></li>
+              <li><a href="{{root}}{{p.events}}">{{nav.events}}</a></li>
+              <li><a href="{{root}}{{p.news}}">{{nav.news}}</a></li>
+              <li><a href="{{root}}{{p.careers}}">{{nav.careers}}</a></li>
+              <li><a href="{{root}}{{p.membership}}">{{nav.membership}}</a></li>
+              <li><a href="{{root}}{{p.contact}}">{{nav.contact}}</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-4">
+            <h2>{{footer.contactTitle}}</h2>
+            <ul>
+              <li>{{footer.address}}</li>
+              <li><a href="mailto:alumniaxis.st@gmail.com">{{footer.email}}</a></li>
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=61584468421064" target="_blank" rel="noopener">
+                  {{footer.facebook}}
+                </a>
+              </li>
+              <li class="mt-2">{{footer.oib}}</li>
+              <li>{{footer.iban}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-legal">
+          <p>&copy; <span id="year">2026</span> {{footer.copyright}}</p>
+          <p><a href="{{root}}{{p.privacy}}">{{footer.privacy}}</a></p>
+        </div>
+      </div>
+    </footer>

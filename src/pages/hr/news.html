@@ -1,0 +1,39 @@
+<!--{
+  "id": "news",
+  "title": "Novosti — Alumni AXIS Split",
+  "description": "Skupštine, stručne posjete, terenske nastave i suradnje: sve objave Udruge Alumni AXIS Split.",
+  "scripts": ["news.js"]
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Novosti</h1>
+        <p>Aktivnosti Udruge, suradnje s Odjelom i najave za članove</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-3 align-items-end mb-4">
+          <div class="col-md-6">
+            <label class="form-label" for="news-search">Pretraži objave</label>
+            <input
+              type="search"
+              class="form-control"
+              id="news-search"
+              placeholder="Naslov, mjesto ili oznaka"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="card-meta mb-0" id="news-count" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="row g-4" id="news-list" aria-live="polite" aria-busy="true"></div>
+
+        <nav class="mt-4" aria-label="Stranice objava">
+          <ul class="pagination justify-content-center" id="news-pager"></ul>
+        </nav>
+      </div>
+    </main>
+

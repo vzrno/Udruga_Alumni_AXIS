@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{lang}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="canonical" href="{{canonical}}" />
+{{alternates}}
+    <meta name="theme-color" content="#be1818" />
+    <meta name="robots" content="{{robots}}" />
+
+    <!-- Social sharing -->
+    <meta property="og:type" content="{{ogType}}" />
+    <meta property="og:site_name" content="{{siteName}}" />
+    <meta property="og:locale" content="{{ogLocale}}" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:url" content="{{canonical}}" />
+    <meta property="og:image" content="{{ogImage}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="{{root}}images/brand/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{root}}images/brand/favicon-180.png" />
+
+    <!-- Type: Archivo for headings, IBM Plex Sans for text. Served from this
+         domain, so a page view sends nothing to a third party. -->
+    <link rel="preload" href="{{root}}fonts/ibm-plex-sans-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="{{root}}fonts/archivo-latin-ext-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="stylesheet" href="{{root}}vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{root}}css/fonts.css" />
+{{iconsCss}}
+    <link rel="stylesheet" href="{{root}}css/base.css" />
+
+{{jsonld}}
+
+    <script>
+      document.documentElement.classList.add("js");
+      window.AXIS = {{config}};
+    </script>
+  </head>
+
+  <body class="{{bodyClass}}">
+    <a class="skip-link" href="#main">{{nav.skip}}</a>
+
+{{header}}
+
+{{content}}
+
+{{footer}}
+
+    <script src="{{root}}vendor/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="{{root}}js/main.js"></script>
+{{scripts}}
+  </body>
+</html>

@@ -1,0 +1,48 @@
+    <header class="site-header sticky-top">
+      <nav class="navbar navbar-expand-lg" aria-label="{{nav.label}}">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="{{root}}{{home}}" aria-label="{{nav.brandHome}}">
+            <img
+              src="{{root}}images/brand/logo.webp"
+              alt=""
+              width="44"
+              height="44"
+              fetchpriority="high"
+            />
+            <span>
+              {{brand.name}}
+              <span class="brand-sub">{{brand.sub}}</span>
+            </span>
+          </a>
+
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+          >
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">{{nav.menu}}</span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.home}}">{{nav.home}}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.about}}">{{nav.about}}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.events}}">{{nav.events}}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.news}}">{{nav.news}}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.careers}}">{{nav.careers}}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{root}}{{p.contact}}">{{nav.contact}}</a></li>
+            </ul>
+
+            <nav class="lang-switch mb-0" aria-label="{{nav.langLabel}}">
+{{langLinks}}
+            </nav>
+
+            <a class="btn btn-primary btn-sm nav-cta" href="{{root}}{{p.membership}}">{{nav.join}}</a>
+          </div>
+        </div>
+      </nav>
+    </header>

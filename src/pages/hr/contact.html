@@ -1,0 +1,130 @@
+<!--{
+  "id": "contact",
+  "title": "Kontakt — Alumni AXIS Split",
+  "description": "Kontakt podaci Udruge Alumni AXIS Split: adresa Kopilica 5 Split, e-pošta, Facebook i kontakt obrazac.",
+  "icons": true
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Kontakt</h1>
+        <p>Pitanja o članstvu, suradnji ili objavi oglasa — javite se</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-4">
+            <div class="panel">
+              <h2>Podaci o Udruzi</h2>
+              <ul class="data-list">
+                <li><span class="k">Naziv</span> <span>Alumni AXIS Split</span></li>
+                <li><span class="k">Adresa</span> <span>Kopilica 5, 21000 Split, Hrvatska</span></li>
+                <li><span class="k">OIB</span> <span>80913220993</span></li>
+                <li><span class="k">IBAN</span> <span>HR3224070001100770512</span></li>
+                <li>
+                  <span class="k">E-pošta</span>
+                  <span><a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a></span>
+                </li>
+                <li>
+                  <span class="k">Facebook</span>
+                  <span>
+                    <a href="https://www.facebook.com/profile.php?id=61584468421064" target="_blank" rel="noopener">
+                      Alumni AXIS Split
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h2>Lokacija</h2>
+              <p class="card-meta">
+                Sveučilišni odjel za stručne studije, Kopilica 5, Split.
+              </p>
+              <div
+                class="map-consent"
+                data-map="https://www.openstreetmap.org/export/embed.html?bbox=16.4330%2C43.5185%2C16.4530%2C43.5285&amp;layer=mapnik&amp;marker=43.5232%2C16.4430"
+                data-map-title="Karta — Sveučilišni odjel za stručne studije, Split"
+              >
+                <p>Karta se učitava s OpenStreetMapa, čime se toj usluzi prosljeđuje vaša IP adresa.</p>
+                <button type="button" class="btn btn-outline-primary btn-sm" data-map-load>
+                  <i class="bi bi-geo-alt me-1" aria-hidden="true"></i>Prikaži kartu
+                </button>
+              </div>
+              <p class="card-meta mt-2 mb-0">
+                <a href="https://www.openstreetmap.org/?mlat=43.5232&amp;mlon=16.4430#map=16/43.5232/16.4430" target="_blank" rel="noopener">
+                  Otvori veću kartu
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="panel">
+              <h2>Pošaljite poruku</h2>
+              <p>
+                Odgovaramo u roku od nekoliko radnih dana. Za učlanjenje priložite ispunjenu
+                pristupnicu s
+                <a href="{{root}}{{p.membership}}">stranice Članstvo</a>.
+              </p>
+
+              <form
+                id="contactForm"
+                class="needs-validation mt-4"
+                novalidate
+                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
+                data-mailto="alumniaxis.st@gmail.com"
+                data-subject="Upit sa web stranice"
+              >
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="name">Ime i prezime</label>
+                    <input type="text" class="form-control" id="name" name="name" required autocomplete="name" />
+                    <div class="invalid-feedback">Unesite ime i prezime.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="email">E-pošta</label>
+                    <input type="email" class="form-control" id="email" name="email" required autocomplete="email" />
+                    <div class="invalid-feedback">Unesite ispravnu adresu e-pošte.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="topic">Tema</label>
+                    <select class="form-select" id="topic" name="topic">
+                      <option>Učlanjenje</option>
+                      <option>Članarina i evidencija</option>
+                      <option>Suradnja i događanja</option>
+                      <option>Objava oglasa za posao</option>
+                      <option>Ostalo</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="message">Poruka</label>
+                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                    <div class="invalid-feedback">Napišite poruku.</div>
+                  </div>
+
+                  <!-- spam trap: bots fill hidden fields, people do not -->
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-send me-1" aria-hidden="true"></i> Pošalji poruku
+                    </button>
+                    <p class="card-meta mt-3 mb-0">
+                      Podatke koristimo isključivo za odgovor na vaš upit i ne dijelimo ih trećim
+                      stranama.
+                    </p>
+                  </div>
+                </div>
+
+                <div data-form-status hidden></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>

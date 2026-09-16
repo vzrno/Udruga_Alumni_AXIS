@@ -1,0 +1,35 @@
+<!--{
+  "id": "events",
+  "title": "Događanja — Alumni AXIS Split",
+  "description": "Nadolazeća i prošla događanja Udruge Alumni AXIS Split: panel rasprave, stručne posjete, konferencije i skupštine.",
+  "scripts": ["events.js"]
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Događanja</h1>
+        <p>Panel rasprave, stručne posjete, konferencije i skupštine Udruge</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="filter-bar" id="events-filters">
+          <button type="button" class="filter-btn" data-view="upcoming" aria-pressed="true">Nadolazeća</button>
+          <button type="button" class="filter-btn" data-view="past" aria-pressed="false">Prošla</button>
+          <button type="button" class="filter-btn" data-view="all" aria-pressed="false">Sva</button>
+
+          <label class="visually-hidden" for="events-sort">Poredaj događanja</label>
+          <select class="form-select form-select-sm w-auto ms-auto" id="events-sort">
+            <option value="asc">Najbliže prvo</option>
+            <option value="desc">Najnovije prvo</option>
+          </select>
+        </div>
+
+        <div class="row g-4" id="events-list" aria-live="polite" aria-busy="true"></div>
+
+        <div class="panel-note mt-5">
+          Događanja najavljujemo i na <a href="https://www.facebook.com/profile.php?id=61584468421064" target="_blank" rel="noopener">Facebook stranici</a>
+          te putem <a href="{{root}}{{feedPath}}">RSS kanala</a>.
+        </div>
+      </div>
+    </main>

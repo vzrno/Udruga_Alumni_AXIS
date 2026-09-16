@@ -1,0 +1,39 @@
+<!--{
+  "id": "news",
+  "title": "News — Alumni AXIS Split",
+  "description": "General assemblies, industry visits, field classes and partnerships: all updates from Alumni AXIS Split.",
+  "scripts": ["news.js"]
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>News</h1>
+        <p>Activities of the association, work with the Department and notices for members</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="row g-3 align-items-end mb-4">
+          <div class="col-md-6">
+            <label class="form-label" for="news-search">Search the archive</label>
+            <input
+              type="search"
+              class="form-control"
+              id="news-search"
+              placeholder="Title, place or tag"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="card-meta mb-0" id="news-count" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="row g-4" id="news-list" aria-live="polite" aria-busy="true"></div>
+
+        <nav class="mt-4" aria-label="News pages">
+          <ul class="pagination justify-content-center" id="news-pager"></ul>
+        </nav>
+      </div>
+    </main>
+

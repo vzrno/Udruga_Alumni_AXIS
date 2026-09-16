@@ -1,0 +1,35 @@
+<!--{
+  "id": "events",
+  "title": "Events — Alumni AXIS Split",
+  "description": "Upcoming and past events of Alumni AXIS Split: panel discussions, industry visits, conferences and general assemblies.",
+  "scripts": ["events.js"]
+}-->
+    <div class="page-head">
+      <div class="container">
+        <h1>Events</h1>
+        <p>Panel discussions, industry visits, conferences and general assemblies</p>
+      </div>
+    </div>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="filter-bar" id="events-filters">
+          <button type="button" class="filter-btn" data-view="upcoming" aria-pressed="true">Upcoming</button>
+          <button type="button" class="filter-btn" data-view="past" aria-pressed="false">Past</button>
+          <button type="button" class="filter-btn" data-view="all" aria-pressed="false">All</button>
+
+          <label class="visually-hidden" for="events-sort">Sort events</label>
+          <select class="form-select form-select-sm w-auto ms-auto" id="events-sort">
+            <option value="asc">Soonest first</option>
+            <option value="desc">Most recent first</option>
+          </select>
+        </div>
+
+        <div class="row g-4" id="events-list" aria-live="polite" aria-busy="true"></div>
+
+        <div class="panel-note mt-5">
+          Events are also announced on our <a href="https://www.facebook.com/profile.php?id=61584468421064" target="_blank" rel="noopener">Facebook page</a>
+          and through the <a href="{{root}}{{feedPath}}">RSS feed</a>.
+        </div>
+      </div>
+    </main>

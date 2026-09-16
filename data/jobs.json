@@ -1,38 +1,38 @@
 [
   {
     "id": 1,
-    "company": "TROMONT d.o.o. za građevinarstvo, promet i usluge",
-    "location": "Split",
-    "description": "Inženjer / inženjerka elektrotehnike",
     "type": "job",
-    "url": "https://www.tromont.hr/proizvodnja/karijere/otvorene-radne-pozicije",
-    "publishedAt": "2026-01-14"
+    "publishedAt": "2026-01-14",
+    "company": { "hr": "TROMONT d.o.o.", "en": "TROMONT d.o.o." },
+    "location": { "hr": "Split", "en": "Split, Croatia" },
+    "role": { "hr": "Inženjer/inženjerka elektrotehnike", "en": "Electrical engineer" },
+    "url": "https://www.tromont.hr/proizvodnja/karijere/otvorene-radne-pozicije"
   },
   {
     "id": 2,
-    "company": "Pliva Hrvatska d.o.o.",
-    "location": "Zagreb",
-    "description": "Viši inženjer strojarskog održavanja (m/ž)",
     "type": "job",
-    "url": "https://www.posao.hr/oglasi/visi-inzenjer-strojarskog-odrzavanja-m-z/1180994/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEesiOZQC10uFv97_CbiKj9IdfOiaVMF5RFSmMfnNfkckgyOScf2fDS08hmNLM_aem_AtACTIO3MpcAyhGP0anKng",
-    "publishedAt": "2026-01-14"
+    "publishedAt": "2026-01-14",
+    "company": { "hr": "Pliva Hrvatska d.o.o.", "en": "Pliva Hrvatska d.o.o." },
+    "location": { "hr": "Zagreb", "en": "Zagreb, Croatia" },
+    "role": { "hr": "Viši inženjer strojarskog održavanja (m/ž)", "en": "Senior mechanical maintenance engineer" },
+    "url": "https://www.posao.hr/oglasi/visi-inzenjer-strojarskog-odrzavanja-m-z/1180994/"
   },
   {
     "id": 3,
-    "company": "Smart Group Recruitment d.o.o. / Step",
-    "location": "Zagreb",
-    "description": "Bankar (m/ž)",
     "type": "job",
-    "url": "https://www.posao.hr/oglasi/bankar-m-z/1174617/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEeYjzPZ4cfVmWR6Heu0k3uKbUEnZthZV63dznL6SUO23cBAV8cDNY9U3g1dmE_aem_YHsdtGtL5NSlbyknlPVhQw",
-    "publishedAt": "2026-01-14"
+    "publishedAt": "2026-01-14",
+    "company": { "hr": "Smart Group Recruitment d.o.o. / Step", "en": "Smart Group Recruitment d.o.o. / Step" },
+    "location": { "hr": "Zagreb", "en": "Zagreb, Croatia" },
+    "role": { "hr": "Bankar (m/ž)", "en": "Banker" },
+    "url": "https://www.posao.hr/oglasi/bankar-m-z/1174617/"
   },
   {
     "id": 4,
-    "company": "Kempinski hotel Adriatic (Skiper hoteli d.o.o.)",
-    "location": "Savudrija",
-    "description": "Marketing Coordinator (m/ž)",
     "type": "job",
-    "url": "https://www.posao.hr/oglasi/marketing-coordinator-m-z/1181679/?fbclid=IwZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMjc1MjU0NjkyNTk4Mjc5AAEeEnlPJrVicOLZkPAPsII2saSNTN_f0IT5n3JdAwbZXOiozcUkbrOAeWPUt_w_aem_SoBKRpsS5IseB8-ETjslSQ",
-    "publishedAt": "2026-01-14"
+    "publishedAt": "2026-01-14",
+    "company": { "hr": "Kempinski Hotel Adriatic (Skiper hoteli d.o.o.)", "en": "Kempinski Hotel Adriatic (Skiper hoteli d.o.o.)" },
+    "location": { "hr": "Savudrija", "en": "Savudrija, Croatia" },
+    "role": { "hr": "Marketing Coordinator (m/ž)", "en": "Marketing coordinator" },
+    "url": "https://www.posao.hr/oglasi/marketing-coordinator-m-z/1181679/"
   }
 ]
