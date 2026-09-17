@@ -1,7 +1,22 @@
 /* Global behaviour: current nav item, in-page anchors, forms, copy link,
-   consent-gated map, carousel pause control, footer year. */
+   consent-gated map, carousel pause control, footer year, scroll reveal.
 
-import { t, escapeHtml, reveal } from "./util.js";
+   Self-contained on purpose: no module imports, so each file in js/ can be
+   cache-busted on its own (see "asset versioning" in build.mjs). */
+
+"use strict";
+
+const CFG = window.AXIS || {};
+const t = CFG.t || {};
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   markCurrentNav();
@@ -11,9 +26,47 @@ document.addEventListener("DOMContentLoaded", () => {
   wireCopyLink();
   wireMapConsent();
   wireCarouselPause();
-  reveal();
+  wireFallbacks(document);
+  reveal(document);
   wireHeaderShadow();
 });
+
+/* Fade-up for elements marked .reveal. The cards come from the build, so this
+   runs over markup that is already in the document. */
+let observer = null;
+function reveal(root) {
+  const nodes = root.querySelectorAll(".reveal:not(.is-visible)");
+  if (!nodes.length) return;
+  if (!("IntersectionObserver" in window)) {
+    nodes.forEach((n) => n.classList.add("is-visible"));
+    return;
+  }
+  observer ??= new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+  );
+  nodes.forEach((n) => observer.observe(n));
+}
+
+/* A missing photo falls back to the placeholder instead of a broken icon. */
+function wireFallbacks(root) {
+  root.querySelectorAll("img[data-fallback]").forEach((img) => {
+    img.addEventListener(
+      "error",
+      () => {
+        img.src = img.getAttribute("data-fallback");
+      },
+      { once: true },
+    );
+  });
+}
 
 /* Header gains a shadow once the page is scrolled. */
 function wireHeaderShadow() {
@@ -37,13 +90,15 @@ function markCurrentNav() {
   });
 }
 
+/* Smooth only when the visitor has not asked for reduced motion. */
 function smoothAnchors() {
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
   document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((a) => {
     a.addEventListener("click", (e) => {
       const target = document.querySelector(a.getAttribute("href"));
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
       target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
     });
@@ -145,8 +200,8 @@ function wireCopyLink() {
   });
 }
 
-/* The map is only fetched from OpenStreetMap once the visitor asks for it,
-   so no third party sees an IP address on a plain page view. */
+/* The map is only fetched once the visitor asks for it, so no third party
+   sees an IP address on a plain page view. */
 function wireMapConsent() {
   document.querySelectorAll("[data-map]").forEach((holder) => {
     const button = holder.querySelector("[data-map-load]");

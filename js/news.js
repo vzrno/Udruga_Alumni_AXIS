@@ -1,140 +1,95 @@
-/* News. Drives two containers:
-   #news-list    — full archive with search + pagination (news page)
-   #news-preview — newest items, no controls (home page)
-   Cards link to the generated detail page for each item. */
+/* News archive. The cards come from the build; this adds the search box and
+   the pager over the markup that is already in the page. Cards past the first
+   page ship with data-overflow, which css hides until this file takes over,
+   so there is no flash and the page still works without JavaScript. */
 
-import {
-  L, LArr, t, escapeHtml, loadJson, formatDateRange, media, wireFallbacks,
-  truncate, stateMsg, isUrl, toDate, detailUrl, safeUrl, dateChip, reveal,
-} from "./util.js";
+"use strict";
 
-const listEl = document.getElementById("news-list");
-const previewEl = document.getElementById("news-preview");
-if (listEl || previewEl) init();
+const CFG = window.AXIS || {};
+const T = CFG.t || {};
+const PER_PAGE = 6; // keep in step with NEWS_PER_PAGE in build.mjs
 
-const PER_PAGE = 6;
-const searchEl = document.getElementById("news-search");
-const pagerEl = document.getElementById("news-pager");
-const countEl = document.getElementById("news-count");
+const list = document.getElementById("news-list");
+if (list) init();
 
-let news = [];
-let filtered = [];
-let page = 1;
+function init() {
+  const cards = Array.from(list.querySelectorAll("[data-news]"));
+  if (!cards.length) return;
 
-async function init() {
-  try {
-    news = (await loadJson("news.json")).sort(
-      (a, b) => (toDate(b.date) || 0) - (toDate(a.date) || 0),
-    );
-  } catch (err) {
-    console.error(err);
-    (listEl || previewEl).innerHTML = stateMsg(t.loadError);
-    return;
-  }
+  const searchEl = document.getElementById("news-search");
+  const pagerEl = document.getElementById("news-pager");
+  const countEl = document.getElementById("news-count");
 
-  filtered = news;
+  let matched = cards;
+  let page = 1;
 
-  if (previewEl) {
-    const limit = Number(previewEl.dataset.limit || 3);
-    previewEl.innerHTML = news.slice(0, limit).map((item, i) => card(item, i === 0)).join("");
-    previewEl.setAttribute("aria-busy", "false");
-    wireFallbacks(previewEl);
-    reveal(previewEl);
-  }
+  cards.forEach((card) => card.removeAttribute("data-overflow"));
 
-  if (listEl) {
-    searchEl?.addEventListener("input", () => applySearch(searchEl.value));
-    pagerEl?.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-page]");
-      if (!btn) return;
-      page = Number(btn.dataset.page) || 1;
-      render();
-      listEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  const render = () => {
+    const pages = Math.max(1, Math.ceil(matched.length / PER_PAGE));
+    page = Math.min(page, pages);
+    const start = (page - 1) * PER_PAGE;
+    const shown = matched.slice(start, start + PER_PAGE);
+
+    cards.forEach((card) => {
+      card.hidden = !shown.includes(card);
     });
-    render();
-  }
-}
+    shown.forEach((card) => card.classList.add("is-visible"));
 
-function applySearch(value) {
-  const q = String(value || "").trim().toLowerCase();
-  filtered = !q
-    ? news
-    : news.filter((item) => {
-        const hay = [L(item.title), L(item.location), ...LArr(item.tags).map(L)]
-          .join(" ")
-          .toLowerCase();
-        return hay.includes(q);
-      });
-  page = 1;
-  render();
-}
+    if (countEl) {
+      const n = matched.length;
+      countEl.textContent = n ? `${n} ${n === 1 ? T.itemOne || "" : T.itemMany || ""}` : "";
+    }
 
-function render() {
-  const total = filtered.length;
-  const pages = Math.max(1, Math.ceil(total / PER_PAGE));
-  page = Math.min(page, pages);
-  listEl.setAttribute("aria-busy", "false");
+    if (!matched.length) {
+      const box = document.createElement("div");
+      box.className = "col-12";
+      box.setAttribute("data-empty", "");
+      box.innerHTML = '<div class="state-msg"><p></p></div>';
+      box.querySelector("p").textContent = T.noResults || "";
+      list.querySelector("[data-empty]")?.remove();
+      list.append(box);
+    } else {
+      list.querySelector("[data-empty]")?.remove();
+    }
 
-  if (countEl) {
-    countEl.textContent = total ? `${total} ${total === 1 ? t.itemOne : t.itemMany}` : "";
-  }
-
-  if (!total) {
-    listEl.innerHTML = stateMsg(t.noResults);
-    if (pagerEl) pagerEl.innerHTML = "";
-    return;
-  }
-
-  const start = (page - 1) * PER_PAGE;
-  listEl.innerHTML = filtered.slice(start, start + PER_PAGE).map((i) => card(i)).join("");
-  wireFallbacks(listEl);
-  reveal(listEl);
-  renderPager(pages);
-}
-
-function renderPager(pages) {
-  if (!pagerEl) return;
-  if (pages <= 1) {
+    if (!pagerEl) return;
+    if (pages <= 1) {
+      pagerEl.innerHTML = "";
+      return;
+    }
     pagerEl.innerHTML = "";
-    return;
-  }
-  let html = "";
-  for (let i = 1; i <= pages; i++) {
-    html += `
-      <li class="page-item ${i === page ? "active" : ""}">
-        <button type="button" class="page-link" data-page="${i}"
-          ${i === page ? 'aria-current="page"' : ""}>${i}</button>
-      </li>`;
-  }
-  pagerEl.innerHTML = html;
-}
+    for (let i = 1; i <= pages; i++) {
+      const li = document.createElement("li");
+      li.className = `page-item ${i === page ? "active" : ""}`;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "page-link";
+      btn.dataset.page = String(i);
+      btn.textContent = String(i);
+      if (i === page) btn.setAttribute("aria-current", "page");
+      li.append(btn);
+      pagerEl.append(li);
+    }
+  };
 
-function card(item, eager = false) {
-  const title = L(item.title);
-  const desc = L(item.description);
-  const where = L(item.location);
-  const url = detailUrl("news", item);
+  searchEl?.addEventListener("input", () => {
+    const q = searchEl.value.trim().toLowerCase();
+    matched = !q ? cards : cards.filter((card) => (card.dataset.search || "").includes(q));
+    page = 1;
+    render();
+  });
 
-  return `
-    <div class="col-sm-6 col-lg-4 reveal">
-      <article class="axis-card">
-        <a href="${safeUrl(url)}" tabindex="-1" aria-hidden="true">${media(item.image, title, eager, dateChip(item.date))}</a>
-        <div class="card-inner">
-          <h3><a href="${safeUrl(url)}" class="card-title-link">${escapeHtml(title)}</a></h3>
-          <p class="card-meta">
-            ${escapeHtml(formatDateRange(item.date, item.dateEnd))}
-            ${item.time ? ` · ${escapeHtml(item.time)}` : ""}
-            ${where ? `<br>${escapeHtml(where)}` : ""}
-          </p>
-          <p class="card-text">
-            ${escapeHtml(isUrl(desc) ? t.externalNews : truncate(desc))}
-          </p>
-          <div class="card-actions">
-            <a class="btn btn-outline-primary btn-sm" href="${safeUrl(url)}">
-              ${escapeHtml(t.openPage || t.readMore)}
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>`;
+  pagerEl?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-page]");
+    if (!btn) return;
+    page = Number(btn.dataset.page) || 1;
+    render();
+    list.scrollIntoView({
+      behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+  });
+
+  render();
 }
