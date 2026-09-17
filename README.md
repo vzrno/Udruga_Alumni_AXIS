@@ -36,7 +36,7 @@ pa se mogu podijeliti i Google ih indeksira.
 ├── css/     base.css (stil), fonts.css (@font-face), icons.css (SVG ikone)
 ├── fonts/   woff2 datoteke (Archivo, IBM Plex Sans)
 ├── vendor/  bootstrap.min.css, bootstrap.bundle.min.js
-├── js/      main.js, events.js, news.js, careers.js  (bez uvoza, bez fetcha)
+├── js/      util.js, main.js, events.js, news.js, careers.js
 ├── images/  brand/ events/ udruga/  (sve 1400×933, uz svaku i -700 varijanta 700×467)
 ├── dokumenti/  statut i pristupnice (PDF) — malim slovom, bez razmaka u nazivima
 ├── .github/workflows/build.yml   provjera na svaki push
@@ -67,8 +67,7 @@ Ispis: `39 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
 lokalni link (slika, PDF, CSS) pokazuje na datoteku koja ne postoji, build ju
 imenuje i vrati grešku.
 
-Lokalni pregled: stranice više ništa ne dohvaćaju u pregledniku, pa radi i
-dvoklik na `index.html`. Za pregled adresa kakve su na serveru:
+Lokalni pregled (zbog `fetch` na `data/*.json` ne radi dvoklikom na datoteku):
 
 ```bash
 npx serve .          # ili: python3 -m http.server 5173
@@ -202,25 +201,6 @@ Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
 `clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
 stara adresa sada preusmjerava na novu (popis `REDIRECTS` u `build.mjs`).
 
-## 6b. Git na Windowsu i velika/mala slova
-
-Windows ne razlikuje `Dokumenti` od `dokumenti`, a Git na Windowsu
-(`core.ignorecase=true`) zato **ne primijeti** kad se mapi promijeni samo
-veličina slova. Posljedica: na GitHubu ostane stara `Dokumenti/`, stranice traže
-`dokumenti/…`, i na Linux serveru (GitHub Pages, CI) svi PDF-ovi su 404.
-
-Preimenovanje treba napraviti kroz Git, u dva koraka:
-
-```bash
-git mv Dokumenti dokumenti-tmp
-git mv dokumenti-tmp dokumenti
-git commit -m "Preimenuj Dokumenti u dokumenti"
-git push
-```
-
-`build.mjs` ovakav slučaj prepoznaje i u ispisu piše da datoteka "postoji kao
-Dokumenti/…" — to je znak za gornje naredbe.
-
 ## 6. Objava na GitHub Pages
 
 Generirane stranice su u korijenu, pa nema builda na serveru:
@@ -300,45 +280,6 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - Hero fotografiju mijenjaš u `src/pages/hr/home.html` i `en/home.html`
   (`images/udruga/kampus.webp`); preporuka je vodoravna fotografija najmanje
   1600 px širine, s "praznim" prostorom lijevo gdje ide tekst.
-
-## 10a. Liste, JavaScript i predmemorija
-
-**Kartice ispisuje generator.** Novosti, događanja i oglasi za posao nekad su
-se sastavljali u pregledniku: HTML je imao prazan `<div>`, a `js/*.js` je
-dohvaćao `data/*.json`. Sad `build.mjs` upisuje kartice u samu stranicu
-(`prerenderLists` u odjeljku *prerendered card lists*), pa:
-
-- stranica ima sadržaj i bez JavaScripta, i za svakog robota koji ne izvršava
-  skripte (Facebook, LinkedIn, dio AI alata),
-- indeksne stranice imaju prave interne poveznice na svaku objavu,
-- prvi prikaz ne čeka drugi mrežni zahtjev; `data/*.json` je sad samo ulaz u
-  build i ne treba biti na serveru.
-
-JavaScript radi samo ono što ovisi o trenutku ili o kliku: `events.js` stavlja
-oznaku *Uskoro / Danas / Završeno* i redanje „najbliže prvo“, `news.js` daje
-pretragu i straničenje, `careers.js` filtar po vrsti objave. Ni jedna od tih
-datoteka više ne sadrži HTML kartice ni uvoz drugog modula.
-
-> **Ne ispisuj u buildu ništa što ovisi o današnjem datumu.** Dvije izgradnje
-> istih izvora moraju dati bajt po bajt istu stranicu, inače pada provjera u
-> `.github/workflows/build.yml`. Zato oznaku stanja i redanje postavlja
-> preglednik, a generator ispisuje `data-date`, `data-time`, `data-date-end` i
-> `data-time-end`.
-
-Kartice iza prve stranice straničenja ispisuju se s `data-overflow="1"`;
-`css/base.css` ih skriva samo kad je JavaScript uključen (`html.js`), pa nema
-preskakanja sadržaja. Ako mijenjaš broj objava po stranici, promijeni ga na
-dva mjesta: `NEWS_PER_PAGE` / `JOBS_PER_PAGE` u `build.mjs` i `PER_PAGE` u
-`js/news.js` / `js/careers.js`.
-
-**Predmemorija (cache).** Svaka poveznica na CSS i JS dobiva `?v=<hash>`,
-gdje je hash izračunan iz sadržaja te datoteke. Mijenjaš `base.css` → mijenja
-se samo njegov hash → preglednik ponovno preuzme samo njega, a posjetitelj
-nikad ne visi na starom stilu nakon objave. Hash je deterministički, pa
-izgradnja ostaje ponovljiva. Datoteke u `js/` zato namjerno ne uvoze jedna
-drugu: da bi `?v=` bio dovoljan, svaka mora biti samostalna.
-
----
 
 ## 11. Predlozi za dalje
 

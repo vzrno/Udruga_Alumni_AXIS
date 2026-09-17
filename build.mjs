@@ -13,8 +13,7 @@
    =========================================================================== */
 
 import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
-import { existsSync, readFileSync } from "node:fs";
-import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import path from "node:path";
 
 /* ------------------------------------------------------------------ config */
@@ -133,15 +132,6 @@ function fmtDate(date, lang) {
 
 function fmtRange(from, to, lang) {
   if (!to || to === from) return fmtDate(from, lang);
-  const a = new Date(`${from}T12:00`);
-  const b = new Date(`${to}T12:00`);
-  if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return fmtDate(from, lang);
-  // Within one month, only the first day is spelled out: "11.–12. lipnja 2026."
-  if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) {
-    const locale = lang === "en" ? "en-GB" : "hr-HR";
-    const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(a);
-    return `${day}–${fmtDate(to, lang)}`;
-  }
   return `${fmtDate(from, lang)} – ${fmtDate(to, lang)}`;
 }
 
@@ -174,225 +164,6 @@ for (const collection of COLLECTIONS) {
     if (item.slug && item.slug.hr && item.slug.en) return true;
     console.warn(`skipped  ${collection.file} id=${item.id}: missing slug.hr / slug.en`);
     return false;
-  });
-}
-
-/* --------------------------------------------------- prerendered card lists
-   The list pages used to be filled in by the browser: the HTML shipped an
-   empty <div> and js/*.js fetched data/*.json. Now the build writes the
-   cards, and the browser only tags, sorts, filters and pages through markup
-   that is already there. So the pages carry their own content on first paint,
-   for a visitor without JavaScript, and for every crawler.
-
-   IMPORTANT: nothing rendered here may depend on the current date. The
-   "Uskoro / Završeno" tag and the "soonest first" order are applied by
-   js/events.js in the browser, because two builds of the same sources must
-   stay byte-identical (the CI check in .github/workflows/build.yml).       */
-
-const jobs = JSON.parse(await read(path.join(ROOT, "data/jobs.json")));
-
-/** Kept in step with PER_PAGE in js/news.js and js/careers.js. */
-const NEWS_PER_PAGE = 6;
-const JOBS_PER_PAGE = 9;
-
-const PLACEHOLDER = "images/placeholder.svg";
-
-/** Newest first, by an ISO date field: string compare, no time zone in play. */
-const newestFirst = (field) => (a, b) =>
-  String(b[field] || "").localeCompare(String(a[field] || ""));
-
-const detailPath = (collection, item, lang, root) =>
-  `${root}${collection.dir[lang]}/${item.slug[lang]}.html`;
-
-/** Same markup js/util.js used to build: card image + small variant + chip. */
-function cardMedia(src, alt, root, eager, overlay = "") {
-  const full = `${root}${src || PLACEHOLDER}`;
-  const small = /\.webp$/.test(src || "") ? `${root}${src.replace(/\.webp$/, "-700.webp")}` : "";
-  const srcset = small
-    ? `\n                 srcset="${esc(small)} 700w, ${esc(full)} 1400w"\n                 sizes="(min-width: 992px) 30vw, (min-width: 576px) 46vw, 92vw"`
-    : "";
-  return `<div class="card-media">
-            <img src="${esc(full)}"${srcset}
-                 alt="${esc(alt)}"
-                 width="1400" height="933"
-                 data-fallback="${esc(`${root}${PLACEHOLDER}`)}"
-                 loading="${eager ? "eager" : "lazy"}" decoding="async" />${overlay}
-          </div>`;
-}
-
-/** Day + short month laid over a card image. */
-function dateChip(date, lang) {
-  const d = new Date(`${date}T12:00`);
-  if (Number.isNaN(d.getTime())) return "";
-  const locale = lang === "en" ? "en-GB" : "hr-HR";
-  const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(d);
-  const month = new Intl.DateTimeFormat(locale, { month: "short" }).format(d).replace(".", "");
-  return `
-            <span class="date-chip" aria-hidden="true"><b>${esc(day)}</b><span>${esc(month)}</span></span>`;
-}
-
-function shorten(text, max = 130) {
-  const s = String(text || "").replace(/\s+/g, " ").trim();
-  if (s.length <= max) return s;
-  return `${s.slice(0, s.lastIndexOf(" ", max) || max)}…`;
-}
-
-function eventCard(item, lang, root) {
-  const strings = dict[lang];
-  const title = L(item.title, lang);
-  const url = detailPath(COLLECTIONS[1], item, lang, root);
-  const where = L(item.location, lang);
-  const when = fmtRange(item.date, item.dateEnd, lang);
-
-  return `
-          <div class="col-sm-6 col-lg-4 reveal" data-event
-               data-date="${esc(item.date)}" data-time="${esc(item.time || "")}"
-               data-date-end="${esc(item.dateEnd || "")}" data-time-end="${esc(item.endTime || "")}">
-            <article class="axis-card">
-              <a href="${esc(url)}" tabindex="-1" aria-hidden="true">${cardMedia(item.image, title, root, false, dateChip(item.date, lang))}</a>
-              <div class="card-inner">
-                <div class="d-flex justify-content-between align-items-start gap-2">
-                  <h3><a href="${esc(url)}" class="card-title-link">${esc(title)}</a></h3>
-                  <span class="tag" data-state-tag hidden></span>
-                </div>
-                <p class="card-meta">
-                  ${esc(when)}${item.time ? ` · ${esc(item.time)}` : ""}${where ? `<br>${esc(where)}` : ""}
-                </p>
-                <p class="card-text">${esc(shorten(L(item.description, lang), 120))}</p>
-                <div class="card-actions">
-                  <a class="btn btn-outline-primary btn-sm" href="${esc(url)}">${esc(strings.js.openEvent || strings.js.details)}</a>
-                </div>
-              </div>
-            </article>
-          </div>`;
-}
-
-function newsCard(item, lang, root, eager = false, overflow = false) {
-  const strings = dict[lang];
-  const title = L(item.title, lang);
-  const url = detailPath(COLLECTIONS[0], item, lang, root);
-  const where = L(item.location, lang);
-  const desc = L(item.description, lang);
-  // What js/news.js searches on, lower-cased once here instead of on every keystroke.
-  const haystack = [title, where, ...LArr(item.tags, lang).map((tag) => L(tag, lang))]
-    .join(" ")
-    .toLowerCase();
-
-  return `
-          <div class="col-sm-6 col-lg-4 reveal" data-news data-search="${esc(haystack)}"${overflow ? ' data-overflow="1"' : ""}>
-            <article class="axis-card">
-              <a href="${esc(url)}" tabindex="-1" aria-hidden="true">${cardMedia(item.image, title, root, eager, dateChip(item.date, lang))}</a>
-              <div class="card-inner">
-                <h3><a href="${esc(url)}" class="card-title-link">${esc(title)}</a></h3>
-                <p class="card-meta">
-                  ${esc(fmtRange(item.date, item.dateEnd, lang))}${item.time ? ` · ${esc(item.time)}` : ""}${where ? `<br>${esc(where)}` : ""}
-                </p>
-                <p class="card-text">${esc(isUrl(desc) ? strings.js.externalNews : shorten(desc))}</p>
-                <div class="card-actions">
-                  <a class="btn btn-outline-primary btn-sm" href="${esc(url)}">${esc(strings.js.openPage || strings.js.readMore)}</a>
-                </div>
-              </div>
-            </article>
-          </div>`;
-}
-
-function jobCard(item, lang, overflow = false) {
-  const strings = dict[lang];
-  const isJob = item.type === "job";
-  const role = L(item.role || item.description, lang);
-  const company = L(item.company, lang);
-  const place = L(item.location, lang);
-  const posted = fmtDate(item.publishedAt, lang);
-  const deadline = item.deadline ? fmtDate(item.deadline, lang) : "";
-
-  return `
-          <div class="col-sm-6 col-lg-4 reveal" data-job data-type="${esc(item.type || "job")}"${overflow ? ' data-overflow="1"' : ""}>
-            <article class="axis-card is-boxed">
-              <div class="card-inner">
-                <div>
-                  <span class="tag ${isJob ? "tag-soon" : "tag-done"}">${esc(isJob ? strings.js.typeJob : strings.js.typeEdu)}</span>
-                </div>
-                <h3>${esc(role)}</h3>
-                <p class="card-meta">${esc(company)}${place ? ` · ${esc(place)}` : ""}</p>
-                ${deadline ? `<p class="card-meta"><strong>${esc(strings.js.deadline)}:</strong> ${esc(deadline)}</p>` : ""}
-                <div class="card-actions">
-                  <a class="btn btn-outline-primary btn-sm" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(strings.js.openAd)}</a>
-                </div>
-              </div>
-              ${posted ? `<p class="card-foot">${esc(strings.js.published)}: ${esc(posted)}</p>` : ""}
-            </article>
-          </div>`;
-}
-
-/** Writes `inner` into the empty <div id="..."> the page ships. */
-function fillList(html, id, render) {
-  const re = new RegExp(`<div([^>]*\\bid="${id}"[^>]*)></div>`);
-  const match = html.match(re);
-  if (!match) return html;
-  const attrs = match[1].replace('aria-busy="true"', 'aria-busy="false"');
-  const limit = Number((match[1].match(/data-limit="(\d+)"/) || [])[1] || 0);
-  const inner = render(limit);
-  return html.replace(re, () => `<div${attrs}>${inner}\n        </div>`);
-}
-
-/** Same, for a small element that only holds a number or a count. */
-function fillText(html, id, text) {
-  const re = new RegExp(`(<(\\w+)[^>]*\\bid="${id}"[^>]*>)[^<]*(</\\2>)`);
-  return html.replace(re, (m, open, tag, close) => `${open}${esc(text)}${close}`);
-}
-
-function prerenderLists(html, lang, root) {
-  const news = [...collections.news].sort(newestFirst("date"));
-  const events = [...collections.events].sort(newestFirst("date"));
-  const openJobs = [...jobs].sort(newestFirst("publishedAt"));
-  const strings = dict[lang];
-
-  // Home preview: the newest `limit` events, reordered "soonest first" by
-  // js/events.js once it knows today's date.
-  html = fillList(html, "events-list", (limit) =>
-    (limit ? events.slice(0, limit) : events).map((item) => eventCard(item, lang, root)).join(""),
-  );
-  html = fillList(html, "news-preview", (limit) =>
-    news.slice(0, limit || 3).map((item, i) => newsCard(item, lang, root, i === 0)).join(""),
-  );
-  html = fillList(html, "news-list", () =>
-    news.map((item, i) => newsCard(item, lang, root, i === 0, i >= NEWS_PER_PAGE)).join(""),
-  );
-  html = fillList(html, "jobs-list", () =>
-    openJobs.map((item, i) => jobCard(item, lang, i >= JOBS_PER_PAGE)).join(""),
-  );
-
-  const count = news.length;
-  html = fillText(html, "news-count", `${count} ${count === 1 ? strings.js.itemOne : strings.js.itemMany}`);
-  html = fillText(html, "jobs-count", String(openJobs.length));
-  return html;
-}
-
-/* ------------------------------------------------------- asset versioning
-   Stylesheets and scripts are served with the same name for years, so a
-   visitor can sit on a cached base.css after a deploy. Each link gets
-   ?v=<hash of the file>, which changes only when the file does — the pages
-   stay byte-identical between builds, and the browser refetches exactly the
-   files that changed. None of the js files import each other, so one query
-   per file is enough.                                                      */
-
-const ASSET_RE = /(?:src|href)="((?:\.\.\/)*(?:css|js|vendor)\/[\w./-]+\.(?:css|js))"/g;
-const assetHashes = new Map();
-
-function assetVersion(relPath) {
-  if (!assetHashes.has(relPath)) {
-    const hash = createHash("sha256").update(readFileSync(path.join(ROOT, relPath))).digest("hex");
-    assetHashes.set(relPath, hash.slice(0, 8));
-  }
-  return assetHashes.get(relPath);
-}
-
-function stampAssets(html, outPath) {
-  const dir = path.posix.dirname(outPath);
-  return html.replace(ASSET_RE, (whole, rel) => {
-    const target = path.posix.normalize(path.posix.join(dir === "." ? "" : dir, rel));
-    if (!existsSync(path.join(ROOT, target))) return whole;
-    return whole.replace(`"${rel}"`, `"${rel}?v=${assetVersion(target)}"`);
   });
 }
 
@@ -472,13 +243,13 @@ async function renderPage({ outPath, lang, altPaths, meta, content, jsonld = [] 
     config,
     header,
     footer: fill(footerTpl, base),
-    content: prerenderLists(fill(content, base), lang, root),
+    content: fill(content, base),
     scripts,
   });
 
   const out = path.join(ROOT, outPath);
   await mkdir(path.dirname(out), { recursive: true });
-  await writeFile(out, stampAssets(html, outPath), "utf8");
+  await writeFile(out, html, "utf8");
   outputs.push(outPath);
 }
 
@@ -887,19 +658,11 @@ for (const outPath of outputs) {
   if (!outPath.endsWith(".html")) continue;
   const html = await read(path.join(ROOT, outPath));
   const dir = path.posix.dirname(outPath);
-  // The ?v=<hash> a stylesheet or script carries is stripped before the file
-  // is looked up, so versioned links are still checked.
   for (const match of html.matchAll(
-    /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml))(?:\?[^"]*)?"/g,
+    /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml))"/g,
   )) {
     const target = path.posix.normalize(path.posix.join(dir === "." ? "" : dir, match[1]));
-    if (files.has(target)) continue;
-    const caseTwin = [...files].find((f) => f.toLowerCase() === target.toLowerCase());
-    problems.push(
-      caseTwin
-        ? `${outPath} → ${match[1]}   (postoji kao "${caseTwin}": razlika u velikim/malim slovima — Git na Windowsu to ne vidi; vidi README §6b)`
-        : `${outPath} → ${match[1]}`,
-    );
+    if (!files.has(target)) problems.push(`${outPath} → ${match[1]}`);
   }
 }
 

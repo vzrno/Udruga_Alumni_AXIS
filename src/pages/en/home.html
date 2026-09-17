@@ -1,8 +1,8 @@
 <!--{
   "id": "home",
-  "title": "Alumni AXIS Split — udruga diplomiranih studenata Sveučilišnog odjela za stručne studije",
-  "description": "Alumni AXIS Split povezuje diplomirane i sadašnje studente Sveučilišnog odjela za stručne studije Sveučilišta u Splitu — događanja, stručne posjete, poslovi i članstvo.",
-  "scripts": ["events.js"],
+  "title": "Alumni AXIS Split — alumni association of the University Department of Professional Studies",
+  "description": "Alumni AXIS Split connects graduates and current students of the University Department of Professional Studies, University of Split, Croatia — events, site visits, jobs and membership.",
+  "scripts": ["events.js", "news.js"],
   "icons": true
 }-->
     <main id="main">
@@ -10,12 +10,12 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-content">
-            <p class="hero-kicker">Sveučilište u Splitu · Odjel za stručne studije</p>
-            <h1>Struka koja ostaje povezana</h1>
-            <p class="hero-lede">Alumni AXIS Split okuplja diplomirane i sadašnje studente Odjela: stručna događanja, terenske nastave, poslovi i vrata Odjela otvorena i nakon diplome.</p>
+            <p class="hero-kicker">University of Split · Department of Professional Studies</p>
+            <h1>A profession that stays connected</h1>
+            <p class="hero-lede">Alumni AXIS Split brings together graduates and current students of the Department: professional events, site visits, jobs, and a door to the Department that stays open after graduation.</p>
             <div class="d-flex flex-wrap gap-2 mt-4">
-              <a class="btn btn-primary btn-lg" href="{{root}}{{p.membership}}">Postani član</a>
-              <a class="btn btn-outline-primary btn-lg" href="#dogadanja">Pogledaj događanja</a>
+              <a class="btn btn-primary btn-lg" href="{{root}}{{p.membership}}">Become a member</a>
+              <a class="btn btn-outline-primary btn-lg" href="#events">See the events</a>
             </div>
           </div>
             <figure class="hero-figure">
@@ -23,7 +23,7 @@
               src="{{root}}images/udruga/globalna-suradnja.webp"
               srcset="{{root}}images/udruga/globalna-suradnja-700.webp 700w, {{root}}images/udruga/globalna-suradnja.webp 1400w"
               sizes="(min-width: 992px) 52vw, 94vw"
-              alt="Suradnja u različitim područjima — elektrotehnika, strojarstvo, informatika i ekonomija"
+              alt="Collaboration across fields — electrical engineering, mechanical engineering, IT and economics"
               width="1400"
               height="933"
               fetchpriority="high"
@@ -38,34 +38,34 @@
           <div class="value-row">
             <a class="value-item reveal" href="{{root}}{{p.events}}">
               <i class="bi bi-calendar-event" aria-hidden="true"></i>
-              <h3>Događanja i terenske nastave</h3>
-              <p>Panel rasprave, posjete tvrtkama i elektranama, konferencije — mjesta gdje se teorija sreće s praksom.</p>
-              <span class="section-link">Nadolazeća događanja</span>
+              <h3>Events and site visits</h3>
+              <p>Panel discussions, visits to companies and power plants, conferences — where theory meets practice.</p>
+              <span class="section-link">Upcoming events</span>
             </a>
             <a class="value-item reveal reveal-delay-1" href="{{root}}{{p.careers}}">
               <i class="bi bi-briefcase" aria-hidden="true"></i>
-              <h3>Poslovi i karijera</h3>
-              <p>Oglase poslodavaca i edukacije objavljujemo bez naknade; projekt „Zaposli me“ je u pripremi.</p>
-              <span class="section-link">Otvorene pozicije</span>
+              <h3>Jobs and careers</h3>
+              <p>Employer listings and training posted free of charge; the “Zaposli me” project is in preparation.</p>
+              <span class="section-link">Open positions</span>
             </a>
             <a class="value-item reveal reveal-delay-2" href="{{root}}{{p.membership}}">
               <i class="bi bi-mortarboard" aria-hidden="true"></i>
-              <h3>Zajednica alumnija</h3>
-              <p>Članstvo je otvoreno svima koji su diplomirali na Odjelu, kao i sadašnjim studentima. Godišnja članarina 10 EUR.</p>
-              <span class="section-link">Kako se učlaniti</span>
+              <h3>Alumni community</h3>
+              <p>Membership is open to everyone who graduated from the Department, and to current students. Annual fee EUR 10.</p>
+              <span class="section-link">How to join</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="section section-mist" id="dogadanja">
+      <section class="section section-mist" id="events">
         <div class="container">
           <div class="section-title d-flex flex-wrap justify-content-between align-items-end gap-3 reveal">
             <div>
-              <h2>Događanja</h2>
-              <p>Najave i nedavne aktivnosti Udruge.</p>
+              <h2>Events</h2>
+              <p>Announcements and recent activities.</p>
             </div>
-            <a class="section-link" href="{{root}}{{p.events}}">Sva događanja</a>
+            <a class="section-link" href="{{root}}{{p.events}}">All events</a>
           </div>
 
           <div class="row g-4 g-lg-5" id="events-list" data-view="upcoming" data-limit="3"
@@ -77,10 +77,10 @@
         <div class="container">
           <div class="section-title d-flex flex-wrap justify-content-between align-items-end gap-3 reveal">
             <div>
-              <h2>Novosti</h2>
-              <p>Što se zadnje dogodilo u Udruzi i na Odjelu.</p>
+              <h2>News</h2>
+              <p>The latest from the association and the Department.</p>
             </div>
-            <a class="section-link" href="{{root}}{{p.news}}">Sve novosti</a>
+            <a class="section-link" href="{{root}}{{p.news}}">All news</a>
           </div>
 
           <div class="row g-4 g-lg-5" id="news-preview" aria-live="polite" aria-busy="true"></div>
@@ -91,11 +91,11 @@
         <div class="container">
           <div class="row align-items-center g-4">
             <div class="col-lg-8 reveal">
-              <h2>Diplomirali ste na Odjelu?</h2>
-              <p class="mb-0">Članstvo je dobrovoljno i otvoreno svima koji su stekli bilo koji stupanj obrazovanja na Odjelu, kao i sadašnjim studentima. Godišnja članarina iznosi 10 EUR.</p>
+              <h2>Did you graduate from the Department?</h2>
+              <p class="mb-0">Membership is voluntary and open to anyone who earned a qualification at the Department, as well as to current students. The annual fee is EUR 10.</p>
             </div>
             <div class="col-lg-4 text-lg-end reveal reveal-delay-1">
-              <a class="btn btn-light btn-lg" href="{{root}}{{p.membership}}">Kako se učlaniti</a>
+              <a class="btn btn-light btn-lg" href="{{root}}{{p.membership}}">How to join</a>
             </div>
           </div>
         </div>

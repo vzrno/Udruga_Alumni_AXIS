@@ -1337,12 +1337,6 @@ textarea:focus-visible,
   transition-delay: 0.16s;
 }
 
-/* Cards past the first page are written into the HTML so the archive works
-   without JavaScript; js/news.js and js/careers.js then own the paging. */
-html.js [data-overflow] {
-  display: none;
-}
-
 /* ------------------------------------------------------- 16. Preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
