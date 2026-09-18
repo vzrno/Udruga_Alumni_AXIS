@@ -92,8 +92,9 @@ export function formatDateRange(from, to) {
   if (!a || !b) return formatDate(from);
   const sameMonth = a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
   if (sameMonth) {
+    // Intl gives "11." in Croatian and "11" in English, so no extra dot here.
     const dayOnly = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(a);
-    return `${dayOnly}${lang === "hr" ? "." : ""}–${formatDate(to)}`;
+    return `${dayOnly}–${formatDate(to)}`;
   }
   return `${formatDate(from)} – ${formatDate(to)}`;
 }

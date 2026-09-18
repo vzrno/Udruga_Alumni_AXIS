@@ -264,6 +264,10 @@ textarea:focus-visible,
   background: var(--axis-red-wash);
 }
 
+.lang-switch .lang-current {
+  padding: 0.25rem 0.45rem;
+}
+
 .lang-switch [aria-current="true"] {
   color: var(--axis-ink);
   cursor: default;
@@ -393,8 +397,9 @@ textarea:focus-visible,
     grid-template-columns: 1fr;
   }
 
+  /* offset stays inside the container padding so the page never scrolls sideways */
   .hero-figure::before {
-    inset: 0.8rem -0.8rem -0.8rem 0.8rem;
+    inset: 0.6rem -0.6rem -0.6rem 0.6rem;
   }
 }
 
@@ -1161,6 +1166,8 @@ textarea:focus-visible,
 
 .site-footer li {
   padding: 0.22rem 0;
+  /* long e-mail / IBAN must wrap on narrow phones instead of widening the page */
+  overflow-wrap: anywhere;
 }
 
 .site-footer .footer-legal {

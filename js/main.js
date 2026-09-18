@@ -97,7 +97,7 @@ function wireForms() {
         window.location.href =
           `mailto:${mail}?subject=${encodeURIComponent(subject)}` +
           `&body=${encodeURIComponent(lines.join("\n"))}`;
-        say("ok", t.formMailto);
+        say("ok", `${t.formMailto} ${mail}`.trim());
         return;
       }
 
@@ -124,6 +124,8 @@ function wireForms() {
 /* Copy the address of the current page (article share box). */
 function wireCopyLink() {
   document.querySelectorAll("[data-copy-link]").forEach((btn) => {
+    const original = btn.innerHTML;
+    let timer = null;
     btn.addEventListener("click", async () => {
       const url = window.location.href;
       try {
@@ -136,16 +138,16 @@ function wireCopyLink() {
         document.execCommand("copy");
         field.remove();
       }
-      const original = btn.innerHTML;
       btn.innerHTML = escapeHtml(t.copied || "");
-      setTimeout(() => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
         btn.innerHTML = original;
       }, 2000);
     });
   });
 }
 
-/* The map is only fetched from OpenStreetMap once the visitor asks for it,
+/* The map is only fetched from Google Maps once the visitor asks for it,
    so no third party sees an IP address on a plain page view. */
 function wireMapConsent() {
   document.querySelectorAll("[data-map]").forEach((holder) => {

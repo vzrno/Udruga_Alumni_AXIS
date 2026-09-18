@@ -37,7 +37,8 @@
       "en": "electrical-engineering-students-visit-vrboran-grid"
     },
     "date": "2026-05-19",
-    "time": "11:00 – 12:00",
+    "time": "11:00",
+    "endTime": "12:00",
     "image": "images/events/dispecerski-centar-vrboran.webp",
     "title": {
       "hr": "Terenska nastava studenata elektrotehnike u Dispečerskom centru Vrboran",
@@ -149,7 +150,8 @@
       "en": "science-comes-town-organised-with-technology"
     },
     "date": "2026-01-23",
-    "time": "10:00 – 14:00",
+    "time": "10:00",
+    "endTime": "14:00",
     "image": "images/events/science-comes-to-town.webp",
     "title": {
       "hr": "Science Comes to Town — zajednička organizacija UTT-a, Odsjeka za elektrotehniku i Alumni AXIS Split",
@@ -263,8 +265,8 @@
       "en": "Study trip for electronics and power engineering students"
     },
     "location": {
-      "hr": "Zagreb i Varaždin",
-      "en": "Zagreb and Varaždin"
+      "hr": "Zagreb, Varaždin i Smiljan",
+      "en": "Zagreb, Varaždin and Smiljan"
     },
     "tags": {
       "hr": [
@@ -277,7 +279,7 @@
       ]
     },
     "description": {
-      "hr": "Studenti elektronike i energetike, u pratnji profesora Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja teorijskih znanja s primjenom u praksi.",
+      "hr": "Studenti elektronike i elektroenergetike, u pratnji nastavnika Marije Jelović, Tonka Kovačevića i Vjekoslava Zrna, sudjelovali su u trodnevnoj stručnoj ekskurziji s ciljem povezivanja teorijskih znanja s primjenom u praksi.",
       "en": "Electronics and power engineering students, accompanied by lecturers Marija Jelović, Tonko Kovačević and Vjekoslav Zrno, took part in a three-day study trip connecting classroom theory with industrial practice."
     },
     "agenda": {

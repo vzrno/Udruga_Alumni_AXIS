@@ -63,7 +63,7 @@ Potreban je Node.js 18+.
 node build.mjs
 ```
 
-Ispis: `39 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
+Ispis: `43 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
 lokalni link (slika, PDF, CSS) pokazuje na datoteku koja ne postoji, build ju
 imenuje i vrati grešku.
 
@@ -92,6 +92,7 @@ stara poveznica prestane raditi.
   "date": "2026-10-05",
   "dateEnd": null,
   "time": "18:00",
+  "endTime": "19:30",
   "image": "images/events/naziv-slike.webp",
   "title": { "hr": "Naslov", "en": "Title" },
   "location": { "hr": "Split, Kopilica 5", "en": "Split, Kopilica 5" },
@@ -102,6 +103,7 @@ stara poveznica prestane raditi.
 }
 ```
 
+- `time` je samo početno vrijeme (`"18:00"`); završetak ide u `endTime`, ne kao `"18:00 – 19:30"`.
 - `\n\n` u tekstu postaje novi odlomak na stranici.
 - `agenda` i `board` mogu se izostaviti; tada se ti dijelovi ne prikazuju.
 - Ako je `description` samo web adresa, stranica nudi poveznicu na vanjsku objavu.
@@ -122,7 +124,9 @@ prođe datum i vrijeme završetka; naslovnica prikazuje tri najbliža, a
 
 ### Novi oglas za posao
 
-U `data/jobs.json`; `type` je `"job"` ili `"education"`, `deadline` je neobavezan.
+U `data/jobs.json`; `type` je `"job"` ili `"education"`, `deadline` je neobavezan
+(`"2026-10-31"`). Oglas s prošlim rokom sam nestaje sa stranice; oglase bez roka
+povremeno obriši ručno.
 
 ### Nova slika
 
@@ -197,9 +201,35 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
 6. U Google Search Console: **Sitemaps → dodaj `sitemap.xml`** i, po želji,
    *URL Inspection → Request indexing* za naslovnicu.
 
+> **404 stranica** koristi putanje od korijena domene (`/css/…`). Radi na vlastitoj
+> domeni i lokalnom serveru; ako je stranica privremeno na
+> `korisnik.github.io/repozitorij/`, 404 će biti bez stila dok se ne spoji domena.
+
 Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
 `clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
 stara adresa sada preusmjerava na novu (popis `REDIRECTS` u `build.mjs`).
+
+## 6b. Git na Windowsu i velika/mala slova
+
+Windows ne razlikuje `Dokumenti` od `dokumenti`, a Git na Windowsu
+(`core.ignorecase=true`) zato **ne primijeti** kad se mapi promijeni samo
+veličina slova. Posljedica: na GitHubu ostane stara `Dokumenti/`, stranice traže
+`dokumenti/…`, i na Linux serveru (GitHub Pages, CI) svi PDF-ovi su 404.
+
+Preimenovanje treba napraviti kroz Git, u dva koraka:
+
+```bash
+git rm -r --cached Dokumenti
+git add dokumenti
+git commit -m "Preimenuj Dokumenti u dokumenti"
+git push
+```
+
+Provjera: `git ls-files | findstr /i dokumenti` (Windows) mora ispisati samo
+`dokumenti/…` s malim d.
+
+`build.mjs` ovakav slučaj prepoznaje i u ispisu piše da datoteka "postoji kao
+Dokumenti/…" — to je znak za gornje naredbe.
 
 ## 6. Objava na GitHub Pages
 
@@ -260,9 +290,9 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 
 ## 10. Vizualni sustav (v3)
 
-- **Naslovnica:** full-bleed fotografija s naslovom preko nje (umjesto karusela),
-  ispod nje tri "vrijednosti" (događanja, poslovi, zajednica) koje se lagano
-  preklapaju s fotografijom, zatim događanja, novosti i crvena traka s pozivom.
+- **Naslovnica:** naslov lijevo i fotografija desno u okviru 3:2 (na mobitelu
+  jedno ispod drugog), ispod tri "vrijednosti" (događanja, poslovi, zajednica),
+  zatim događanja, novosti i crvena traka s pozivom.
 - **Kartice** bez okvira: fotografija 3:2 sa zaobljenim rubovima, datum kao
   "čip" u kutu slike, naslov koji se podcrta pri prelasku mišem, tekstualna
   poveznica sa strelicom umjesto gumba. Oglasi za posao (bez slike) zadržavaju
@@ -278,8 +308,11 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - Značka se pojavljuje u headeru, footeru, na stranici O nama i kao vodeni žig
   na crvenoj traci naslovnice; favicon i slika za dijeljenje također su iz nje.
 - Hero fotografiju mijenjaš u `src/pages/hr/home.html` i `en/home.html`
-  (`images/udruga/kampus.webp`); preporuka je vodoravna fotografija najmanje
-  1600 px širine, s "praznim" prostorom lijevo gdje ide tekst.
+  (trenutno `images/udruga/globalna-suradnja.webp`); slika se prikazuje cijela,
+  u omjeru 3:2, pa je dovoljna standardna 1400 × 933.
+- Ikone u `css/icons.css` su SVG maske. Unutar `url("…")` SVG smije imati samo
+  **jednostruke** navodnike (`xmlns='…'`); dvostruki prekidaju pravilo i ikona
+  postane obojeni kvadrat.
 
 ## 11. Predlozi za dalje
 

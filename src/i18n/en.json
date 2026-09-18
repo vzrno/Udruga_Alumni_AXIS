@@ -6,7 +6,7 @@
   "brand": {
     "name": "Alumni AXIS Split",
     "sub": "University Department of Professional Studies, Split",
-    "legalName": "Association of Graduates of the University Department of Professional Studies, University of Split — Alumni AXIS Split"
+    "legalName": "Association of graduate students of the University department of professional studies University of Split – Alumni AXIS Split"
   },
   "nav": {
     "skip": "Skip to content",
@@ -68,11 +68,10 @@
     "formOk": "Your message has been sent. We will reply as soon as we can.",
     "formError": "The message could not be sent.",
     "formErrorMail": "Please email us at",
-    "formMailto": "We have opened your email app with the message ready. Send it to finish your enquiry.",
+    "formMailto": "We have opened your email app with the message ready — send it to finish. If nothing opened, email us directly at",
     "openPage": "Read the article",
     "openEvent": "Event details",
     "mapLoad": "Show the map",
-    "mapNote": "The map loads from OpenStreetMap, which receives your IP address.",
     "copied": "Link copied to clipboard.",
     "pause": "Pause the slideshow",
     "play": "Resume the slideshow"

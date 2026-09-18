@@ -11,7 +11,7 @@ import re
 import sys
 import unicodedata
 
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageOps
 
 W, H = 1400, 933
 SMALL = (700, 467)
@@ -62,7 +62,8 @@ def main():
     for path in sys.argv[1:]:
         folder, filename = os.path.split(path)
         stem = slug(os.path.splitext(filename)[0])
-        img = flatten(Image.open(path))
+        # exif_transpose: phone photos store rotation in EXIF; apply it before cropping
+        img = flatten(ImageOps.exif_transpose(Image.open(path)))
         full = framed(img, W, H) if img.width < 900 else cover(img, W, H)
         full.save(os.path.join(folder, f"{stem}.webp"), "WEBP", quality=82, method=6)
         full.resize(SMALL, Image.LANCZOS).save(os.path.join(folder, f"{stem}-700.webp"), "WEBP", quality=80, method=6)

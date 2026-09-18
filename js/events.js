@@ -69,10 +69,12 @@ function visible() {
     return true;
   });
 
-  // Past events read best newest-first, upcoming ones soonest-first.
-  const dir = sortDir === "desc" ? -1 : 1;
-  const naturalDir = view === "past" && sortDir === "asc" ? -1 : dir;
-  items.sort((a, b) => ((toDate(a.date) || 0) - (toDate(b.date) || 0)) * naturalDir);
+  // "asc" = closest to today first: soonest upcoming, most recent past.
+  // "desc" = the opposite end of the list.
+  const byDate = (a, b) => (toDate(a.date) || 0) - (toDate(b.date) || 0);
+  const flip = view === "past" ? -1 : 1;
+  const dir = sortDir === "desc" ? -flip : flip;
+  items.sort((a, b) => byDate(a, b) * dir);
   return limit ? items.slice(0, limit) : items;
 }
 
@@ -120,7 +122,7 @@ function card(item) {
             ${tagFor(state)}
           </div>
           <p class="card-meta">
-            ${escapeHtml(when)}${item.time ? ` · ${escapeHtml(item.time)}` : ""}
+            ${escapeHtml(when)}${item.time ? ` · ${escapeHtml(item.time)}${item.endTime ? `–${escapeHtml(item.endTime)}` : ""}` : ""}
             ${where ? `<br>${escapeHtml(where)}` : ""}
           </p>
           <p class="card-text">${escapeHtml(truncate(L(item.description), 120))}</p>

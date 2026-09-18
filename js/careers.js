@@ -43,8 +43,16 @@ async function init() {
   render();
 }
 
+/** A listing disappears the day after its deadline; without a deadline it stays. */
+function isOpen(job) {
+  if (!job.deadline) return true;
+  const end = toDate(job.deadline);
+  return !end || end.getTime() + 86400000 > Date.now();
+}
+
 function render() {
-  const items = type === "all" ? jobs : jobs.filter((j) => j.type === type);
+  const open = jobs.filter(isOpen);
+  const items = type === "all" ? open : open.filter((j) => j.type === type);
   const pages = Math.max(1, Math.ceil(items.length / PER_PAGE));
   page = Math.min(page, pages);
 

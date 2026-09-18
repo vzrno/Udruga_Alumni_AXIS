@@ -15,13 +15,15 @@
 import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 /* ------------------------------------------------------------------ config */
 
 /** Public address of the site. Change before going live. */
 const SITE = "https://alumniaxis-st.hr";
 
-const ROOT = path.dirname(new URL(import.meta.url).pathname);
+// fileURLToPath handles spaces (%20) and Windows drive letters (C:\).
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
 const LANGS = ["hr", "en"];
 
@@ -135,6 +137,14 @@ function fmtRange(from, to, lang) {
   return `${fmtDate(from, lang)} – ${fmtDate(to, lang)}`;
 }
 
+/** Shorten at a word boundary, for meta descriptions. */
+function clip(text, max) {
+  const s = String(text || "").replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  const cut = s.lastIndexOf(" ", max - 1);
+  return `${s.slice(0, cut > 0 ? cut : max - 1)}…`;
+}
+
 const isUrl = (text) => /^https?:\/\//i.test(String(text || "").trim());
 
 /** Plain text with blank lines -> paragraphs. */
@@ -197,7 +207,7 @@ async function renderPage({ outPath, lang, altPaths, meta, content, jsonld = [] 
     const label = dict[lang].nav[code === "hr" ? "toHr" : "toEn"];
     const short = code.toUpperCase();
     if (code === lang) {
-      return `              <a aria-current="true" hreflang="${code}" lang="${code}" title="${esc(label)}">${short}</a>`;
+      return `              <span class="lang-current" aria-current="true" lang="${code}" title="${esc(label)}">${short}</span>`;
     }
     return `              <span class="sep" aria-hidden="true">/</span>\n              <a href="${root}${altPaths[code]}" hreflang="${code}" lang="${code}" title="${esc(label)}">${short}</a>`;
   }).join("\n");
@@ -440,7 +450,7 @@ for (const collection of COLLECTIONS) {
           "@type": "Event",
           name: title,
           startDate: item.time ? `${item.date}T${item.time}` : item.date,
-          endDate: item.dateEnd || item.date,
+          endDate: item.endTime ? `${item.dateEnd || item.date}T${item.endTime}` : item.dateEnd || item.date,
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
           inLanguage: lang,
@@ -483,7 +493,7 @@ for (const collection of COLLECTIONS) {
         altPaths,
         meta: {
           title: `${title} — Alumni AXIS Split`,
-          description: (isUrl(descRaw) ? title : descRaw.replace(/\s+/g, " ").slice(0, 155)) || title,
+          description: (isUrl(descRaw) ? title : clip(descRaw, 155)) || title,
           icons: true,
           ogType: "article",
           ogImage: image,
@@ -662,7 +672,13 @@ for (const outPath of outputs) {
     /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml))"/g,
   )) {
     const target = path.posix.normalize(path.posix.join(dir === "." ? "" : dir, match[1]));
-    if (!files.has(target)) problems.push(`${outPath} → ${match[1]}`);
+    if (files.has(target)) continue;
+    const caseTwin = [...files].find((f) => f.toLowerCase() === target.toLowerCase());
+    problems.push(
+      caseTwin
+        ? `${outPath} → ${match[1]}   (postoji kao "${caseTwin}": razlika u velikim/malim slovima — Git na Windowsu to ne vidi; vidi README §6b)`
+        : `${outPath} → ${match[1]}`,
+    );
   }
 }
 

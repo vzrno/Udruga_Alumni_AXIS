@@ -123,7 +123,7 @@ function card(item, eager = false) {
           <h3><a href="${safeUrl(url)}" class="card-title-link">${escapeHtml(title)}</a></h3>
           <p class="card-meta">
             ${escapeHtml(formatDateRange(item.date, item.dateEnd))}
-            ${item.time ? ` · ${escapeHtml(item.time)}` : ""}
+            ${item.time ? ` · ${escapeHtml(item.time)}${item.endTime ? `–${escapeHtml(item.endTime)}` : ""}` : ""}
             ${where ? `<br>${escapeHtml(where)}` : ""}
           </p>
           <p class="card-text">

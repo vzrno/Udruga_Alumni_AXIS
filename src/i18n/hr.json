@@ -68,11 +68,10 @@
     "formOk": "Poruka je poslana. Odgovorit ćemo u najkraćem roku.",
     "formError": "Poruku nije bilo moguće poslati.",
     "formErrorMail": "Pišite nam na",
-    "formMailto": "Otvorili smo vaš program za e-poštu s pripremljenom porukom. Pošaljite je da dovršite upit.",
+    "formMailto": "Otvorili smo vaš program za e-poštu s pripremljenom porukom — pošaljite je da dovršite upit. Ako se program nije otvorio, pišite nam izravno na",
     "openPage": "Otvori objavu",
     "openEvent": "Detalji događanja",
     "mapLoad": "Prikaži kartu",
-    "mapNote": "Karta se učitava s OpenStreetMapa, čime se toj usluzi prosljeđuje vaša IP adresa.",
     "copied": "Veza kopirana u međuspremnik.",
     "pause": "Pauziraj izmjenu slika",
     "play": "Nastavi izmjenu slika"
