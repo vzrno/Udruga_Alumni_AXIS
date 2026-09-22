@@ -1,0 +1,43 @@
+# Netlify settings for alumniaxis-st.hr
+# The HTML pages are generated locally (node build.mjs) and committed,
+# so Netlify only publishes the repository as it is.
+
+[build]
+  publish = "."
+
+# Security headers for every page.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+
+# Fonts and third-party libraries never change under the same name: cache for a year.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images may be replaced under the same name: cache for a week.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Thank-you pages are reached only after sending a form.
+[[headers]]
+  for = "/hvala.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/en/thank-you.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"

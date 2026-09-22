@@ -67,7 +67,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","formSubject":"Upit sa web stranice","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","formMailto":"Otvorili smo vaš program za e-poštu s pripremljenom porukom — pošaljite je da dovršite upit. Ako se program nije otvorio, pišite nam izravno na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
+      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","copiedShort":"Kopirano ✓","formSending":"Šaljem…","oibInvalid":"OIB nije ispravan — provjerite znamenke.","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
     </script>
   </head>
 
@@ -193,12 +193,21 @@
 
               <form
                 id="contactForm"
+                name="kontakt"
+                method="POST"
+                action="/hvala.html"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-ajax-form
+                data-mailto="alumniaxis.st@gmail.com"
                 class="needs-validation mt-4"
                 novalidate
-                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
-                data-mailto="alumniaxis.st@gmail.com"
-                data-subject="Upit sa web stranice"
               >
+                <input type="hidden" name="form-name" value="kontakt" />
+                <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
+                <input type="hidden" name="subject" value="Upit s web stranice — Alumni AXIS Split" data-subject="Upit s web stranice" />
+                <!-- spam trap: bots fill hidden fields, people do not -->
+                <p hidden><label>Ne ispunjavati: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label class="form-label" for="name">Ime i prezime</label>
@@ -225,20 +234,17 @@
 
                   <div class="col-12">
                     <label class="form-label" for="message">Poruka</label>
-                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
-                    <div class="invalid-feedback">Napišite poruku.</div>
+                    <textarea class="form-control" id="message" name="message" rows="6" required minlength="10"></textarea>
+                    <div class="invalid-feedback">Napišite poruku (barem 10 znakova).</div>
                   </div>
-
-                  <!-- spam trap: bots fill hidden fields, people do not -->
-                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
 
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">
                       <i class="bi bi-send me-1" aria-hidden="true"></i> Pošalji poruku
                     </button>
                     <p class="card-meta mt-3 mb-0">
-                      Podatke koristimo isključivo za odgovor na vaš upit i ne dijelimo ih trećim
-                      stranama.
+                      Podatke koristimo isključivo za odgovor na vaš upit. Više u
+                      <a href="privatnost.html">Zaštiti privatnosti</a>.
                     </p>
                   </div>
                 </div>

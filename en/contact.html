@@ -67,7 +67,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","formSubject":"Website enquiry","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","formMailto":"We have opened your email app with the message ready — send it to finish. If nothing opened, email us directly at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
+      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","copiedShort":"Copied ✓","formSending":"Sending…","oibInvalid":"This OIB is not valid — check the digits.","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
     </script>
   </head>
 
@@ -193,12 +193,21 @@
 
               <form
                 id="contactForm"
+                name="kontakt"
+                method="POST"
+                action="/en/thank-you.html"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-ajax-form
+                data-mailto="alumniaxis.st@gmail.com"
                 class="needs-validation mt-4"
                 novalidate
-                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
-                data-mailto="alumniaxis.st@gmail.com"
-                data-subject="Website enquiry"
               >
+                <input type="hidden" name="form-name" value="kontakt" />
+                <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
+                <input type="hidden" name="subject" value="Upit s web stranice (EN) — Alumni AXIS Split" data-subject="Upit s web stranice (EN)" />
+                <!-- spam trap: bots fill hidden fields, people do not -->
+                <p hidden><label>Leave empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label class="form-label" for="name">Full name</label>
@@ -225,19 +234,17 @@
 
                   <div class="col-12">
                     <label class="form-label" for="message">Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
-                    <div class="invalid-feedback">Please write your message.</div>
+                    <textarea class="form-control" id="message" name="message" rows="6" required minlength="10"></textarea>
+                    <div class="invalid-feedback">Please write your message (at least 10 characters).</div>
                   </div>
-
-                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
 
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">
                       <i class="bi bi-send me-1" aria-hidden="true"></i> Send message
                     </button>
                     <p class="card-meta mt-3 mb-0">
-                      We use your details only to answer your enquiry and never share them with
-                      third parties.
+                      We use your details only to answer your enquiry. See
+                      <a href="../en/privacy.html">Privacy</a>.
                     </p>
                   </div>
                 </div>

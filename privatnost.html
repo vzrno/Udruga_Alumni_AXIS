@@ -40,7 +40,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","formSubject":"Upit sa web stranice","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","formMailto":"Otvorili smo vaš program za e-poštu s pripremljenom porukom — pošaljite je da dovršite upit. Ako se program nije otvorio, pišite nam izravno na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
+      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","copiedShort":"Kopirano ✓","formSending":"Šaljem…","oibInvalid":"OIB nije ispravan — provjerite znamenke.","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
     </script>
   </head>
 
@@ -133,8 +133,10 @@
               Podatke koristimo isključivo za odgovor na vaš upit.
             </li>
             <li>
-              <strong>Pristupnica za članstvo:</strong> podaci navedeni na obrascu, potrebni za
-              vođenje registra članova prema Zakonu o udrugama i Statutu Udruge.
+              <strong>Pristupnica za članstvo:</strong> ime i prezime, datum rođenja, OIB, e-pošta,
+              mobitel (neobavezno), status i podaci o studiju te dane izjave i privole. Ime, OIB,
+              datum rođenja, datum pristupanja i kategoriju članstva Zakon o udrugama traži za
+              popis članova; ostalo koristimo za kontakt i obavještavanje o radu Udruge.
             </li>
           </ul>
 
@@ -153,12 +155,14 @@
           </p>
           <ul>
             <li>
-              <strong>pružatelj hostinga</strong> — bilježi pristupne zapise (IP adresa, vrijeme
-              pristupa) radi sigurnosti i rada servera;
+              <strong>Netlify</strong> (pružatelj hostinga) — bilježi pristupne zapise (IP adresa,
+              vrijeme pristupa) radi sigurnosti i rada servera te prima i pohranjuje poruke i
+              pristupnice poslane putem obrazaca na ovoj stranici i prosljeđuje ih na e-poštu Udruge.
+              Netlify ima sjedište u SAD-u, a obrada se odvija prema Netlifyjevu ugovoru o obradi
+              podataka (DPA);
             </li>
             <li>
-              <strong>servis za obradu obrazaca</strong> — prima poruku poslanu putem obrasca i
-              prosljeđuje je na e-poštu Udruge;
+              <strong>Google (Gmail)</strong> — e-pošta Udruge, u koju stižu poruke i pristupnice;
             </li>
             <li>
               <strong>Google Maps</strong> — karta na stranici Kontakt učitava se samo nakon što

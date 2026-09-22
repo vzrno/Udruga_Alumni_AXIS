@@ -63,7 +63,7 @@ Potreban je Node.js 18+.
 node build.mjs
 ```
 
-Ispis: `43 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
+Ispis: `45 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
 lokalni link (slika, PDF, CSS) pokazuje na datoteku koja ne postoji, build ju
 imenuje i vrati grešku.
 
@@ -176,11 +176,26 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    od nje zavise `canonical`, `hreflang`, `sitemap.xml`, RSS, JSON-LD i slika za
    dijeljenje.
 
-2. **Obrasci.** Otvori besplatni račun na [formspree.io](https://formspree.io) i
-   zamijeni `YOUR_FORM_ID` na četiri mjesta: `src/pages/hr/contact.html`,
-   `src/pages/en/contact.html`, `src/pages/hr/membership.html`,
-   `src/pages/en/membership.html`. Dok to ne učiniš, gumbi otvaraju program za
-   e-poštu s pripremljenom porukom — rade, ali poruke ne dolaze automatski.
+2. **Obrasci (Netlify Forms).** Pristupnica (`name="pristupnica"`) i kontakt
+   obrazac (`name="kontakt"`) šalju se preko Netlifyja — stranica mora biti
+   hostana na Netlifyju. Jednokratno u Netlifyju:
+   - **Forms → Enable form detection**, zatim novi deploy (bilo koji `git push`
+     ili *Deploys → Trigger deploy*); tek tada Netlify „vidi“ obrasce;
+   - **Project configuration → Notifications → Emails and webhooks → Form
+     submission notifications → Add notification → Email notification**,
+     adresa `alumniaxis.st@gmail.com`, obrazac *Any form* (ili posebno za svaki).
+   Sve predaje vide se i u kartici **Forms** (izvoz u CSV).
+   Nakon slanja posjetitelj ide na `hvala.html` / `en/thank-you.html`
+   (`?obrazac=pristupnica` ili `?obrazac=kontakt` bira koji se tekst prikazuje);
+   te stranice nisu u sitemapu i imaju `noindex`. Naslov obavijesnog maila
+   postavlja skriveno polje `subject` (npr. „Nova pristupnica · Ana Horvat“).
+   `netlify.toml` postavlja sigurnosna zaglavlja i predmemoriju za fonte i slike.
+   Pravila za izmjene obrazaca: `data-netlify="true"`, skriveno polje
+   `form-name` i polje `bot-field` moraju ostati; novo polje mora postojati u
+   HTML-u (Netlify ga ne prima ako ga nije vidio pri deployu). Polja u skrivenim
+   odjeljcima (`data-group`) šalju se samo kad je odabran odgovarajući status.
+   Lokalno (`python -m http.server`) slanje javlja grešku — to je očekivano,
+   radi tek na Netlifyju.
 
 3. **Google Search Console.** Prijavi `sitemap.xml` i provjeri da su prepoznate
    obje jezične verzije (*International Targeting*). Nakon toga u *Rich Results

@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   smoothAnchors();
   stampYear();
   wireForms();
+  wireThanks();
+  wireCopyText();
   wireCopyLink();
   wireMapConsent();
   wireCarouselPause();
@@ -56,21 +58,74 @@ function stampYear() {
 }
 
 /* ----------------------------------------------------------------- forms --
-   Every form with data-endpoint posts there (Formspree, Formsubmit, a
-   serverless function…). Until an endpoint is configured the submit button
-   opens the visitor's mail client with the message pre-filled, so it is never
-   a dead end. */
+   Netlify Forms: see wireForms() below and README, section 5. */
+/**
+ * Croatian OIB check digit (ISO 7064, MOD 11,10). Catches typos such as a
+ * swapped or missing digit before the form is sent.
+ */
+function isValidOib(value) {
+  if (!/^\d{11}$/.test(value)) return false;
+  let a = 10;
+  for (let i = 0; i < 10; i++) {
+    a = (a + Number(value[i])) % 10;
+    if (a === 0) a = 10;
+    a = (a * 2) % 11;
+  }
+  const check = (11 - a) % 10;
+  return check === Number(value[10]);
+}
+
+/**
+ * Show only the fieldset that matches the chosen radio (data-toggle-group).
+ * Fields in hidden fieldsets are disabled, so they are neither validated nor
+ * sent. Without JavaScript every fieldset stays visible.
+ */
+function wireToggleGroups(form) {
+  const radios = form.querySelectorAll("[data-toggle-group]");
+  if (!radios.length) return () => {};
+  const groups = form.querySelectorAll("[data-group]");
+  const update = () => {
+    const chosen = form.querySelector("[data-toggle-group]:checked")?.dataset.toggleGroup;
+    groups.forEach((g) => {
+      const on = g.dataset.group === chosen;
+      g.hidden = !on;
+      g.disabled = !on;
+    });
+  };
+  radios.forEach((r) => r.addEventListener("change", update));
+  update();
+  return update;
+}
+
+/**
+ * Forms are handled by Netlify Forms: the HTML carries data-netlify="true",
+ * Netlify registers the form at deploy time, stores every submission and
+ * emails it to the address set under Project configuration → Notifications.
+ * Here we only send it without leaving the page (POST to "/", url-encoded,
+ * with the hidden form-name field), as Netlify's docs describe.
+ */
 function wireForms() {
-  document.querySelectorAll("form[data-endpoint]").forEach((form) => {
+  document.querySelectorAll("form[data-ajax-form]").forEach((form) => {
     const statusBox = form.querySelector("[data-form-status]");
     const submit = form.querySelector('button[type="submit"]');
+    const mail = form.dataset.mailto || "";
+
+    const refreshGroups = wireToggleGroups(form);
+
+    form.querySelectorAll("[data-oib]").forEach((input) => {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\D/g, "").slice(0, 11);
+        input.setCustomValidity(input.value && !isValidOib(input.value) ? t.oibInvalid : "");
+      });
+    });
 
     const say = (kind, message) => {
       if (!statusBox) return;
       statusBox.className = kind === "ok" ? "panel-note mt-3" : "alert alert-danger mt-3";
       statusBox.textContent = message;
       statusBox.hidden = false;
-      statusBox.setAttribute("role", "status");
+      statusBox.setAttribute("role", kind === "ok" ? "status" : "alert");
+      statusBox.scrollIntoView({ block: "nearest", behavior: "smooth" });
     };
 
     form.addEventListener("submit", async (e) => {
@@ -81,42 +136,77 @@ function wireForms() {
         return;
       }
 
-      const data = new FormData(form);
-      if (data.get("_gotcha")) return; // honeypot: silently drop bots
-
-      const endpoint = (form.dataset.endpoint || "").trim();
-      const mail = form.dataset.mailto || "";
-      const subject = form.dataset.subject || t.formSubject;
-
-      if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
-        const lines = [];
-        for (const [key, value] of data.entries()) {
-          if (key.startsWith("_") || !String(value).trim()) continue;
-          lines.push(`${key}: ${value}`);
-        }
-        window.location.href =
-          `mailto:${mail}?subject=${encodeURIComponent(subject)}` +
-          `&body=${encodeURIComponent(lines.join("\n"))}`;
-        say("ok", `${t.formMailto} ${mail}`.trim());
-        return;
+      // Subject line of the notification email, e.g. "Nova pristupnica: Ana Horvat".
+      const subject = form.querySelector('input[name="subject"]');
+      if (subject) {
+        const who = form.querySelector('[name="ime_i_prezime"], [name="name"]')?.value.trim();
+        const topic = form.querySelector('[name="topic"]')?.value;
+        subject.value = [subject.dataset.subject, topic, who].filter(Boolean).join(" · ") + " — Alumni AXIS Split";
       }
 
+      const data = new FormData(form);
+      if (data.get("bot-field")) return; // honeypot: silently drop bots
+
       submit.disabled = true;
+      const label = submit.innerHTML;
+      submit.textContent = t.formSending;
       try {
-        const res = await fetch(endpoint, {
+        const res = await fetch("/", {
           method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(data).toString(),
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        // Same thank-you page Netlify would show without JavaScript,
+        // told which form was sent so it shows the matching text.
+        const next = form.getAttribute("action");
+        if (next) {
+          window.location.assign(`${next}?obrazac=${encodeURIComponent(data.get("form-name") || "")}`);
+          return;
+        }
         form.reset();
         form.classList.remove("was-validated");
-        say("ok", t.formOk);
+        refreshGroups();
+        say("ok", form.dataset.ok || t.formOk);
       } catch (err) {
         say("error", `${t.formError} ${mail ? `${t.formErrorMail} ${mail}` : ""}`.trim());
       } finally {
         submit.disabled = false;
+        submit.innerHTML = label;
       }
+    });
+  });
+}
+
+/* Thank-you page: show only the part for the form that was sent
+   (?obrazac=pristupnica or ?obrazac=kontakt). Without the parameter
+   — e.g. after a submission without JavaScript — everything stays visible. */
+function wireThanks() {
+  const parts = document.querySelectorAll("[data-thanks]");
+  if (!parts.length) return;
+  const sent = new URLSearchParams(window.location.search).get("obrazac");
+  if (!sent) return;
+  parts.forEach((el) => {
+    el.hidden = el.dataset.thanks !== sent;
+  });
+}
+
+/* Buttons that copy a fixed text, e.g. the IBAN. */
+function wireCopyText() {
+  document.querySelectorAll("[data-copy-text]").forEach((btn) => {
+    const original = btn.textContent;
+    let timer = null;
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copyText);
+        btn.textContent = t.copiedShort || "✓";
+      } catch (err) {
+        return;
+      }
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        btn.textContent = original;
+      }, 2000);
     });
   });
 }

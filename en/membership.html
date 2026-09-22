@@ -40,7 +40,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","formSubject":"Website enquiry","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","formMailto":"We have opened your email app with the message ready — send it to finish. If nothing opened, email us directly at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
+      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","copiedShort":"Copied ✓","formSending":"Sending…","oibInvalid":"This OIB is not valid — check the digits.","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
     </script>
   </head>
 
@@ -120,13 +120,14 @@
               </p>
 
               <ol class="mt-4">
-                <li>Download and complete the application form for your membership category.</li>
                 <li>
-                  Send it to
+                  Fill in the <a href="#online-application">online application</a> below — or
+                  download the PDF form, complete it and send it to
                   <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>
                   or hand it in at the association's office.
                 </li>
-                <li>Pay the annual fee using the details on the right and send us the receipt.</li>
+                <li>The Secretary enters you in the register of members and emails you.</li>
+                <li>Active members pay the annual fee using the payment details.</li>
               </ol>
 
               <div class="panel-note mt-4">
@@ -141,11 +142,11 @@
                 </a>
                 <a class="btn btn-outline-primary" href="../dokumenti/pristupnica-redovni.pdf" target="_blank" rel="noopener">
                   <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
-                  Application — full member
+                  Application — regular member (PDF)
                 </a>
                 <a class="btn btn-outline-primary" href="../dokumenti/pristupnica-pocasni-potpomagajuci.pdf" target="_blank" rel="noopener">
                   <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
-                  Application — honorary and supporting member
+                  Application — honorary and supporting member (PDF)
                 </a>
               </div>
             </div>
@@ -154,84 +155,179 @@
             <div class="panel" id="online-application">
               <h2>Online application</h2>
               <p>
-                If that is easier, apply straight from here — no printer, no scanning. The fields
-                match the PDF form; we reply with a confirmation and the payment details.
+                It takes about two minutes. After you submit it, the Secretary checks the details
+                and enters you in the register of members, and we get back to you by email.
               </p>
 
               <form
-                id="joinForm"
+                name="pristupnica"
+                method="POST"
+                action="/en/thank-you.html"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-ajax-form
+                data-mailto="alumniaxis.st@gmail.com"
                 class="needs-validation mt-4"
                 novalidate
-                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
-                data-mailto="alumniaxis.st@gmail.com"
-                data-subject="Membership application — Alumni AXIS Split"
               >
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label" for="fullname">Full name</label>
-                    <input type="text" class="form-control" id="fullname" name="Full name" required autocomplete="name" />
-                    <div class="invalid-feedback">Please enter your name.</div>
-                  </div>
+                <input type="hidden" name="form-name" value="pristupnica" />
+                <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
+                <input type="hidden" name="subject" value="Nova pristupnica (EN) — Alumni AXIS Split" data-subject="Nova pristupnica (EN)" />
+                <!-- spam trap: bots fill hidden fields, people do not -->
+                <p hidden><label>Leave empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
-                  <div class="col-md-6">
-                    <label class="form-label" for="mail">Email</label>
-                    <input type="email" class="form-control" id="mail" name="Email" required autocomplete="email" />
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="phone">Phone <span class="text-muted fw-normal">(optional)</span></label>
-                    <input type="tel" class="form-control" id="phone" name="Phone" autocomplete="tel" />
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="category">Membership category</label>
-                    <select class="form-select" id="category" name="Membership category">
-                      <option>Regular member</option>
-                      <option>Current student of the Department</option>
-                      <option>Supporting member</option>
-                    </select>
-                    <div class="form-text">Active and honorary membership is granted by the Board (Art. 11 of the Statute).</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="programme">Programme / section</label>
-                    <input type="text" class="form-control" id="programme" name="Programme"
-                           placeholder="e.g. Electrical engineering" required />
-                    <div class="invalid-feedback">Please name your programme.</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="graduated">Year of graduation</label>
-                    <input type="number" class="form-control" id="graduated" name="Year of graduation"
-                           min="1960" max="2035" placeholder="e.g. 2021" />
-                    <div class="form-text">Current students can leave this empty.</div>
-                  </div>
-
-                  <div class="col-12">
-                    <label class="form-label" for="note">Note <span class="text-muted fw-normal">(optional)</span></label>
-                    <textarea class="form-control" id="note" name="Note" rows="3"></textarea>
-                  </div>
-
-                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
-
-                  <div class="col-12">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="consent" name="Consent" value="yes" required />
-                      <label class="form-check-label" for="consent">
-                        I accept the statute and agree that my data may be used to maintain the
-                        register of members, as described in the
-                        <a href="../en/privacy.html">privacy notice</a>.
-                      </label>
-                      <div class="invalid-feedback">Consent is required to continue.</div>
+                <fieldset>
+                  <legend class="h5">Personal details</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-ime">Full name</label>
+                      <input type="text" class="form-control" id="e-ime" name="ime_i_prezime" required autocomplete="name" />
+                      <div class="invalid-feedback">Enter your full name.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-rodjenje">Date of birth</label>
+                      <input type="date" class="form-control" id="e-rodjenje" name="datum_rodjenja" required min="1930-01-01" max="2012-12-31" autocomplete="bday" />
+                      <div class="invalid-feedback">Enter your date of birth.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-oib">OIB</label>
+                      <input type="text" class="form-control" id="e-oib" name="oib" required inputmode="numeric" maxlength="11" pattern="\d{11}" data-oib aria-describedby="e-oib-help" />
+                      <div class="form-text" id="e-oib-help">Croatian personal ID number, 11 digits. Required for the register of members (Associations Act).</div>
+                      <div class="invalid-feedback">Check your OIB — it has exactly 11 digits.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-email">Email</label>
+                      <input type="email" class="form-control" id="e-email" name="email" required autocomplete="email" />
+                      <div class="invalid-feedback">Enter a valid email address.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-mobitel">Mobile <span class="text-muted">(optional)</span></label>
+                      <input type="tel" class="form-control" id="e-mobitel" name="mobitel" minlength="8" autocomplete="tel" />
+                      <div class="invalid-feedback">The number is too short.</div>
                     </div>
                   </div>
+                </fieldset>
 
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="bi bi-person-plus me-1" aria-hidden="true"></i> Send application
-                    </button>
+                <fieldset class="mt-4">
+                  <legend class="h5">Your status</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="e-st-dipl" value="Diplomirani (redoviti član)" required data-toggle-group="dipl" />
+                    <label class="form-check-label" for="e-st-dipl">I graduated from the Department <span class="text-muted">— regular member</span></label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="e-st-stud" value="Sadašnji student" data-toggle-group="stud" />
+                    <label class="form-check-label" for="e-st-stud">I am a current student of the Department</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="e-st-potp" value="Potpomagajući član" data-toggle-group="potp" />
+                    <label class="form-check-label" for="e-st-potp">I want to support the association <span class="text-muted">— supporting member</span></label>
+                    <div class="invalid-feedback">Choose your status.</div>
+                  </div>
+                  <div class="form-text">Active and honorary membership is granted by the Board (Art. 11 of the Statute).</div>
+                </fieldset>
+
+                <datalist id="e-studiji">
+                  <option value="Elektronika"></option>
+                  <option value="Elektroenergetika"></option>
+                  <option value="Računarstvo"></option>
+                  <option value="Primijenjeno računarstvo"></option>
+                  <option value="Strojarstvo"></option>
+                  <option value="Konstrukcijsko strojarstvo"></option>
+                </datalist>
+
+                <fieldset class="mt-4" data-group="dipl">
+                  <legend class="h5">Studies</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-d-studij">Study programme</label>
+                      <input type="text" class="form-control" id="e-d-studij" name="studij" list="e-studiji" required />
+                      <div class="invalid-feedback">Enter your study programme.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-d-razina">Level</label>
+                      <select class="form-select" id="e-d-razina" name="razina_studija" required>
+                        <option value="">Choose…</option>
+                        <option value="Stručni prijediplomski">Professional undergraduate</option>
+                        <option value="Stručni diplomski">Professional graduate</option>
+                        <option value="Stariji program (prije Bolonje)">Older programme (pre-Bologna)</option>
+                      </select>
+                      <div class="invalid-feedback">Choose the level.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-d-godina">Year of graduation</label>
+                      <input type="number" class="form-control" id="e-d-godina" name="godina_zavrsetka" required min="1960" max="2030" inputmode="numeric" />
+                      <div class="invalid-feedback">Enter the year (e.g. 2019).</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-d-naziv">Professional title <span class="text-muted">(optional)</span></label>
+                      <input type="text" class="form-control" id="e-d-naziv" name="strucni_naziv" placeholder="e.g. stručni prvostupnik inženjer" />
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4" data-group="stud">
+                  <legend class="h5">Studies</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-s-studij">Study programme</label>
+                      <input type="text" class="form-control" id="e-s-studij" name="studij" list="e-studiji" required />
+                      <div class="invalid-feedback">Enter your study programme.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-s-godina">Year of study</label>
+                      <select class="form-select" id="e-s-godina" name="godina_studija" required>
+                        <option value="">Choose…</option>
+                        <option value="1. godina prijediplomskog">Undergraduate, year 1</option>
+                        <option value="2. godina prijediplomskog">Undergraduate, year 2</option>
+                        <option value="3. godina prijediplomskog">Undergraduate, year 3</option>
+                        <option value="1. godina diplomskog">Graduate, year 1</option>
+                        <option value="2. godina diplomskog">Graduate, year 2</option>
+                      </select>
+                      <div class="invalid-feedback">Choose your year of study.</div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4" data-group="potp">
+                  <legend class="h5">Supporting the association</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="e-p-org">Company / organisation <span class="text-muted">(optional)</span></label>
+                      <input type="text" class="form-control" id="e-p-org" name="organizacija" autocomplete="organization" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label" for="e-p-nacin">How would you like to support the association? <span class="text-muted">(optional)</span></label>
+                      <textarea class="form-control" id="e-p-nacin" name="nacin_potpore" rows="3"></textarea>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4">
+                  <legend class="h5">Declaration and consent</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="e-statut" name="prihvacam_statut" value="da" required />
+                    <label class="form-check-label" for="e-statut">
+                      I have read the association's <a href="../dokumenti/statut.pdf" target="_blank" rel="noopener" hreflang="hr">Statute</a> (in Croatian), accept it, and accept the rights and duties of membership.
+                    </label>
+                    <div class="invalid-feedback">Required to join.</div>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="e-privola" name="privola_osobni_podaci" value="da" required />
+                    <label class="form-check-label" for="e-privola">
+                      I agree that the association may use my personal data to keep the register of members and to inform me about its work, as described in <a href="../en/privacy.html">Privacy</a>.
+                    </label>
+                    <div class="invalid-feedback">Required to join.</div>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="e-obavijesti" name="obavijesti" value="da" />
+                    <label class="form-check-label" for="e-obavijesti">Send me news about events and job listings. <span class="text-muted">(optional)</span></label>
+                  </div>
+                </fieldset>
+
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send me-1" aria-hidden="true"></i> Send application
+                  </button>
                 </div>
 
                 <div data-form-status hidden></div>

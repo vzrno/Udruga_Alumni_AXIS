@@ -40,7 +40,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","formSubject":"Website enquiry","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","formMailto":"We have opened your email app with the message ready — send it to finish. If nothing opened, email us directly at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
+      window.AXIS = {"lang":"en","locale":"en-GB","base":"../","paths":{"news":"en/news/","events":"en/events/"},"t":{"details":"Details","readMore":"Read more","moreInfo":"More information","openLink":"Open the article","openAd":"View the listing","today":"Today","upcoming":"Upcoming","finished":"Past","topics":"Topics","published":"Published","deadline":"Application deadline","typeJob":"Job","typeEdu":"Training","itemOne":"item","itemMany":"items","noUpcoming":"Nothing is scheduled right now. New events are announced here and on Facebook.","showPast":"Browse past events","noEvents":"No events to show.","noResults":"No results for that search. Try a different word.","noJobs":"No open listings at the moment. Check back in a few days.","externalNews":"The full article is published on the Department's website.","loadError":"The data could not be loaded. Refresh the page or get in touch.","copiedShort":"Copied ✓","formSending":"Sending…","oibInvalid":"This OIB is not valid — check the digits.","formOk":"Your message has been sent. We will reply as soon as we can.","formError":"The message could not be sent.","formErrorMail":"Please email us at","openPage":"Read the article","openEvent":"Event details","mapLoad":"Show the map","copied":"Link copied to clipboard.","pause":"Pause the slideshow","play":"Resume the slideshow"}};
     </script>
   </head>
 
@@ -133,8 +133,11 @@
               to answer your enquiry.
             </li>
             <li>
-              <strong>Membership application:</strong> the details on the form, needed to maintain
-              the register of members required by the Croatian Associations Act and our statute.
+              <strong>Membership application:</strong> full name, date of birth, OIB, email, mobile
+              (optional), status and study details, and the declarations and consents given. The
+              Associations Act requires name, OIB, date of birth, date of joining and membership
+              category for the register of members; the rest is used to contact you and keep you
+              informed.
             </li>
           </ul>
 
@@ -153,12 +156,15 @@
           </p>
           <ul>
             <li>
-              <strong>the hosting provider</strong> — keeps access logs (IP address, time of
-              request) for security and server operation;
+              <strong>Netlify</strong> (hosting provider) — keeps access logs (IP address, time of
+              request) for security and server operation, and receives and stores messages and
+              applications sent through the forms on this site and forwards them to the
+              association's mailbox. Netlify is based in the USA and processes data under its data
+              processing agreement (DPA);
             </li>
             <li>
-              <strong>the form-handling service</strong> — receives a message sent through the form
-              and forwards it to the association's mailbox;
+              <strong>Google (Gmail)</strong> — the association's mailbox, where messages and
+              applications arrive;
             </li>
             <li>
               <strong>Google Maps</strong> — the map on the contact page loads only after you

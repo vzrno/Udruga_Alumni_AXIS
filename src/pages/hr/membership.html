@@ -25,13 +25,14 @@
               </p>
 
               <ol class="mt-4">
-                <li>Preuzmite i ispunite pristupnicu koja odgovara vašoj kategoriji članstva.</li>
                 <li>
-                  Pošaljite je na
+                  Ispunite <a href="#online-pristupnica">online pristupnicu</a> niže — ili preuzmite
+                  PDF pristupnicu, ispunite je i pošaljite na
                   <a href="mailto:alumniaxis.st@gmail.com">alumniaxis.st@gmail.com</a>
-                  ili predajte u sjedištu Udruge.
+                  odnosno predajte u sjedištu Udruge.
                 </li>
-                <li>Uplatite godišnju članarinu prema podacima niže i pošaljite nam potvrdu.</li>
+                <li>Tajnik vas upisuje u Registar članova i javlja vam se e-poštom.</li>
+                <li>Aktivni članovi uplaćuju godišnju članarinu prema podacima za uplatu.</li>
               </ol>
 
               <div class="d-flex flex-wrap gap-2 mt-4">
@@ -41,11 +42,11 @@
                 </a>
                 <a class="btn btn-outline-primary" href="{{root}}dokumenti/pristupnica-redovni.pdf" target="_blank" rel="noopener">
                   <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
-                  Pristupnica — redovni član
+                  Pristupnica — redoviti član (PDF)
                 </a>
                 <a class="btn btn-outline-primary" href="{{root}}dokumenti/pristupnica-pocasni-potpomagajuci.pdf" target="_blank" rel="noopener">
                   <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
-                  Pristupnica — počasni i potpomagajući član
+                  Pristupnica — počasni i potpomagajući član (PDF)
                 </a>
               </div>
             </div>
@@ -54,84 +55,179 @@
             <div class="panel" id="online-pristupnica">
               <h2>Online pristupnica</h2>
               <p>
-                Ako vam je lakše, prijavite se izravno ovdje — bez pisača i skeniranja. Podatke
-                unosite jednako kao na PDF obrascu, a mi vam potvrdu i podatke za uplatu šaljemo
-                na e-poštu.
+                Ispunjavanje traje oko dvije minute. Nakon predaje Tajnik provjerava podatke i
+                upisuje vas u Registar članova, a mi vam se javljamo e-poštom.
               </p>
 
               <form
-                id="joinForm"
+                name="pristupnica"
+                method="POST"
+                action="/hvala.html"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-ajax-form
+                data-mailto="alumniaxis.st@gmail.com"
                 class="needs-validation mt-4"
                 novalidate
-                data-endpoint="https://formspree.io/f/YOUR_FORM_ID"
-                data-mailto="alumniaxis.st@gmail.com"
-                data-subject="Pristupnica — Alumni AXIS Split"
               >
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label" for="ime">Ime i prezime</label>
-                    <input type="text" class="form-control" id="ime" name="Ime i prezime" required autocomplete="name" />
-                    <div class="invalid-feedback">Unesite ime i prezime.</div>
-                  </div>
+                <input type="hidden" name="form-name" value="pristupnica" />
+                <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
+                <input type="hidden" name="subject" value="Nova pristupnica — Alumni AXIS Split" data-subject="Nova pristupnica" />
+                <!-- spam trap: bots fill hidden fields, people do not -->
+                <p hidden><label>Ne ispunjavati: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
-                  <div class="col-md-6">
-                    <label class="form-label" for="eposta">E-pošta</label>
-                    <input type="email" class="form-control" id="eposta" name="E-pošta" required autocomplete="email" />
-                    <div class="invalid-feedback">Unesite ispravnu adresu e-pošte.</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="telefon">Telefon <span class="text-muted fw-normal">(neobavezno)</span></label>
-                    <input type="tel" class="form-control" id="telefon" name="Telefon" autocomplete="tel" />
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="kategorija">Kategorija članstva</label>
-                    <select class="form-select" id="kategorija" name="Kategorija članstva" aria-describedby="kategorija-napomena">
-                      <option>Redoviti član</option>
-                      <option>Sadašnji student Odjela</option>
-                      <option>Potpomagajući član</option>
-                    </select>
-                    <div class="form-text" id="kategorija-napomena">Status aktivnog i počasnog člana dodjeljuje Upravni odbor (čl. 11. Statuta).</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="studij">Studij / odsjek</label>
-                    <input type="text" class="form-control" id="studij" name="Studij" placeholder="npr. Elektrotehnika" required />
-                    <div class="invalid-feedback">Navedite studij ili odsjek.</div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <label class="form-label" for="godina">Godina diplomiranja</label>
-                    <input type="number" class="form-control" id="godina" name="Godina diplomiranja"
-                           min="1960" max="2035" placeholder="npr. 2021" />
-                    <div class="form-text">Studenti ostavljaju prazno.</div>
-                  </div>
-
-                  <div class="col-12">
-                    <label class="form-label" for="poruka">Napomena <span class="text-muted fw-normal">(neobavezno)</span></label>
-                    <textarea class="form-control" id="poruka" name="Napomena" rows="3"></textarea>
-                  </div>
-
-                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
-
-                  <div class="col-12">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="pristanak" name="Pristanak" value="da" required />
-                      <label class="form-check-label" for="pristanak">
-                        Prihvaćam Statut Udruge i pristajem da se moji podaci koriste za vođenje
-                        registra članova, kako je opisano u
-                        <a href="{{root}}{{p.privacy}}">Zaštiti privatnosti</a>.
-                      </label>
-                      <div class="invalid-feedback">Potreban je pristanak za nastavak.</div>
+                <fieldset>
+                  <legend class="h5">Osobni podaci</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-ime">Ime i prezime</label>
+                      <input type="text" class="form-control" id="p-ime" name="ime_i_prezime" required autocomplete="name" />
+                      <div class="invalid-feedback">Unesite ime i prezime.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-rodjenje">Datum rođenja</label>
+                      <input type="date" class="form-control" id="p-rodjenje" name="datum_rodjenja" required min="1930-01-01" max="2012-12-31" autocomplete="bday" />
+                      <div class="invalid-feedback">Unesite datum rođenja.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-oib">OIB</label>
+                      <input type="text" class="form-control" id="p-oib" name="oib" required inputmode="numeric" maxlength="11" pattern="\d{11}" data-oib aria-describedby="p-oib-help" />
+                      <div class="form-text" id="p-oib-help">11 znamenki. Potreban je za Registar članova (Zakon o udrugama).</div>
+                      <div class="invalid-feedback">Provjerite OIB — ima točno 11 znamenki.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-email">E-pošta</label>
+                      <input type="email" class="form-control" id="p-email" name="email" required autocomplete="email" />
+                      <div class="invalid-feedback">Unesite ispravnu adresu e-pošte.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-mobitel">Mobitel <span class="text-muted">(neobavezno)</span></label>
+                      <input type="tel" class="form-control" id="p-mobitel" name="mobitel" minlength="8" autocomplete="tel" />
+                      <div class="invalid-feedback">Broj je prekratak.</div>
                     </div>
                   </div>
+                </fieldset>
 
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-primary">
-                      <i class="bi bi-person-plus me-1" aria-hidden="true"></i> Pošalji pristupnicu
-                    </button>
+                <fieldset class="mt-4">
+                  <legend class="h5">Vaš status</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="p-st-dipl" value="Diplomirani (redoviti član)" required data-toggle-group="dipl" />
+                    <label class="form-check-label" for="p-st-dipl">Diplomirao/la sam na Odjelu <span class="text-muted">— redoviti član</span></label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="p-st-stud" value="Sadašnji student" data-toggle-group="stud" />
+                    <label class="form-check-label" for="p-st-stud">Trenutno studiram na Odjelu</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="p-st-potp" value="Potpomagajući član" data-toggle-group="potp" />
+                    <label class="form-check-label" for="p-st-potp">Želim podupirati rad Udruge <span class="text-muted">— potpomagajući član</span></label>
+                    <div class="invalid-feedback">Odaberite status.</div>
+                  </div>
+                  <div class="form-text">Status aktivnog i počasnog člana dodjeljuje Upravni odbor (čl. 11. Statuta).</div>
+                </fieldset>
+
+                <datalist id="p-studiji">
+                  <option value="Elektronika"></option>
+                  <option value="Elektroenergetika"></option>
+                  <option value="Računarstvo"></option>
+                  <option value="Primijenjeno računarstvo"></option>
+                  <option value="Strojarstvo"></option>
+                  <option value="Konstrukcijsko strojarstvo"></option>
+                </datalist>
+
+                <fieldset class="mt-4" data-group="dipl">
+                  <legend class="h5">Podaci o studiju</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-d-studij">Studij</label>
+                      <input type="text" class="form-control" id="p-d-studij" name="studij" list="p-studiji" required />
+                      <div class="invalid-feedback">Upišite studij.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-d-razina">Razina studija</label>
+                      <select class="form-select" id="p-d-razina" name="razina_studija" required>
+                        <option value="">Odaberite…</option>
+                        <option>Stručni prijediplomski</option>
+                        <option>Stručni diplomski</option>
+                        <option>Stariji program (prije Bolonje)</option>
+                      </select>
+                      <div class="invalid-feedback">Odaberite razinu.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-d-godina">Godina završetka</label>
+                      <input type="number" class="form-control" id="p-d-godina" name="godina_zavrsetka" required min="1960" max="2030" inputmode="numeric" />
+                      <div class="invalid-feedback">Upišite godinu (npr. 2019).</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-d-naziv">Stečeni stručni naziv <span class="text-muted">(neobavezno)</span></label>
+                      <input type="text" class="form-control" id="p-d-naziv" name="strucni_naziv" placeholder="npr. stručni prvostupnik inženjer" />
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4" data-group="stud">
+                  <legend class="h5">Podaci o studiju</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-s-studij">Studij</label>
+                      <input type="text" class="form-control" id="p-s-studij" name="studij" list="p-studiji" required />
+                      <div class="invalid-feedback">Upišite studij.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-s-godina">Godina studija</label>
+                      <select class="form-select" id="p-s-godina" name="godina_studija" required>
+                        <option value="">Odaberite…</option>
+                        <option>1. godina prijediplomskog</option>
+                        <option>2. godina prijediplomskog</option>
+                        <option>3. godina prijediplomskog</option>
+                        <option>1. godina diplomskog</option>
+                        <option>2. godina diplomskog</option>
+                      </select>
+                      <div class="invalid-feedback">Odaberite godinu studija.</div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4" data-group="potp">
+                  <legend class="h5">Potpora radu Udruge</legend>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="p-p-org">Tvrtka / organizacija <span class="text-muted">(neobavezno)</span></label>
+                      <input type="text" class="form-control" id="p-p-org" name="organizacija" autocomplete="organization" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label" for="p-p-nacin">Na koji način želite podupirati rad Udruge? <span class="text-muted">(neobavezno)</span></label>
+                      <textarea class="form-control" id="p-p-nacin" name="nacin_potpore" rows="3"></textarea>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="mt-4">
+                  <legend class="h5">Izjava i privola</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="p-statut" name="prihvacam_statut" value="da" required />
+                    <label class="form-check-label" for="p-statut">
+                      Upoznat/a sam sa <a href="{{root}}dokumenti/statut.pdf" target="_blank" rel="noopener">Statutom Udruge</a>, prihvaćam ga te prihvaćam sva prava i obveze koje proizlaze iz članstva.
+                    </label>
+                    <div class="invalid-feedback">Potrebno za učlanjenje.</div>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="p-privola" name="privola_osobni_podaci" value="da" required />
+                    <label class="form-check-label" for="p-privola">
+                      Pristajem da Udruga moje osobne podatke koristi za vođenje Registra članova i obavještavanje o radu Udruge, kako je opisano u <a href="{{root}}{{p.privacy}}">Zaštiti privatnosti</a>.
+                    </label>
+                    <div class="invalid-feedback">Potrebno za učlanjenje.</div>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="p-obavijesti" name="obavijesti" value="da" />
+                    <label class="form-check-label" for="p-obavijesti">Želim primati obavijesti o događanjima i oglasima za posao. <span class="text-muted">(neobavezno)</span></label>
+                  </div>
+                </fieldset>
+
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send me-1" aria-hidden="true"></i> Pošalji pristupnicu
+                  </button>
                 </div>
 
                 <div data-form-status hidden></div>

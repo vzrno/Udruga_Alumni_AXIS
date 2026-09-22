@@ -27,7 +27,8 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
 const LANGS = ["hr", "en"];
 
-/** Standing pages. `nav: false` keeps a page out of the main menu. */
+/** Standing pages. `nav: false` keeps a page out of the main menu,
+ *  `sitemap: false` out of sitemap.xml. */
 const PAGES = [
   { id: "home", hr: "index.html", en: "en/index.html" },
   { id: "about", hr: "o-nama.html", en: "en/about.html" },
@@ -37,6 +38,8 @@ const PAGES = [
   { id: "membership", hr: "clanstvo.html", en: "en/membership.html" },
   { id: "contact", hr: "kontakt.html", en: "en/contact.html" },
   { id: "privacy", hr: "privatnost.html", en: "en/privacy.html", nav: false },
+  // shown after a form is sent; kept out of the sitemap and search results
+  { id: "thanks", hr: "hvala.html", en: "en/thank-you.html", nav: false, sitemap: false },
 ];
 
 /** Data-driven detail pages. */
@@ -594,6 +597,7 @@ const today = allDates.at(-1) || new Date().toISOString().slice(0, 10);
 const entries = [];
 
 for (const page of PAGES) {
+  if (page.sitemap === false) continue;
   for (const lang of LANGS) {
     if (!outputs.includes(page[lang])) continue;
     entries.push({
