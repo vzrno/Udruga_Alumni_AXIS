@@ -40,7 +40,7 @@
 
     <script>
       document.documentElement.classList.add("js");
-      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","copiedShort":"Kopirano ✓","formSending":"Šaljem…","oibInvalid":"OIB nije ispravan — provjerite znamenke.","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
+      window.AXIS = {"lang":"hr","locale":"hr-HR","base":"","paths":{"news":"novosti/","events":"dogadanja/"},"t":{"details":"Detalji","readMore":"Pročitaj više","moreInfo":"Više informacija","openLink":"Otvori objavu","openAd":"Otvori oglas","today":"Danas","upcoming":"Uskoro","finished":"Završeno","topics":"Teme","published":"Objavljeno","deadline":"Rok za prijavu","typeJob":"Posao","typeEdu":"Edukacija","itemOne":"objava","itemMany":"objava","noUpcoming":"Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.","showPast":"Pogledaj prošla događanja","noEvents":"Nema događanja za prikaz.","noResults":"Nema rezultata za traženi pojam. Pokušajte s drugom riječi.","noJobs":"Trenutno nema otvorenih objava. Provjerite ponovno za nekoliko dana.","externalNews":"Objava je dostupna na stranicama Odjela.","loadError":"Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.","yes":"da","no":"ne","printLink":"Ispiši pristupnicu","copiedShort":"Kopirano ✓","formSending":"Šaljem…","oibInvalid":"OIB nije ispravan — provjerite znamenke.","formOk":"Poruka je poslana. Odgovorit ćemo u najkraćem roku.","formError":"Poruku nije bilo moguće poslati.","formErrorMail":"Pišite nam na","openPage":"Otvori objavu","openEvent":"Detalji događanja","mapLoad":"Prikaži kartu","copied":"Veza kopirana u međuspremnik.","pause":"Pauziraj izmjenu slika","play":"Nastavi izmjenu slika"}};
     </script>
   </head>
 
@@ -158,6 +158,7 @@
                 name="pristupnica"
                 method="POST"
                 action="/hvala.html"
+                data-print-page="/pristupnica-ispis.html"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 data-ajax-form
@@ -166,6 +167,8 @@
                 novalidate
               >
                 <input type="hidden" name="form-name" value="pristupnica" />
+                <!-- main.js puts the address of the printable copy here, so the notification email carries it -->
+                <input type="hidden" name="pristupnica_za_ispis" value="" />
                 <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
                 <input type="hidden" name="subject" value="Nova pristupnica — Alumni AXIS Split" data-subject="Nova pristupnica" />
                 <!-- spam trap: bots fill hidden fields, people do not -->
@@ -221,22 +224,32 @@
                   <div class="form-text">Status aktivnog i počasnog člana dodjeljuje Upravni odbor (čl. 11. Statuta).</div>
                 </fieldset>
 
-                <datalist id="p-studiji">
-                  <option value="Elektronika"></option>
-                  <option value="Elektroenergetika"></option>
-                  <option value="Računarstvo"></option>
-                  <option value="Primijenjeno računarstvo"></option>
-                  <option value="Strojarstvo"></option>
-                  <option value="Konstrukcijsko strojarstvo"></option>
-                </datalist>
 
                 <fieldset class="mt-4" data-group="dipl">
                   <legend class="h5">Podaci o studiju</legend>
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label" for="p-d-studij">Studij</label>
-                      <input type="text" class="form-control" id="p-d-studij" name="studij" list="p-studiji" required />
-                      <div class="invalid-feedback">Upišite studij.</div>
+                      <select class="form-select" id="p-d-studij" name="studij" required>
+                        <option value="">Odaberite…</option>
+                        <optgroup label="Stručni prijediplomski studij">
+                          <option>Elektroenergetika</option>
+                          <option>Elektronika</option>
+                          <option>Računarstvo</option>
+                          <option>Konstrukcijsko strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <optgroup label="Stručni diplomski studij">
+                          <option>Elektrotehnika</option>
+                          <option>Primijenjeno računarstvo</option>
+                          <option>Strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <option>Ostalo / stariji program</option>
+                      </select>
+                      <div class="invalid-feedback">Odaberite studij.</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="p-d-razina">Razina studija</label>
@@ -265,8 +278,26 @@
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label" for="p-s-studij">Studij</label>
-                      <input type="text" class="form-control" id="p-s-studij" name="studij" list="p-studiji" required />
-                      <div class="invalid-feedback">Upišite studij.</div>
+                      <select class="form-select" id="p-s-studij" name="studij" required>
+                        <option value="">Odaberite…</option>
+                        <optgroup label="Stručni prijediplomski studij">
+                          <option>Elektroenergetika</option>
+                          <option>Elektronika</option>
+                          <option>Računarstvo</option>
+                          <option>Konstrukcijsko strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <optgroup label="Stručni diplomski studij">
+                          <option>Elektrotehnika</option>
+                          <option>Primijenjeno računarstvo</option>
+                          <option>Strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <option>Ostalo / stariji program</option>
+                      </select>
+                      <div class="invalid-feedback">Odaberite studij.</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="p-s-godina">Godina studija</label>

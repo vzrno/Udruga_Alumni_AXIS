@@ -40,6 +40,8 @@ const PAGES = [
   { id: "privacy", hr: "privatnost.html", en: "en/privacy.html", nav: false },
   // shown after a form is sent; kept out of the sitemap and search results
   { id: "thanks", hr: "hvala.html", en: "en/thank-you.html", nav: false, sitemap: false },
+  // printable copy of an application, filled in from the link in the notification email
+  { id: "print", hr: "pristupnica-ispis.html", en: "en/application-print.html", nav: false, sitemap: false },
 ];
 
 /** Data-driven detail pages. */

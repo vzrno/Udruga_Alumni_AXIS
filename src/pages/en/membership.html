@@ -68,6 +68,7 @@
                 name="pristupnica"
                 method="POST"
                 action="/en/thank-you.html"
+                data-print-page="/en/application-print.html"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 data-ajax-form
@@ -76,6 +77,8 @@
                 novalidate
               >
                 <input type="hidden" name="form-name" value="pristupnica" />
+                <!-- main.js puts the address of the printable copy here, so the notification email carries it -->
+                <input type="hidden" name="pristupnica_za_ispis" value="" />
                 <!-- subject line of Netlify's notification email; main.js adds the sender's name -->
                 <input type="hidden" name="subject" value="Nova pristupnica (EN) — Alumni AXIS Split" data-subject="Nova pristupnica (EN)" />
                 <!-- spam trap: bots fill hidden fields, people do not -->
@@ -131,22 +134,32 @@
                   <div class="form-text">Active and honorary membership is granted by the Board (Art. 11 of the Statute).</div>
                 </fieldset>
 
-                <datalist id="e-studiji">
-                  <option value="Elektronika"></option>
-                  <option value="Elektroenergetika"></option>
-                  <option value="Računarstvo"></option>
-                  <option value="Primijenjeno računarstvo"></option>
-                  <option value="Strojarstvo"></option>
-                  <option value="Konstrukcijsko strojarstvo"></option>
-                </datalist>
 
                 <fieldset class="mt-4" data-group="dipl">
                   <legend class="h5">Studies</legend>
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label" for="e-d-studij">Study programme</label>
-                      <input type="text" class="form-control" id="e-d-studij" name="studij" list="e-studiji" required />
-                      <div class="invalid-feedback">Enter your study programme.</div>
+                      <select class="form-select" id="e-d-studij" name="studij" required>
+                        <option value="">Choose…</option>
+                        <optgroup label="Professional undergraduate programmes">
+                          <option>Elektroenergetika</option>
+                          <option>Elektronika</option>
+                          <option>Računarstvo</option>
+                          <option>Konstrukcijsko strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <optgroup label="Professional graduate programmes">
+                          <option>Elektrotehnika</option>
+                          <option>Primijenjeno računarstvo</option>
+                          <option>Strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <option>Other / older programme</option>
+                      </select>
+                      <div class="invalid-feedback">Choose your study programme.</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="e-d-razina">Level</label>
@@ -175,8 +188,26 @@
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label" for="e-s-studij">Study programme</label>
-                      <input type="text" class="form-control" id="e-s-studij" name="studij" list="e-studiji" required />
-                      <div class="invalid-feedback">Enter your study programme.</div>
+                      <select class="form-select" id="e-s-studij" name="studij" required>
+                        <option value="">Choose…</option>
+                        <optgroup label="Professional undergraduate programmes">
+                          <option>Elektroenergetika</option>
+                          <option>Elektronika</option>
+                          <option>Računarstvo</option>
+                          <option>Konstrukcijsko strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <optgroup label="Professional graduate programmes">
+                          <option>Elektrotehnika</option>
+                          <option>Primijenjeno računarstvo</option>
+                          <option>Strojarstvo</option>
+                          <option>Računovodstvo i financije</option>
+                          <option>Menadžment trgovine i turizma</option>
+                        </optgroup>
+                        <option>Other / older programme</option>
+                      </select>
+                      <div class="invalid-feedback">Choose your study programme.</div>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="e-s-godina">Year of study</label>

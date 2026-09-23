@@ -147,6 +147,21 @@ function wireForms() {
       const data = new FormData(form);
       if (data.get("bot-field")) return; // honeypot: silently drop bots
 
+      // Address of the printable copy: the answers travel in the link itself,
+      // so the notification email (and the applicant) can open and print it.
+      const printPage = form.dataset.printPage;
+      let printLink = "";
+      if (printPage) {
+        const q = new URLSearchParams();
+        for (const [key, value] of data.entries()) {
+          if (["form-name", "subject", "bot-field", "pristupnica_za_ispis"].includes(key)) continue;
+          if (String(value).trim()) q.set(key, value);
+        }
+        q.set("predano", new Date().toLocaleString(document.documentElement.lang || "hr"));
+        printLink = `${window.location.origin}${printPage}?${q.toString()}`;
+        data.set("pristupnica_za_ispis", printLink);
+      }
+
       submit.disabled = true;
       const label = submit.innerHTML;
       submit.textContent = t.formSending;
@@ -159,6 +174,7 @@ function wireForms() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         // Same thank-you page Netlify would show without JavaScript,
         // told which form was sent so it shows the matching text.
+        if (printLink) sessionStorage.setItem("axis-print-link", printLink);
         const next = form.getAttribute("action");
         if (next) {
           window.location.assign(`${next}?obrazac=${encodeURIComponent(data.get("form-name") || "")}`);
@@ -184,6 +200,14 @@ function wireForms() {
 function wireThanks() {
   const parts = document.querySelectorAll("[data-thanks]");
   if (!parts.length) return;
+  const link = document.querySelector("[data-print-link]");
+  const stored = sessionStorage.getItem("axis-print-link");
+  if (link && stored) {
+    link.href = stored;
+    link.hidden = false;
+    sessionStorage.removeItem("axis-print-link");
+  }
+
   const sent = new URLSearchParams(window.location.search).get("obrazac");
   if (!sent) return;
   parts.forEach((el) => {

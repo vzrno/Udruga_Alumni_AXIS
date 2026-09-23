@@ -1,0 +1,94 @@
+<!--{
+  "id": "print",
+  "title": "Pristupnica za ispis — Alumni AXIS Split",
+  "description": "Ispis online predane pristupnice za članstvo.",
+  "robots": "noindex, nofollow",
+  "scripts": ["print.js"]
+}-->
+    <main id="main" class="section">
+      <div class="container">
+        <div class="d-print-none mb-4 d-flex flex-wrap gap-2 align-items-center">
+          <button type="button" class="btn btn-primary" data-print>
+            <i class="bi bi-file-earmark-text me-1" aria-hidden="true"></i>
+            Ispiši ili spremi kao PDF
+          </button>
+          <a class="btn btn-outline-primary" href="{{root}}{{p.membership}}">Natrag na Članstvo</a>
+        </div>
+
+        <div class="panel-note d-print-none mb-4" data-print-empty hidden>
+          Ova se stranica ispunjava podacima iz poveznice u obavijesti o novoj pristupnici.
+          Otvorite je klikom na poveznicu iz te poruke.
+        </div>
+
+        <article class="sheet" data-print-sheet hidden>
+          <header class="sheet-head">
+            <img src="{{root}}images/brand/logo.png" alt="" width="72" height="72" />
+            <div>
+              <h1>Pristupnica za članstvo</h1>
+              <p>
+                Udruga diplomiranih studenata Sveučilišnog odjela za stručne studije
+                Sveučilišta u Splitu – Alumni AXIS Split
+              </p>
+            </div>
+          </header>
+
+          <h2>1. Osobni podaci</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Ime i prezime</span> <span data-field="ime_i_prezime"></span></li>
+            <li><span class="k">Datum rođenja</span> <span data-field="datum_rodjenja" data-date></span></li>
+            <li><span class="k">OIB</span> <span data-field="oib"></span></li>
+            <li><span class="k">Broj mobitela</span> <span data-field="mobitel"></span></li>
+            <li><span class="k">E-mail adresa</span> <span data-field="email"></span></li>
+          </ul>
+
+          <h2>2. Podaci o obrazovanju</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Naziv visokog učilišta</span> <span>Sveučilišni odjel za stručne studije, Sveučilište u Splitu</span></li>
+            <li><span class="k">Smjer / studij</span> <span data-field="studij"></span></li>
+            <li><span class="k">Razina studija</span> <span data-field="razina_studija"></span></li>
+            <li><span class="k">Godina završetka</span> <span data-field="godina_zavrsetka"></span></li>
+            <li><span class="k">Godina studija</span> <span data-field="godina_studija"></span></li>
+            <li><span class="k">Stečena titula / zvanje</span> <span data-field="strucni_naziv"></span></li>
+            <li><span class="k">Tvrtka / organizacija</span> <span data-field="organizacija"></span></li>
+            <li><span class="k">Način potpore</span> <span data-field="nacin_potpore"></span></li>
+          </ul>
+
+          <h2>3. Kategorija članstva</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Traženi status</span> <span data-field="status"></span></li>
+            <li><span class="k">Obavijesti e-poštom</span> <span data-field="obavijesti" data-yesno></span></li>
+          </ul>
+          <p class="sheet-note">
+            Status aktivnog i počasnog člana dodjeljuje Upravni odbor (čl. 11. Statuta).
+          </p>
+
+          <h2>4. Izjava pristupnika</h2>
+          <p>
+            Ovom pristupnicom prihvaćaju se Statut i drugi akti Udruge diplomiranih studenata
+            Sveučilišnog odjela za stručne studije Sveučilišta u Splitu – Alumni AXIS Split,
+            izjavljujem da sam upoznat/a sa Statutom Udruge te da prihvaćam sva prava i obveze
+            koje proizlaze iz članstva. Pristajem da Udruga moje osobne podatke koristi za vođenje
+            Registra članova i obavještavanje o radu Udruge.
+          </p>
+          <ul class="sheet-list">
+            <li><span class="k">Prihvaćanje Statuta</span> <span data-field="prihvacam_statut" data-yesno></span></li>
+            <li><span class="k">Privola za obradu podataka</span> <span data-field="privola_osobni_podaci" data-yesno></span></li>
+            <li><span class="k">Predano elektronički</span> <span data-field="predano"></span></li>
+          </ul>
+          <p class="sheet-note">
+            Pristupnica je predana putem obrasca na alumniaxis-st.hr, pa umjesto vlastoručnog
+            potpisa vrijede gore navedene elektroničke potvrde.
+          </p>
+
+          <section class="sheet-office">
+            <h2>(popunjava udruga)</h2>
+            <div class="sheet-office-grid">
+              <p>Datum zaprimanja: <span class="line"></span></p>
+              <p>Broj člana: <span class="line"></span></p>
+              <p>Odluka o prijemu: <span class="line"></span></p>
+              <p>Potpis odgovorne osobe: <span class="line"></span></p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>

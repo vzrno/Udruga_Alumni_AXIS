@@ -63,7 +63,7 @@ Potreban je Node.js 18+.
 node build.mjs
 ```
 
-Ispis: `45 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
+Ispis: `47 pages, 2 feeds, sitemap, robots` i `no broken local links`. Ako neki
 lokalni link (slika, PDF, CSS) pokazuje na datoteku koja ne postoji, build ju
 imenuje i vrati grešku.
 
@@ -190,6 +190,13 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    te stranice nisu u sitemapu i imaju `noindex`. Naslov obavijesnog maila
    postavlja skriveno polje `subject` (npr. „Nova pristupnica · Ana Horvat“).
    `netlify.toml` postavlja sigurnosna zaglavlja i predmemoriju za fonte i slike.
+   Uz svaku pristupnicu u mailu stiže i polje `pristupnica_za_ispis` —
+   poveznica na `pristupnica-ispis.html`, stranicu koja prikaže pristupnicu u
+   obliku službenog obrasca (s blokom „popunjava udruga“) i ispisuje se na jednu
+   A4 stranicu, odnosno sprema kao PDF preko *Ispiši → Spremi kao PDF*. Podaci
+   putuju u samoj poveznici, pa se nigdje dodatno ne pohranjuju; zato tu
+   poveznicu ne prosljeđuj dalje. Istu poveznicu dobije i pristupnik na stranici
+   zahvale.
    Pravila za izmjene obrazaca: `data-netlify="true"`, skriveno polje
    `form-name` i polje `bot-field` moraju ostati; novo polje mora postojati u
    HTML-u (Netlify ga ne prima ako ga nije vidio pri deployu). Polja u skrivenim

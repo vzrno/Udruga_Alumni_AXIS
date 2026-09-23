@@ -1363,16 +1363,153 @@ textarea:focus-visible,
   }
 }
 
+/* Printable application sheet (pristupnica-ispis.html) */
+.sheet {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--axis-red);
+  margin-bottom: 1.5rem;
+}
+
+.sheet-head h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem;
+}
+
+.sheet-head p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--axis-muted);
+  max-width: none;
+}
+
+.sheet h2 {
+  font-size: 1.05rem;
+  margin: 1.6rem 0 0.6rem;
+}
+
+.sheet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sheet-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--axis-rule);
+  max-width: none;
+}
+
+.sheet-list .k {
+  font-weight: 600;
+  min-width: 13rem;
+}
+
+.sheet-note {
+  font-size: 0.88rem;
+  color: var(--axis-muted);
+}
+
+.sheet-office {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--axis-rule);
+}
+
+.sheet-office-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.4rem 2rem;
+}
+
+.sheet-office-grid p {
+  margin: 0.5rem 0;
+  max-width: none;
+}
+
+.sheet-office .line {
+  display: inline-block;
+  min-width: 8rem;
+  border-bottom: 1px solid var(--axis-ink);
+}
+
 @media print {
   .site-header,
   .site-footer,
   .filter-bar,
   .cta-band,
+  .d-print-none,
   .hero-split .btn {
     display: none !important;
   }
 
   body {
     font-size: 11pt;
+  }
+
+  /* the application must fit one A4 page, in black ink */
+  .sheet,
+  .sheet p,
+  .sheet li {
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+
+  .sheet-head {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .sheet-head h1 {
+    font-size: 15pt;
+  }
+
+  .sheet h2 {
+    font-size: 11pt;
+  }
+
+  .sheet-office {
+    margin-top: 1.2rem;
+  }
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  .section {
+    padding: 0 !important;
+  }
+
+  .sheet {
+    max-width: none;
+    color: #000;
+  }
+
+  .sheet h2 {
+    margin: 0.8rem 0 0.3rem;
+  }
+
+  .sheet-list li {
+    padding: 0.22rem 0;
+    break-inside: avoid;
+  }
+
+  .sheet-office {
+    break-inside: avoid;
+  }
+
+  /* two columns of blanks, as on the paper form */
+  .sheet-office-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }

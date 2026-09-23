@@ -1,0 +1,94 @@
+<!--{
+  "id": "print",
+  "title": "Application for printing — Alumni AXIS Split",
+  "description": "Print an online membership application.",
+  "robots": "noindex, nofollow",
+  "scripts": ["print.js"]
+}-->
+    <main id="main" class="section">
+      <div class="container">
+        <div class="d-print-none mb-4 d-flex flex-wrap gap-2 align-items-center">
+          <button type="button" class="btn btn-primary" data-print>
+            <i class="bi bi-file-earmark-text me-1" aria-hidden="true"></i>
+            Print or save as PDF
+          </button>
+          <a class="btn btn-outline-primary" href="{{root}}{{p.membership}}">Back to Membership</a>
+        </div>
+
+        <div class="panel-note d-print-none mb-4" data-print-empty hidden>
+          This page is filled in from the link in the new-application notification. Open it by
+          clicking the link in that message.
+        </div>
+
+        <article class="sheet" data-print-sheet hidden>
+          <header class="sheet-head">
+            <img src="{{root}}images/brand/logo.png" alt="" width="72" height="72" />
+            <div>
+              <h1>Membership application</h1>
+              <p>
+                Association of graduate students of the University department of professional studies
+                University of Split – Alumni AXIS Split
+              </p>
+            </div>
+          </header>
+
+          <h2>1. Personal details</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Full name</span> <span data-field="ime_i_prezime"></span></li>
+            <li><span class="k">Date of birth</span> <span data-field="datum_rodjenja" data-date></span></li>
+            <li><span class="k">OIB</span> <span data-field="oib"></span></li>
+            <li><span class="k">Mobile</span> <span data-field="mobitel"></span></li>
+            <li><span class="k">Email</span> <span data-field="email"></span></li>
+          </ul>
+
+          <h2>2. Education</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Institution</span> <span>Sveučilišni odjel za stručne studije, Sveučilište u Splitu</span></li>
+            <li><span class="k">Study programme</span> <span data-field="studij"></span></li>
+            <li><span class="k">Level of study</span> <span data-field="razina_studija"></span></li>
+            <li><span class="k">Year of graduation</span> <span data-field="godina_zavrsetka"></span></li>
+            <li><span class="k">Year of study</span> <span data-field="godina_studija"></span></li>
+            <li><span class="k">Professional title</span> <span data-field="strucni_naziv"></span></li>
+            <li><span class="k">Company / organisation</span> <span data-field="organizacija"></span></li>
+            <li><span class="k">Form of support</span> <span data-field="nacin_potpore"></span></li>
+          </ul>
+
+          <h2>3. Membership category</h2>
+          <ul class="sheet-list">
+            <li><span class="k">Requested status</span> <span data-field="status"></span></li>
+            <li><span class="k">Email updates</span> <span data-field="obavijesti" data-yesno></span></li>
+          </ul>
+          <p class="sheet-note">
+            Active and honorary membership is granted by the Board (Art. 11 of the Statute).
+          </p>
+
+          <h2>4. Applicant's declaration</h2>
+          <p>
+            By this application I accept the Statute and other acts of the Association of graduate
+            students of the University department of professional studies University of Split –
+            Alumni AXIS Split, declare that I have read the Statute, and accept the rights and
+            duties arising from membership. I agree that the association may use my personal data
+            to keep the register of members and to inform me about its work.
+          </p>
+          <ul class="sheet-list">
+            <li><span class="k">Statute accepted</span> <span data-field="prihvacam_statut" data-yesno></span></li>
+            <li><span class="k">Data processing consent</span> <span data-field="privola_osobni_podaci" data-yesno></span></li>
+            <li><span class="k">Submitted online</span> <span data-field="predano"></span></li>
+          </ul>
+          <p class="sheet-note">
+            The application was submitted through the form on alumniaxis-st.hr, so the electronic
+            confirmations above stand in for a handwritten signature.
+          </p>
+
+          <section class="sheet-office">
+            <h2>(for the association)</h2>
+            <div class="sheet-office-grid">
+              <p>Date received: <span class="line"></span></p>
+              <p>Member number: <span class="line"></span></p>
+              <p>Admission decision: <span class="line"></span></p>
+              <p>Signature of responsible person: <span class="line"></span></p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
