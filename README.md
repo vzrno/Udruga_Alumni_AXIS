@@ -320,6 +320,13 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - RSS: `feed.xml` i `en/feed.xml` (20 najnovijih objava), povezani iz `<head>`
   i iz footera.
 - `sitemap.xml` sadrži sve stranice u oba jezika, s `xhtml:link` alternativama.
+- Popisi novosti i događanja (naslovnica, `novosti.html`, `dogadanja.html`)
+  upisani su u HTML već pri buildu, istim kodom kartica koji koristi preglednik
+  (`js/format.js`). Vide ih tražilice i posjetitelji bez JavaScripta; preglednik
+  ih zatim ponovno iscrta s pretragom, straničenjem, filtrima i oznakama
+  „Uskoro / Završeno”. Te oznake i oglasi za posao ovise o današnjem datumu,
+  pa ih build namjerno ne upisuje: build mora dati isti rezultat svaki dan i u
+  svakoj vremenskoj zoni (to provjerava GitHub Action).
 
 ## 9. Privatnost i pristupačnost
 
@@ -375,7 +382,6 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 - **Arhiva događanja.** U `events.json` su samo dva zapisa; prošle panel
   rasprave i terenske nastave iz novosti mogu se prepisati i u događanja.
 - **Galerija** s više fotografija po događanju.
-- **„Dodaj u kalendar“** (.ics) na stranici događanja.
 - **Newsletter** (Mailchimp ili Buttondown, besplatni planovi).
 - **Mentorski program** — stranica na kojoj se studenti prijavljuju za
   mentorstvo s alumnijima.

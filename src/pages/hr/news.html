@@ -20,7 +20,7 @@
               type="search"
               class="form-control"
               id="news-search"
-              placeholder="Naslov, mjesto ili oznaka"
+              placeholder="Naslov, tekst, mjesto ili oznaka"
               autocomplete="off"
             />
           </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="row g-4" id="news-list" aria-live="polite" aria-busy="true"></div>
+        <div class="row g-4" id="news-list" aria-live="polite" aria-busy="true">{{list.news}}</div>
 
         <nav class="mt-4" aria-label="Stranice objava">
           <ul class="pagination justify-content-center" id="news-pager"></ul>

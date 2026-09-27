@@ -4,8 +4,7 @@
    Cards link to the generated detail page for each item. */
 
 import {
-  L, LArr, t, escapeHtml, loadJson, formatDateRange, media, wireFallbacks,
-  truncate, stateMsg, isUrl, toDate, detailUrl, safeUrl, dateChip, reveal,
+  L, LArr, t, loadJson, wireFallbacks, stateMsg, toDate, reveal, newsCard,
 } from "./util.js";
 
 const listEl = document.getElementById("news-list");
@@ -38,7 +37,7 @@ async function init() {
     const limit = Number(previewEl.dataset.limit || 3);
     // hideOnHome: the item is already on the home page as an event, don't show it twice.
     const home = news.filter((item) => !item.hideOnHome);
-    previewEl.innerHTML = home.slice(0, limit).map((item, i) => card(item, i === 0)).join("");
+    previewEl.innerHTML = home.slice(0, limit).map((item, i) => newsCard(item, i === 0)).join("");
     previewEl.setAttribute("aria-busy", "false");
     wireFallbacks(previewEl);
     reveal(previewEl);
@@ -62,7 +61,7 @@ function applySearch(value) {
   filtered = !q
     ? news
     : news.filter((item) => {
-        const hay = [L(item.title), L(item.location), ...LArr(item.tags).map(L)]
+        const hay = [L(item.title), L(item.description), L(item.location), ...LArr(item.tags).map(L)]
           .join(" ")
           .toLowerCase();
         return hay.includes(q);
@@ -88,7 +87,7 @@ function render() {
   }
 
   const start = (page - 1) * PER_PAGE;
-  listEl.innerHTML = filtered.slice(start, start + PER_PAGE).map((i) => card(i)).join("");
+  listEl.innerHTML = filtered.slice(start, start + PER_PAGE).map((i) => newsCard(i)).join("");
   wireFallbacks(listEl);
   reveal(listEl);
   renderPager(pages);
@@ -111,32 +110,3 @@ function renderPager(pages) {
   pagerEl.innerHTML = html;
 }
 
-function card(item, eager = false) {
-  const title = L(item.title);
-  const desc = L(item.description);
-  const where = L(item.location);
-  const url = detailUrl("news", item);
-
-  return `
-    <div class="col-sm-6 col-lg-4 reveal">
-      <article class="axis-card">
-        <a href="${safeUrl(url)}" tabindex="-1" aria-hidden="true">${media(item.image, title, eager, dateChip(item.date))}</a>
-        <div class="card-inner">
-          <h3><a href="${safeUrl(url)}" class="card-title-link">${escapeHtml(title)}</a></h3>
-          <p class="card-meta">
-            ${escapeHtml(formatDateRange(item.date, item.dateEnd))}
-            ${item.time ? ` · ${escapeHtml(item.time)}${item.endTime ? `–${escapeHtml(item.endTime)}` : ""}` : ""}
-            ${where ? `<br>${escapeHtml(where)}` : ""}
-          </p>
-          <p class="card-text">
-            ${escapeHtml(isUrl(desc) ? t.externalNews : truncate(desc))}
-          </p>
-          <div class="card-actions">
-            <a class="btn btn-outline-primary btn-sm" href="${safeUrl(url)}">
-              ${escapeHtml(t.openPage || t.readMore)}
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>`;
-}

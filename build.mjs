@@ -16,6 +16,7 @@ import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createFormat } from "./js/format.js";
 
 /* ------------------------------------------------------------------ config */
 
@@ -297,6 +298,30 @@ async function renderPage({ outPath, lang, altPaths, meta, content, jsonld = [] 
   const homePath = PAGES.find((p) => p.id === "home")[lang];
   const feedPath = lang === "hr" ? "feed.xml" : "en/feed.xml";
   const base = { ...strings, ...paths, root, home: homePath, lang, site: SITE, feedPath };
+
+  // News and event lists are written into the HTML here, with the same card
+  // code the browser uses (js/format.js), so they are there without JavaScript
+  // and for search engines. The browser then redraws them with filters, paging
+  // and the "upcoming / finished" labels, which depend on today's date and so
+  // are left out here: the build must give the same result on any day.
+  if (content.includes("{{list.")) {
+    const F = createFormat({
+      lang: dict[lang].lang,
+      locale: dict[lang].locale,
+      base: root,
+      paths: { news: `${COLLECTIONS[0].dir[lang]}/`, events: `${COLLECTIONS[1].dir[lang]}/` },
+      t: dict[lang].js,
+    });
+    const newest = (list) => [...list].sort((a, b) => (F.toDate(b.date) || 0) - (F.toDate(a.date) || 0));
+    const news = newest(collections.news);
+    const events = newest(collections.events);
+    Object.assign(base, {
+      "list.newsHome": news.filter((n) => !n.hideOnHome).slice(0, 3).map((n, i) => F.newsCard(n, i === 0)).join(""),
+      "list.news": news.map((n) => F.newsCard(n)).join(""),
+      "list.eventsHome": events.slice(0, 3).map((e) => F.eventCard(e)).join(""),
+      "list.events": events.map((e) => F.eventCard(e)).join(""),
+    });
+  }
 
   // header: mark the active menu item, then build the language switch
   let header = fill(headerTpl, base);
@@ -696,7 +721,7 @@ for (const lang of LANGS) {
       <title>${esc(L(item.title, lang))}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${new Date(`${item.date}T12:00`).toUTCString()}</pubDate>
+      <pubDate>${zagrebToDate(item.date, "12:00").toUTCString()}</pubDate>
       <description>${esc(isUrl(desc) ? L(item.title, lang) : desc.replace(/\s+/g, " ").slice(0, 400))}</description>
     </item>`;
     })

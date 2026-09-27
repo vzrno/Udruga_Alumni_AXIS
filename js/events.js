@@ -4,8 +4,7 @@
    the archive. */
 
 import {
-  L, t, escapeHtml, loadJson, formatDateRange, status, tagFor, media, wireFallbacks,
-  truncate, stateMsg, toDate, detailUrl, safeUrl, dateChip, reveal,
+  t, loadJson, status, wireFallbacks, stateMsg, toDate, reveal, eventCard,
 } from "./util.js";
 
 const list = document.getElementById("events-list");
@@ -100,38 +99,8 @@ function render() {
     return;
   }
 
-  list.innerHTML = items.map(card).join("");
+  list.innerHTML = items.map((item) => eventCard(item, status(item))).join("");
   wireFallbacks(list);
   reveal(list);
 }
 
-function card(item) {
-  const state = status(item);
-  const title = L(item.title);
-  const url = detailUrl("events", item);
-  const when = formatDateRange(item.date, item.dateEnd);
-  const where = L(item.location);
-
-  return `
-    <div class="col-sm-6 col-lg-4 reveal">
-      <article class="axis-card">
-        <a href="${safeUrl(url)}" tabindex="-1" aria-hidden="true">${media(item.image, title, false, dateChip(item.date))}</a>
-        <div class="card-inner">
-          <div class="d-flex justify-content-between align-items-start gap-2">
-            <h3><a href="${safeUrl(url)}" class="card-title-link">${escapeHtml(title)}</a></h3>
-            ${tagFor(state)}
-          </div>
-          <p class="card-meta">
-            ${escapeHtml(when)}${item.time ? ` · ${escapeHtml(item.time)}${item.endTime ? `–${escapeHtml(item.endTime)}` : ""}` : ""}
-            ${where ? `<br>${escapeHtml(where)}` : ""}
-          </p>
-          <p class="card-text">${escapeHtml(truncate(L(item.description), 120))}</p>
-          <div class="card-actions">
-            <a class="btn btn-outline-primary btn-sm" href="${safeUrl(url)}">
-              ${escapeHtml(t.openEvent || t.details)}
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>`;
-}
