@@ -70,6 +70,15 @@ function zagrebToDate(date, time) {
   return new Date(guess - zagrebOffset(first) * 60000);
 }
 
+/** "2026-03-10" + "16:00" -> "2026-03-10T16:00:00+01:00" (Zagreb time with its offset). */
+function zagrebIso(date, time) {
+  const mins = zagrebOffset(zagrebToDate(date, time).getTime());
+  const sign = mins >= 0 ? "+" : "-";
+  const hh = String(Math.floor(Math.abs(mins) / 60)).padStart(2, "0");
+  const mm = String(Math.abs(mins) % 60).padStart(2, "0");
+  return `${date}T${time}:00${sign}${hh}:${mm}`;
+}
+
 const icsUtc = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const compact = (date) => date.replace(/-/g, "");
 function nextDay(date) {
@@ -578,7 +587,6 @@ for (const collection of COLLECTIONS) {
 
       const content = fill(articleTpl, {
         articleTitle: esc(title),
-        articleKicker: esc(strings.article[collection.key]),
         articleMeta: esc([when, time, where].filter(Boolean).join(" · ")),
         articleImage: esc(image),
         articleImageSmall: esc(image.replace(/\.webp$/, "-700.webp")),
@@ -603,14 +611,14 @@ for (const collection of COLLECTIONS) {
           "@context": "https://schema.org",
           "@type": "Event",
           name: title,
-          startDate: item.time ? `${item.date}T${item.time}` : item.date,
-          endDate: item.endTime ? `${item.dateEnd || item.date}T${item.endTime}` : item.dateEnd || item.date,
+          startDate: item.time ? zagrebIso(item.date, item.time) : item.date,
+          endDate: item.endTime ? zagrebIso(item.dateEnd || item.date, item.endTime) : item.dateEnd || item.date,
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
           inLanguage: lang,
           url: absolute(outPath),
           image: `${SITE}/${image}`,
-          description: isUrl(descRaw) ? title : descRaw.slice(0, 300),
+          description: isUrl(descRaw) ? title : clip(descRaw, 300),
           location: {
             "@type": "Place",
             name: where || "Split",
@@ -628,7 +636,7 @@ for (const collection of COLLECTIONS) {
           inLanguage: lang,
           url: absolute(outPath),
           image: `${SITE}/${image}`,
-          description: isUrl(descRaw) ? title : descRaw.slice(0, 300),
+          description: isUrl(descRaw) ? title : clip(descRaw, 300),
           author: { "@id": `${SITE}/#organization` },
           publisher: { "@id": `${SITE}/#organization` },
         });
@@ -842,7 +850,7 @@ for (const outPath of outputs) {
     const caseTwin = [...files].find((f) => f.toLowerCase() === target.toLowerCase());
     problems.push(
       caseTwin
-        ? `${outPath} → ${match[1]}   (postoji kao "${caseTwin}": razlika u velikim/malim slovima — Git na Windowsu to ne vidi; vidi README §6b)`
+        ? `${outPath} → ${match[1]}   (postoji kao "${caseTwin}": razlika u velikim/malim slovima — Git na Windowsu to ne vidi; vidi README §8)`
         : `${outPath} → ${match[1]}`,
     );
   }

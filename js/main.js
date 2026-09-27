@@ -1,5 +1,5 @@
 /* Global behaviour: current nav item, in-page anchors, forms, copy link,
-   consent-gated map, carousel pause control, footer year. */
+   consent-gated map, footer year. */
 
 import { t, escapeHtml, reveal } from "./util.js";
 
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   wireCopyText();
   wireCopyLink();
   wireMapConsent();
-  wireCarouselPause();
   reveal();
   wireHeaderShadow();
 });
@@ -279,37 +278,6 @@ function wireMapConsent() {
       holder.classList.add("ratio", "ratio-4x3");
       holder.append(frame);
     });
-  });
-}
-
-/* WCAG 2.2.2: moving content needs a way to stop it. */
-function wireCarouselPause() {
-  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-
-  document.querySelectorAll('.carousel[data-bs-ride="carousel"]').forEach((el) => {
-    const instance = window.bootstrap?.Carousel?.getOrCreateInstance(el);
-    let playing = !reduce;
-    if (reduce) instance?.pause();
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "carousel-pause";
-    const label = () => (playing ? t.pause || "Pause" : t.play || "Play");
-    const paint = () => {
-      btn.innerHTML = `<span aria-hidden="true">${playing ? "❙❙" : "▶"}</span>`;
-      btn.setAttribute("aria-label", label());
-      btn.title = label();
-    };
-
-    btn.addEventListener("click", () => {
-      playing = !playing;
-      if (playing) instance?.cycle();
-      else instance?.pause();
-      paint();
-    });
-
-    paint();
-    el.append(btn);
   });
 }
 

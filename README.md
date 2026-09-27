@@ -12,13 +12,13 @@ pa se mogu podijeliti i Google ih indeksira.
 .
 ├── index.html  o-nama.html  dogadanja.html  novosti.html          ⟵ GENERIRANO
 ├── poslovi.html  clanstvo.html  kontakt.html  privatnost.html
-├── 404.html  sitemap.xml  robots.txt  feed.xml
+├── 404.html  sitemap.xml  robots.txt  feed.xml  _redirects      ⟵ GENERIRANO
 ├── novosti/<slug>.html         stranica po novosti          ⟵ GENERIRANO
-├── dogadanja/<slug>.html       stranica po događanju        ⟵ GENERIRANO
+├── dogadanja/<slug>.html .ics  stranica i kalendar po događanju ⟵ GENERIRANO
 ├── en/                         cijela engleska verzija      ⟵ GENERIRANO
 │   ├── index.html  about.html  events.html  news.html
 │   ├── careers.html  membership.html  contact.html  privacy.html
-│   ├── news/<slug>.html   events/<slug>.html   feed.xml
+│   ├── news/<slug>.html   events/<slug>.html .ics   feed.xml
 │
 ├── src/                        ⟵ OVDJE SE UREĐUJE
 │   ├── partials/
@@ -31,14 +31,17 @@ pa se mogu podijeliti i Google ih indeksira.
 │   └── i18n/hr.json  en.json  meni, footer, gumbi, poruke JS-a
 │
 ├── data/                       ⟵ SADRŽAJ
-│   ├── events.json   novosti.json  jobs.json
+│   ├── events.json   news.json   jobs.json
 │
 ├── css/     base.css (stil), fonts.css (@font-face), icons.css (SVG ikone)
 ├── fonts/   woff2 datoteke (Archivo, IBM Plex Sans)
-├── vendor/  bootstrap.min.css, bootstrap.bundle.min.js
-├── js/      util.js, main.js, events.js, news.js, careers.js
+├── vendor/  bootstrap.min.css, bootstrap.bundle.min.js, pdf417.mjs (HUB-3 barkod)
+├── js/      boot.js (postavke stranice), format.js (datumi i kartice, dijeli ga
+│            i build), util.js, main.js, events.js, news.js, careers.js,
+│            hub3.js (barkod), print.js (ispis pristupnice)
 ├── images/  brand/ events/ udruga/  (sve 1400×933, uz svaku i -700 varijanta 700×467)
 ├── dokumenti/  statut i pristupnice (PDF) — malim slovom, bez razmaka u nazivima
+├── netlify.toml                  sigurnosna zaglavlja i predmemorija
 ├── .github/workflows/build.yml   provjera na svaki push
 └── build.mjs                     generator
 ```
@@ -48,7 +51,7 @@ generator ih prepisuje (mape `novosti/`, `dogadanja/`, `en/news/` i `en/events/`
 briše i stvara iznova pri svakom buildu). Sadržaj se mijenja u `src/` i `data/`.
 
 > **Velika i mala slova su važna.** Windows ne razlikuje `Dokumenti` od
-> `dokumenti`, ali GitHub Pages i svaki Linux server razlikuju. Mapa se zove
+> `dokumenti`, ali Netlify i svaki Linux server razlikuju. Mapa se zove
 > `dokumenti` (malo d), slike i PDF-ovi nemaju razmake ni č ć ž š đ u nazivu.
 > Izvorne datoteke (stari nazivi, PNG/JPG originali) namjerno nisu u projektu —
 > čuvaj ih izvan repozitorija.
@@ -235,11 +238,27 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
 
 ---
 
-## 6a. Zamjena postojeće (žive) stranice
+## 6. Objava i ažuriranje
+
+Stranica je na **Netlifyju**, povezanom s GitHub repozitorijem: svaki `git push`
+na `main` Netlify sam objavi za minutu-dvije. Generirane stranice su u
+repozitoriju, pa Netlify ništa ne gradi, samo objavi mapu (`netlify.toml`).
+
+Nakon promjena: `node build.mjs`, pa `git add -A`, `git commit` i `git push`.
+GitHub Action (`.github/workflows/build.yml`) na svaki push ponovno pokrene
+build i **javi grešku ako generirane datoteke ne odgovaraju izvorima** — tako
+ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
+
+Obrasci, `_redirects` i zaglavlja iz `netlify.toml` rade samo na Netlifyju.
+Ako se stranica ikad seli drugamo, to treba riješiti kod novog pružatelja.
+
+---
+
+## 7. Zamjena postojeće (žive) stranice
 
 1. Napravi kopiju stare mape (ili se osloni na Git povijest).
-2. U repozitoriju obriši **sve osim** `.git/` i, ako postoji, `CNAME`
-   (datoteka s domenom za GitHub Pages — bez nje domena prestaje raditi).
+2. U repozitoriju obriši **sve osim** `.git/` (domena je postavljena u
+   Netlifyju, ne u datoteci, pa se brisanjem ništa ne gubi).
 3. Kopiraj sadržaj zipa u mapu.
 4. `node build.mjs` — mora ispisati `no broken local links`.
 5. `git add -A && git commit -m "Nova verzija stranice" && git push`.
@@ -249,8 +268,7 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    *URL Inspection → Request indexing* za naslovnicu.
 
 > **404 stranica** koristi putanje od korijena domene (`/css/…`). Radi na vlastitoj
-> domeni i lokalnom serveru; ako je stranica privremeno na
-> `korisnik.github.io/repozitorij/`, 404 će biti bez stila dok se ne spoji domena.
+> domeni i lokalnom serveru; na privremenoj adresi u podmapi bila bi bez stila.
 
 Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
 `clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
@@ -261,12 +279,12 @@ HTML stranica s preusmjeravanjem ostaje kao rezerva za druge poslužitelje.
 Kad promijeniš `slug` neke objave, dodaj redak u `REDIRECTS`; `_redirects`
 nemoj uređivati ručno.
 
-## 6b. Git na Windowsu i velika/mala slova
+## 8. Git na Windowsu: velika/mala slova i završeci redaka
 
 Windows ne razlikuje `Dokumenti` od `dokumenti`, a Git na Windowsu
 (`core.ignorecase=true`) zato **ne primijeti** kad se mapi promijeni samo
 veličina slova. Posljedica: na GitHubu ostane stara `Dokumenti/`, stranice traže
-`dokumenti/…`, i na Linux serveru (GitHub Pages, CI) svi PDF-ovi su 404.
+`dokumenti/…`, i na Linux serveru (Netlify, GitHub Action) svi PDF-ovi su 404.
 
 Preimenovanje treba napraviti kroz Git, u dva koraka:
 
@@ -283,24 +301,15 @@ Provjera: `git ls-files | findstr /i dokumenti` (Windows) mora ispisati samo
 `build.mjs` ovakav slučaj prepoznaje i u ispisu piše da datoteka "postoji kao
 Dokumenti/…" — to je znak za gornje naredbe.
 
-## 6. Objava na GitHub Pages
-
-Generirane stranice su u korijenu, pa nema builda na serveru:
-
-1. `Settings` → `Pages`
-2. *Source*: **Deploy from a branch**
-3. *Branch*: `main`, folder: `/ (root)`
-
-Nakon promjena: `node build.mjs`, pa `git add -A && git commit && git push`.
-GitHub Action (`.github/workflows/build.yml`) na svaki push ponovno pokrene
-build i **javi grešku ako generirane datoteke ne odgovaraju izvorima** — tako
-ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
-
-> `.nojekyll` mora ostati, inače GitHub preskače neke datoteke.
+**Završeci redaka.** `.gitattributes` sprema sve tekstualne datoteke s Linux
+završecima (LF), da build na Windowsu i na GitHubu da identične datoteke.
+Iznimka su kalendarske datoteke (`*.ics -text`): po standardu moraju imati
+CRLF, pa ih Git ne dira. Provjera: `git ls-files --eol "*.ics"` mora uz svaku
+pokazati `i/crlf`.
 
 ---
 
-## 7. Kako je riješena dvojezičnost
+## 9. Kako je riješena dvojezičnost
 
 - Hrvatski je na korijenu, engleski u `/en/`; svaka stranica ima `canonical`,
   `hreflang` za oba jezika i `x-default` na hrvatski.
@@ -310,7 +319,7 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
   unosi jednom.
 - Datumi se ispisuju po jeziku: *6. studenoga 2026.* / *6 November 2026*.
 
-## 8. SEO i dijeljenje
+## 10. SEO i dijeljenje
 
 - JSON-LD: `Organization` (naslovnica, O nama, Kontakt), `WebSite`,
   `NewsArticle` za novosti, `Event` za događanja, `BreadcrumbList` na detaljnim
@@ -328,7 +337,7 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
   pa ih build namjerno ne upisuje: build mora dati isti rezultat svaki dan i u
   svakoj vremenskoj zoni (to provjerava GitHub Action).
 
-## 9. Privatnost i pristupačnost
+## 11. Privatnost i pristupačnost
 
 - Bootstrap, fontovi i ikone učitavaju se **s vlastitog servera** (`vendor/`,
   `fonts/`, `css/icons.css`), pa posjet stranici ne šalje podatke Googleu ni
@@ -347,7 +356,7 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
 
 ---
 
-## 10. Vizualni sustav (v3)
+## 12. Vizualni sustav (v3)
 
 - **Naslovnica:** naslov lijevo i fotografija desno u okviru 3:2 (na mobitelu
   jedno ispod drugog), ispod tri "vrijednosti" (događanja, poslovi, zajednica),
@@ -373,12 +382,13 @@ ne može završiti na webu stranica koja je u međuvremenu mijenjana ručno.
   **jednostruke** navodnike (`xmlns='…'`); dvostruki prekidaju pravilo i ikona
   postane obojeni kvadrat.
 
-## 11. Predlozi za dalje
+## 13. Predlozi za dalje
 
-- **Fotografije.** U `images/events/` je još nekoliko neiskorištenih slika
-  (`networking-night`, `karijera-nakon-studija`, `panel-karijere`,
-  `fiskalizacija-2-0`). Neke su niske rezolucije (300–600 px) pa na kartici
-  izgledaju mekano — vrijedi ih zamijeniti originalima.
+- **Fotografije.** Slika na naslovnici (`images/udruga/globalna-suradnja`) je
+  generirana ilustracija; prava fotografija s terenske nastave ili događanja
+  bila bi uvjerljivija. Neiskorištena je još `images/udruga/fakultet`. Neke
+  slike objava su niske rezolucije pa na kartici izgledaju mekano — vrijedi ih
+  zamijeniti originalima.
 - **Arhiva događanja.** U `events.json` su samo dva zapisa; prošle panel
   rasprave i terenske nastave iz novosti mogu se prepisati i u događanja.
 - **Galerija** s više fotografija po događanju.

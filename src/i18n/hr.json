@@ -26,7 +26,6 @@
     "join": "Postani član"
   },
   "footer": {
-    "aboutTitle": "Udruga",
     "aboutText": "Udruga diplomiranih studenata Sveučilišnog odjela za stručne studije Sveučilišta u Splitu.",
     "linksTitle": "Stranice",
     "contactTitle": "Kontakt",
@@ -37,15 +36,12 @@
     "facebook": "Facebook",
     "statute": "Statut Udruge",
     "copyright": "Alumni AXIS Split. Sva prava pridržana.",
-    "rights": "Svi materijali na ovim stranicama vlasništvo su Udruge Alumni AXIS Split.",
-    "privacy": "Zaštita privatnosti",
-    "feed": "RSS kanal novosti"
+    "privacy": "Zaštita privatnosti"
   },
   "js": {
     "details": "Detalji",
     "readMore": "Pročitaj više",
     "moreInfo": "Više informacija",
-    "openLink": "Otvori objavu",
     "openAd": "Otvori oglas",
     "today": "Danas",
     "upcoming": "Uskoro",
@@ -58,7 +54,7 @@
     "typeEdu": "Edukacija",
     "itemOne": "objava",
     "itemMany": "objava",
-    "noUpcoming": "Trenutno nema najavljenih događanja. Nova najavljujemo na ovoj stranici i na Facebooku.",
+    "noUpcoming": "Trenutno nema najavljenih događanja. Nova događanja najavljujemo na ovoj stranici i na Facebooku.",
     "showPast": "Pogledaj prošla događanja",
     "noEvents": "Nema događanja za prikaz.",
     "noResults": "Nema rezultata za traženi pojam. Pokušajte s drugom riječi.",
@@ -67,7 +63,6 @@
     "loadError": "Podatke nije bilo moguće učitati. Osvježite stranicu ili nam se javite.",
     "yes": "da",
     "no": "ne",
-    "printLink": "Ispiši pristupnicu",
     "copiedShort": "Kopirano ✓",
     "formSending": "Šaljem…",
     "oibInvalid": "OIB nije ispravan — provjerite znamenke.",
@@ -76,18 +71,13 @@
     "formErrorMail": "Pišite nam na",
     "openPage": "Otvori objavu",
     "openEvent": "Detalji događanja",
-    "mapLoad": "Prikaži kartu",
-    "copied": "Veza kopirana u međuspremnik.",
-    "pause": "Pauziraj izmjenu slika",
-    "play": "Nastavi izmjenu slika"
+    "copied": "Veza kopirana u međuspremnik."
   },
   "feed": {
     "title": "Alumni AXIS Split — novosti",
     "description": "Novosti Udruge diplomiranih studenata Sveučilišnog odjela za stručne studije Sveučilišta u Splitu."
   },
   "article": {
-    "news": "Novost",
-    "events": "Događanje",
     "back": {
       "news": "Sve novosti",
       "events": "Sva događanja"
@@ -100,7 +90,6 @@
     "board": "Vodstvo",
     "share": "Podijeli",
     "copy": "Kopiraj vezu",
-    "copied": "Veza kopirana",
     "noText": "Detalji objave bit će dopunjeni.",
     "addToCalendar": "Dodaj u kalendar",
     "googleCalendar": "Google kalendar"

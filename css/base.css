@@ -1314,25 +1314,6 @@ textarea:focus-visible,
   box-shadow: var(--shadow-raise);
 }
 
-/* Carousel pause control (WCAG 2.2.2), kept for any future carousel */
-.carousel-pause {
-  position: absolute;
-  z-index: 3;
-  right: 0.6rem;
-  top: 0.6rem;
-  width: 2.1rem;
-  height: 2.1rem;
-  display: grid;
-  place-items: center;
-  font-size: 0.7rem;
-  line-height: 1;
-  color: #fff;
-  background: rgba(31, 28, 27, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 /* Map placeholder shown until the visitor asks for the map */
 .map-consent {
   border: 1px dashed var(--axis-rule);

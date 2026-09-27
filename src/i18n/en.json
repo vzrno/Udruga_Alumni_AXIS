@@ -26,7 +26,6 @@
     "join": "Join us"
   },
   "footer": {
-    "aboutTitle": "The association",
     "aboutText": "Alumni association of the University Department of Professional Studies, University of Split, Croatia.",
     "linksTitle": "Pages",
     "contactTitle": "Contact",
@@ -37,15 +36,12 @@
     "facebook": "Facebook",
     "statute": "Statute (Croatian)",
     "copyright": "Alumni AXIS Split. All rights reserved.",
-    "rights": "All material on this site belongs to Alumni AXIS Split.",
-    "privacy": "Privacy",
-    "feed": "News RSS feed"
+    "privacy": "Privacy"
   },
   "js": {
     "details": "Details",
     "readMore": "Read more",
     "moreInfo": "More information",
-    "openLink": "Open the article",
     "openAd": "View the listing",
     "today": "Today",
     "upcoming": "Upcoming",
@@ -67,7 +63,6 @@
     "loadError": "The data could not be loaded. Refresh the page or get in touch.",
     "yes": "yes",
     "no": "no",
-    "printLink": "Print the application",
     "copiedShort": "Copied ✓",
     "formSending": "Sending…",
     "oibInvalid": "This OIB is not valid — check the digits.",
@@ -76,18 +71,13 @@
     "formErrorMail": "Please email us at",
     "openPage": "Read the article",
     "openEvent": "Event details",
-    "mapLoad": "Show the map",
-    "copied": "Link copied to clipboard.",
-    "pause": "Pause the slideshow",
-    "play": "Resume the slideshow"
+    "copied": "Link copied to clipboard."
   },
   "feed": {
     "title": "Alumni AXIS Split — news",
     "description": "News from the alumni association of the University Department of Professional Studies, University of Split."
   },
   "article": {
-    "news": "News",
-    "events": "Event",
     "back": {
       "news": "All news",
       "events": "All events"
@@ -100,7 +90,6 @@
     "board": "Board",
     "share": "Share",
     "copy": "Copy link",
-    "copied": "Link copied",
     "addToCalendar": "Add to calendar",
     "googleCalendar": "Google Calendar",
     "noText": "Further details will follow."
