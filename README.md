@@ -122,11 +122,16 @@ Isto, u `data/events.json` (`dogadanja/<slug>.html`). Dodatno: `endTime`,
 prođe datum i vrijeme završetka; naslovnica prikazuje tri najbliža, a
 `dogadanja.html` cijelu arhivu.
 
+Ako je ista stvar i događanje i novost (npr. konferencija), novosti dodaj
+`"hideOnHome": true` da se na naslovnici ne prikaže dvaput; u arhivi novosti ostaje.
+
 ### Novi oglas za posao
 
 U `data/jobs.json`; `type` je `"job"` ili `"education"`, `deadline` je neobavezan
-(`"2026-10-31"`). Oglas s prošlim rokom sam nestaje sa stranice; oglase bez roka
-povremeno obriši ručno.
+(`"2026-10-31"`). Oglas s prošlim rokom sam nestaje sa stranice dan nakon roka.
+Oglas bez roka sam nestaje **60 dana** nakon `publishedAt`. Ako provjeriš da je
+još otvoren, upiši današnji datum u `checkedAt` (npr. `"2026-09-27"`) i ostaje
+još 60 dana od tog datuma. Broj dana mijenja se u `js/careers.js` (`MAX_AGE_DAYS`).
 
 ### Nova slika
 

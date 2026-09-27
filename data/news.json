@@ -183,6 +183,7 @@
       "en": "ciet-2026-conference"
     },
     "date": "2026-06-11",
+    "hideOnHome": true,
     "dateEnd": "2026-06-12",
     "image": "images/events/ciet-2026.webp",
     "title": {

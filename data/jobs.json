@@ -3,36 +3,19 @@
     "id": 1,
     "type": "job",
     "publishedAt": "2026-01-14",
-    "company": { "hr": "TROMONT d.o.o.", "en": "TROMONT d.o.o." },
-    "location": { "hr": "Split", "en": "Split, Croatia" },
-    "role": { "hr": "Inženjer/inženjerka elektrotehnike", "en": "Electrical engineer" },
+    "checkedAt": "2026-09-27",
+    "company": {
+      "hr": "TROMONT d.o.o.",
+      "en": "TROMONT d.o.o."
+    },
+    "location": {
+      "hr": "Split",
+      "en": "Split, Croatia"
+    },
+    "role": {
+      "hr": "Inženjer/inženjerka elektrotehnike",
+      "en": "Electrical engineer"
+    },
     "url": "https://www.tromont.hr/proizvodnja/karijere/otvorene-radne-pozicije"
-  },
-  {
-    "id": 2,
-    "type": "job",
-    "publishedAt": "2026-01-14",
-    "company": { "hr": "Pliva Hrvatska d.o.o.", "en": "Pliva Hrvatska d.o.o." },
-    "location": { "hr": "Zagreb", "en": "Zagreb, Croatia" },
-    "role": { "hr": "Viši inženjer strojarskog održavanja (m/ž)", "en": "Senior mechanical maintenance engineer" },
-    "url": "https://www.posao.hr/oglasi/visi-inzenjer-strojarskog-odrzavanja-m-z/1180994/"
-  },
-  {
-    "id": 3,
-    "type": "job",
-    "publishedAt": "2026-01-14",
-    "company": { "hr": "Smart Group Recruitment d.o.o. / Step", "en": "Smart Group Recruitment d.o.o. / Step" },
-    "location": { "hr": "Zagreb", "en": "Zagreb, Croatia" },
-    "role": { "hr": "Bankar (m/ž)", "en": "Banker" },
-    "url": "https://www.posao.hr/oglasi/bankar-m-z/1174617/"
-  },
-  {
-    "id": 4,
-    "type": "job",
-    "publishedAt": "2026-01-14",
-    "company": { "hr": "Kempinski Hotel Adriatic (Skiper hoteli d.o.o.)", "en": "Kempinski Hotel Adriatic (Skiper hoteli d.o.o.)" },
-    "location": { "hr": "Savudrija", "en": "Savudrija, Croatia" },
-    "role": { "hr": "Marketing Coordinator (m/ž)", "en": "Marketing coordinator" },
-    "url": "https://www.posao.hr/oglasi/marketing-coordinator-m-z/1181679/"
   }
 ]

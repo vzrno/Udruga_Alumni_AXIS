@@ -43,11 +43,24 @@ async function init() {
   render();
 }
 
-/** A listing disappears the day after its deadline; without a deadline it stays. */
+const DAY = 86400000;
+/** How long a listing without a deadline stays up after it was published or last checked. */
+const MAX_AGE_DAYS = 60;
+
+/**
+ * A listing with a deadline disappears the day after it.
+ * A listing without one disappears MAX_AGE_DAYS after the later of
+ * publishedAt and checkedAt (set checkedAt when you confirm it is still open).
+ */
 function isOpen(job) {
-  if (!job.deadline) return true;
-  const end = toDate(job.deadline);
-  return !end || end.getTime() + 86400000 > Date.now();
+  if (job.deadline) {
+    const end = toDate(job.deadline);
+    return !end || end.getTime() + DAY > Date.now();
+  }
+  const dates = [job.publishedAt, job.checkedAt].map(toDate).filter(Boolean);
+  if (!dates.length) return true;
+  const last = Math.max(...dates.map((d) => d.getTime()));
+  return last + MAX_AGE_DAYS * DAY > Date.now();
 }
 
 function render() {
@@ -89,6 +102,7 @@ function card(item) {
   const company = L(item.company);
   const place = L(item.location);
   const posted = formatDate(item.publishedAt);
+  const checked = item.checkedAt ? formatDate(item.checkedAt) : "";
   const deadline = item.deadline ? formatDate(item.deadline) : "";
 
   return `
@@ -114,7 +128,7 @@ function card(item) {
             </a>
           </div>
         </div>
-        ${posted ? `<p class="card-foot">${escapeHtml(t.published || "Objavljeno")}: ${escapeHtml(posted)}</p>` : ""}
+        ${posted ? `<p class="card-foot">${escapeHtml(t.published || "Objavljeno")}: ${escapeHtml(posted)}${checked ? ` · ${escapeHtml(t.checked || "Provjereno")}: ${escapeHtml(checked)}` : ""}</p>` : ""}
       </article>
     </div>`;
 }

@@ -36,7 +36,9 @@ async function init() {
 
   if (previewEl) {
     const limit = Number(previewEl.dataset.limit || 3);
-    previewEl.innerHTML = news.slice(0, limit).map((item, i) => card(item, i === 0)).join("");
+    // hideOnHome: the item is already on the home page as an event, don't show it twice.
+    const home = news.filter((item) => !item.hideOnHome);
+    previewEl.innerHTML = home.slice(0, limit).map((item, i) => card(item, i === 0)).join("");
     previewEl.setAttribute("aria-busy", "false");
     wireFallbacks(previewEl);
     reveal(previewEl);
