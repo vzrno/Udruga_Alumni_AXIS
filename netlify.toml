@@ -13,6 +13,16 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # Browsers remember to use HTTPS only (1 year). Only enable while the site
+    # is served over HTTPS on this domain, which Netlify does by default.
+    Strict-Transport-Security = "max-age=31536000"
+    # Where the page may load things from. Everything is served from our own
+    # domain; the only outside resource is the Google map on the contact page,
+    # which loads in a frame after the visitor clicks it. Inline scripts are
+    # not allowed (the page settings are a JSON block read by js/boot.js).
+    # If you add something from another site (a video, a widget), add its
+    # address to the matching line here, or the browser will block it.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
 
 # Fonts and third-party libraries never change under the same name: cache for a year.
 [[headers]]

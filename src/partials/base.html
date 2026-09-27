@@ -35,10 +35,8 @@
 
 {{jsonld}}
 
-    <script>
-      document.documentElement.classList.add("js");
-      window.AXIS = {{config}};
-    </script>
+    <script type="application/json" id="axis-config">{{config}}</script>
+    <script src="{{root}}js/boot.js"></script>
   </head>
 
   <body class="{{bodyClass}}">

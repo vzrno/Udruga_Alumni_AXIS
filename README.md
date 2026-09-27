@@ -210,7 +210,11 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    (`?obrazac=pristupnica` ili `?obrazac=kontakt` bira koji se tekst prikazuje);
    te stranice nisu u sitemapu i imaju `noindex`. Naslov obavijesnog maila
    postavlja skriveno polje `subject` (npr. „Nova pristupnica · Ana Horvat“).
-   `netlify.toml` postavlja sigurnosna zaglavlja i predmemoriju za fonte i slike.
+   `netlify.toml` postavlja sigurnosna zaglavlja (uključujući HSTS i
+   Content-Security-Policy) i predmemoriju za fonte i slike. CSP dopušta samo
+   datoteke s naše domene i Google kartu na stranici Kontakt; inline skripte
+   nisu dopuštene (postavke stranice su JSON blok koji čita `js/boot.js`).
+   Ako dodaš nešto s drugog weba (video, widget), dopiši njegovu adresu u CSP.
    Uz svaku pristupnicu u mailu stiže i polje `pristupnica_za_ispis` —
    poveznica na `pristupnica-ispis.html`, stranicu koja prikaže pristupnicu u
    obliku službenog obrasca (s blokom „popunjava udruga“) i ispisuje se na jednu
@@ -251,6 +255,11 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
 Sve adrese koje je Google mogao indeksirati ostaju iste (`novosti.html`,
 `clanstvo.html`, pojedine objave…). Jedina promijenjena adresa je CIET objava;
 stara adresa sada preusmjerava na novu (popis `REDIRECTS` u `build.mjs`).
+Iz tog popisa build napravi datoteku `_redirects`, pa Netlify odgovara pravim
+„301 Moved Permanently” (Google tada prenosi rang stare adrese na novu), a
+HTML stranica s preusmjeravanjem ostaje kao rezerva za druge poslužitelje.
+Kad promijeniš `slug` neke objave, dodaj redak u `REDIRECTS`; `_redirects`
+nemoj uređivati ručno.
 
 ## 6b. Git na Windowsu i velika/mala slova
 
