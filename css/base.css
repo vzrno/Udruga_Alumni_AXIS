@@ -912,6 +912,37 @@ textarea:focus-visible,
   color: var(--axis-muted);
 }
 
+/* HUB-3 payment barcode (js/hub3.js). Always black on white with a quiet
+   zone: bank apps cannot read it on a tinted background. */
+.hub3 {
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: var(--r-sm);
+  padding: 1rem;
+}
+
+.hub3 canvas {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin: 0 auto 0.75rem;
+  background: #fff;
+  padding: 10px;
+  image-rendering: pixelated;
+}
+
+.hub3 p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* "Add to calendar" buttons on event pages. */
+.cal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 /* ---------------------------------------------------------- 9. Call band */
 .cta-band {
   position: relative;

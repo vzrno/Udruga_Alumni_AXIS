@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alumni AXIS Split//Web//HR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:event-2@alumniaxis-st.hr
+DTSTAMP:20260611T000000Z
+DTSTART;VALUE=DATE:20260611
+DTEND;VALUE=DATE:20260613
+SUMMARY:CIET 2026 conference
+LOCATION:Split\, Kopilica 5\, Croatia
+DESCRIPTION:The 7th international scientific and professional conference Co
+ ntemporary Issues in Economy and Technology (CIET 2026)\, hosted by the Un
+ iversity Department of Professional Studies\, took place on 11–12 June 2
+ 026 in Split\, with thematic workshops for students and staff. The program
+ me\, proceedings and participant information are on the conference website
+ .\n\nhttps://alumniaxis-st.hr/en/events/ciet-2026-conference.html
+URL:https://alumniaxis-st.hr/en/events/ciet-2026-conference.html
+END:VEVENT
+END:VCALENDAR

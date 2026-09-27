@@ -101,6 +101,8 @@
     "share": "Podijeli",
     "copy": "Kopiraj vezu",
     "copied": "Veza kopirana",
-    "noText": "Detalji objave bit će dopunjeni."
+    "noText": "Detalji objave bit će dopunjeni.",
+    "addToCalendar": "Dodaj u kalendar",
+    "googleCalendar": "Google kalendar"
   }
 }

@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alumni AXIS Split//Web//HR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:event-2@alumniaxis-st.hr
+DTSTAMP:20260611T000000Z
+DTSTART;VALUE=DATE:20260611
+DTEND;VALUE=DATE:20260613
+SUMMARY:Konferencija CIET 2026
+LOCATION:Split\, Kopilica 5
+DESCRIPTION:Sedma međunarodna znanstveno-stručna konferencija Contemporar
+ y Issues in Economy and Technology (CIET 2026) u organizaciji Sveučilišn
+ og odjela za stručne studije održana je 11. i 12. lipnja 2026. u Splitu\
+ , uz tematske radionice za studente i nastavnike. Program\, zbornik radova
+  i informacije za sudionike nalaze se na stranicama konferencije.\n\nhttps
+ ://alumniaxis-st.hr/dogadanja/konferencija-ciet-2026.html
+URL:https://alumniaxis-st.hr/dogadanja/konferencija-ciet-2026.html
+END:VEVENT
+END:VCALENDAR

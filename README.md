@@ -122,8 +122,24 @@ Isto, u `data/events.json` (`dogadanja/<slug>.html`). Dodatno: `endTime`,
 prođe datum i vrijeme završetka; naslovnica prikazuje tri najbliža, a
 `dogadanja.html` cijelu arhivu.
 
+Za svako događanje build sam napravi i kalendarsku datoteku
+(`dogadanja/<slug>.ics`, `en/events/<slug>.ics`) te na stranici događanja prikaže
+gumbe „Dodaj u kalendar” i „Google kalendar”. Ništa ne treba ručno: dovoljni su
+`date` i, za događanja s točnim vremenom, `time` i `endTime` (bez `endTime`
+računa se trajanje od dva sata; bez `time` događanje je cjelodnevno, do
+`dateEnd`). Gumbi se sami sakriju kad događanje završi.
+
 Ako je ista stvar i događanje i novost (npr. konferencija), novosti dodaj
 `"hideOnHome": true` da se na naslovnici ne prikaže dvaput; u arhivi novosti ostaje.
+
+### Barkod za uplatu članarine (HUB-3)
+
+Na stranicama Članstvo i Hvala `js/hub3.js` crta HUB-3 (PDF417) barkod koji
+bankovne aplikacije čitaju opcijom „Skeniraj i plati”. Poziv na broj je današnji
+datum (model HR00), a opis „Clanarina <godina>”, prema Odluci o članarini.
+Iznos, primatelj i IBAN su u `PAYMENT` na vrhu `js/hub3.js`; ako se promijene,
+promijeni ih i u vidljivim podacima za uplatu na tim stranicama.
+Biblioteka je `vendor/pdf417.mjs` (pdf417-generator 1.1.1).
 
 ### Novi oglas za posao
 

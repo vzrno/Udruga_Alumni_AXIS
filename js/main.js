@@ -312,3 +312,9 @@ function wireCarouselPause() {
     el.append(btn);
   });
 }
+
+/* "Add to calendar" buttons on event pages are only useful before the event ends. */
+document.querySelectorAll("[data-until]").forEach((el) => {
+  const until = Date.parse(el.dataset.until);
+  if (until && until < Date.now()) el.hidden = true;
+});

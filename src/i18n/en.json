@@ -101,6 +101,8 @@
     "share": "Share",
     "copy": "Copy link",
     "copied": "Link copied",
+    "addToCalendar": "Add to calendar",
+    "googleCalendar": "Google Calendar",
     "noText": "Further details will follow."
   }
 }

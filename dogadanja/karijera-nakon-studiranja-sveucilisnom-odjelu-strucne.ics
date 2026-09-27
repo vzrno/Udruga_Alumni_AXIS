@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alumni AXIS Split//Web//HR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:event-1@alumniaxis-st.hr
+DTSTAMP:20260310T000000Z
+DTSTART:20260310T150000Z
+DTEND:20260310T160000Z
+SUMMARY:Karijera nakon studiranja na Sveučilišnom odjelu za stručne stud
+ ije
+LOCATION:Split\, Kopilica 21\, amfiteatar 113
+DESCRIPTION:Panel rasprava o izazovima s kojima se studenti i mladi stručn
+ jaci susreću pri ulasku na tržište rada. Kroz razmjenu iskustava struč
+ njaka iz različitih područja sudionici dobivaju konkretne uvide\, primje
+ re dobre prakse i smjernice za profesionalni razvoj.\n\nhttps://alumniaxis
+ -st.hr/dogadanja/karijera-nakon-studiranja-sveucilisnom-odjelu-strucne.htm
+ l
+URL:https://alumniaxis-st.hr/dogadanja/karijera-nakon-studiranja-sveucilisn
+ om-odjelu-strucne.html
+END:VEVENT
+END:VCALENDAR

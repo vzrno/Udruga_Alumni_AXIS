@@ -44,6 +44,106 @@ const PAGES = [
   { id: "print", hr: "pristupnica-ispis.html", en: "en/application-print.html", nav: false, sitemap: false },
 ];
 
+/* ------------------------------------------------------------ calendar */
+
+const TZ = "Europe/Zagreb";
+
+/** Minutes that Zagreb is ahead of UTC at the given instant (60 or 120). */
+function zagrebOffset(utcMs) {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: TZ, hourCycle: "h23",
+      year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit",
+    }).formatToParts(new Date(utcMs)).map((p) => [p.type, p.value]),
+  );
+  const asUtc = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute);
+  return Math.round((asUtc - Math.floor(utcMs / 60000) * 60000) / 60000);
+}
+
+/** "2026-03-10" + "16:00" in Zagreb -> Date (UTC instant). */
+function zagrebToDate(date, time) {
+  const [y, m, d] = date.split("-").map(Number);
+  const [hh, mm] = time.split(":").map(Number);
+  const guess = Date.UTC(y, m - 1, d, hh, mm);
+  const first = guess - zagrebOffset(guess) * 60000;
+  return new Date(guess - zagrebOffset(first) * 60000);
+}
+
+const icsUtc = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+const compact = (date) => date.replace(/-/g, "");
+function nextDay(date) {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Start and end of an event: timed (UTC instants) or all-day (dates, end exclusive). */
+function eventSpan(item) {
+  if (item.time) {
+    const start = zagrebToDate(item.date, item.time);
+    const end = item.endTime
+      ? zagrebToDate(item.dateEnd || item.date, item.endTime)
+      : new Date(start.getTime() + 2 * 3600000); // no end time given: assume two hours
+    return { timed: true, start, end };
+  }
+  return { timed: false, start: item.date, end: nextDay(item.dateEnd || item.date) };
+}
+
+/** Escape a TEXT value and fold lines at 75 bytes, as RFC 5545 requires. */
+const icsText = (s) =>
+  String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+function icsFold(line) {
+  const out = [];
+  let chunk = "";
+  let bytes = 0;
+  for (const ch of line) {
+    const size = Buffer.byteLength(ch);
+    if (bytes + size > (out.length ? 74 : 75)) {
+      out.push(chunk);
+      chunk = "";
+      bytes = 0;
+    }
+    chunk += ch;
+    bytes += size;
+  }
+  out.push(chunk);
+  return out.join("\r\n ");
+}
+
+function icsFile({ item, title, where, description, url }) {
+  const span = eventSpan(item);
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Alumni AXIS Split//Web//HR",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:event-${item.id}@${new URL(SITE).host}`,
+    // Fixed stamp so that two builds of the same data are byte-identical.
+    `DTSTAMP:${compact(item.date)}T000000Z`,
+    span.timed ? `DTSTART:${icsUtc(span.start)}` : `DTSTART;VALUE=DATE:${compact(span.start)}`,
+    span.timed ? `DTEND:${icsUtc(span.end)}` : `DTEND;VALUE=DATE:${compact(span.end)}`,
+    `SUMMARY:${icsText(title)}`,
+    where && `LOCATION:${icsText(where)}`,
+    `DESCRIPTION:${icsText(description ? `${description}\n\n${url}` : url)}`,
+    `URL:${url}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].filter(Boolean);
+  return lines.map(icsFold).join("\r\n") + "\r\n";
+}
+
+function googleCalendarUrl({ item, title, where, url }) {
+  const span = eventSpan(item);
+  const dates = span.timed
+    ? `${icsUtc(span.start)}/${icsUtc(span.end)}`
+    : `${compact(span.start)}/${compact(span.end)}`;
+  const q = new URLSearchParams({ action: "TEMPLATE", text: title, dates, details: url, ctz: TZ });
+  if (where) q.set("location", where);
+  return `https://calendar.google.com/calendar/render?${q}`;
+}
+
 /** Data-driven detail pages. */
 const COLLECTIONS = [
   {
@@ -420,9 +520,33 @@ for (const collection of COLLECTIONS) {
         .filter(Boolean)
         .join("\n                ");
 
-      const cta = external
+      let cta = external
         ? `<a class="btn btn-outline-primary btn-sm mt-3" href="${esc(external)}" target="_blank" rel="noopener">${esc(strings.js.moreInfo)}</a>`
         : "";
+
+      // Events get an .ics file next to their page and "add to calendar" buttons.
+      // main.js hides the buttons once the event is over (data-until).
+      if (collection.key === "events" && item.date) {
+        const icsName = `${item.slug[lang]}.ics`;
+        const cal = {
+          item,
+          title,
+          where,
+          description: isUrl(descRaw) ? "" : clip(descRaw, 500),
+          url: absolute(outPath),
+        };
+        await mkdir(path.join(ROOT, collection.dir[lang]), { recursive: true });
+        await writeFile(path.join(ROOT, collection.dir[lang], icsName), icsFile(cal), "utf8");
+        outputs.push(`${collection.dir[lang]}/${icsName}`);
+        const span = eventSpan(item);
+        const until = span.timed ? span.end.toISOString() : zagrebToDate(span.end, "00:00").toISOString();
+        cta = `<div class="cal-actions mt-3" data-until="${until}">
+                <a class="btn btn-primary btn-sm" href="${esc(icsName)}" download>
+                  <i class="bi bi-calendar-event" aria-hidden="true"></i> ${esc(strings.article.addToCalendar)}
+                </a>
+                <a class="btn btn-outline-primary btn-sm" href="${esc(googleCalendarUrl(cal))}" target="_blank" rel="noopener">${esc(strings.article.googleCalendar)}</a>
+              </div>${cta ? `\n              ${cta}` : ""}`;
+      }
 
       const shareUrl = encodeURIComponent(absolute(outPath));
       const image = item.image || "images/brand/og-cover.jpg";
@@ -675,7 +799,7 @@ for (const outPath of outputs) {
   const html = await read(path.join(ROOT, outPath));
   const dir = path.posix.dirname(outPath);
   for (const match of html.matchAll(
-    /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml))"/g,
+    /(?:src|href)="((?:\.\.\/)*[\w][\w./-]*\.(?:webp|png|svg|jpg|jpeg|pdf|css|js|html|xml|ics))"/g,
   )) {
     const target = path.posix.normalize(path.posix.join(dir === "." ? "" : dir, match[1]));
     if (files.has(target)) continue;
