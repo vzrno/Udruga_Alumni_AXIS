@@ -5,3 +5,5 @@
 *.jpg binary
 *.pdf binary
 *.woff2 binary
+# Calendar files must keep CRLF line endings (RFC 5545), so Git must not touch them.
+*.ics -text
