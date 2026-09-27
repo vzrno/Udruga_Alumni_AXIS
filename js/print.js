@@ -1,11 +1,18 @@
 /* Printable copy of an application.
-   The data travels in the address of this page (the link that main.js adds to
-   every submission), so nothing is stored on the server. Empty fields — for
+   The data travels in the address of this page after "#" (the link that main.js
+   adds to every submission). The part after # is never sent to the server, so it
+   is neither stored nor logged there. Older links used "?" and still work. Empty fields — for
    example the year of graduation of a current student — are dropped. */
 
 import { t } from "./util.js";
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.hash.slice(1) || window.location.search);
+
+// Drop the data from the address bar once it has been read, so it does not
+// linger in the tab title history or get copied along with the URL.
+if (window.location.hash || window.location.search) {
+  history.replaceState(null, "", window.location.pathname);
+}
 const sheet = document.querySelector("[data-print-sheet]");
 const empty = document.querySelector("[data-print-empty]");
 

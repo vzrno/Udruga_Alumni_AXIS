@@ -149,6 +149,8 @@ function wireForms() {
 
       // Address of the printable copy: the answers travel in the link itself,
       // so the notification email (and the applicant) can open and print it.
+      // They go after "#", not "?": the part after # never leaves the browser,
+      // so opening the link does not put OIB or date of birth in server logs.
       const printPage = form.dataset.printPage;
       let printLink = "";
       if (printPage) {
@@ -158,7 +160,7 @@ function wireForms() {
           if (String(value).trim()) q.set(key, value);
         }
         q.set("predano", new Date().toLocaleString(document.documentElement.lang || "hr"));
-        printLink = `${window.location.origin}${printPage}?${q.toString()}`;
+        printLink = `${window.location.origin}${printPage}#${q.toString()}`;
         data.set("pristupnica_za_ispis", printLink);
       }
 
