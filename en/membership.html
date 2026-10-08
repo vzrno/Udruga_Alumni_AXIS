@@ -274,6 +274,24 @@
                       <input type="text" class="form-control" id="e-d-naziv" name="strucni_naziv" placeholder="e.g. stručni prvostupnik inženjer" />
                     </div>
                   </div>
+                  <div class="active-interest mt-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="e-aktivni" name="interes_aktivni" value="da" data-reveal="e-aktivni-more" />
+                      <label class="form-check-label" for="e-aktivni">
+                        <strong>I am interested in active membership</strong> <span class="text-muted">(optional)</span>
+                      </label>
+                    </div>
+                    <div class="form-text">
+                      Active members elect and can be elected to the association's bodies, vote at the
+                      General Assembly and take part in its activities; the annual fee is EUR 10. The
+                      Board decides on this status (Art. 11(5) of the Statute) and we will get back to you.
+                      Ticking this only shows your interest and commits you to nothing.
+                    </div>
+                    <div id="e-aktivni-more" class="mt-3">
+                      <label class="form-label" for="e-doprinos">How could you contribute to the association? <span class="text-muted">(optional)</span></label>
+                      <textarea class="form-control" id="e-doprinos" name="doprinos" rows="3" maxlength="1000" placeholder="e.g. organising events, a talk or workshop, mentoring students, contacts with employers"></textarea>
+                    </div>
+                  </div>
                 </fieldset>
 
                 <fieldset class="mt-4" data-group="stud">

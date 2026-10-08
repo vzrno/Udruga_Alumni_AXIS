@@ -269,6 +269,24 @@
                       <input type="text" class="form-control" id="p-d-naziv" name="strucni_naziv" placeholder="npr. stručni prvostupnik inženjer" />
                     </div>
                   </div>
+                  <div class="active-interest mt-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="p-aktivni" name="interes_aktivni" value="da" data-reveal="p-aktivni-more" />
+                      <label class="form-check-label" for="p-aktivni">
+                        <strong>Zainteresiran/a sam za aktivno članstvo</strong> <span class="text-muted">(neobavezno)</span>
+                      </label>
+                    </div>
+                    <div class="form-text">
+                      Aktivni članovi biraju i mogu biti birani u tijela Udruge, glasaju na Skupštini
+                      i sudjeluju u njezinim aktivnostima; godišnja članarina je 10 EUR. O statusu
+                      odlučuje Upravni odbor (čl. 11. st. 5. Statuta), a mi ćemo vam se javiti.
+                      Ovime samo iskazujete interes i ne preuzimate nikakvu obvezu.
+                    </div>
+                    <div id="p-aktivni-more" class="mt-3">
+                      <label class="form-label" for="p-doprinos">Kako biste mogli doprinijeti radu Udruge? <span class="text-muted">(neobavezno)</span></label>
+                      <textarea class="form-control" id="p-doprinos" name="doprinos" rows="3" maxlength="1000" placeholder="npr. organizacija događanja, predavanje ili radionica, mentorstvo studentima, kontakti s poslodavcima"></textarea>
+                    </div>
+                  </div>
                 </fieldset>
 
                 <fieldset class="mt-4" data-group="stud">

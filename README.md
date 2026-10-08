@@ -229,6 +229,11 @@ drži stranicu izvan menija (tako je riješena stranica o privatnosti).
    `form-name` i polje `bot-field` moraju ostati; novo polje mora postojati u
    HTML-u (Netlify ga ne prima ako ga nije vidio pri deployu). Polja u skrivenim
    odjeljcima (`data-group`) šalju se samo kad je odabran odgovarajući status.
+   Diplomirani pristupnici mogu označiti **interes za aktivno članstvo**
+   (`interes_aktivni`) i upisati kako bi mogli doprinijeti (`doprinos`). Takvoj
+   pristupnici naslov maila završava s „interes za aktivno članstvo”, a u
+   Netlifyju (*Forms → pristupnica → Export CSV*) to je zaseban stupac, pa
+   Upravni odbor lako vidi sve zainteresirane.
    Lokalno (`python -m http.server`) slanje javlja grešku — to je očekivano,
    radi tek na Netlifyju.
 

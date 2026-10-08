@@ -75,6 +75,27 @@ function isValidOib(value) {
 }
 
 /**
+ * A checkbox with data-reveal="<id>" shows that element only while it is ticked;
+ * fields inside are disabled while hidden, so they are not sent.
+ * Without JavaScript the element simply stays visible.
+ */
+function wireReveals(form) {
+  const updates = [];
+  form.querySelectorAll("[data-reveal]").forEach((box) => {
+    const target = document.getElementById(box.dataset.reveal);
+    if (!target) return;
+    const update = () => {
+      target.hidden = !box.checked;
+      target.querySelectorAll("input, textarea, select").forEach((f) => (f.disabled = !box.checked));
+    };
+    box.addEventListener("change", update);
+    update();
+    updates.push(update);
+  });
+  return () => updates.forEach((u) => u());
+}
+
+/**
  * Show only the fieldset that matches the chosen radio (data-toggle-group).
  * Fields in hidden fieldsets are disabled, so they are neither validated nor
  * sent. Without JavaScript every fieldset stays visible.
@@ -110,6 +131,7 @@ function wireForms() {
     const mail = form.dataset.mailto || "";
 
     const refreshGroups = wireToggleGroups(form);
+    const refreshReveals = wireReveals(form);
 
     form.querySelectorAll("[data-oib]").forEach((input) => {
       input.addEventListener("input", () => {
@@ -140,7 +162,11 @@ function wireForms() {
       if (subject) {
         const who = form.querySelector('[name="ime_i_prezime"], [name="name"]')?.value.trim();
         const topic = form.querySelector('[name="topic"]')?.value;
-        subject.value = [subject.dataset.subject, topic, who].filter(Boolean).join(" · ") + " — Alumni AXIS Split";
+        // Flag applicants who want active membership, so the Board can filter their mail.
+        const active = form.querySelector('[name="interes_aktivni"]:checked:not(:disabled)')
+          ? (document.documentElement.lang === "en" ? "interested in active membership" : "interes za aktivno članstvo")
+          : "";
+        subject.value = [subject.dataset.subject, topic, who, active].filter(Boolean).join(" · ") + " — Alumni AXIS Split";
       }
 
       const data = new FormData(form);
@@ -184,6 +210,7 @@ function wireForms() {
         form.reset();
         form.classList.remove("was-validated");
         refreshGroups();
+        refreshReveals();
         say("ok", form.dataset.ok || t.formOk);
       } catch (err) {
         say("error", `${t.formError} ${mail ? `${t.formErrorMail} ${mail}` : ""}`.trim());
