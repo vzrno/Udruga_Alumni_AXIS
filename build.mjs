@@ -521,7 +521,7 @@ for (const collection of COLLECTIONS) {
       const blocks = [];
       const highlights = LArr(item.highlights, lang);
       if (highlights.length) {
-        blocks.push(`<h2 class="h5 mt-4">${esc(strings.js.topics)}</h2>
+        blocks.push(`<h2 class="h5 mt-4">${esc(L(item.highlightsTitle, lang) || strings.js.topics)}</h2>
               <ul>${highlights.map((h) => `<li>${esc(L(h, lang))}</li>`).join("")}</ul>`);
       }
       const agenda = LArr(item.agenda, lang);
