@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alumni AXIS Split//Web//HR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:event-3@alumniaxis-st.hr
+DTSTAMP:20261020T000000Z
+DTSTART:20261020T100000Z
+DTEND:20261020T130000Z
+SUMMARY:Voluntary blood donation drive
+LOCATION:Split\, Kopilica 21\, room 110
+DESCRIPTION:Alumni AXIS Split and the Student Council of the University Dep
+ artment of Professional Studies invite students\, staff and alumni of the 
+ Department to a voluntary blood donation drive\, organised by the Split br
+ anch of the Croatian Red Cross and the University Department of Profession
+ al Studies. Blood cannot be manufactured\, and a single donation\, separat
+ ed into its components\, can help up to three patients. Everyone who is ab
+ le to donate is warmly invited to join us and help those who need it…\n\
+ nhttps://alumniaxis-st.hr/en/events/blood-donation-drive-2026.html
+URL:https://alumniaxis-st.hr/en/events/blood-donation-drive-2026.html
+END:VEVENT
+END:VCALENDAR

@@ -64,7 +64,10 @@ def main():
         stem = slug(os.path.splitext(filename)[0])
         # exif_transpose: phone photos store rotation in EXIF; apply it before cropping
         img = flatten(ImageOps.exif_transpose(Image.open(path)))
-        full = framed(img, W, H) if img.width < 900 else cover(img, W, H)
+        # Small images and upright ones (posters, flyers) go whole onto a blurred
+        # background; cropping a portrait poster to 3:2 would cut most of it off.
+        upright = img.width / img.height < 1.2
+        full = framed(img, W, H) if img.width < 900 or upright else cover(img, W, H)
         full.save(os.path.join(folder, f"{stem}.webp"), "WEBP", quality=82, method=6)
         full.resize(SMALL, Image.LANCZOS).save(os.path.join(folder, f"{stem}-700.webp"), "WEBP", quality=80, method=6)
         if not path.endswith(".webp"):

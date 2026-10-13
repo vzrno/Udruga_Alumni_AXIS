@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alumni AXIS Split//Web//HR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:event-3@alumniaxis-st.hr
+DTSTAMP:20261020T000000Z
+DTSTART:20261020T100000Z
+DTEND:20261020T130000Z
+SUMMARY:Akcija dobrovoljnog darivanja krvi
+LOCATION:Split\, Kopilica 21\, dvorana 110
+DESCRIPTION:Alumni AXIS Split i Studentski zbor Sveučilišnog odjela za st
+ ručne studije pozivaju studente\, djelatnike i alumnije Odjela na akciju 
+ dobrovoljnog darivanja krvi\, koju organiziraju Gradsko društvo Crvenog k
+ riža Split i Sveučilišni odjel za stručne studije. Krv se ne može pro
+ izvesti umjetnim putem\, a jedna darovana doza\, razdvojena na sastojke\, 
+ može pomoći i trojici bolesnika. Pozivamo sve koji su u mogućnosti da n
+ am se pridruže i svojim činom pomognu onima kojima je pomoć najpotrebni
+ ja. Daruj…\n\nhttps://alumniaxis-st.hr/dogadanja/akcija-darivanja-krvi-2
+ 026.html
+URL:https://alumniaxis-st.hr/dogadanja/akcija-darivanja-krvi-2026.html
+END:VEVENT
+END:VCALENDAR

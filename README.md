@@ -121,7 +121,8 @@ dimenziji i imaju `-700` varijantu.
 ### Novo događanje
 
 Isto, u `data/events.json` (`dogadanja/<slug>.html`). Dodatno: `endTime`,
-`highlights` i `url` za vanjsku prijavu. Događanje je „Nadolazeće“ dok mu ne
+`highlights` i `url` za vanjsku prijavu. Popis `highlights` ima naslov „Teme”;
+drugi naslov zadaje se s `highlightsTitle` (npr. „Što trebate znati”). Događanje je „Nadolazeće“ dok mu ne
 prođe datum i vrijeme završetka; naslovnica prikazuje tri najbliža, a
 `dogadanja.html` cijelu arhivu.
 
@@ -166,8 +167,8 @@ python3 tools/slika.py images/events/moja-slika.jpg
 ```
 
 Skripta obreže sliku na 3:2 iz sredine, spremi obje veličine u WebP i obriše
-original. Ako je original uži od 900 px (npr. plakat ili screenshot), umjesto
-mutnog povećavanja stavlja ga na zamućenu pozadinu — tako su riješene slike
+original. Ako je original uži od 900 px ili uspravan (npr. plakat), umjesto
+obrezivanja i mutnog povećavanja stavlja ga cijelog na zamućenu pozadinu — tako su riješene slike
 CIET-a, Tjedna struke i Science Comes to Town, koje su bile 300–600 px.
 
 ---

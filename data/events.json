@@ -72,5 +72,50 @@
         "Innovative teaching and learning methods"
       ]
     }
+  },
+  {
+    "id": 3,
+    "slug": {
+      "hr": "akcija-darivanja-krvi-2026",
+      "en": "blood-donation-drive-2026"
+    },
+    "date": "2026-10-20",
+    "time": "12:00",
+    "endTime": "15:00",
+    "image": "images/events/akcija-darivanja-krvi-2026.webp",
+    "title": {
+      "hr": "Akcija dobrovoljnog darivanja krvi",
+      "en": "Voluntary blood donation drive"
+    },
+    "location": {
+      "hr": "Split, Kopilica 21, dvorana 110",
+      "en": "Split, Kopilica 21, room 110"
+    },
+    "description": {
+      "hr": "Alumni AXIS Split i Studentski zbor Sveučilišnog odjela za stručne studije pozivaju studente, djelatnike i alumnije Odjela na akciju dobrovoljnog darivanja krvi, koju organiziraju Gradsko društvo Crvenog križa Split i Sveučilišni odjel za stručne studije.\n\nKrv se ne može proizvesti umjetnim putem, a jedna darovana doza, razdvojena na sastojke, može pomoći i trojici bolesnika. Pozivamo sve koji su u mogućnosti da nam se pridruže i svojim činom pomognu onima kojima je pomoć najpotrebnija. Daruj krv – spasi život!",
+      "en": "Alumni AXIS Split and the Student Council of the University Department of Professional Studies invite students, staff and alumni of the Department to a voluntary blood donation drive, organised by the Split branch of the Croatian Red Cross and the University Department of Professional Studies.\n\nBlood cannot be manufactured, and a single donation, separated into its components, can help up to three patients. Everyone who is able to donate is warmly invited to join us and help those who need it most. Give blood – save a life!"
+    },
+    "highlightsTitle": {
+      "hr": "Što trebate znati",
+      "en": "What you need to know"
+    },
+    "highlights": {
+      "hr": [
+        "Darivati mogu osobe od 18 do 65 godina dobrog općeg zdravlja, teže od 55 kg",
+        "Žene mogu darivati krv svaka četiri mjeseca, a muškarci svaka tri",
+        "Ponesite osobnu iskaznicu, putovnicu ili vozačku dozvolu",
+        "Dođite odmorni i prije darivanja pojedite lagani obrok",
+        "Najmanje 8 sati prije ne pijte alkohol i ne jedite masnu hranu",
+        "O tome možete li darivati odlučuje liječnik na mjestu darivanja"
+      ],
+      "en": [
+        "Donors must be aged 18 to 65, in good general health and weigh over 55 kg",
+        "Women can donate every four months, men every three",
+        "Bring an identity card, passport or driving licence",
+        "Come rested and have a light meal beforehand",
+        "Avoid alcohol and fatty food for at least 8 hours before",
+        "A doctor on site decides whether you can donate"
+      ]
+    }
   }
 ]
