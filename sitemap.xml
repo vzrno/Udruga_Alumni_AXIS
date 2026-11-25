@@ -130,6 +130,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://alumniaxis-st.hr/en/privacy.html"/>
   </url>
   <url>
+    <loc>https://alumniaxis-st.hr/novosti/odrzana-akcija-darivanja-krvi-2026.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://alumniaxis-st.hr/novosti/odrzana-akcija-darivanja-krvi-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alumniaxis-st.hr/en/news/blood-donation-drive-2026-held.html"/>
+  </url>
+  <url>
+    <loc>https://alumniaxis-st.hr/en/news/blood-donation-drive-2026-held.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://alumniaxis-st.hr/novosti/odrzana-akcija-darivanja-krvi-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alumniaxis-st.hr/en/news/blood-donation-drive-2026-held.html"/>
+  </url>
+  <url>
     <loc>https://alumniaxis-st.hr/novosti/eurograduate-2026-istrazivanje-diplomiranih.html</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>yearly</changefreq>

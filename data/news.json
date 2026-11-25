@@ -1,5 +1,38 @@
 [
   {
+  "id": 12,
+  "slug": {
+    "hr": "odrzana-akcija-darivanja-krvi-2026",
+    "en": "blood-donation-drive-2026-held"
+  },
+  "date": "2026-10-20",
+  "time": "12:00",
+  "endTime": "15:00",
+  "image": "images/events/akcija-darivanja-krvi-2026.webp",
+  "title": {
+    "hr": "Održana akcija dobrovoljnog darivanja krvi na Odjelu",
+    "en": "Voluntary blood donation drive held at the Department"
+  },
+  "location": {
+    "hr": "Split, Kopilica 21, dvorana 110",
+    "en": "Split, Kopilica 21, room 110"
+  },
+  "tags": {
+    "hr": [
+      "humanitarno",
+      "darivanje krvi"
+    ],
+    "en": [
+      "charity",
+      "blood donation"
+    ]
+  },
+  "description": {
+    "hr": "U utorak, 20. listopada 2026., na Sveučilišnom odjelu za stručne studije održana je akcija dobrovoljnog darivanja krvi. Organizirali su je Gradsko društvo Crvenog križa Split i Odjel, uz potporu Udruge Alumni AXIS Split i Studentskog zbora Odjela.\n\nAkciji su pristupile 23 osobe, 14 muškaraca i 9 žena, među kojima studenti, djelatnici i alumniji Odjela. Krv je darovalo njih 15, a osmero ovaj put nije moglo darivati jer o tome na licu mjesta odlučuje liječnik. Budući da jedna darovana doza, razdvojena na sastojke, može pomoći do trojici bolesnika, darovana krv mogla bi pomoći i do 45 osoba.\n\nO akciji je izvijestio i HRT u središnjem Dnevniku u 19 sati.\n\nZahvaljujemo svima koji su se odazvali, i onima koji su darovali krv i onima koji su došli s tom namjerom, kao i Gradskom društvu Crvenog križa Split na suradnji. Vidimo se na sljedećoj akciji!",
+    "en": "On Tuesday, 20 October 2026, the University Department of Professional Studies hosted a voluntary blood donation drive. It was organised by the Split branch of the Croatian Red Cross and the Department, with the support of Alumni AXIS Split and the Department's Student Council.\n\n23 people came, 14 men and 9 women, including students, staff and alumni of the Department. 15 of them donated blood, while eight could not donate this time, as a doctor decides on site who is able to give blood. Since a single donation, separated into its components, can help up to three patients, the blood donated could help as many as 45 people.\n\nThe drive was also covered by Croatian Radiotelevision (HRT) in its main 7 pm evening news.\n\nWe thank everyone who came, both those who donated and those who came intending to, and the Split branch of the Croatian Red Cross for their cooperation. See you at the next drive!"
+  }
+},
+  {
   "id": 11,
   "slug": {
     "hr": "eurograduate-2026-istrazivanje-diplomiranih",
