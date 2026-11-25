@@ -262,13 +262,22 @@ function clip(text, max) {
 
 const isUrl = (text) => /^https?:\/\//i.test(String(text || "").trim());
 
+/** Web addresses in already-escaped text ("https://…" or "www.…") -> links that
+ *  open in a new tab. A full stop or comma right after the address is left out. */
+function linkify(html) {
+  return html.replace(/\b((?:https?:\/\/|www\.)[^\s<]*[^\s<.,;:!?)])/g, (url) => {
+    const href = url.startsWith("www.") ? `https://${url}` : url;
+    return `<a href="${href}" target="_blank" rel="noopener">${url}</a>`;
+  });
+}
+
 /** Plain text with blank lines -> paragraphs. */
 function paragraphs(text) {
   return String(text || "")
     .split(/\n\s*\n/)
     .map((block) => block.trim())
     .filter(Boolean)
-    .map((block) => `<p>${esc(block).replaceAll("\n", "<br>")}</p>`)
+    .map((block) => `<p>${linkify(esc(block)).replaceAll("\n", "<br>")}</p>`)
     .join("\n              ");
 }
 
